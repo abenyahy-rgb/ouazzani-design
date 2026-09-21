@@ -80,6 +80,7 @@ l'appareil d'exécution — et il a des droits d'écriture ici.
 | Tour de contrôle | ouvre les activités, délivre fragment, frontière et critère de sortie ; constate les gates sans les franchir | `.claude/factoryzen.sh tower` → `.factoryzen/mcp/server.mjs` |
 | Garde `PreToolUse` | **ne juge que `product/`** (`guard.mjs:45-46`) ; trois verdicts : `deny`, **`ask`** (chemin déclaré, aucune activité ouverte — l'humain tranche, `:57-63`), `allow` — dont **toute** écriture hors `product/` | `.claude/factoryzen.sh guard` → `.factoryzen/lib/guard.mjs` |
 | **Semis de la CI — projections** | supprime et regénère `.claude/commands`, `agents`, `skills` ; réécrit `factoryzen.sh`, `.gitmodules`, `.mcp.json` ; fusionne `settings.json` ; **complète** `.gitignore`. Commit et push conditionnés à un arbre sale | `launchpad/kit/run.mjs:124-173` ← `launchpad.yml:37-48` |
+| **Semis de la CI — épinglage** | **déplace le gitlink `.factoryzen`**, donc la version du registre qui gouverne le dépôt. Observé le 2026-09-21 : `a7b185b` → `359d6ce`. Détecté par K6, non par la garde | `launchpad/kit/run.mjs` ← `launchpad.yml:37-48` |
 | **Semis de la CI — Run Ledger** | **ouvre l'activité 1 au nom de `factory-lead`, déclare WP-01 `partiel`, écrit `runs/tower.json` et `runs/ledger.ndjson`.** Une seule fois : un journal existant n'est jamais réécrit | `launchpad/kit/run.mjs:72-88` |
 | Run Ledger | journal opposable — versionné, seul objet de K8 | `runs/ledger.ndjson`, `runs/tower.json` |
 | Trace de session | journal de bord — non versionné (`.gitignore:10-13`), poussé au launchpad dès le poste appairé | `runs/trace.ndjson` |
@@ -110,7 +111,7 @@ que la garde ne juge pas.
 | `actions/setup-node` | v4 | `launchpad.yml:24` |
 | Vercel — launchpad | `product-launchpad-lovat.vercel.app` | `launchpad.yml:17` |
 | Supabase — edge function | `yxtanhjegsvuybbvcfpl.supabase.co/functions/v1/launchpad` | `launchpad.yml:18` |
-| Plugin FactoryZen | v0.4.0 au commit `a7b185b74f2053672f72285c53a09003206752e2` | `.factoryzen/package.json:3` · gitlink de l'arbre |
+| Plugin FactoryZen | commit `359d6ced18844b3c75ee9699bad30ec3c4c8c27f` **depuis le 2026-09-21** — précédemment `a7b185b`, déplacé par le semis de la CI (commit `09cbb66`), non par une décision humaine | gitlink de l'arbre · écart détecté par K6 |
 
 Aucune dépendance applicative : il n'y a pas d'application. Le produit démarre sans dette
 technique et sans marge de manœuvre technique — les deux restent à établir à l'activité 9.

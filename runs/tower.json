@@ -55,6 +55,12 @@
       "step": "C1.2",
       "actor": "product-lead",
       "at": "2026-09-21T16:26:52.383Z"
+    },
+    {
+      "activity": 1,
+      "step": "C1.1",
+      "actor": "factory-lead",
+      "at": "2026-09-21T16:34:19.844Z"
     }
   ],
   "declared": [
@@ -518,6 +524,91 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T16:31:43.988Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/artifact-schema.yaml",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-01 → CONFORME sur le registre 359d6ce",
+        "Clé « map » ajoutée à workspace-map.yaml : exigée par la version du registre que le semis de la CI a épinglée le 2026-09-21, et qui ne l était pas par la précédente",
+        "apf check → 7 PASS · 0 FAIL · 1 SKIPPED"
+      ],
+      "completion": "complet",
+      "reserves": [],
+      "form_findings": 0,
+      "at": "2026-09-21T16:34:51.790Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/project.yaml",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-01 → CONFORME sur le registre 359d6ce",
+        "Clé « map » ajoutée à workspace-map.yaml : exigée par la version du registre que le semis de la CI a épinglée le 2026-09-21, et qui ne l était pas par la précédente",
+        "apf check → 7 PASS · 0 FAIL · 1 SKIPPED"
+      ],
+      "completion": "complet",
+      "reserves": [],
+      "form_findings": 0,
+      "at": "2026-09-21T16:34:51.939Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/workspace-map.yaml",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-01 → CONFORME sur le registre 359d6ce",
+        "Clé « map » ajoutée à workspace-map.yaml : exigée par la version du registre que le semis de la CI a épinglée le 2026-09-21, et qui ne l était pas par la précédente",
+        "apf check → 7 PASS · 0 FAIL · 1 SKIPPED"
+      ],
+      "completion": "complet",
+      "reserves": [],
+      "form_findings": 0,
+      "at": "2026-09-21T16:34:52.087Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/existing-system.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "Écart de provenance détecté par K6 en exercice : « le plugin exécuté est sur a7b185b, le dépôt produit épingle 359d6ce »",
+        "Conséquence constatée : K7 est passé en FAIL sur WP-01, livrable déclaré complet et INCHANGÉ — un livrable conforme peut cesser de l être sans être touché"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 4 : C-06 corrigée PAR OBSERVATION — la CI déplace l épinglage de la méthode, ce que la révision 3 déclarait stable. Constaté le 2026-09-21, a7b185b → 359d6ce.",
+        "Révision 3 RÉDUITE sous EX1 — 11 contraintes + 1 dérivation ; 9 énoncés en « À confirmer ».",
+        "U-01, U-02, U-03, U-08 ouverts.",
+        "L absence d existant hors dépôt reste DÉCLARÉE par le sponsor, non établie."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:34:52.230Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/constraints.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "Écart de provenance détecté par K6 en exercice : « le plugin exécuté est sur a7b185b, le dépôt produit épingle 359d6ce »",
+        "Conséquence constatée : K7 est passé en FAIL sur WP-01, livrable déclaré complet et INCHANGÉ — un livrable conforme peut cesser de l être sans être touché"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 4 : C-06 corrigée PAR OBSERVATION — la CI déplace l épinglage de la méthode, ce que la révision 3 déclarait stable. Constaté le 2026-09-21, a7b185b → 359d6ce.",
+        "Révision 3 RÉDUITE sous EX1 — 11 contraintes + 1 dérivation ; 9 énoncés en « À confirmer ».",
+        "U-01, U-02, U-03, U-08 ouverts.",
+        "L absence d existant hors dépôt reste DÉCLARÉE par le sponsor, non établie."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:34:52.403Z"
     }
   ],
   "gates": {},

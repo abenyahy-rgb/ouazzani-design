@@ -25,9 +25,21 @@ workspace:
   trigger: push sur la branche par défaut
   recorded_at: '2026-09-21'
 
-# Carte d'identifiants : sans objet sur un espace tiré. Rien n'est à écrire ici, et
-# rien ne doit y être écrit à la main — « apf notion map » est le seul auteur légitime
-# de cette section, et il rend « sans objet ».
-step_pages: sans objet — projection tirée
-gate_pages: sans objet — projection tirée
-databases: sans objet — projection tirée
+# ── Carte de l'espace de travail ──────────────────────────────────────────
+# Clé « map » : identifiants des pages d'étape, des pages de gate et des bases.
+# Sur un espace TIRÉ elle n'a pas d'objet — il n'existe aucune page à relier —
+# mais elle est RENSEIGNÉE plutôt que laissée absente : une carte manquante et une
+# carte sans objet ne se distinguent pas d'un fichier oublié, et K7 les traite
+# identiquement. « apf notion map » est le seul auteur légitime d'un identifiant
+# ici ; il rend « sans objet » sur ce dépôt.
+map:
+  kind: launchpad
+  applicable: false
+  reason: >-
+    Projection TIRÉE. Le launchpad recalcule étapes, gates et bases à chaque push
+    sur la branche par défaut : aucun identifiant de page n'est créé, donc aucun
+    n'est à enregistrer. La page EST le commit.
+  step: sans objet — aucune page d'étape n'est créée
+  gate: sans objet — aucune page de gate n'est créée
+  db: sans objet — aucune base n'est créée
+  written_by: "apf notion map — rend « sans objet » sur ce dépôt (vérifié 2026-09-21)"
