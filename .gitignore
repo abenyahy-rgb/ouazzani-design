@@ -1,0 +1,13 @@
+node_modules/
+.env*
+!.env.example
+.DS_Store
+
+# LA TRACE N'EST PAS UNE PREUVE. Ce que les agents ont fait pendant la session est un
+# journal de bord : local, remplaçable, poussé au launchpad qui l'affiche. Le versionner
+# ferait grossir le dépôt d'un flux que personne ne relit, et surtout le rendrait citable
+# comme pièce — alors que le Run Ledger, lui, est versionné et opposable.
+runs/trace.ndjson
+runs/.trace-pending.json
+runs/.trace-cursor.json
+runs/.trace-push.lock

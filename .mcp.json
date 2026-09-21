@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "factory-control-tower": {
+      "command": ".claude/factoryzen.sh",
+      "args": ["tower"]
+    }
+  }
+}

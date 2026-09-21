@@ -1,0 +1,58 @@
+name: launchpad
+# Le SEUL fichier à déposer dans un dépôt produit. À chaque push sur la branche par défaut,
+# il présente au launchpad le jeton OIDC que GitHub lui signe — aucun secret à configurer —,
+# télécharge le kit, sème le gabarit à la première exécution, puis dépose l'instantané.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: write
+  actions: write
+concurrency:
+  group: launchpad-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  LAUNCHPAD_URL: https://product-launchpad-lovat.vercel.app
+  LAUNCHPAD_EDGE: https://yxtanhjegsvuybbvcfpl.supabase.co/functions/v1/launchpad
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Jeton OIDC
+        run: |
+          TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=product-launchpad" | jq -r .value)
+          echo "::add-mask::$TOKEN"
+          echo "LAUNCHPAD_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+      - name: Kit
+        run: |
+          mkdir -p /tmp/kit
+          curl -fsS -H "Authorization: Bearer $LAUNCHPAD_TOKEN" "$LAUNCHPAD_URL/api/kit" -o /tmp/kit.tgz
+          tar xzf /tmp/kit.tgz -C /tmp/kit
+      - name: Semer le gabarit (première exécution)
+        id: seed
+        run: |
+          node /tmp/kit/kit/run.mjs seed
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "launchpad"
+            git config user.email "launchpad@users.noreply.github.com"
+            git add -A
+            git commit -m "launchpad : gabarit du dépôt produit — plugin activé, identité semée"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Déposer l'instantané
+        run: node /tmp/kit/kit/run.mjs snapshot
+      # Le jeton n'atteste que le commit qui a déclenché l'exécution ; ce que le semis vient
+      # de pousser n'en déclenche pas une autre. On la demande donc soi-même — une fois : le
+      # semis rejoué ne pousse rien, et la boucle s'arrête d'elle-même.
+      - name: Resynchroniser au commit semé
+        if: steps.seed.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run launchpad.yml --ref "$GITHUB_REF_NAME"

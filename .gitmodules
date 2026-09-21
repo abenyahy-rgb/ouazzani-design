@@ -1,0 +1,3 @@
+[submodule ".factoryzen"]
+	path = .factoryzen
+	url = https://github.com/abenyahy-rgb/Autonomous-Product-Factory.git
