@@ -61,6 +61,12 @@
       "step": "C1.1",
       "actor": "factory-lead",
       "at": "2026-09-21T16:34:19.844Z"
+    },
+    {
+      "activity": 4,
+      "step": "C1.3",
+      "actor": "product-designer",
+      "at": "2026-09-21T16:46:20.662Z"
     }
   ],
   "declared": [
@@ -609,6 +615,132 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T16:34:52.403Z"
+    },
+    {
+      "activity": "4",
+      "work_product": "WP-08",
+      "path": "product/research/research-plan.md",
+      "instance": null,
+      "evidence": [
+        "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
+        "5 biais déclarés avant les résultats — dont B-02 : l intervieweur est le vendeur",
+        "Barème d étiquetage et critère d arrêt fixés avant tout entretien",
+        "4 hypothèses ciblées dont 2 létales : HYP-04 et HYP-09"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Seul le PLAN DE RECHERCHE est produit. Verbatims, insights, personas, empathy maps et journeys as-is sont BLOCKED : ils exigent des participants, et le critère d entrée « consentement des participants obtenu » n est pas satisfait.",
+        "Collections vides assumées : interviews/, personas/, empathy-maps/, journeys/as-is/. Le contrôle de forme les signale, et c est le comportement attendu — un persona inventé passerait ce même contrôle.",
+        "EX2 run_mode_solo NE S APPLIQUE PAS : une observation absente ne devient pas une hypothèse. WP-05 porte déjà les hypothèses et leur point de test EST cette recherche.",
+        "Le plan est FIGÉ PAR CE COMMIT. Toute modification après le premier entretien est un second protocole, jamais une correction."
+      ],
+      "form_findings": 4,
+      "at": "2026-09-21T16:48:12.789Z"
+    },
+    {
+      "activity": "4",
+      "work_product": "WP-08",
+      "path": "product/research/insights.md",
+      "instance": null,
+      "evidence": [
+        "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
+        "5 biais déclarés avant les résultats — dont B-02 : l intervieweur est le vendeur",
+        "Barème d étiquetage et critère d arrêt fixés avant tout entretien",
+        "4 hypothèses ciblées dont 2 létales : HYP-04 et HYP-09"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Seul le PLAN DE RECHERCHE est produit. Verbatims, insights, personas, empathy maps et journeys as-is sont BLOCKED : ils exigent des participants, et le critère d entrée « consentement des participants obtenu » n est pas satisfait.",
+        "Collections vides assumées : interviews/, personas/, empathy-maps/, journeys/as-is/. Le contrôle de forme les signale, et c est le comportement attendu — un persona inventé passerait ce même contrôle.",
+        "EX2 run_mode_solo NE S APPLIQUE PAS : une observation absente ne devient pas une hypothèse. WP-05 porte déjà les hypothèses et leur point de test EST cette recherche.",
+        "Le plan est FIGÉ PAR CE COMMIT. Toute modification après le premier entretien est un second protocole, jamais une correction."
+      ],
+      "form_findings": 4,
+      "at": "2026-09-21T16:48:12.935Z"
+    },
+    {
+      "activity": "4",
+      "work_product": "WP-08",
+      "path": "product/research/interviews/",
+      "instance": null,
+      "evidence": [
+        "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
+        "5 biais déclarés avant les résultats — dont B-02 : l intervieweur est le vendeur",
+        "Barème d étiquetage et critère d arrêt fixés avant tout entretien",
+        "4 hypothèses ciblées dont 2 létales : HYP-04 et HYP-09"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Seul le PLAN DE RECHERCHE est produit. Verbatims, insights, personas, empathy maps et journeys as-is sont BLOCKED : ils exigent des participants, et le critère d entrée « consentement des participants obtenu » n est pas satisfait.",
+        "Collections vides assumées : interviews/, personas/, empathy-maps/, journeys/as-is/. Le contrôle de forme les signale, et c est le comportement attendu — un persona inventé passerait ce même contrôle.",
+        "EX2 run_mode_solo NE S APPLIQUE PAS : une observation absente ne devient pas une hypothèse. WP-05 porte déjà les hypothèses et leur point de test EST cette recherche.",
+        "Le plan est FIGÉ PAR CE COMMIT. Toute modification après le premier entretien est un second protocole, jamais une correction."
+      ],
+      "form_findings": 4,
+      "at": "2026-09-21T16:48:13.086Z"
+    },
+    {
+      "activity": "4",
+      "work_product": "WP-08",
+      "path": "product/research/personas/",
+      "instance": null,
+      "evidence": [
+        "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
+        "5 biais déclarés avant les résultats — dont B-02 : l intervieweur est le vendeur",
+        "Barème d étiquetage et critère d arrêt fixés avant tout entretien",
+        "4 hypothèses ciblées dont 2 létales : HYP-04 et HYP-09"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Seul le PLAN DE RECHERCHE est produit. Verbatims, insights, personas, empathy maps et journeys as-is sont BLOCKED : ils exigent des participants, et le critère d entrée « consentement des participants obtenu » n est pas satisfait.",
+        "Collections vides assumées : interviews/, personas/, empathy-maps/, journeys/as-is/. Le contrôle de forme les signale, et c est le comportement attendu — un persona inventé passerait ce même contrôle.",
+        "EX2 run_mode_solo NE S APPLIQUE PAS : une observation absente ne devient pas une hypothèse. WP-05 porte déjà les hypothèses et leur point de test EST cette recherche.",
+        "Le plan est FIGÉ PAR CE COMMIT. Toute modification après le premier entretien est un second protocole, jamais une correction."
+      ],
+      "form_findings": 4,
+      "at": "2026-09-21T16:48:13.239Z"
+    },
+    {
+      "activity": "4",
+      "work_product": "WP-08",
+      "path": "product/research/empathy-maps/",
+      "instance": null,
+      "evidence": [
+        "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
+        "5 biais déclarés avant les résultats — dont B-02 : l intervieweur est le vendeur",
+        "Barème d étiquetage et critère d arrêt fixés avant tout entretien",
+        "4 hypothèses ciblées dont 2 létales : HYP-04 et HYP-09"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Seul le PLAN DE RECHERCHE est produit. Verbatims, insights, personas, empathy maps et journeys as-is sont BLOCKED : ils exigent des participants, et le critère d entrée « consentement des participants obtenu » n est pas satisfait.",
+        "Collections vides assumées : interviews/, personas/, empathy-maps/, journeys/as-is/. Le contrôle de forme les signale, et c est le comportement attendu — un persona inventé passerait ce même contrôle.",
+        "EX2 run_mode_solo NE S APPLIQUE PAS : une observation absente ne devient pas une hypothèse. WP-05 porte déjà les hypothèses et leur point de test EST cette recherche.",
+        "Le plan est FIGÉ PAR CE COMMIT. Toute modification après le premier entretien est un second protocole, jamais une correction."
+      ],
+      "form_findings": 4,
+      "at": "2026-09-21T16:48:13.380Z"
+    },
+    {
+      "activity": "4",
+      "work_product": "WP-08",
+      "path": "product/research/journeys/as-is/",
+      "instance": null,
+      "evidence": [
+        "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
+        "5 biais déclarés avant les résultats — dont B-02 : l intervieweur est le vendeur",
+        "Barème d étiquetage et critère d arrêt fixés avant tout entretien",
+        "4 hypothèses ciblées dont 2 létales : HYP-04 et HYP-09"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Seul le PLAN DE RECHERCHE est produit. Verbatims, insights, personas, empathy maps et journeys as-is sont BLOCKED : ils exigent des participants, et le critère d entrée « consentement des participants obtenu » n est pas satisfait.",
+        "Collections vides assumées : interviews/, personas/, empathy-maps/, journeys/as-is/. Le contrôle de forme les signale, et c est le comportement attendu — un persona inventé passerait ce même contrôle.",
+        "EX2 run_mode_solo NE S APPLIQUE PAS : une observation absente ne devient pas une hypothèse. WP-05 porte déjà les hypothèses et leur point de test EST cette recherche.",
+        "Le plan est FIGÉ PAR CE COMMIT. Toute modification après le premier entretien est un second protocole, jamais une correction."
+      ],
+      "form_findings": 4,
+      "at": "2026-09-21T16:48:13.518Z"
     }
   ],
   "gates": {},
