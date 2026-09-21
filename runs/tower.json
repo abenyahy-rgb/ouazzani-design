@@ -19,6 +19,12 @@
       "step": "C1.1",
       "actor": "factory-lead",
       "at": "2026-09-21T15:11:20.684Z"
+    },
+    {
+      "activity": 2,
+      "step": "C1.2",
+      "actor": "product-lead",
+      "at": "2026-09-21T15:51:13.075Z"
     }
   ],
   "declared": [
@@ -153,6 +159,59 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T15:45:09.767Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-03",
+      "path": "product/strategy/product-thesis.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-03 --completion partiel → CONFORME",
+        "Journal d interrogatoire tenu : 2 branches tranchées, 4 questions ouvertes, traitement EX2 qualifié pour chacune"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "BLOCKED — EX2 cas 1 : l intention du produit est une DÉCISION que seul l humain qui répond du produit peut prendre (method.yaml:2163-2171). Le RUN MODE SOLO ne la convertit PAS en hypothèse.",
+        "Critère d abandon nommément cité dans les trois cas qui restent BLOCKED quel que soit le mode.",
+        "Salve d interrogatoire du 2026-09-21 sans réponse sur Q1 et Q4 ; une seule salve permise (EX2). Escaladé N2 — Product Owner, reporté."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:53:44.589Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-04",
+      "path": "product/strategy/outcomes.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-04 --completion partiel → CONFORME"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "BLOCKED en cascade de WP-03 : sans Problème ni Cible, il n y a personne chez qui observer un changement.",
+        "BLOCKED par EX2 cas 2 : WP-04 est controlled_at G0, donc figé par une gate — une erreur y serait irréversible.",
+        "Aucun OUT-nn émis."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:53:44.731Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-05",
+      "path": "product/strategy/assumptions.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-05 --completion partiel → CONFORME",
+        "2 hypothèses de méthode falsifiables, avec point de test et porteur"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "BLOCKED en cascade : une hypothèse sans OUT n est pas critique, et WP-04 n émet aucun OUT.",
+        "HYP-M1 et HYP-M2 sont des hypothèses de MÉTHODE, hors compte critique : elles ne tracent vers aucun OUT.",
+        "Aucune hypothèse produit émise."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:53:44.881Z"
     }
   ],
   "gates": {},
