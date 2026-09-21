@@ -49,6 +49,12 @@
       "step": "C1.1",
       "actor": "factory-lead",
       "at": "2026-09-21T16:24:05.744Z"
+    },
+    {
+      "activity": 3,
+      "step": "C1.2",
+      "actor": "product-lead",
+      "at": "2026-09-21T16:26:52.383Z"
     }
   ],
   "declared": [
@@ -414,6 +420,104 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T16:24:06.089Z"
+    },
+    {
+      "activity": "3",
+      "work_product": "WP-06",
+      "path": "product/domain/domain-profile.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-06 --completion partiel → CONFORME",
+        "factory_source_claim sans verbatim → verdict UNVALIDATED, missing [verbatim] — la tour confirme l irrecevabilité (2026-09-21)",
+        "7 candidates repérées avec adresse réelle, ce qu elles doivent établir et l hypothèse qu elles font bouger"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "BLOCKED sur le critère d entrée de l activité 3 — accès aux sources réglementaires ou professionnelles. WebFetch rend EGRESS_BLOCKED sur tous les domaines essayés ; curl direct rend HTTP 000. Seule la recherche fonctionne, et elle ne donne aucune citation littérale.",
+        "AUCUNE règle métier établie : RG-01 à RG-07 sont INCONNU et routées, jamais comblées.",
+        "Les 7 sources sont des CANDIDATES non lues, numérotées CAND-nn et non SRC-nn pour qu aucune règle ne puisse s y adosser par inadvertance.",
+        "Quatre hypothèses létales devaient bouger ici — HYP-01, HYP-04, HYP-05, HYP-06. Aucune n a bougé."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:31:43.435Z"
+    },
+    {
+      "activity": "3",
+      "work_product": "WP-06",
+      "path": "product/domain/sources.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-06 --completion partiel → CONFORME",
+        "factory_source_claim sans verbatim → verdict UNVALIDATED, missing [verbatim] — la tour confirme l irrecevabilité (2026-09-21)",
+        "7 candidates repérées avec adresse réelle, ce qu elles doivent établir et l hypothèse qu elles font bouger"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "BLOCKED sur le critère d entrée de l activité 3 — accès aux sources réglementaires ou professionnelles. WebFetch rend EGRESS_BLOCKED sur tous les domaines essayés ; curl direct rend HTTP 000. Seule la recherche fonctionne, et elle ne donne aucune citation littérale.",
+        "AUCUNE règle métier établie : RG-01 à RG-07 sont INCONNU et routées, jamais comblées.",
+        "Les 7 sources sont des CANDIDATES non lues, numérotées CAND-nn et non SRC-nn pour qu aucune règle ne puisse s y adosser par inadvertance.",
+        "Quatre hypothèses létales devaient bouger ici — HYP-01, HYP-04, HYP-05, HYP-06. Aucune n a bougé."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:31:43.572Z"
+    },
+    {
+      "activity": "3",
+      "work_product": "WP-06",
+      "path": "product/domain/rules.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-06 --completion partiel → CONFORME",
+        "factory_source_claim sans verbatim → verdict UNVALIDATED, missing [verbatim] — la tour confirme l irrecevabilité (2026-09-21)",
+        "7 candidates repérées avec adresse réelle, ce qu elles doivent établir et l hypothèse qu elles font bouger"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "BLOCKED sur le critère d entrée de l activité 3 — accès aux sources réglementaires ou professionnelles. WebFetch rend EGRESS_BLOCKED sur tous les domaines essayés ; curl direct rend HTTP 000. Seule la recherche fonctionne, et elle ne donne aucune citation littérale.",
+        "AUCUNE règle métier établie : RG-01 à RG-07 sont INCONNU et routées, jamais comblées.",
+        "Les 7 sources sont des CANDIDATES non lues, numérotées CAND-nn et non SRC-nn pour qu aucune règle ne puisse s y adosser par inadvertance.",
+        "Quatre hypothèses létales devaient bouger ici — HYP-01, HYP-04, HYP-05, HYP-06. Aucune n a bougé."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:31:43.707Z"
+    },
+    {
+      "activity": "3",
+      "work_product": "WP-07",
+      "path": "product/domain/critic-definition.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-07 --completion partiel → CONFORME",
+        "Lecture seule portée par l outillage — ni Write, ni Edit, ni Bash — et non par la prose seule"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Critic DÉFINI mais NON ÉPROUVÉ : le critère de sortie exige un cas connu vérifiable indépendamment, ce qui suppose une source lisible. Un critic non éprouvé n est pas un critic — il est déclaré non déployé.",
+        "Dossier de sources vide en rang 1 : le critic ne peut rendre aucun FAIT, donc aucun FAIL bloquant. Son comportement conforme aujourd hui est de refuser de juger.",
+        "Separation of duties VIOLÉE en RUN MODE SOLO : tout verdict devra porter INDEPENDENCE NOT AVAILABLE. Ne se lève que par une seconde personne.",
+        "Le cas de test est écrit AVANT exécution, réponse attendue fixée, pour ne pas être réécrit après avoir vu le résultat."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:31:43.852Z"
+    },
+    {
+      "activity": "3",
+      "work_product": "WP-07",
+      "path": "product/domain/critic-sources.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-07 --completion partiel → CONFORME",
+        "Lecture seule portée par l outillage — ni Write, ni Edit, ni Bash — et non par la prose seule"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Critic DÉFINI mais NON ÉPROUVÉ : le critère de sortie exige un cas connu vérifiable indépendamment, ce qui suppose une source lisible. Un critic non éprouvé n est pas un critic — il est déclaré non déployé.",
+        "Dossier de sources vide en rang 1 : le critic ne peut rendre aucun FAIT, donc aucun FAIL bloquant. Son comportement conforme aujourd hui est de refuser de juger.",
+        "Separation of duties VIOLÉE en RUN MODE SOLO : tout verdict devra porter INDEPENDENCE NOT AVAILABLE. Ne se lève que par une seconde personne.",
+        "Le cas de test est écrit AVANT exécution, réponse attendue fixée, pour ne pas être réécrit après avoir vu le résultat."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:31:43.988Z"
     }
   ],
   "gates": {},
