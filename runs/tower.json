@@ -25,6 +25,12 @@
       "step": "C1.2",
       "actor": "product-lead",
       "at": "2026-09-21T15:51:13.075Z"
+    },
+    {
+      "activity": 1,
+      "step": "C1.1",
+      "actor": "factory-lead",
+      "at": "2026-09-21T15:56:29.981Z"
     }
   ],
   "declared": [
@@ -212,6 +218,48 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T15:53:44.881Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/existing-system.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "11 contraintes C-01..C-11, chacune adossée à deux artefacts d auteurs et de fonctions distincts ; 1 dérivation D-01 déclarée comme telle",
+        "Verdicts critic(engineering) des deux revues : REFUSÉ, REFUSÉ. EX1 appliqué — voie RÉDUIRE LE PÉRIMÈTRE",
+        "Corrigé : 4 références de ligne fausses, C-10 EX2 SOLO réécrite (l énoncé absolu précédent était contredit par sa propre source), C-05 ajoutée (la CI écrit le Run Ledger)"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 3 RÉDUITE sous EX1 — deux refus sur le même critère interdisent une troisième soumission à l identique. Périmètre réduit de 18 énoncés à 11 contraintes + 1 dérivation ; 9 descendus en « À confirmer » avec le motif de leur descente.",
+        "L absence d existant hors dépôt est DÉCLARÉE par le sponsor, non établie par recherche (U-03).",
+        "Quatre sources B de la révision 2 citaient des fichiers que le périmètre déclarait non lus : retirées, non recitées.",
+        "U-01 à U-07 ouverts."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:59:04.803Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/constraints.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "11 contraintes C-01..C-11, chacune adossée à deux artefacts d auteurs et de fonctions distincts ; 1 dérivation D-01 déclarée comme telle",
+        "Verdicts critic(engineering) des deux revues : REFUSÉ, REFUSÉ. EX1 appliqué — voie RÉDUIRE LE PÉRIMÈTRE",
+        "Corrigé : 4 références de ligne fausses, C-10 EX2 SOLO réécrite (l énoncé absolu précédent était contredit par sa propre source), C-05 ajoutée (la CI écrit le Run Ledger)"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 3 RÉDUITE sous EX1 — deux refus sur le même critère interdisent une troisième soumission à l identique. Périmètre réduit de 18 énoncés à 11 contraintes + 1 dérivation ; 9 descendus en « À confirmer » avec le motif de leur descente.",
+        "L absence d existant hors dépôt est DÉCLARÉE par le sponsor, non établie par recherche (U-03).",
+        "Quatre sources B de la révision 2 citaient des fichiers que le périmètre déclarait non lus : retirées, non recitées.",
+        "U-01 à U-07 ouverts."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:59:04.945Z"
     }
   ],
   "gates": {},
