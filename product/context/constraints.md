@@ -82,6 +82,7 @@ Nommés, non comblés par inférence.
 | U-04 | **Les utilisateurs réels et l'accès à eux.** Sans accès, la preuve sera étiquetée d'un niveau inférieur, pas fabriquée. | Activité 4 — recrutement, ou déclaration d'impossibilité | avant G0 |
 | U-05 | **Les sources du CORPUS RÉEL.** Troisième cas BLOCKED d'EX2 : aucune hypothèse ne remplace un fait que le produit affichera. | Activité 27, après WP-06 | avant le socle |
 | U-06 | **La cible de déploiement et son tier de risque.** Détermine si D-01 mord. | Activité 9 | avant G1 |
-| U-07 | **L'échéance et la contrainte de budget.** Aucune énoncée. | Product Owner, à l'activité 10 au plus tard | avant G1 |
+| U-07 | **La contrainte de budget.** L'échéance est levée depuis le 2026-09-21 — 6 mois après mise en service, par le critère d'abandon (WP-03). Le budget, lui, reste inconnu. | Product Owner, à l'activité 10 au plus tard | avant G1 |
+| U-08 | **La marge unitaire `m` et le coût d'un refus `c`.** Ils déterminent le seuil de viabilité `a* = c / (m + c)` — le taux d'acceptation à la livraison sous lequel chaque commande présentée détruit de la valeur. Le critère d'abandon porte sur un volume et ne les couvre pas : **100 raquettes peuvent être vendues à perte**. | `m` : politique de prix et prix d'achat, activité 9. `c` : transporteur retenu, activité 9. Ordre de grandeur sectoriel du taux d'acceptation : activité 3. | **avant la mise en service** — `a*` est un seuil de viabilité, pas un indicateur de suivi |
 
 <!-- Complétude : Deux sources indépendantes minimum par contrainte structurante. Inventaire relu par critic(engineering). -->

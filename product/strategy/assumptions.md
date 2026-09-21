@@ -4,13 +4,13 @@ name: "Hypothèses critiques"
 produced_by: "2"
 controlled_at: "G0"
 completion: partiel
-reserves: ["HYP-01 à HYP-08 sont toutes UNVALIDATED : aucune n'a été confrontée à un utilisateur ni à une source. C'est un état honnête à l'activité 2, pas un état satisfaisant à G0.", "Les points de test de HYP-01, HYP-02, HYP-03, HYP-04 et HYP-06 tombent aux activités 3 et 4, qui portent la capacité de recherche que l'activité 2 n'a pas.", "HYP-05 n'a pas de point de test satisfaisant avant la mise en service : c'est la faiblesse structurelle de ce plan d'hypothèses, et elle est déclarée plutôt que masquée.", "HYP-M1 et HYP-M2 portent sur le run et non sur le produit : hors compte critique, elles ne tracent vers aucun OUT."]
+reserves: ["HYP-01 à HYP-08 sont toutes UNVALIDATED : aucune n'a été confrontée à un utilisateur ni à une source. C'est un état honnête à l'activité 2, pas un état satisfaisant à G0.", "Les points de test de HYP-01, HYP-02, HYP-03, HYP-04, HYP-06 et HYP-10 tombent aux activités 3 et 4, qui portent la capacité de recherche que l'activité 2 n'a pas.", "HYP-05 n'a pas de point de test satisfaisant avant la mise en service : c'est la faiblesse structurelle de ce plan d'hypothèses, et elle est déclarée plutôt que masquée.", "HYP-M1 et HYP-M2 portent sur le run et non sur le produit : hors compte critique, elles ne tracent vers aucun OUT."]
 ---
 
 # WP-05 — Hypothèses critiques
 
-> Huit hypothèses produit. **Quatre tuent le produit si elles sont fausses** — HYP-01, HYP-04,
-> HYP-05, HYP-06. Deux hypothèses de méthode suivent, hors compte.
+> Dix hypothèses produit. **Six tuent le produit si elles sont fausses** — HYP-01, HYP-04,
+> HYP-05, HYP-06, HYP-09, HYP-10. Deux hypothèses de méthode suivent, hors compte.
 
 ## HYP-nn — énoncé
 
@@ -27,11 +27,18 @@ Ce qui doit être vrai et qu'on ne sait pas encore. Une affirmation, pas une que
 | **HYP-07** | Un opérateur unique absorbe le volume de commandes visé sans dégrader le délai | non |
 | **HYP-08** | Telegram suffit comme canal d'exploitation en V1 : aucun back-office temps réel n'est requis pour traiter une commande | non |
 | **HYP-09** | Une raquette de padel s'achète sans l'avoir essayée, à partir d'une fiche produit | **oui** |
+| **HYP-10** | La marge unitaire couvre le coût des refus au taux d'acceptation réellement obtenu : `a_observé ≥ a* = c / (m + c)` | **oui** |
 
-*(HYP-09 porte le compte des létales à cinq. Elle est listée en dernier parce qu'elle est
+*(HYP-09 porte le compte des létales à cinq, et HYP-10 à six. Elle est listée en dernier parce qu'elle est
 arrivée en dernier au raisonnement, et non parce qu'elle compte moins : une raquette est un
 objet de sensation — poids, équilibre, rigidité. Si le joueur exige d'essayer, la vente en
 ligne ne vend que du remplacement à l'identique, ce qui est un marché, mais un autre.)*
+
+*(HYP-10 est née du critère d'abandon, et c'est sa réponse qui l'a rendue visible : « 100
+raquettes en 6 mois » fixe un volume sans fixer de marge. HYP-05 demandait si le taux
+d'acceptation serait « assez élevé » — formulation sans seuil, donc non falsifiable. HYP-10 lui
+donne son seuil : `a* = c / (m + c)`. Les deux sont désormais la même question, posée une fois
+qualitativement et une fois avec un nombre.)*
 
 **HYP-M1** et **HYP-M2** — hypothèses de **méthode**, hors compte critique : le mode SOLO
 permettra d'atteindre G0 sans lettre de délégation hors cadence ; la projection tirée du
@@ -52,6 +59,7 @@ L'outcome qui tombe si l'hypothèse est fausse. **Une hypothèse sans OUT n'est 
 | HYP-07 | OUT-02 | Le délai se dégrade avec le volume — l'outcome se retourne en grandissant |
 | HYP-08 | OUT-03 | L'opérateur retombe sur la reconstitution manuelle |
 | HYP-09 | OUT-01 | Le joueur commande puis refuse à la livraison, faute d'avoir pu essayer. **HYP-09 est un mécanisme de HYP-05** : deux hypothèses, une même conséquence |
+| HYP-10 | OUT-01 bis | Le produit vend et perd de l'argent sur chaque unité. **Le critère d'abandon ne détecte pas ce cas** : il compte des raquettes, pas des dirhams |
 | HYP-M1, HYP-M2 | **aucune** | Rien. Elles portent sur le run, pas sur le produit — et ne comblent donc rien |
 
 ## Critère de falsification
@@ -60,7 +68,7 @@ Au futur observable : « si l'on observe X, c'est faux ». Avec un nombre et une
 
 | | Critère |
 |---|---|
-| **HYP-01** | Fausse si le nombre de clubs de padel et de licenciés au Maroc, relevé auprès de la fédération et des exploitants, implique un marché annuel de raquettes inférieur au volume nécessaire pour couvrir les coûts fixes — **seuil à fixer avec Q4** |
+| **HYP-01** | Fausse si le marché accessible, estimé à partir du nombre de clubs et de licenciés relevé auprès de la fédération et des exploitants, n'admet pas **100 raquettes vendues en 6 mois** par un entrant mono-catégorie sans notoriété — seuil repris du critère d'abandon, WP-03 |
 | **HYP-02** | Fausse si, sur au moins 8 joueurs interrogés, plus de la moitié déclare acheter en magasin physique local sans gêne rapportée |
 | **HYP-03** | Fausse si aucun des joueurs interrogés ne chiffre un coût — délai en jours, écart de prix, achat renoncé |
 | **HYP-04** | Fausse si aucun canal identifié ne permet d'atteindre un joueur à un coût inférieur à la marge unitaire d'une raquette |
@@ -69,10 +77,16 @@ Au futur observable : « si l'on observe X, c'est faux ». Avec un nombre et une
 | **HYP-07** | Fausse si le temps de traitement d'une commande, mesuré sur les premières, multiplié par le volume visé, dépasse le temps que l'opérateur peut y consacrer |
 | **HYP-08** | Fausse si le traitement d'une commande exige de consulter ou de modifier un état que Telegram ne porte pas — stock, historique client, avoir |
 | **HYP-09** | Fausse si, sur au moins 8 joueurs interrogés, plus de la moitié déclare ne pas acheter une raquette sans l'avoir prise en main |
+| **HYP-10** | Fausse si le taux d'acceptation sectoriel relevé à l'activité 3 est **inférieur à `a*`**, `a*` étant calculé avec la marge unitaire et le coût de refus établis à l'activité 9. Réfutation définitive à la mise en service, sur le taux réellement obtenu |
 
-**Le critère de HYP-01 est incomplet, et je le déclare.** Il exige un seuil qui dépend de Q4.
-Un critère de falsification sans nombre n'est pas falsifiable — il est ici **écrit avec son
-trou visible**, plutôt que complété par un chiffre que j'aurais inventé.
+**Le trou de HYP-01 est comblé.** Son critère exigeait un seuil qui dépendait de Q4 ; la réponse
+du sponsor le fournit — 100 raquettes en 6 mois. Le nombre vient de lui, pas de moi, ce qui est
+la seule manière dont un critère de falsification acquiert un seuil légitime.
+
+**Celui de HYP-10 ne l'est pas encore**, et pour une raison différente : `a*` est une **formule
+établie** dont les deux termes — marge unitaire, coût d'un refus — sont inconnus (U-08). Ce
+n'est pas un trou de décision mais un trou de mesure, et il se lève aux activités 3 et 9 sans
+intervention du sponsor.
 
 ## Étiquette
 
@@ -80,13 +94,13 @@ trou visible**, plutôt que complété par un chiffre que j'aurais inventé.
 `UNVALIDATED` (conviction). L'étiquette est obligatoire et **ne s'améliore jamais par
 reformulation**.
 
-**Les neuf hypothèses produit sont `UNVALIDATED`.** Aucune n'a été confrontée à un joueur, ni à
+**Les dix hypothèses produit sont `UNVALIDATED`.** Aucune n'a été confrontée à un joueur, ni à
 une source datée. Aucune n'est `SYNTHETIC` : je n'ai pas fait passer de revue persona, et
 l'appeler ainsi serait s'attribuer un travail non fait.
 
 HYP-M1 et HYP-M2 : `UNVALIDATED` également.
 
-**Ce que cette colonne dit vraiment.** Neuf `UNVALIDATED` dont cinq létales, c'est l'état normal
+**Ce que cette colonne dit vraiment.** Dix `UNVALIDATED` dont six létales, c'est l'état normal
 d'une thèse à l'activité 2 — et un état inacceptable à G0. Entre les deux, les activités 3, 4
 et 16 existent pour en faire bouger l'étiquette. Aucune ne bougera par relecture.
 
@@ -105,6 +119,7 @@ Obligatoires pour toute `UNVALIDATED`.
 | HYP-07 | WP-27 — readiness de delivery, à partir du temps de traitement observé | **activité 17** | factory-lead |
 | HYP-08 | WP-22 — solution design de la release | **activité 14** | principal-engineer |
 | HYP-09 | WP-08 — entretiens ; puis WP-25, validation utilisateurs | **activité 4**, confirmé **activité 16** | product-lead |
+| HYP-10 | WP-06 pour le taux sectoriel ; **WP-14 et WP-23 pour la marge et le coût de refus** — le calcul de `a*` doit être posé AVANT la mise en service | **activités 3 et 9**, réfutation **activité 26** | product-lead puis principal-engineer |
 | HYP-M1 | Run Ledger relu déclaration par déclaration | **G0** | factory-lead |
 | HYP-M2 | Première gate atteinte | **G0** | A. Benyahya, Product Owner |
 

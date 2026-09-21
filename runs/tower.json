@@ -37,6 +37,18 @@
       "step": "C1.2",
       "actor": "product-lead",
       "at": "2026-09-21T16:04:07.138Z"
+    },
+    {
+      "activity": 2,
+      "step": "C1.2",
+      "actor": "product-lead",
+      "at": "2026-09-21T16:22:05.653Z"
+    },
+    {
+      "activity": 1,
+      "step": "C1.1",
+      "actor": "factory-lead",
+      "at": "2026-09-21T16:24:05.744Z"
     }
   ],
   "declared": [
@@ -323,6 +335,85 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T16:07:58.430Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-03",
+      "path": "product/strategy/product-thesis.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-03 --completion partiel → CONFORME",
+        "Critère d abandon écrit avec ses trois éléments : résultat, qui le prononce, échéance relative à la mise en service",
+        "Seuil de viabilité a* = c/(m+c) établi en formule ; HYP-10 ajoutée, portant les létales à six"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Q4 TRANCHÉE le 2026-09-21 : 100 raquettes vendues en 6 mois. Escalade N2 fermée.",
+        "Deux lectures retenues et déclarées, non ratifiées : « vendu » = accepté à la livraison ; « 6 mois » = après mise en service.",
+        "U-08 ouvert : le critère d abandon porte sur un volume et non sur une marge — il est atteignable en perdant de l argent. Le compléter relève d EX2 cas 1.",
+        "Toutes les hypothèses produit restent UNVALIDATED : la capacité de recherche est aux activités 3 et 4."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:24:05.307Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-04",
+      "path": "product/strategy/outcomes.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-04 --completion partiel → CONFORME",
+        "Critère d abandon écrit avec ses trois éléments : résultat, qui le prononce, échéance relative à la mise en service",
+        "Seuil de viabilité a* = c/(m+c) établi en formule ; HYP-10 ajoutée, portant les létales à six"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Q4 TRANCHÉE le 2026-09-21 : 100 raquettes vendues en 6 mois. Escalade N2 fermée.",
+        "Deux lectures retenues et déclarées, non ratifiées : « vendu » = accepté à la livraison ; « 6 mois » = après mise en service.",
+        "U-08 ouvert : le critère d abandon porte sur un volume et non sur une marge — il est atteignable en perdant de l argent. Le compléter relève d EX2 cas 1.",
+        "Toutes les hypothèses produit restent UNVALIDATED : la capacité de recherche est aux activités 3 et 4."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:24:05.451Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-05",
+      "path": "product/strategy/assumptions.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-05 --completion partiel → CONFORME",
+        "Critère d abandon écrit avec ses trois éléments : résultat, qui le prononce, échéance relative à la mise en service",
+        "Seuil de viabilité a* = c/(m+c) établi en formule ; HYP-10 ajoutée, portant les létales à six"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Q4 TRANCHÉE le 2026-09-21 : 100 raquettes vendues en 6 mois. Escalade N2 fermée.",
+        "Deux lectures retenues et déclarées, non ratifiées : « vendu » = accepté à la livraison ; « 6 mois » = après mise en service.",
+        "U-08 ouvert : le critère d abandon porte sur un volume et non sur une marge — il est atteignable en perdant de l argent. Le compléter relève d EX2 cas 1.",
+        "Toutes les hypothèses produit restent UNVALIDATED : la capacité de recherche est aux activités 3 et 4."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:24:05.598Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/constraints.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "U-07 partiellement levé : l échéance est fixée par le critère d abandon du 2026-09-21 ; le budget reste inconnu"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 3 RÉDUITE sous EX1 — 11 contraintes + 1 dérivation ; 9 énoncés en « À confirmer » avec le motif de leur descente.",
+        "U-08 ouvert : marge unitaire et coût de refus inconnus, donc seuil de viabilité a* non chiffrable avant l activité 9.",
+        "L absence d existant hors dépôt est DÉCLARÉE par le sponsor, non établie par recherche (U-03).",
+        "U-01 et U-02 restent ouverts et bloquants pour G0."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:24:06.089Z"
     }
   ],
   "gates": {},

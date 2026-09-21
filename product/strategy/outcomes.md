@@ -4,7 +4,7 @@ name: "Outcomes"
 produced_by: "2"
 controlled_at: "G0"
 completion: partiel
-reserves: ["Les valeurs cibles et les échéances restent BLOCKED — EX2 cas 1 (arbitrage de périmètre) et cas 2 (figé en G0). Elles dépendent de Q4 (critère d'abandon) et de U-07 (échéance et budget), tous deux sans réponse.", "Les valeurs actuelles sont inconnues : le statu quo de l'acheteur n'est pas documenté (Q2 sans réponse). Chacune est déclarée « inconnue » et devient une mesure du plan de recherche, jamais une estimation.", "Interprétation déclarée de « mesurable aujourd'hui » : l'INSTRUMENT de mesure doit exister sans qu'on construise le produit ; la valeur, elle, peut être nulle ou inconnue. Un outcome dont l'instrument n'existerait qu'une fois le produit construit est REJETÉ.", "OUT-04 et OUT-05 sont REJETÉS avec motif, non reformulés."]
+reserves: ["Cibles et échéances DÉRIVÉES du critère d'abandon du sponsor (100 raquettes acceptées à M+6 après mise en service). Une seule reste BLOCKED : le seuil de taux d'acceptation a*, dont la FORMULE est établie mais dont les termes m (marge unitaire) et c (coût d'un refus) sont inconnus — U-08, HYP-10.", "Le critère d'abandon porte sur un VOLUME et non sur une marge : il est atteignable en perdant de l'argent. Le compléter relève d'EX2 cas 1 et reste une décision du Product Owner.", "Les valeurs actuelles sont inconnues : le statu quo de l'acheteur n'est pas documenté (Q2 sans réponse). Chacune est déclarée « inconnue » et devient une mesure du plan de recherche, jamais une estimation.", "Interprétation déclarée de « mesurable aujourd'hui » : l'INSTRUMENT de mesure doit exister sans qu'on construise le produit ; la valeur, elle, peut être nulle ou inconnue. Un outcome dont l'instrument n'existerait qu'une fois le produit construit est REJETÉ.", "OUT-04 et OUT-05 sont REJETÉS avec motif, non reformulés."]
 ---
 
 # WP-04 — Outcomes
@@ -77,19 +77,58 @@ dans ce dépôt ne le sait. C'est HYP-05.
 
 ## Valeur cible et échéance
 
-**BLOCKED.** Un seuil et une date relative à un événement — mise en service, G4 — jamais une
-date calendaire flottante.
+Un seuil et une date **relative à un événement** — jamais une date calendaire flottante.
+L'événement de référence est la **mise en service (G4)**, fixé par le critère d'abandon du
+sponsor : « si je n'ai pas vendu 100 raquettes en 6 mois j'arrête » (WP-03, 2026-09-21).
 
-| | Cible | Échéance | Motif du blocage |
+| | Cible | Échéance | Statut |
 |---|---|---|---|
-| **OUT-01** | — | — | EX2 cas 1 : fixer un seuil d'acceptation, c'est fixer le point où l'on renonce. C'est Q4 sous un autre nom |
-| **OUT-02** | — | — | EX2 cas 1 (arbitrage de périmètre) + U-07 : aucune échéance ni contrainte de budget énoncée |
-| **OUT-03** | — | — | Idem |
+| **OUT-01** | **100 commandes acceptées à la livraison**, cumulées | **M+6** après mise en service | **DÉRIVÉE** du critère d'abandon. « Vendu » est lu comme livré et accepté — lecture déclarée en WP-03 |
+| **OUT-01 bis** | Taux d'acceptation **≥ a\*** = c / (m + c) | mesuré en continu, lu à **M+3** et **M+6** | **FORMULE établie, seuil BLOCKED** — m et c inconnus (U-08) |
+| **OUT-02** | Médiane **strictement inférieure** à celle du statu quo, mesurée à l'activité 4 | **M+6** | **DÉRIVÉE** : un produit qui n'améliore pas le délai ne change rien à ce titre. Le nombre viendra de WP-08 |
+| **OUT-03** | **0 rupture** sur une référence effectivement demandée | **M+6** | **DÉRIVÉE** : à 17 ventes par mois, une rupture sur une référence demandée est une vente perdue, et chaque vente perdue compte contre les 100 |
 
-**Pourquoi je ne propose aucun chiffre.** Ces trois cibles sont figées en G0 — EX2 cas 2, l'erreur
-y devient irréversible — et elles *sont* le critère d'abandon exprimé en nombres. Un seuil que je
-proposerais et que vous ratifieriez serait un seuil que personne ne s'applique. La ligne reste
-vide, et elle se voit.
+### Le seuil d'acceptation, et pourquoi il ne peut pas encore être chiffré
+
+Le critère d'abandon fixe un **volume**. Il ne fixe pas de **marge**. Or en paiement à la
+livraison, le résultat par commande présentée s'écrit :
+
+```
+résultat = a · m  −  (1 − a) · c
+
+   a  taux d'acceptation à la livraison
+   m  marge unitaire sur une commande acceptée
+   c  coût d'un refus — transport aller ET retour, immobilisation de l'article, manutention
+```
+
+Le point mort est atteint quand `a · m = (1 − a) · c`, soit :
+
+```
+a*  =  c / (m + c)
+```
+
+La lecture est directe et elle est sévère : **plus le coût d'un refus se rapproche de la marge
+unitaire, plus le taux d'acceptation exigé monte.** Si un refus coûte la moitié d'une marge, il
+faut 33 % d'acceptation ; s'il coûte autant qu'une marge, il en faut 50 % ; s'il coûte le
+double, 67 %. Ce n'est pas une sensibilité de second ordre : c'est la variable qui décide si ce
+commerce existe.
+
+`m` et `c` sont inconnus — **U-08**, porté à WP-02. Ils ne sont pas devinables : `m` dépend du
+prix d'achat des raquettes et de la politique de prix, `c` du transporteur retenu. Les deux se
+lèvent à l'**activité 9** (architecture cible et choix du transporteur) et à l'**activité 3**
+(ordre de grandeur sectoriel du taux de refus). **HYP-10** porte cette hypothèse.
+
+**Conséquence de séquencement, et elle est immédiate.** `a*` doit être calculé **avant** la mise
+en service, pas constaté après : c'est un seuil de viabilité, pas un indicateur de suivi. Un
+produit lancé sans `a*` connu ne peut pas savoir, au sixième mois, si ses 100 raquettes
+vendues l'ont été à perte.
+
+### Ce qui reste une décision du Product Owner
+
+Le critère d'abandon, tel qu'énoncé, est **atteignable en perdant de l'argent**. Le compléter
+d'une condition de marge — par exemple « 100 raquettes acceptées **et** résultat non négatif » —
+relève d'EX2 cas 1 : c'est un arbitrage de périmètre et un critère d'abandon, deux des trois
+termes que le mode SOLO ne relâche pas. La ligne reste donc ouverte, et elle se voit.
 
 ## Méthode de mesure et source de donnée
 

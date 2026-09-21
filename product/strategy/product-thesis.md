@@ -111,22 +111,57 @@ ne se lèvera pas par la rédaction : elle se lèvera à l'activité 3, ou pas.
 
 ## Critère d'abandon
 
-**BLOCKED — EX2 cas 1.** Q4 est sans réponse au 2026-09-21. `EX2.run_mode_solo` cite « critère
-d'abandon » parmi les trois cas qui restent bloqués quel que soit le RUN MODE : c'est une
-décision que seul l'humain qui répond du produit peut prendre, et le mode SOLO ne la convertit
-pas en hypothèse.
+**Énoncé — A. Benyahya, Product Owner, 2026-09-21 :**
 
-**Attendu, en trois éléments :** quel résultat ferait renoncer · qui le prononce · à quelle date
-on regarde.
+> « si je n'ai pas vendu 100 raquettes en 6 mois j'arrête »
 
-**Pourquoi cette section n'est pas une formalité.** Sans elle, ce produit n'a pas de condition
-de sortie, seulement une durée — et un projet sans condition de sortie ne s'arrête pas : il
-s'étiole en consommant l'attention de la seule personne qui l'opère. Le coût d'un critère
-d'abandon écrit est une ligne ; le coût de son absence est un an.
+Les trois éléments exigés sont présents. `FAIT` — c'est une décision du sponsor, non une
+inférence.
 
-**Ce que je ne ferai pas :** proposer un seuil plausible — « moins de N commandes sur M mois » —
-que vous n'auriez qu'à ratifier. Un critère d'abandon suggéré par celui qui construit le produit
-est un critère qu'on ne s'applique pas.
+| Élément | Valeur |
+|---|---|
+| **Quel résultat ferait renoncer** | Moins de **100 raquettes vendues** |
+| **Qui le prononce** | **A. Benyahya**, Product Owner — autorité non délégable de G0 et G3 |
+| **À quelle date on regarde** | **6 mois** après la mise en service |
+
+### Deux lectures retenues, déclarées plutôt que supposées
+
+L'énoncé est court, et deux de ses mots portent une décision. Je retiens la lecture
+conservatrice et je la signale, pour qu'elle soit corrigée si elle ne correspond pas à
+l'intention — une lecture déclarée se corrige, une lecture tacite se découvre à G3.
+
+**« vendu » = livré ET accepté**, argent encaissé — non « commandé ». En paiement à la
+livraison, l'écart entre les deux *est* le taux de refus : c'est précisément la grandeur que
+HYP-05 met en jeu. Compter les commandes plutôt que les encaissements ferait passer le critère
+d'abandon avec des colis refusés, ce qui le viderait de son objet.
+
+**« 6 mois » = à compter de la mise en service**, non de la décision d'ouvrir le projet ni du
+premier commit. Le registre exige une date relative à un événement, jamais une date calendaire
+flottante ; la mise en service est l'événement que la méthode nomme G4.
+
+### Ce que ce critère protège, et ce qu'il ne protège pas
+
+**Il protège de la durée.** Le projet a désormais une condition de sortie : il ne peut plus
+s'étioler indéfiniment en consommant l'attention de son unique opérateur. C'est l'essentiel, et
+c'était absent il y a une heure.
+
+**Il ne protège pas de l'économie, et c'est un trou qu'il faut voir.** Le critère porte sur un
+**volume**, pas sur une marge. Il est donc possible de vendre 100 raquettes en six mois, de
+passer le critère, et d'avoir perdu de l'argent sur chacune — le paiement à la livraison faisant
+porter au vendeur le coût de chaque refus, aller et retour de transport compris. Le critère
+d'abandon, tel qu'énoncé, **ne falsifie pas HYP-05**, qui est l'hypothèse létale la plus proche
+de l'échéance.
+
+**Ce qu'implique le rythme.** 100 unités en 6 mois, c'est environ **17 par mois**, une vente
+tous les 1,8 jours. Ce rythme est bas pour un commerce, et c'est une propriété délibérée d'un
+critère d'abandon : il fixe le plancher sous lequel on renonce, pas l'objectif qu'on vise. Il
+reste qu'un seuil bas est un seuil qu'un projet non viable peut franchir — un critère facile à
+passer ne trie pas.
+
+**Ce que je ne fais pas :** je ne relève pas le seuil, et je ne lui adjoins pas de condition de
+marge de mon propre chef. Le critère d'abandon appartient au Product Owner (EX2 cas 1). Je
+signale le trou, je le trace en `U-08` et en `HYP-10` (WP-05), et la décision de le combler —
+ou de l'assumer — reste la vôtre.
 
 ## Journal d'interrogatoire
 
@@ -139,7 +174,7 @@ est un critère qu'on ne s'applique pas.
 | 2 → 3 | **Q1** — qui a demandé, quand, dans quels mots | Le sponsor, propriétaire du site, 2026-09-21, verbatim au § Problème | **tranchée** |
 | 2 | **Q2** — que fait cette personne aujourd'hui, ce que ça lui coûte | — | **basculée `UNVALIDATED`** → HYP-02, HYP-03 |
 | 2 | **Q3** — combien, et comment on les atteint | — | **basculée `UNVALIDATED`** → HYP-01, HYP-04 |
-| 2 | **Q4** — ce qui ferait renoncer | — | **BLOCKED**, EX2 cas 1 — non basculable |
+| 3 | **Q4** — ce qui ferait renoncer | « si je n'ai pas vendu 100 raquettes en 6 mois j'arrête » | **tranchée** — `FAIT`, décision du Product Owner. Deux lectures retenues et déclarées : « vendu » = accepté à la livraison ; « 6 mois » = après mise en service |
 
 ### Branches tranchées, avec motif
 
@@ -157,10 +192,16 @@ HYP-01 à HYP-08, détaillées en WP-05 avec critère de falsification, étiquet
 porteur. Aucune n'est un ornement : quatre d'entre elles — HYP-01, HYP-04, HYP-05, HYP-06 —
 tuent le produit si elles sont fausses.
 
-### Décision implicite restante
+### Décisions implicites restantes
 
-**Une seule, et c'est Q4.** Le critère de complétude de ce livrable exige qu'aucune décision
-implicite ne subsiste. Elle subsiste. Le livrable est donc `partiel`, et le restera jusqu'à
-réponse — escalade **N2, Product Owner**, reportée.
+**Q4 est tranchée** ; l'escalade N2 est **fermée**, non reportée. Deux décisions subsistent, et
+ce sont les deux lectures que j'ai retenues faute d'être explicitées — la définition de
+« vendu » et l'ancrage des six mois. Elles sont **déclarées** et non tacites, mais elles restent
+miennes et non vôtres : le livrable demeure donc `partiel` jusqu'à ratification ou correction.
+
+Une troisième, nouvelle, est portée en `U-08` : le critère d'abandon ne comporte aucune
+condition de marge, alors que le paiement à la livraison en fait la variable de survie. Ce n'est
+pas un défaut de la réponse — c'est un choix que vous n'avez pas encore eu à faire, et qu'il
+vaut mieux faire avant G0 qu'au sixième mois.
 
 <!-- Complétude : Aucune décision implicite ne subsiste. Chaque affirmation matérielle porte sa source et son étiquette épistémique. Le critère d'abandon est écrit. -->
