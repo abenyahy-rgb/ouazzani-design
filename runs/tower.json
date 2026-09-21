@@ -77,6 +77,42 @@
       "reserves": [],
       "form_findings": 0,
       "at": "2026-09-21T15:20:22.965Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/existing-system.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "16 contraintes structurantes, chacune à deux sources indépendantes"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "L'absence d'existant hors dépôt est DÉCLARÉE par l'humain à l'activité 1, non établie par recherche (U-03).",
+        "Revue critic(engineering) non rendue — le critère de complétude l'exige.",
+        "U-01 à U-07 ouverts."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:35:35.593Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/constraints.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "16 contraintes structurantes, chacune à deux sources indépendantes"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "L'absence d'existant hors dépôt est DÉCLARÉE par l'humain à l'activité 1, non établie par recherche (U-03).",
+        "Revue critic(engineering) non rendue — le critère de complétude l'exige.",
+        "U-01 à U-07 ouverts."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:35:35.764Z"
     }
   ],
   "gates": {},
