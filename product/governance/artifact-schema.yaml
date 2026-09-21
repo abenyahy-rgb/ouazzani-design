@@ -1,0 +1,1346 @@
+# WP-01 — Registre canonique et configuration projet · artifact-schema.yaml
+#
+# Sections portées : Entrées d'artefacts · Mapping d'arborescence · Mapping d'identifiants
+#
+# PROJECTION DU REGISTRE. Chaque entrée est dérivée de work_products.base + files de
+# core/method.yaml au commit épinglé du plugin ; l'attribution d'une section à son
+# fichier vient de core/templates.yaml. Aucun chemin n'est inventé ici — un chemin
+# absent de ce fichier n'existe pas pour la gouvernance (K2).
+
+# ── Mapping d'arborescence ────────────────────────────────────────────────
+arborescence:
+  convention_preexistante: aucune
+  # Dépôt ouvert vide : ni monorepo, ni dossier docs/, ni arborescence applicative
+  # antérieure. La convention de la méthode s'applique sans adaptation.
+  racine_produit: product/
+  racine_run: runs/
+  racine_plugin: .factoryzen/   # sous-module épinglé, hors frontière d'écriture produit
+  segments_variables:
+    "{release-id}": voir identifiants.REL
+    "{sprint-id}": voir identifiants.S
+    "{version}": voir identifiants.v
+
+# ── Mapping d'identifiants ────────────────────────────────────────────────
+identifiants:
+  nomenclature_preexistante: aucune
+  # Aucun outil de ticketing ni code projet imposé à l'ouverture : la chaîne de
+  # traçabilité reste celle de la méthode, sans correspondance à maintenir.
+  REL: { local: "—", exemple: "REL-1", note: "identifiant de release" }
+  S:   { local: "—", exemple: "S-01", note: "sprint, numéroté par release" }
+  v:   { local: "—", exemple: "v0.1", note: "version déployée" }
+  WP:  { local: "—", exemple: "WP-01", note: "imposé par le registre" }
+  EPI: { local: "—", exemple: "EPI-01", note: "epic de backlog de release" }
+  STO: { local: "—", exemple: "STO-014", note: "story de backlog" }
+  AC:  { local: "—", exemple: "AC-014-1", note: "critère d'acceptation" }
+  RUN: { local: "—", exemple: "RUN-2026-09-21", note: "run de la fabrique" }
+
+# ── Entrées d'artefacts ───────────────────────────────────────────────────
+# clé logique · chemin · catégorie · activité productrice · gate · baseline ·
+# cumulatif ou figé (lifecycle) · structure
+artefacts:
+
+  # WP-01 — Registre canonique et configuration projet
+  governance-artifact-schema:
+    path: product/governance/artifact-schema.yaml
+    work_product: WP-01
+    category: Registre
+    produced_by: 1
+    controlled_at: tout gate
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [entrees-d-artefacts, mapping-d-arborescence, mapping-d-identifiants]
+  governance-project:
+    path: product/governance/project.yaml
+    work_product: WP-01
+    category: Registre
+    produced_by: 1
+    controlled_at: tout gate
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [autorites-de-gate, store-d-etat-du-backlog, correspondance-classe-de-capacite-modele, identite-du-produit, roles-de-la-methode-vers-personnes, run-mode-equipe-ou-solo]
+  governance-workspace-map:
+    path: product/governance/workspace-map.yaml
+    work_product: WP-01
+    category: Registre
+    produced_by: 1
+    controlled_at: tout gate
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [carte-de-l-espace-de-travail]
+
+  # WP-02 — Contexte et contraintes de l'existant
+  context-existing-system:
+    path: product/context/existing-system.md
+    work_product: WP-02
+    category: "Décision"
+    produced_by: 1
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [perimetre-d-inspection-declare, architecture-et-dependances-existantes]
+  context-constraints:
+    path: product/context/constraints.md
+    work_product: WP-02
+    category: "Décision"
+    produced_by: 1
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [contraintes-structurantes, unknowns]
+
+  # WP-03 — Thèse produit
+  strategy-product-thesis:
+    path: product/strategy/product-thesis.md
+    work_product: WP-03
+    category: "Décision"
+    produced_by: 2
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivant sous contrôle"
+    structure: fichier
+    sections: [probleme, cible, proposition-de-valeur, alternative-et-statu-quo, critere-d-abandon, journal-d-interrogatoire]
+
+  # WP-04 — Outcomes
+  strategy-outcomes:
+    path: product/strategy/outcomes.md
+    work_product: WP-04
+    category: Registre
+    produced_by: 2
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivant sous contrôle"
+    structure: fichier
+    sections: [out-nn-enonce, nombre-suivi, valeur-actuelle, valeur-cible-et-echeance, methode-de-mesure-et-source-de-donnee]
+
+  # WP-05 — Hypothèses critiques
+  strategy-assumptions:
+    path: product/strategy/assumptions.md
+    work_product: WP-05
+    category: Registre
+    produced_by: 2
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [hyp-nn-enonce, trace-vers-out, critere-de-falsification, etiquette, point-de-test-et-porteur]
+
+  # WP-06 — Profil de domaine et sources approuvées
+  domain-profile:
+    path: product/domain/domain-profile.md
+    work_product: WP-06
+    category: "Décision"
+    produced_by: 3
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [profil-de-l-industrie]
+  domain-sources:
+    path: product/domain/sources.md
+    work_product: WP-06
+    category: "Décision"
+    produced_by: 3
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [sources-approuvees]
+  domain-rules:
+    path: product/domain/rules.md
+    work_product: WP-06
+    category: "Décision"
+    produced_by: 3
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [regles-metier, usages-non-ecrits, sanctions-et-autorite]
+
+  # WP-07 — Définition du critic métier
+  domain-critic-definition:
+    path: product/domain/critic-definition.md
+    work_product: WP-07
+    category: "Spécification"
+    produced_by: 3
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "révisable"
+    structure: fichier
+    sections: [identity-and-tools, authority-and-write-boundary, input-contract, evidence-and-handover, separation-of-duties, sources-adossees-et-echelle-epistemique, cas-de-test-connu]
+  domain-critic-sources:
+    path: product/domain/critic-sources.md
+    work_product: WP-07
+    category: "Spécification"
+    produced_by: 3
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "révisable"
+    structure: fichier
+
+  # WP-08 — Recherche et synthèse utilisateur
+  research-plan:
+    path: product/research/research-plan.md
+    work_product: WP-08
+    category: Preuve
+    produced_by: 4
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [plan-de-recherche]
+  research-interviews:
+    path: product/research/interviews/
+    work_product: WP-08
+    category: Preuve
+    produced_by: 4
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: dossier
+    sections: [verbatims-traces]
+  research-insights:
+    path: product/research/insights.md
+    work_product: WP-08
+    category: Preuve
+    produced_by: 4
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: fichier
+    sections: [insights]
+  research-personas:
+    path: product/research/personas/
+    work_product: WP-08
+    category: Preuve
+    produced_by: 4
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: dossier
+    sections: [per-nn-personas]
+  research-empathy-maps:
+    path: product/research/empathy-maps/
+    work_product: WP-08
+    category: Preuve
+    produced_by: 4
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: dossier
+    sections: [empathy-maps]
+  research-journeys-as-is:
+    path: product/research/journeys/as-is/
+    work_product: WP-08
+    category: Preuve
+    produced_by: 4
+    controlled_at: G0
+    baseline: produit
+    lifecycle: vivant
+    structure: dossier
+    sections: [journeys-as-is-et-irritants]
+
+  # WP-09 — Squelette de parcours cible
+  design-spine-journey-skeleton:
+    path: product/design/spine/journey-skeleton.md
+    work_product: WP-09
+    category: Design
+    produced_by: 5
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "figé en G0"
+    structure: fichier
+    sections: [stg-nn-etapes-nommees-et-ordonnees, jalons-de-chaque-etape, trace-vers-per-et-out, etapes-hors-perimetre-du-produit]
+  design-spine-stages:
+    path: product/design/spine/stages/
+    work_product: WP-09
+    category: Design
+    produced_by: 5
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "figé en G0"
+    structure: dossier
+
+  # WP-40 — Corpus réel et provenance
+  data-corpus-scope:
+    path: product/data/corpus/corpus-scope.md
+    work_product: WP-40
+    category: Preuve
+    produced_by: 27
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "vivant, enrichi à chaque release ; sa PROVENANCE ne se réécrit jamais"
+    structure: fichier
+    sections: [perimetre-du-corpus, fixtures-de-test-et-leur-confinement]
+  data-corpus-provenance:
+    path: product/data/corpus/provenance.yaml
+    work_product: WP-40
+    category: Preuve
+    produced_by: 27
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "vivant, enrichi à chaque release ; sa PROVENANCE ne se réécrit jamais"
+    structure: fichier
+    sections: [sources-retenues-et-ecartees, provenance-par-enregistrement]
+  data-corpus-truth-map:
+    path: product/data/corpus/truth-map.yaml
+    work_product: WP-40
+    category: Preuve
+    produced_by: 27
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "vivant, enrichi à chaque release ; sa PROVENANCE ne se réécrit jamais"
+    structure: fichier
+    sections: [categorie-de-verite-par-champ]
+  data-corpus-coverage:
+    path: product/data/corpus/coverage.md
+    work_product: WP-40
+    category: Preuve
+    produced_by: 27
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "vivant, enrichi à chaque release ; sa PROVENANCE ne se réécrit jamais"
+    structure: fichier
+    sections: [couverture-mesuree-contre-le-squelette, ecarts-et-champs-non-sourcables]
+  data-corpus-records:
+    path: product/data/corpus/records/
+    work_product: WP-40
+    category: Preuve
+    produced_by: 27
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "vivant, enrichi à chaque release ; sa PROVENANCE ne se réécrit jamais"
+    structure: dossier
+
+  # WP-10 — Fondations du Design System
+  design-system-design-brief:
+    path: product/design/system/design-brief.md
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: fichier
+    sections: [brief-de-conception, stack-de-conception-et-base-de-composants]
+  design-system-explorations:
+    path: product/design/system/explorations/
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: dossier
+    sections: [directions-concurrentes-et-direction-retenue]
+  design-system-surface-briefs:
+    path: product/design/system/surface-briefs/
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: dossier
+    sections: [brief-de-surface-et-contrat-de-direction]
+  design-system-tokens:
+    path: product/design/system/tokens.css
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: fichier
+  design-system-tokens-2:
+    path: product/design/system/tokens.json
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: fichier
+    sections: [tokens]
+  design-system-fonts:
+    path: product/design/system/fonts/
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: dossier
+  design-system-icons:
+    path: product/design/system/icons/
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: dossier
+  design-system-components:
+    path: product/design/system/components/
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: dossier
+    sections: [composants-et-variantes]
+  design-system-component-catalog:
+    path: product/design/system/component-catalog.html
+    work_product: WP-10
+    category: Design
+    produced_by: 6
+    controlled_at: G0
+    baseline: "produit — cumulatif"
+    lifecycle: "cumulatif, jamais forké"
+    structure: fichier
+    sections: [accessibilite, catalogue-navigable]
+
+  # WP-11 — Navigation, architecture de l'information et terminologie
+  design-spine-navigation:
+    path: product/design/spine/navigation.md
+    work_product: WP-11
+    category: Design
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [navigation-globale]
+  design-spine-information-architecture:
+    path: product/design/spine/information-architecture.md
+    work_product: WP-11
+    category: Design
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [architecture-de-l-information]
+  design-spine-glossaire-utilisateur:
+    path: product/design/spine/glossaire-utilisateur.md
+    work_product: WP-11
+    category: Design
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [trm-nn-glossaire-utilisateur, trace-trm-stg]
+
+  # WP-12 — Modèle de données vivant
+  data-semantics:
+    path: product/data/semantics.md
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+    sections: [categories-de-verite, regle-de-propagation, classement-du-noyau]
+  data-status-model:
+    path: product/data/status-model.md
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+    sections: [modele-de-statuts-et-progression]
+  data-financial-semantics:
+    path: product/data/financial-semantics.md
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+    sections: [regles-financieres-structurantes]
+  data-model-generated:
+    path: product/data/model.generated.md
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+    sections: [modele-derive]
+  data-binding:
+    path: product/data/binding.yaml
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+    sections: [table-de-liaison]
+  data-migrations:
+    path: product/data/migrations.md
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+    sections: [journal-des-migrations]
+  data-semantics-2:
+    path: product/data/semantics.yaml
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+  data-schema-introspected:
+    path: product/data/schema.introspected.yaml
+    work_product: WP-12
+    category: "Spécification"
+    produced_by: 7
+    controlled_at: G0
+    baseline: "SOCLE — noyau sémantique figé, couche dérivée vivante"
+    lifecycle: "vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint"
+    structure: fichier
+
+  # WP-13 — Socle exécutable
+  design-spine-src:
+    path: product/design/spine/src/
+    work_product: WP-13
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "figé en G0"
+    structure: dossier
+    sections: [source-executable, liaison-au-corpus-reel, rendu-des-champs-absents]
+  design-spine-dist-index:
+    path: product/design/spine/dist/index.html
+    work_product: WP-13
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "figé en G0"
+    structure: fichier
+    sections: [build-et-url-de-preview-deployee, couverture-du-squelette]
+  design-spine:
+    path: product/design/spine/spine.yaml
+    work_product: WP-13
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "figé en G0"
+    structure: fichier
+
+  # WP-39 — Prototype vivant
+  design-current-index:
+    path: product/design/current/index.html
+    work_product: WP-39
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "composé — pas de baseline propre, il porte celle de ses sources"
+    lifecycle: "composé, régénéré à chaque sprint — jamais écrit à la main"
+    structure: fichier
+    sections: [composition]
+  design-current-manifest:
+    path: product/design/current/manifest.yaml
+    work_product: WP-39
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "composé — pas de baseline propre, il porte celle de ses sources"
+    lifecycle: "composé, régénéré à chaque sprint — jamais écrit à la main"
+    structure: fichier
+    sections: [manifeste-de-composition, couverture-du-squelette, url-de-preview-courante]
+  design-current-unsubordinated:
+    path: product/design/current/unsubordinated.md
+    work_product: WP-39
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "composé — pas de baseline propre, il porte celle de ses sources"
+    lifecycle: "composé, régénéré à chaque sprint — jamais écrit à la main"
+    structure: fichier
+    sections: [ecarts-non-subordonnes]
+  design-current-deltas:
+    path: product/design/current/deltas.yaml
+    work_product: WP-39
+    category: Design
+    produced_by: 8
+    controlled_at: G0
+    baseline: "composé — pas de baseline propre, il porte celle de ses sources"
+    lifecycle: "composé, régénéré à chaque sprint — jamais écrit à la main"
+    structure: fichier
+
+  # WP-14 — Architecture technique cible
+  architecture-target-architecture:
+    path: product/architecture/target-architecture.md
+    work_product: WP-14
+    category: "Spécification"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [classement-de-chaque-element, couverture-du-squelette]
+  architecture-integration-boundaries:
+    path: product/architecture/integration-boundaries.md
+    work_product: WP-14
+    category: "Spécification"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [frontieres-d-integration]
+  architecture-data-persistence:
+    path: product/architecture/data-persistence.md
+    work_product: WP-14
+    category: "Spécification"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [modele-de-persistance]
+  architecture-deployment-topology:
+    path: product/architecture/deployment-topology.md
+    work_product: WP-14
+    category: "Spécification"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [topologie-de-deploiement]
+  architecture-security-architecture:
+    path: product/architecture/security-architecture.md
+    work_product: WP-14
+    category: "Spécification"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [architecture-de-securite]
+  architecture-non-functional:
+    path: product/architecture/non-functional.md
+    work_product: WP-14
+    category: "Spécification"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: CORE INVARIANT
+    structure: fichier
+    sections: [contraintes-non-fonctionnelles]
+
+  # WP-15 — Décisions structurantes et build-vs-buy
+  decisions-adr:
+    path: product/decisions/adr/
+    work_product: WP-15
+    category: "Décision"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "CORE INVARIANT ou EXTENSION selon la décision"
+    structure: dossier
+    sections: [adr-nn-la-decision, alternatives-rejetees, ce-que-la-decision-exclut, classement, conditions-de-reexamen]
+  decisions-build-vs-buy:
+    path: product/decisions/build-vs-buy.md
+    work_product: WP-15
+    category: "Décision"
+    produced_by: 9
+    controlled_at: G0
+    baseline: "SOCLE — figé"
+    lifecycle: "CORE INVARIANT ou EXTENSION selon la décision"
+    structure: fichier
+    sections: [build-ou-achat, reprise-de-la-stack-de-conception]
+
+  # WP-16 — Architecture et séquencement des releases
+  releases-release-architecture:
+    path: product/releases/release-architecture.md
+    work_product: WP-16
+    category: "Décision"
+    produced_by: 10
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivante sous contrôle"
+    structure: fichier
+    sections: [rel-nom-une-fiche-par-release, les-trois-tests-demontres-par-release, liens-types-vers-le-squelette]
+  releases-sequencing:
+    path: product/releases/sequencing.md
+    work_product: WP-16
+    category: "Décision"
+    produced_by: 10
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivante sous contrôle"
+    structure: fichier
+    sections: [sequencement]
+  releases-dependencies:
+    path: product/releases/dependencies.md
+    work_product: WP-16
+    category: "Décision"
+    produced_by: 10
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivante sous contrôle"
+    structure: fichier
+    sections: [dependances]
+  releases-risk-map:
+    path: product/releases/risk-map.md
+    work_product: WP-16
+    category: "Décision"
+    produced_by: 10
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivante sous contrôle"
+    structure: fichier
+    sections: [tier-de-risque-pressenti-par-release]
+  releases-fiches:
+    path: product/releases/fiches/
+    work_product: WP-16
+    category: "Décision"
+    produced_by: 10
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "vivante sous contrôle"
+    structure: dossier
+
+  # WP-17 — Pack de preuves G0
+  gates-g0-product-architecture:
+    path: product/gates/g0-product-architecture.md
+    work_product: WP-17
+    category: Preuve
+    produced_by: gate
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "figé"
+    structure: fichier
+    sections: [les-huit-elements-de-la-charte-g0, resultats-des-controles-k1-k2-k3, verdicts-critic-product-et-critic-domaine, niveau-d-evidence-par-element, decision-motif-autorite-date-commit, fermeture-d-apprentissage]
+  gates-spine-manifest:
+    path: product/gates/spine-manifest.yaml
+    work_product: WP-17
+    category: Preuve
+    produced_by: gate
+    controlled_at: G0
+    baseline: produit
+    lifecycle: "figé"
+    structure: fichier
+
+  # WP-18 — Périmètre désirable et métriques de la release
+  releases-scope:
+    path: product/releases/{release-id}/scope.md
+    work_product: WP-18
+    category: "Décision"
+    produced_by: 11
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [perimetre-desirable, etapes-du-squelette-couvertes, les-trois-tests-demontres]
+  releases-exclusions:
+    path: product/releases/{release-id}/exclusions.md
+    work_product: WP-18
+    category: "Décision"
+    produced_by: 11
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [exclusions]
+  releases-success-metrics:
+    path: product/releases/{release-id}/success-metrics.md
+    work_product: WP-18
+    category: "Décision"
+    produced_by: 11
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [metriques-de-succes]
+
+  # WP-19 — Brief de conception
+  releases-design-brief:
+    path: product/releases/{release-id}/design-brief.md
+    work_product: WP-19
+    category: "Décision"
+    produced_by: "10 → 13"
+    controlled_at: K1 et G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [sujet-concret, utilisateur-et-conditions-materielles, job-principal-de-l-ecran-ou-du-parcours, ce-que-le-socle-fige-deja, directions-rejetees-et-pourquoi, niveau-d-evidence-sur-ce-parcours, tier-de-risque-de-ce-que-l-ecran-manipule, hypotheses-posees-faute-de-reponse]
+
+  # WP-20 — Discovery ciblée et parcours cibles
+  releases-research-insights:
+    path: product/releases/{release-id}/research/insights.md
+    work_product: WP-20
+    category: Preuve
+    produced_by: 12
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [insights-de-release, conformite-au-socle-attestee, besoins-de-modification-du-socle]
+  releases-research-journeys-to-be:
+    path: product/releases/{release-id}/research/journeys/to-be/
+    work_product: WP-20
+    category: Preuve
+    produced_by: 12
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: dossier
+    sections: [jrn-nn-parcours-cibles]
+
+  # WP-21 — Strategic Design de la release
+  releases-design-concept:
+    path: product/releases/{release-id}/design/concept/
+    work_product: WP-21
+    category: Design
+    produced_by: 13
+    controlled_at: G1
+    baseline: "RELEASE — figée"
+    lifecycle: "figée en G1"
+    structure: dossier
+    sections: [alternatives-explorees, direction-retenue, storyboard-de-la-release]
+  releases-design-src:
+    path: product/releases/{release-id}/design/src/
+    work_product: WP-21
+    category: Design
+    produced_by: 13
+    controlled_at: G1
+    baseline: "RELEASE — figée"
+    lifecycle: "figée en G1"
+    structure: dossier
+    sections: [fixtures]
+  releases-design-dist:
+    path: product/releases/{release-id}/design/dist/
+    work_product: WP-21
+    category: Design
+    produced_by: 13
+    controlled_at: G1
+    baseline: "RELEASE — figée"
+    lifecycle: "figée en G1"
+    structure: dossier
+    sections: [source-executable-et-build-partageable]
+  releases-design-system-delta:
+    path: product/releases/{release-id}/design-system-delta/
+    work_product: WP-21
+    category: Design
+    produced_by: 13
+    controlled_at: G1
+    baseline: "RELEASE — figée"
+    lifecycle: "figée en G1"
+    structure: dossier
+    sections: [delta-de-design-system]
+
+  # WP-22 — Solution design de la release
+  releases-architecture-solution-design:
+    path: product/releases/{release-id}/architecture/solution-design.md
+    work_product: WP-22
+    category: "Spécification"
+    produced_by: 14
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [composants-touches-et-crees, flux-de-donnees, attestation-de-conformite-au-socle-technique, ecarts-au-socle]
+  releases-architecture-interface-contracts:
+    path: product/releases/{release-id}/architecture/interface-contracts.md
+    work_product: WP-22
+    category: "Spécification"
+    produced_by: 14
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [contrats-d-interface]
+  releases-architecture-migration-impact:
+    path: product/releases/{release-id}/architecture/migration-impact.md
+    work_product: WP-22
+    category: "Spécification"
+    produced_by: 14
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé en G1"
+    structure: fichier
+    sections: [impacts-de-migration-et-reversibilite]
+
+  # WP-23 — Dépendances, risques techniques et tiers
+  releases-architecture-dependencies:
+    path: product/releases/{release-id}/architecture/dependencies.md
+    work_product: WP-23
+    category: Registre
+    produced_by: 14
+    controlled_at: G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [dependances-par-capacite, absence-de-cycle]
+  releases-architecture-technical-risks:
+    path: product/releases/{release-id}/architecture/technical-risks.md
+    work_product: WP-23
+    category: Registre
+    produced_by: 14
+    controlled_at: G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [risques-techniques]
+  releases-architecture-risk-tiers:
+    path: product/releases/{release-id}/architecture/risk-tiers.md
+    work_product: WP-23
+    category: Registre
+    produced_by: 14
+    controlled_at: G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [tier-de-risque-par-capacite, capacites-non-faisables-dans-cette-release]
+
+  # WP-24 — Rapport de Design QA
+  releases-design-qa-report:
+    path: product/releases/{release-id}/design/qa/report.md
+    work_product: WP-24
+    category: Preuve
+    produced_by: 15
+    controlled_at: G1
+    baseline: release
+    lifecycle: par passe
+    structure: fichier
+    sections: [coherence-et-conformite-au-design-system, responsive-et-etats-limites, accessibilite, subordination-au-socle, findings]
+
+  # WP-25 — Validation utilisateurs et convergence
+  releases-research-tests-test-plan:
+    path: product/releases/{release-id}/research/tests/test-plan.md
+    work_product: WP-25
+    category: Preuve
+    produced_by: 16
+    controlled_at: G1
+    baseline: release
+    lifecycle: par passe
+    structure: fichier
+    sections: [protocole, version-testee, participants, resultats-bruts, niveau-d-evidence, hypotheses-unvalidated-confrontees, corrections]
+
+  # WP-26 — Backlog de la release
+  releases-backlog-epics:
+    path: product/releases/{release-id}/backlog/epics/
+    work_product: WP-26
+    category: Registre
+    produced_by: 17
+    controlled_at: G1 puis G2
+    baseline: release
+    lifecycle: vivant
+    structure: dossier
+    sections: [epc-nn-epics]
+  releases-backlog-stories:
+    path: product/releases/{release-id}/backlog/stories/
+    work_product: WP-26
+    category: Registre
+    produced_by: 17
+    controlled_at: G1 puis G2
+    baseline: release
+    lifecycle: vivant
+    structure: dossier
+    sections: [sto-nn-stories, ac-nn-n-acceptance-criteria]
+  releases-backlog-traceability:
+    path: product/releases/{release-id}/backlog/traceability.md
+    work_product: WP-26
+    category: Registre
+    produced_by: 17
+    controlled_at: G1 puis G2
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+  releases-backlog-priorities:
+    path: product/releases/{release-id}/backlog/priorities.md
+    work_product: WP-26
+    category: Registre
+    produced_by: 17
+    controlled_at: G1 puis G2
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [priorites]
+  releases-backlog-dependencies:
+    path: product/releases/{release-id}/backlog/dependencies.md
+    work_product: WP-26
+    category: Registre
+    produced_by: 17
+    controlled_at: G1 puis G2
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [dependances]
+  releases-backlog-risk-map:
+    path: product/releases/{release-id}/backlog/risk-map.md
+    work_product: WP-26
+    category: Registre
+    produced_by: 17
+    controlled_at: G1 puis G2
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [tier-de-risque-par-capacite]
+
+  # WP-27 — Plan de sprints et readiness de delivery
+  releases-planning-sprint-map:
+    path: product/releases/{release-id}/planning/sprint-map.md
+    work_product: WP-27
+    category: "Décision"
+    produced_by: 17
+    controlled_at: G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [decoupage-en-sprints, affectation-des-stories, needs-clarification-ouverts]
+  releases-handoff-delivery-readiness:
+    path: product/releases/{release-id}/handoff/delivery-readiness.md
+    work_product: WP-27
+    category: "Décision"
+    produced_by: 17
+    controlled_at: G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+  releases-handoff-baseline-manifest:
+    path: product/releases/{release-id}/handoff/baseline-manifest.md
+    work_product: WP-27
+    category: "Décision"
+    produced_by: 17
+    controlled_at: G1
+    baseline: release
+    lifecycle: vivant
+    structure: fichier
+    sections: [baseline-manifest]
+
+  # WP-28 — Pack de preuves G1
+  gates-g1-release-id:
+    path: product/gates/g1-{release-id}.md
+    work_product: WP-28
+    category: Preuve
+    produced_by: gate
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé"
+    structure: fichier
+    sections: [perimetre-exclusions-metriques, strategic-design-preview-commit-fige, attestation-de-conformite-au-socle, delta-de-design-system-integre, resultats-de-validation-protocole-version-testee-niveau-d-evidence, backlog-trace-priorites-dependances-tiers, plan-de-sprints, verdicts-critic-product-critic-design-critic-domaine, hypotheses-non-validees-et-unknowns, fermeture-d-apprentissage]
+  gates-release-baseline:
+    path: product/gates/release-baseline.yaml
+    work_product: WP-28
+    category: Preuve
+    produced_by: gate
+    controlled_at: G1
+    baseline: release
+    lifecycle: "figé"
+    structure: fichier
+
+  # WP-29 — Sprint goal et plan
+  releases-sprints-candidate-scope:
+    path: product/releases/{release-id}/sprints/{sprint-id}/candidate-scope.md
+    work_product: WP-29
+    category: "Décision"
+    produced_by: 18
+    controlled_at: G2
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [stories-retenues]
+  releases-sprints-sprint-goal:
+    path: product/releases/{release-id}/sprints/{sprint-id}/sprint-goal.md
+    work_product: WP-29
+    category: "Décision"
+    produced_by: 18
+    controlled_at: G2
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [sprint-goal, tier-de-risque-pressenti]
+  releases-sprints-sprint-plan:
+    path: product/releases/{release-id}/sprints/{sprint-id}/sprint-plan.md
+    work_product: WP-29
+    category: "Décision"
+    produced_by: 18
+    controlled_at: G2
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [sequencement-et-capacite-confrontee-au-perimetre, chemin-express-declare-le-cas-echeant]
+  releases-sprints-risks:
+    path: product/releases/{release-id}/sprints/{sprint-id}/risks.md
+    work_product: WP-29
+    category: "Décision"
+    produced_by: 18
+    controlled_at: G2
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [risques-et-exclusions-explicites]
+
+  # WP-30 — Design de sprint et Baseline Delta Declaration
+  releases-sprints-design-scope:
+    path: product/releases/{release-id}/sprints/{sprint-id}/design/scope.yaml
+    work_product: WP-30
+    category: Design
+    produced_by: 19
+    controlled_at: K1
+    baseline: "DESIGN — figée"
+    lifecycle: "figée en K1"
+    structure: fichier
+    sections: [perimetre-design, baseline-delta-declaration]
+  releases-sprints-design-flows:
+    path: product/releases/{release-id}/sprints/{sprint-id}/design/flows/
+    work_product: WP-30
+    category: Design
+    produced_by: 19
+    controlled_at: K1
+    baseline: "DESIGN — figée"
+    lifecycle: "figée en K1"
+    structure: dossier
+    sections: [ecrans-desktop-tablette-mobile]
+  releases-sprints-design-prototype:
+    path: product/releases/{release-id}/sprints/{sprint-id}/design/prototype/
+    work_product: WP-30
+    category: Design
+    produced_by: 19
+    controlled_at: K1
+    baseline: "DESIGN — figée"
+    lifecycle: "figée en K1"
+    structure: dossier
+    sections: [prototype-executable]
+  releases-sprints-design-system-delta:
+    path: product/releases/{release-id}/sprints/{sprint-id}/design/design-system-delta/
+    work_product: WP-30
+    category: Design
+    produced_by: 19
+    controlled_at: K1
+    baseline: "DESIGN — figée"
+    lifecycle: "figée en K1"
+    structure: dossier
+    sections: [delta-de-design-system]
+
+  # WP-31 — Spécification fonctionnelle et technique
+  releases-sprints-spec-functional-spec:
+    path: product/releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md
+    work_product: WP-31
+    category: "Spécification"
+    produced_by: 20
+    controlled_at: K1
+    baseline: sprint
+    lifecycle: "figée en K1"
+    structure: fichier
+    sections: [stories-detaillees-regles-metier-cas-limites, needs-clarification]
+  releases-sprints-spec-acceptance-criteria:
+    path: product/releases/{release-id}/sprints/{sprint-id}/spec/acceptance-criteria.md
+    work_product: WP-31
+    category: "Spécification"
+    produced_by: 20
+    controlled_at: K1
+    baseline: sprint
+    lifecycle: "figée en K1"
+    structure: fichier
+    sections: [ac, carte-ac-evidence]
+  releases-sprints-spec-technical-spec:
+    path: product/releases/{release-id}/sprints/{sprint-id}/spec/technical-spec.md
+    work_product: WP-31
+    category: "Spécification"
+    produced_by: 20
+    controlled_at: K1
+    baseline: sprint
+    lifecycle: "figée en K1"
+    structure: fichier
+    sections: [architecture-composants-donnees-api-migrations, tier-de-risque-propose-et-justifie, plan-de-migration-et-de-rollback]
+
+  # WP-32 — Journal de build et écarts de périmètre
+  releases-sprints-status:
+    path: product/releases/{release-id}/sprints/{sprint-id}/status.md
+    work_product: WP-32
+    category: Registre
+    produced_by: 21
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: vivant
+    structure: fichier
+    sections: [avancement-par-story, mutation-boundary-respectee, needs-clarification-leves-en-cours-de-build]
+  releases-sprints-scope-changes:
+    path: product/releases/{release-id}/sprints/{sprint-id}/scope-changes.md
+    work_product: WP-32
+    category: Registre
+    produced_by: 21
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: vivant
+    structure: fichier
+    sections: [ecarts-spec-implementation]
+
+  # WP-33 — Stratégie, résultats et classification de tests
+  releases-sprints-quality-test-strategy:
+    path: product/releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md
+    work_product: WP-33
+    category: Preuve
+    produced_by: 22
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [strategie-de-test, resultats-bruts, verdict-de-classification]
+  releases-sprints-quality-test-healing-decisions:
+    path: product/releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md
+    work_product: WP-33
+    category: Preuve
+    produced_by: 22
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [decisions-de-healing, re-verifications-independantes]
+
+  # WP-34 — Verdicts de revue indépendante
+  releases-sprints-reviews-engineering-review:
+    path: product/releases/{release-id}/sprints/{sprint-id}/reviews/engineering-review.md
+    work_product: WP-34
+    category: Preuve
+    produced_by: 23
+    controlled_at: G3 puis G4
+    baseline: sprint
+    lifecycle: par passe
+    structure: fichier
+    sections: [revue-d-ingenierie, findings]
+  releases-sprints-reviews-design-conformance:
+    path: product/releases/{release-id}/sprints/{sprint-id}/reviews/design-conformance.md
+    work_product: WP-34
+    category: Preuve
+    produced_by: 23
+    controlled_at: G3 puis G4
+    baseline: sprint
+    lifecycle: par passe
+    structure: fichier
+    sections: [conformite-design]
+  releases-sprints-security-review:
+    path: product/releases/{release-id}/sprints/{sprint-id}/security/security-review.md
+    work_product: WP-34
+    category: Preuve
+    produced_by: 23
+    controlled_at: G3 puis G4
+    baseline: sprint
+    lifecycle: par passe
+    structure: fichier
+    sections: [revue-de-securite]
+  releases-sprints-security-threat-model:
+    path: product/releases/{release-id}/sprints/{sprint-id}/security/threat-model.md
+    work_product: WP-34
+    category: Preuve
+    produced_by: 23
+    controlled_at: G3 puis G4
+    baseline: sprint
+    lifecycle: par passe
+    structure: fichier
+  releases-sprints-security-pentest-summary:
+    path: product/releases/{release-id}/sprints/{sprint-id}/security/pentest-summary.md
+    work_product: WP-34
+    category: Preuve
+    produced_by: 23
+    controlled_at: G3 puis G4
+    baseline: sprint
+    lifecycle: par passe
+    structure: fichier
+    sections: [pentest-proportionnel]
+
+  # WP-35 — Matrice de réconciliation et rapport de preview
+  releases-sprints-acceptance-traceability-matrix:
+    path: product/releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md
+    work_product: WP-35
+    category: Preuve
+    produced_by: 24
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [matrice-baseline-spec-code-tests-decisions, dette-et-risques-residuels-acceptes]
+  releases-sprints-acceptance-preview-report:
+    path: product/releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md
+    work_product: WP-35
+    category: Preuve
+    produced_by: 24
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: par sprint
+    structure: fichier
+    sections: [parcours-metier-critiques-executes-sur-la-preview, url-de-preview-et-commit]
+
+  # WP-36 — Pack de preuves G3
+  gates-g3-sprint-id:
+    path: product/gates/g3-{sprint-id}.md
+    work_product: WP-36
+    category: Preuve
+    produced_by: gate
+    controlled_at: G3
+    baseline: sprint
+    lifecycle: "figé"
+    structure: fichier
+    sections: [verdict-de-classification-par-story-et-par-ac, matrice-de-tracabilite, rapport-de-preview-et-parcours-executes, verdicts-ingenierie-conformite-securite, ecarts-classes-et-decisions-associees, dette-et-risques-residuels-nommes, findings-de-securite-ouverts, fermeture-d-apprentissage]
+
+  # WP-37 — Readiness de mise en production et plan de rollback
+  deployments-release-readiness:
+    path: product/deployments/{version}/release-readiness.md
+    work_product: WP-37
+    category: "Spécification"
+    produced_by: 25
+    controlled_at: G4
+    baseline: "déploiement"
+    lifecycle: par version
+    structure: fichier
+    sections: [qualite-securite-migrations-observabilite-documentation, evidence-securite-proportionnelle-au-tier, verdict-de-re-review, plan-d-observabilite-et-seuils-d-alerte, fenetre-de-deploiement-et-criteres-d-abandon, en-tier-r3-deux-autorites-humaines-distinctes]
+  deployments-rollback-plan:
+    path: product/deployments/{version}/rollback-plan.md
+    work_product: WP-37
+    category: "Spécification"
+    produced_by: 25
+    controlled_at: G4
+    baseline: "déploiement"
+    lifecycle: par version
+    structure: fichier
+    sections: [plan-de-rollback-et-preuve-de-son-execution]
+
+  # WP-38 — Enregistrement de déploiement et vérification
+  deployments-deployment-record:
+    path: product/deployments/{version}/deployment-record.md
+    work_product: WP-38
+    category: Preuve
+    produced_by: 26
+    controlled_at: "—"
+    baseline: "déploiement"
+    lifecycle: par version
+    structure: fichier
+    sections: [strategie-progressive-appliquee, dep-vx-y-stories-livrees, decision-garder-rollback]
+  deployments-post-deploy-verification:
+    path: product/deployments/{version}/post-deploy-verification.md
+    work_product: WP-38
+    category: Preuve
+    produced_by: 26
+    controlled_at: "—"
+    baseline: "déploiement"
+    lifecycle: par version
+    structure: fichier
+    sections: [verification-post-deploiement, signaux-confrontes-aux-metriques-de-succes, decision-produit]
+
+# 124 chemins atomiques déclarés — compte confronté au registre par K2 (« apf check »).

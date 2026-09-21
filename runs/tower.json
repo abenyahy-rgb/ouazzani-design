@@ -7,6 +7,18 @@
       "step": "C1.1",
       "actor": "factory-lead",
       "at": "2026-09-21T15:09:20.662Z"
+    },
+    {
+      "activity": 1,
+      "step": "C1.1",
+      "actor": "factory-lead",
+      "at": "2026-09-21T15:11:16.694Z"
+    },
+    {
+      "activity": 1,
+      "step": "C1.1",
+      "actor": "factory-lead",
+      "at": "2026-09-21T15:11:20.684Z"
     }
   ],
   "declared": [
@@ -23,6 +35,48 @@
       ],
       "form_findings": 2,
       "at": "2026-09-21T15:09:20.677Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/artifact-schema.yaml",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-01 → CONFORME",
+        "apf check → 7 PASS · 0 FAIL · 1 SKIPPED (K4 sans objet à ce stade)"
+      ],
+      "completion": "complet",
+      "reserves": [],
+      "form_findings": 0,
+      "at": "2026-09-21T15:20:22.610Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/project.yaml",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-01 → CONFORME",
+        "apf check → 7 PASS · 0 FAIL · 1 SKIPPED (K4 sans objet à ce stade)"
+      ],
+      "completion": "complet",
+      "reserves": [],
+      "form_findings": 0,
+      "at": "2026-09-21T15:20:22.779Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/workspace-map.yaml",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-01 → CONFORME",
+        "apf check → 7 PASS · 0 FAIL · 1 SKIPPED (K4 sans objet à ce stade)"
+      ],
+      "completion": "complet",
+      "reserves": [],
+      "form_findings": 0,
+      "at": "2026-09-21T15:20:22.965Z"
     }
   ],
   "gates": {},

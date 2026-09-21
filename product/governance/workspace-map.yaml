@@ -1,0 +1,33 @@
+# WP-01 — Registre canonique et configuration projet · workspace-map.yaml
+#
+# Section portée : Carte de l'espace de travail
+#
+# ESPACE TIRÉ — SANS OBJET, ET C'EST UNE DÉCLARATION, PAS UN VIDE.
+#
+# WP-01 déclare « workspace_kind: launchpad ». La carte d'identifiants existe pour
+# rendre une projection POUSSÉE idempotente : sans elle, chaque rejeu recréerait une
+# page et deux pages pour un livrable seraient deux vérités. Ici la projection est
+# TIRÉE : le workflow .github/workflows/launchpad.yml dépose l'état du dépôt à chaque
+# push sur la branche par défaut, authentifié par le jeton OIDC de GitHub Actions, et
+# le launchpad recalcule étapes, livrables, gates, journal et contrôles. Il n'y a ni
+# page à créer, ni pointeur à résoudre, ni projection à dater : la page EST le commit.
+#
+# « apf notion plan | status | map » rendent tous « sans objet » sur ce dépôt. Ce
+# fichier enregistre ce verdict plutôt que de le laisser supposer : une carte absente
+# et une carte sans objet ne se distinguent pas d'un fichier manquant.
+
+workspace:
+  kind: launchpad
+  projection: tirée            # tirée, jamais poussée
+  url: https://product-launchpad-lovat.vercel.app/projects/ouazzani-design
+  deposited_by: .github/workflows/launchpad.yml
+  authenticated_by: jeton OIDC GitHub Actions — aucun secret dans le dépôt
+  trigger: push sur la branche par défaut
+  recorded_at: '2026-09-21'
+
+# Carte d'identifiants : sans objet sur un espace tiré. Rien n'est à écrire ici, et
+# rien ne doit y être écrit à la main — « apf notion map » est le seul auteur légitime
+# de cette section, et il rend « sans objet ».
+step_pages: sans objet — projection tirée
+gate_pages: sans objet — projection tirée
+databases: sans objet — projection tirée

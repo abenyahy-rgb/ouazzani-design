@@ -1,8 +1,108 @@
+# WP-01 — Registre canonique et configuration projet · project.yaml
+#
+# Sections portées : Autorités de gate · Store d'état du backlog ·
+# Correspondance classe de capacité → modèle · Identité du produit ·
+# Rôles de la méthode vers personnes · RUN MODE
+#
+# L'identité est RECUEILLIE auprès d'un humain à l'activité 1 et conservée telle
+# quelle : un rejeu du bootstrap ne la réécrit pas.
+
+# ── Identité du produit ───────────────────────────────────────────────────
 name: Ouazzani design
 opened_at: '2026-09-21'
 method: Autonomous Product Factory v5.0
 workspace_kind: launchpad
 workspace_root_location: https://product-launchpad-lovat.vercel.app/projects/ouazzani-design
-run_mode: ÉQUIPE
-run_humans: null
+collected_by: A. Benyahya
 note: Recueilli au lancement auprès d'un humain, dans le launchpad. Un rejeu ne le réécrit pas.
+
+# ── RUN MODE — équipe ou solo ─────────────────────────────────────────────
+run_mode:
+  value: SOLO
+  humans_available: 1
+  declared_at: '2026-09-21'
+  declared_by: A. Benyahya
+  note: >-
+    Déclaré à l'activité 1, en correction de la valeur ÉQUIPE posée à l'ouverture
+    sans nombre d'humains — une absence est un défaut, pas une valeur. SOLO ne
+    relâche AUCUN contrôle déterministe, AUCUNE autorité de gate et AUCUNE règle
+    de séparation des devoirs : il change uniquement le traitement de l'input
+    manquant (EX2). BLOCKED reste la réponse sur les décisions de sponsor, les
+    baselines figées et le corpus réel.
+
+# ── Autorités de gate ─────────────────────────────────────────────────────
+# Une personne nommée par gate. « L'équipe » n'est pas une autorité.
+# Un run SOLO concentre les rôles sur une personne ; il ne supprime aucun gate
+# et ne rend délégable aucune autorité que le registre déclare non délégable.
+gates:
+  G0:
+    name: Product Architecture Gate
+    authority: A. Benyahya (Product Owner)
+    delegable: false
+  G1:
+    name: Release Gate
+    authority:
+      - A. Benyahya (Product Owner)
+      - A. Benyahya (autorité Tech)
+    delegable_R3: false
+  G2:
+    name: Sprint Ready Gate
+    authority: A. Benyahya (Product Owner)
+    delegable: true
+    delegable_to: factory-lead
+    delegable_R2_R3: false
+  K1:
+    name: Sprint Contract Checkpoint
+    authority: AUTOMATISÉ — escalade conditionnelle vers A. Benyahya (Product Owner)
+    delegable: false
+  G3:
+    name: Acceptance Gate
+    authority: A. Benyahya (Product Owner)
+    delegable: false
+  G4:
+    name: Production Gate
+    authority: A. Benyahya (autorité de release)
+    delegable: false
+    second_authority_R3: A. Benyahya (HUMAN OWNER)
+    reserve: >-
+      Le registre exige DEUX autorités DISTINCTES en tier R3. Un run SOLO ne peut
+      pas les fournir : tout déploiement classé R3 est BLOCKED jusqu'à ce qu'une
+      seconde personne soit nommée ici. Ce n'est pas une dérogation, c'est un arrêt.
+
+# ── Store d'état du backlog ───────────────────────────────────────────────
+# Un seul. Deux stores, c'est deux vérités.
+backlog_store:
+  kind: git
+  id: product/releases/{release-id}/backlog/
+  declared_at: '2026-09-21'
+  note: >-
+    Le dépôt est l'unique source d'état du backlog. Le launchpad en est une
+    projection TIRÉE, déposée à chaque push : il lit, il ne détient pas.
+
+# ── Correspondance classe de capacité → modèle ────────────────────────────
+# Le noyau ne nomme aucun modèle : la table vit dans l'adaptateur.
+capability_classes:
+  source: adapter
+  ref: .factoryzen/build/build-adapter.mjs#MODEL
+
+# ── Rôles de la méthode vers personnes ────────────────────────────────────
+# Un rôle sans personne rend les colonnes Responsible et Accountable inopérantes.
+roles:
+  Product Owner: A. Benyahya
+  autorité Tech: A. Benyahya
+  autorité de release: A. Benyahya
+  HUMAN OWNER: A. Benyahya
+  factory-lead: agent factory-lead (plugin)
+  product-lead: agent product-lead (plugin)
+  product-designer: agent product-designer (plugin)
+  principal-engineer: agent principal-engineer (plugin)
+  quality-engineer: agent quality-engineer (plugin)
+  security-engineer: agent security-engineer (plugin)
+  release-engineer: agent release-engineer (plugin)
+  data-steward: agent data-steward (plugin)
+  conformance-auditor: agent conformance-auditor (plugin)
+  critic(*): agents critic-* (plugin) — lecture seule, jamais producteurs
+
+# ── Carte de l'espace de travail ──────────────────────────────────────────
+# Portée par governance/workspace-map.yaml. Espace TIRÉ (workspace_kind:
+# launchpad) : aucune page à créer ni à dater, la page EST le commit.
