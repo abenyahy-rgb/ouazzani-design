@@ -113,6 +113,46 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T15:35:35.764Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/existing-system.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "18 contraintes (C-01..C-18) + 1 dérivation explicite (D-01) ; sources B reprises dans le code exécuté, le registre, le journal de run ou une observation datée — et non dans un second fichier du gabarit templates/product-repo/",
+        "Verdict critic(engineering) du 2026-09-21 : REFUSÉ sur la révision 1 — F-01 à F-20"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 2 après verdict REFUSÉ de critic(engineering) : 20 findings traités, contre-revue non rendue sur cette révision.",
+        "L'absence d'existant hors dépôt est DÉCLARÉE par le sponsor, non établie par recherche (U-03).",
+        "Cinq énoncés restent à une seule source et sont descendus en « À confirmer ».",
+        "U-01 à U-07 ouverts."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:45:09.628Z"
+    },
+    {
+      "activity": "1",
+      "work_product": "WP-02",
+      "path": "product/context/constraints.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-02 --completion partiel → CONFORME",
+        "18 contraintes (C-01..C-18) + 1 dérivation explicite (D-01) ; sources B reprises dans le code exécuté, le registre, le journal de run ou une observation datée — et non dans un second fichier du gabarit templates/product-repo/",
+        "Verdict critic(engineering) du 2026-09-21 : REFUSÉ sur la révision 1 — F-01 à F-20"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Révision 2 après verdict REFUSÉ de critic(engineering) : 20 findings traités, contre-revue non rendue sur cette révision.",
+        "L'absence d'existant hors dépôt est DÉCLARÉE par le sponsor, non établie par recherche (U-03).",
+        "Cinq énoncés restent à une seule source et sont descendus en « À confirmer ».",
+        "U-01 à U-07 ouverts."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T15:45:09.767Z"
     }
   ],
   "gates": {},
