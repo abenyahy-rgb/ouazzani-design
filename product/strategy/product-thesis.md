@@ -4,113 +4,163 @@ name: "Thèse produit"
 produced_by: "2"
 controlled_at: "G0"
 completion: partiel
-reserves: ["BLOCKED — EX2 cas 1 : l'intention du produit est une DÉCISION que seul l'humain qui répond du produit peut prendre. Le RUN MODE SOLO ne la convertit PAS en hypothèse (method.yaml:2163-2171).", "Aucune des cinq sections de fond n'est produite : le problème, la cible, la proposition de valeur, l'alternative et le critère d'abandon attendent tous le même input absent.", "Salve d'interrogatoire du 2026-09-21 restée sans réponse — une seule salve est permise (EX2)."]
+reserves: ["§ Critère d'abandon reste BLOCKED — EX2 cas 1 : « critère d'abandon » est cité nommément parmi les trois cas qui restent bloqués quel que soit le RUN MODE. Q4 sans réponse au 2026-09-21.", "Le sponsor a énoncé une SOLUTION (un site, un dashboard, du COD, Telegram) et non un problème. Le problème côté acheteur est reconstruit en hypothèse explicite, jamais en fait.", "Toute affirmation de marché est UNVALIDATED : la recherche web est accordée aux activités 3, 4, 9 et 27, pas à l'activité 2.", "Q2 et Q3 sans réponse : converties en hypothèses nommées sous EX2 run_mode_solo."]
 ---
 
 # WP-03 — Thèse produit
 
-> **BLOCKED — EX2, cas 1.** Le registre décrit WP-03 comme « l'intention au niveau du produit
-> entier … l'artefact le plus plausible et le moins vérifiable de la méthode ». C'est
-> précisément ce qu'EX2 place hors du relâchement SOLO.
+> **Ouazzani design — vente en ligne de raquettes de padel au Maroc**, opérée par son
+> propriétaire, avec paiement à la livraison et pilotage par tableau de bord.
 
-### Le blocage, en une lecture
+### Statut épistémique de ce document
 
-Ce run est déclaré `RUN MODE: SOLO` (`project.yaml:21`). En SOLO, `EX2.run_mode_solo`
-(`method.yaml:2163-2171`) dispose qu'un input absent **ne produit plus un arrêt dans le cas
-général** : il produit une hypothèse nommée, étiquetée `UNVALIDATED`, avec son critère de
-falsification — et l'activité continue.
-
-**Trois cas restent BLOCKED, sans exception et quel que soit le mode.** Le premier est cité
-mot pour mot :
-
-> « un input qui n'est pas une information mais une **DÉCISION** que seul l'humain qui répond
-> du produit peut prendre — **intention, arbitrage de périmètre, critère d'abandon** »
-
-WP-03 *est* l'intention, et porte le critère d'abandon comme section obligatoire. Deux des
-trois termes de l'exception le désignent nommément. Le mode SOLO ne s'y applique pas.
-
-**Ce que serait la transgression.** Rien ne m'empêche techniquement d'écrire une thèse
-vraisemblable : un métier du design ou de l'immobilier au Maroc, un client type, un processus
-en WhatsApp et Excel, un coût hebdomadaire plausible. Elle serait cohérente, bien rédigée, et
-entièrement fabriquée. Le registre nomme ce risque à propos de ce livrable précis — « le plus
-plausible et le moins vérifiable ». Une thèse inventée ne se distingue pas d'une thèse vraie à
-la lecture ; elle ne s'en distingue qu'à l'usage, trop tard, quand le socle est figé et que
-neuf livrables en descendent.
+Un seul fait établi : **l'intention du sponsor**. Tout le reste — le joueur, le marché, le
+coût du statu quo — est reconstruit en hypothèse nommée, comme `EX2.run_mode_solo` l'autorise
+en RUN MODE SOLO, et comme il l'exige : nommée, étiquetée, falsifiable, avec un point de test.
+Rien ici n'est présenté comme su.
 
 ## Problème
 
-**BLOCKED.** Attendu : de qui · comment on le sait · ce qu'ils font aujourd'hui · ce que ça
-leur coûte. Le sponsor a qualifié la source d'opportunité — *une demande client réelle* — sans
-nommer ni le client, ni sa demande, ni sa date. Une demande client sans client est une
-intuition qui a emprunté le vocabulaire d'un fait.
+**Ce qui a été dit, littéralement** — A. Benyahya, Product Owner, 2026-09-21 :
+
+> « je veux monter un site de vente de raquettes de padel au maroc je suis l'owner du site et
+> je veux avoir la possibilité d'une dashboard pour piloter les ventes, les commandes se gerent
+> en paiement à la livraison avec reception d'information sur telegram »
+
+**Ce que cet énoncé est, et ce qu'il n'est pas.** C'est une **solution**, décrite avec son
+canal, son mode de paiement et son outillage d'exploitation. Ce n'est pas un problème : il ne
+dit de qui, ni ce que cette personne fait aujourd'hui, ni ce que ça lui coûte. Le registre
+demande les quatre. Je les reconstruis ci-dessous **en hypothèses**, et je ne les promeus pas.
+
+**Le client est le sponsor lui-même** — réponse explicite à Q1. Conséquence épistémique, et
+elle est lourde : il n'y a **aucune demande externe** derrière ce produit. La source
+d'opportunité qualifiée « demande client réelle » à l'ouverture se révèle être une conviction
+du propriétaire. C'est parfaitement recevable — la plupart des produits commencent ainsi — mais
+l'étiquette change, et avec elle la charge de la preuve : rien n'a encore été validé par
+quelqu'un qui paierait.
+
+| Volet du problème | Énoncé | Étiquette | Trace |
+|---|---|---|---|
+| **De qui** | Un joueur de padel au Maroc qui veut acheter une raquette | `UNVALIDATED` | HYP-01 |
+| **Comment on le sait** | On ne le sait pas. Le sponsor est le seul informant, et il est le vendeur, pas l'acheteur | `UNVALIDATED` | HYP-01 |
+| **Ce qu'il fait aujourd'hui** | Q2 sans réponse. Candidats non départagés : grande surface de sport, vendeur Instagram/WhatsApp, achat en club, import personnel, voyage | `UNVALIDATED` | HYP-02 |
+| **Ce que ça lui coûte** | Q2 sans réponse. Délai, prix, incertitude sur l'authenticité, impossibilité d'essayer — aucun chiffré | `UNVALIDATED` | HYP-03 |
+
+**Le problème du propriétaire, lui, est énoncé et vérifiable** : il n'a aucun moyen de piloter
+des ventes qui n'existent pas encore. C'est un vrai besoin, mais c'est le besoin de
+l'**opérateur**, pas de l'acheteur. Un produit qui ne résout que le problème de celui qui le
+construit n'a pas de marché ; il a un propriétaire satisfait.
 
 ## Cible
 
-**BLOCKED.** Attendu : une personne descriptible, pas un segment · combien · comment on
-l'atteint. Dépend du Problème ; aucune inférence ne le précède.
+**Ce produit a deux utilisateurs, et l'un d'eux est le sponsor.** Les confondre est le défaut
+le plus courant de cette classe de produit — et le plus coûteux, parce que l'utilisateur qui
+sait dire ce qu'il veut est celui dont la satisfaction ne fait pas vivre le produit.
+
+**Cible A — l'acheteur.** Une personne descriptible : joueur de padel au Maroc, pratiquant en
+club, qui remplace ou achète une raquette. Ni son nombre, ni sa répartition géographique, ni
+son pouvoir d'achat, ni son mode d'accès actuel ne sont établis — Q3 est sans réponse.
+`UNVALIDATED`, HYP-01 et HYP-04. **C'est la cible dont dépend l'existence du produit.**
+
+**Cible B — l'opérateur.** A. Benyahya, propriétaire et, en l'état, unique exploitant. Une
+personne, connue, disponible. C'est l'utilisateur du tableau de bord et du canal Telegram. Son
+existence est un `FAIT` ; sa capacité de traitement — combien de commandes par jour une seule
+personne absorbe — est `UNVALIDATED`, HYP-07.
+
+**Comment on atteint la cible A :** non établi. Aucun canal d'acquisition n'a été évoqué. Un
+site sans canal d'acquisition est une vitrine dans un désert ; c'est HYP-04, et c'est un
+`UNVALIDATED` qui décide du produit autant que le produit lui-même.
 
 ## Proposition de valeur
 
-**BLOCKED.** Attendu : ce qui change le lendemain · ce que la personne arrête de faire. Ne
-peut s'écrire sans savoir ce qu'elle fait aujourd'hui.
+**Ce qui change le lendemain, pour l'acheteur** — `UNVALIDATED`, HYP-02/HYP-03 : il commande
+une raquette identifiée, à un prix affiché, et la paie à la livraison sans avancer d'argent ni
+négocier par messagerie. **Ce qu'il arrête de faire** : reconstituer une offre par Instagram,
+WhatsApp ou le bouche-à-oreille de club.
+
+**Ce qui change le lendemain, pour l'opérateur** — `FAIT` quant à l'intention : il reçoit
+chaque commande sur Telegram et lit l'état de ses ventes sur un tableau de bord. **Ce qu'il
+arrête de faire** : reconstituer cet état de mémoire ou dans un tableur.
+
+**La tension centrale, et elle est structurelle.** Le paiement à la livraison déplace le risque
+du client vers le vendeur : l'acheteur ne s'engage financièrement qu'au moment de recevoir, et
+peut refuser. La proposition de valeur côté acheteur *repose* sur ce mécanisme — c'est
+précisément ce qui lève sa méfiance — et l'économie du produit en *dépend* en sens inverse. Ce
+n'est pas un détail d'implémentation mentionné en passant : c'est le choix qui décide si ce
+produit gagne de l'argent. HYP-05.
 
 ## Alternative et statu quo
 
-**BLOCKED.** Attendu : ce qui se passe si on ne fait rien · qui d'autre résout ça · pourquoi
-celle-ci gagne. Une analyse concurrentielle sans domaine qualifié produirait une liste
-plausible de concurrents imaginaires (U-02).
+**Ce qui se passe si on ne fait rien.** Le sponsor ne vend pas de raquettes ; l'acheteur
+continue de faire ce qu'il fait — que nous ne savons pas. Le statu quo n'est donc pas
+documenté, il est supposé.
+
+**Qui d'autre résout ça.** Non établi. Des catégories d'alternatives sont plausibles — grandes
+surfaces de sport présentes au Maroc, revendeurs sur réseaux sociaux, boutiques de clubs,
+marketplaces généralistes, sites étrangers livrant au Maroc. **Aucune n'est vérifiée, aucune
+n'est citée, et je n'en nomme aucune.** La recherche web est accordée aux activités 3, 4, 9 et
+27 ; l'activité 2 ne la porte pas, et le registre en donne le motif : chercher depuis l'activité
+où l'on rédige sert à justifier ce qu'on vient d'écrire. `UNVALIDATED`, HYP-06 — point de test
+à l'activité 3 (WP-06, profil de domaine et sources approuvées).
+
+**Pourquoi celle-ci gagnerait.** Aucune raison établie. Les avantages candidats — spécialisation
+sur une catégorie unique, prix affiché, paiement à la livraison, conseil d'expert — sont tous
+des hypothèses, et deux d'entre elles sont imitables en une semaine par n'importe quel
+concurrent existant. **C'est la faiblesse la plus sérieuse de cette thèse à ce stade**, et elle
+ne se lèvera pas par la rédaction : elle se lèvera à l'activité 3, ou pas.
 
 ## Critère d'abandon
 
-**BLOCKED — nommément.** Attendu : quel résultat ferait renoncer, qui le prononce, à quelle
-date on regarde. `EX2.run_mode_solo` cite « critère d'abandon » dans la liste des trois cas
-qui restent BLOCKED en toutes circonstances. C'est la section la plus souvent laissée vide de
-cette méthode, et celle qui coûte le plus cher quand elle l'est : sans elle, un produit n'a
-pas de condition de sortie, seulement une durée.
+**BLOCKED — EX2 cas 1.** Q4 est sans réponse au 2026-09-21. `EX2.run_mode_solo` cite « critère
+d'abandon » parmi les trois cas qui restent bloqués quel que soit le RUN MODE : c'est une
+décision que seul l'humain qui répond du produit peut prendre, et le mode SOLO ne la convertit
+pas en hypothèse.
+
+**Attendu, en trois éléments :** quel résultat ferait renoncer · qui le prononce · à quelle date
+on regarde.
+
+**Pourquoi cette section n'est pas une formalité.** Sans elle, ce produit n'a pas de condition
+de sortie, seulement une durée — et un projet sans condition de sortie ne s'arrête pas : il
+s'étiole en consommant l'attention de la seule personne qui l'opère. Le coût d'un critère
+d'abandon écrit est une ligne ; le coût de son absence est un an.
+
+**Ce que je ne ferai pas :** proposer un seuil plausible — « moins de N commandes sur M mois » —
+que vous n'auriez qu'à ratifier. Un critère d'abandon suggéré par celui qui construit le produit
+est un critère qu'on ne s'applique pas.
 
 ## Journal d'interrogatoire
 
-Branches tranchées et branches basculées en `UNVALIDATED`. Le journal est ouvert ; il ne
-contient à ce jour que la salve et son absence de réponse.
+**Salve unique — 2026-09-21.** EX2 n'en autorise qu'une ; elle s'est déroulée en trois temps.
 
-**Salve unique — 2026-09-21.** EX2 n'en autorise qu'une. Elle a été émise en deux temps :
-
-*Temps 1 — qualification, répondue.*
-
-| Question | Réponse du sponsor | Statut |
-|---|---|---|
-| Source d'opportunité | « Une demande client réelle » | **tranchée** — mais le client n'est pas nommé : la réponse qualifie le *type* de source, pas la source |
-| Nature du produit | « Produit numérique » | **tranchée** — écarte le site vitrine et l'indécis ; oriente l'appareil méthodologique complet |
-
-*Temps 2 — fond, sans réponse à ce jour.*
-
-| # | Question | Ce qu'elle débloque | Traitement EX2 |
+| Temps | Question | Réponse | Statut |
 |---|---|---|---|
-| Q1 | Qui a demandé, quand, dans quels mots ? | § Problème, § Cible | cas 1 — décision et information indissociables |
-| Q2 | Que fait cette personne aujourd'hui, et ce que ça lui coûte ? | § Problème, § Proposition de valeur, WP-04 valeur actuelle | information : deviendrait `HYP` en SOLO **si** Q1 était répondue |
-| Q3 | Combien de personnes comme elle, et comment les atteint-on ? | § Cible, découpage en releases | information : idem Q2 |
-| Q4 | Qu'est-ce qui vous ferait renoncer ? | § Critère d'abandon | **cas 1 — BLOCKED absolu** |
+| 1 | Source d'opportunité | « une demande client réelle » | **tranchée, puis corrigée au temps 3** : le client est le sponsor. Ce n'est pas une demande externe |
+| 1 | Nature du produit | « produit numérique » | **tranchée** |
+| 2 → 3 | **Q1** — qui a demandé, quand, dans quels mots | Le sponsor, propriétaire du site, 2026-09-21, verbatim au § Problème | **tranchée** |
+| 2 | **Q2** — que fait cette personne aujourd'hui, ce que ça lui coûte | — | **basculée `UNVALIDATED`** → HYP-02, HYP-03 |
+| 2 | **Q3** — combien, et comment on les atteint | — | **basculée `UNVALIDATED`** → HYP-01, HYP-04 |
+| 2 | **Q4** — ce qui ferait renoncer | — | **BLOCKED**, EX2 cas 1 — non basculable |
 
-**Branche non tranchée, et c'est délibéré.** Q2 et Q3 sont de l'information : en SOLO, leur
-absence deviendrait légitimement une `HYP-nn` `UNVALIDATED`. Elles restent néanmoins non
-écrites, parce qu'une hypothèse suppose un objet. Hypothéser le coût hebdomadaire d'un
-processus dont on ignore la nature, pour une personne dont on ignore le métier, ne produit pas
-une hypothèse falsifiable : cela produit une fiction munie d'un critère de falsification, ce
-qui est pire qu'un blanc — un blanc se voit.
+### Branches tranchées, avec motif
 
-**Escalade, procédure des exceptions (`method.yaml:2144-2154`).**
+| Branche | Tranchée | Motif |
+|---|---|---|
+| Produit numérique ou vitrine | **produit numérique** | Commandes, stock et pilotage : il y a un état à tenir, donc un modèle de données et des parcours — l'appareil complet de la méthode s'applique |
+| Une catégorie ou un assortiment | **une catégorie — raquettes de padel** | Énoncé sans ambiguïté par le sponsor. Conséquence portée au socle : le modèle de données doit rester extensible à d'autres catégories sans rouvrir G0, sous peine de payer un CORE INVARIANT plus tard (EX3) |
+| Paiement en ligne ou à la livraison | **à la livraison** | Décision du sponsor. Structurante : elle déplace le risque financier sur le vendeur (HYP-05) et rend le taux d'acceptation à la livraison une métrique de survie, pas de confort |
+| Canal d'exploitation | **Telegram** | Décision du sponsor. Réduit le besoin d'un back-office temps réel en V1 — HYP-08 sur sa suffisance |
+| Qui opère | **le propriétaire, seul** | Déduit de « je suis l'owner » et du RUN MODE SOLO. Plafonne le débit de commandes traitables — HYP-07 |
 
-| Étape | |
-|---|---|
-| DÉCLARER | consigné ici et au Run Ledger, à la déclaration de WP-03 |
-| NOMMER | A. Benyahya, Product Owner — `project.yaml:91` |
-| ROUTER | **N2 — Product Owner.** L'intention produit n'est pas arbitrable plus bas |
-| FERMER OU REPORTER | **reporté**, en attente de Q1 et Q4. Le silence n'est jamais une résolution ; le coût est relevé dans les deux cas |
+### Branches basculées en `UNVALIDATED`
 
-**Coût relevé.** G0 demande 18 livrables ; WP-03 en conditionne directement neuf par la chaîne
-de traçabilité `OUT → HYP → PER → …`. Tant que Q1 et Q4 sont sans réponse, l'activité 2 ne
-peut pas satisfaire son critère de sortie — « aucune hypothèse critique ne sort non résolue » —
-et les activités 3 à 17 restent hors d'atteinte. Le run n'est pas ralenti : il est arrêté à son
-premier livrable de fond.
+HYP-01 à HYP-08, détaillées en WP-05 avec critère de falsification, étiquette, point de test et
+porteur. Aucune n'est un ornement : quatre d'entre elles — HYP-01, HYP-04, HYP-05, HYP-06 —
+tuent le produit si elles sont fausses.
+
+### Décision implicite restante
+
+**Une seule, et c'est Q4.** Le critère de complétude de ce livrable exige qu'aucune décision
+implicite ne subsiste. Elle subsiste. Le livrable est donc `partiel`, et le restera jusqu'à
+réponse — escalade **N2, Product Owner**, reportée.
 
 <!-- Complétude : Aucune décision implicite ne subsiste. Chaque affirmation matérielle porte sa source et son étiquette épistémique. Le critère d'abandon est écrit. -->

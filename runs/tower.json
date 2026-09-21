@@ -31,6 +31,12 @@
       "step": "C1.1",
       "actor": "factory-lead",
       "at": "2026-09-21T15:56:29.981Z"
+    },
+    {
+      "activity": 2,
+      "step": "C1.2",
+      "actor": "product-lead",
+      "at": "2026-09-21T16:04:07.138Z"
     }
   ],
   "declared": [
@@ -260,6 +266,63 @@
       ],
       "form_findings": 0,
       "at": "2026-09-21T15:59:04.945Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-03",
+      "path": "product/strategy/product-thesis.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-03 --completion partiel → CONFORME",
+        "Verbatim du sponsor daté et cité ; 5 branches tranchées avec motif ; 9 branches basculées en UNVALIDATED vers WP-05"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "§ Critère d abandon BLOCKED — EX2 cas 1, cité nommément. Q4 sans réponse au 2026-09-21, escaladé N2 Product Owner.",
+        "Le sponsor a énoncé une SOLUTION, non un problème : le problème côté acheteur est reconstruit en hypothèse, jamais en fait.",
+        "Le client est le sponsor lui-même : aucune demande externe ne fonde ce produit. Étiquette épistémique corrigée par rapport à l ouverture.",
+        "Toute affirmation de marché est UNVALIDATED : la recherche web est accordée aux activités 3, 4, 9, 27 — pas à l activité 2."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:07:58.128Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-04",
+      "path": "product/strategy/outcomes.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-04 --completion partiel → CONFORME",
+        "3 outcomes retenus, 2 REJETÉS avec motif écrit et non reformulés",
+        "OUT-01 identifié comme métrique de survie : le paiement à la livraison transfère le risque au vendeur"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "Valeurs cibles et échéances BLOCKED — EX2 cas 1 (elles SONT le critère d abandon en nombres) et cas 2 (figées en G0). Dépendent de Q4 et U-07.",
+        "Valeurs actuelles inconnues et déclarées telles : première mesure du plan de recherche, jamais estimées.",
+        "Interprétation de « mesurable aujourd hui » déclarée et opposable : l instrument doit exister sans le produit, la valeur peut être inconnue."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:07:58.280Z"
+    },
+    {
+      "activity": "2",
+      "work_product": "WP-05",
+      "path": "product/strategy/assumptions.md",
+      "instance": null,
+      "evidence": [
+        "apf template verify WP-05 --completion partiel → CONFORME",
+        "9 HYP produit tracées vers OUT, 5 létales identifiées ; chacune avec critère de falsification observable, étiquette, point de test et porteur",
+        "2 hypothèses de méthode hors compte critique, sans trace vers OUT"
+      ],
+      "completion": "partiel",
+      "reserves": [
+        "9 hypothèses produit, toutes UNVALIDATED : état normal à l activité 2, inacceptable à G0.",
+        "HYP-01 porte un critère de falsification incomplet — son seuil dépend de Q4. Le trou est écrit, non comblé par un chiffre inventé.",
+        "HYP-05 n a pas de point de test satisfaisant avant la mise en service : faiblesse structurelle déclarée, non masquée."
+      ],
+      "form_findings": 0,
+      "at": "2026-09-21T16:07:58.430Z"
     }
   ],
   "gates": {},
