@@ -1,0 +1,2 @@
+{"at":"2026-09-21T15:09:20.662Z","event":"ACTIVITY_OPEN","activity":1,"step":"C1.1","actor":"factory-lead"}
+{"at":"2026-09-21T15:09:20.678Z","event":"WP_DECLARED","activity":"1","work_product":"WP-01","path":"product/governance/project.yaml","instance":null,"completion":"partiel","reserves":["product/governance/artifact-schema.yaml : fichier absent — porte « Entrées d'artefacts », « Mapping d'arborescence », « Mapping d'identifiants »","product/governance/workspace-map.yaml : fichier absent — porte « Carte de l'espace de travail »"],"form_findings":2}

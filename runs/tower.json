@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "run": "RUN-2026-09-21",
+  "opened": [
+    {
+      "activity": 1,
+      "step": "C1.1",
+      "actor": "factory-lead",
+      "at": "2026-09-21T15:09:20.662Z"
+    }
+  ],
+  "declared": [
+    {
+      "activity": "1",
+      "work_product": "WP-01",
+      "path": "product/governance/project.yaml",
+      "instance": null,
+      "evidence": [],
+      "completion": "partiel",
+      "reserves": [
+        "product/governance/artifact-schema.yaml : fichier absent — porte « Entrées d'artefacts », « Mapping d'arborescence », « Mapping d'identifiants »",
+        "product/governance/workspace-map.yaml : fichier absent — porte « Carte de l'espace de travail »"
+      ],
+      "form_findings": 2,
+      "at": "2026-09-21T15:09:20.677Z"
+    }
+  ],
+  "gates": {},
+  "baselines": {}
+}
