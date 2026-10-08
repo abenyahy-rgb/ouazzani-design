@@ -6,7 +6,7 @@ allowed-tools: Bash(node:*), mcp__Notion__notion-fetch, mcp__Notion__notion-sear
 
 ## Espace de travail TIRÉ
 
-Si `product/governance/project.yaml` porte `workspace_kind: launchpad`, cet espace est une projection TIRÉE : le workflow du dépôt dépose l'état à chaque push sur la branche par défaut. Toute opération ci-dessous rend « sans objet » avec l'adresse de la page. Ne rien instancier, ne rien relier : committer et pousser.
+Si `product/C1.1-initialisation/governance/project.yaml` porte `workspace_kind: launchpad`, cet espace est une projection TIRÉE : le workflow du dépôt dépose l'état à chaque push sur la branche par défaut. Toute opération ci-dessous rend « sans objet » avec l'adresse de la page. Ne rien instancier, ne rien relier : committer et pousser.
 
 ## Préalable — vérifié AVANT toute écriture
 

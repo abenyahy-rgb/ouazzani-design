@@ -4,7 +4,7 @@
 
 ## WP-16 — Architecture et séquencement des releases
 
-`releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/`
+`C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/`
 
 Cycle de vie : vivante sous contrôle · contrôlé en G0 · R/A : product-lead / Product Owner
 
@@ -29,19 +29,14 @@ REL-pilotage  Voir l'avancement sans appeler personne
   tier pressenti    R2  (accès aux données de chantier)
 ```
 
-## WP-17 — Pack de preuves G0
+## WP-17 — Décision G0 et fermeture d'apprentissage
 
-`gates/g0-product-architecture.md · spine-manifest.yaml`
+`C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml`
 
 Cycle de vie : figé · contrôlé en G0 · R/A : factory-lead / Product Owner
 
-Assemblé, jamais pré-arbitré. Un pack incomplet n'est pas soumis, il est renvoyé.
+L'assemblage est DÉRIVÉ, il ne se recopie plus. Les éléments de charte viennent des livrables qui les portent, les résultats de contrôle des contrôles eux-mêmes, les verdicts des critics, et la décision — motif, autorité, date, commit — du Run Ledger où la tour l'a inscrite au franchissement. Recopier à la main ce que la machine sait déjà produisait un document qui pouvait CONTREDIRE ses propres sources, et c'est le seul document qu'un gate lit. Reste ici ce qu'aucune machine ne sait écrire : ce que ce passage nous a appris.
 
-- **Les huit éléments de la charte G0** — squelette · socle exécutable + commit · navigation, IA, glossaire · sémantique · fondations DS · architecture de releases · séquencement · verdicts
-- **Résultats des contrôles K1, K2, K3**
-- **Verdicts critic(product) et critic(domaine)** — consolidés par sévérité
-- **Niveau d'evidence par élément** — EMPIRICAL sur le parcours le plus incertain
-- **Décision, motif, autorité, date, commit**
 - **Fermeture d'apprentissage** — ce qui a coûté · ce qui a surpris · ce qu'un agent aurait dû détecter
 
 **Complétude.** Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable.
@@ -64,7 +59,7 @@ Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a pr
 
 ## WP-19 — Brief de conception
 
-`releases/{release-id}/design-brief.md`
+`releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
 
 Cycle de vie : vivant · contrôlé en K1 et G1 · R/A : product-lead / product-designer
 
@@ -78,5 +73,9 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 - **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, SYNTHETIC ou UNVALIDATED
 - **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
 - **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 16
+- **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog
+- **JRN-nn parcours cibles** — trace vers STG et REL
+- **Conformité au socle attestée** — ordre et vocabulaire inchangés
+- **Besoins de modification du socle** — routés vers G0 (EX3), jamais appliqués ici
 
 **Complétude.** Les trois questions non négociables sont renseignées. Les questions manquantes ont fait l'objet d'une salve unique de quatre au maximum. Toute hypothèse posée a son point de test.

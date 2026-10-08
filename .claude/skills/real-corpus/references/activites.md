@@ -10,7 +10,7 @@
 
 **Vérification.** Chaque enregistrement porte adresse, date de lecture et citation littérale — sans les trois il est UNVALIDATED, jamais une valeur plausible. Deux sources indépendantes sur tout fait structurant ; trois pages qui citent le même communiqué sont UNE source. Aucun enregistrement fabriqué, sous aucun prétexte de déblocage d'aval. Un champ non sourçable est rendu ABSENT et l'interface le dira, jamais rempli d'une valeur vraisemblable. La couverture est MESURÉE contre le squelette, pas appréciée. Verdict de recevabilité rendu par critic(domaine), jamais par le producteur du corpus.
 
-**Sortie.** data/corpus/ commité, provenance complète, couverture chiffrée et écarts nommés. Aucune fixture ne subsiste sur un chemin servi à un livrable de design ou de produit.
+**Sortie.** C1.3-parcours/corpus/ commité, provenance complète, couverture chiffrée et écarts nommés. Aucune fixture ne subsiste sur un chemin servi à un livrable de design ou de produit.
 
 Responsible : `data-steward` · Accountable : `Product Owner` · Cadence C1, étape C1.3
 

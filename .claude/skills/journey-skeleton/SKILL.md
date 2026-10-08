@@ -24,8 +24,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-08 — Recherche et synthèse utilisateur | `research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
-| WP-09 — Squelette de parcours cible | `design/spine/journey-skeleton.md · stages/` | G0 |
+| WP-08 — Recherche et synthèse utilisateur | `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
+| WP-09 — Squelette de parcours cible | `C1.3-parcours/spine/journey-skeleton.md · stages/` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -38,6 +38,8 @@ Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant
 Partir du squelette rendu par `apf template <WP-nn>` : il porte les sections du registre dans l'ordre, la règle et le guide de chacune, et le critère de complétude. Ne jamais renommer ni omettre un H2 — le titre est une clé.
 
 Chaque livrable existe au chemin déclaré, porte toutes les sections de son plan de contenu et satisfait son critère de complétude. Exécuter `apf check` avant de rendre la main.
+
+**Format Office.** `factory_declare` écrit le livrable en PowerPoint ou Word dans `dist/livrables/` (champ `office` de la réponse). En cas d'erreur : `apf livrable <WP-nn>`. Ne jamais l'éditer à la main : il est calculé depuis le Markdown.
 
 Puis projeter chaque livrable dans l'espace de travail lisible. **Si WP-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
 

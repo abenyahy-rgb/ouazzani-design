@@ -1,15 +1,45 @@
 ---
-name: bootstrap-product
-description: "Initialiser l'arborescence, le registre canonique, les conventions d'identifiants et le Run Ledger, de façon idempotente et SANS QUESTION à l'humain : tout se calcule depuis le registre et le dépôt. Utiliser à l'activité 1 de la méthode — Atelier produit et ouverture."
+name: atelier-produit
+description: "Conduire l'atelier produit de l'ouverture UNE QUESTION À LA FOIS : ce qu'on veut faire du produit, pour qui, quelle valeur, comment elle arrive et se paie, bloc par bloc du canevas, jusqu'à un récapitulatif confirmé. Utiliser à l'activité 1 de la méthode — Atelier produit et ouverture."
 ---
 
-# bootstrap-product
+# atelier-produit
 
 > Fichier **généré** depuis `core/method.yaml`. Ne pas éditer à la main.
 
 ## Mandat
 
-Initialiser l'arborescence, le registre canonique, les conventions d'identifiants et le Run Ledger, de façon idempotente et SANS QUESTION à l'humain : tout se calcule depuis le registre et le dépôt. Ne produit jamais de contenu, et ne commence qu'une fois l'atelier produit confirmé.
+Conduire l'atelier produit de l'ouverture UNE QUESTION À LA FOIS : ce qu'on veut faire du produit, pour qui, quelle valeur, comment elle arrive et se paie, bloc par bloc du canevas, jusqu'à un récapitulatif confirmé. Ne fait pas : poser une question technique — stack, dépôt, conventions, arborescence se calculent —, répondre à la place de l'humain, ni rédiger le canevas avant la confirmation finale.
+
+## Conduite — Une question à la fois
+
+Un atelier mené en questionnaire se remplit en diagonale : le canevas ressemble à un produit sans en être un. Une seule question, avec sa réponse recommandée, obtient une décision ; la suivante se choisit en sachant ce qui vient d'être tranché.
+
+**Où.** Dans la conversation principale, jamais dans un sous-agent : un sous-agent ne peut pas attendre la réponse de l'humain. Le product-lead rédige ensuite le canevas à partir du journal.
+
+1. UNE seule question par message : ni liste numérotée, ni « et aussi », ni post-scriptum.
+2. Le produit d'abord, la technique jamais : aucune question sur la stack, le dépôt, l'hébergement ou les conventions — cela se calcule.
+3. Ordre : intention, segment, problème, proposition de valeur, puis canaux, relation, revenus, ressources, activités, partenaires, coûts, avantage, indicateurs. Sauter un bloc déjà tranché.
+4. Chaque question : titre court, pourquoi elle compte maintenant, la question, la réponse recommandée et son motif.
+5. Réponse fermée — deux à quatre options — : questions structurées du harness, une par appel, la recommandée en premier. Sinon en texte, une seule.
+6. Attendre la réponse ; ne jamais la supposer pour gagner un tour.
+7. Après chaque réponse, une ligne d'accusé — tranché, ou HYP-nn UNVALIDATED — au Journal d'atelier, avant la question suivante.
+8. « Je ne sais pas » : proposer une HYP-nn et ce qui la trancherait, validée par une question fermée.
+9. Afficher la place : « Question 4 · Proposition de valeur · 9 blocs restants ».
+10. Canevas complet : un récapitulatif unique, puis une seule demande de confirmation. Rien n'est rédigé avant.
+
+Format d'une question en texte :
+
+```
+Question 3 · 5 branches ouvertes
+**<titre court>** — <pourquoi elle compte maintenant, en une phrase>
+<la question>
+➡️ Recommandé : <la réponse> — <son motif>
+```
+
+Si `grill-me` ou `grilling` est chargé pendant l'activité, garder son arbre de décisions et sa frontière, **jamais son format en tours** : cette conduite prime.
+
+**Cette conduite est contrôlée.** Un appel au mécanisme de questions structurées qui porte plusieurs questions est refusé ; un tour dont le texte en pose plusieurs est renvoyé une fois pour n'en garder qu'une. Une phrase rhétorique terminée par « ? » compte : l'écrire en affirmation. Une question rapportée entre guillemets, en citation ou dans un bloc de code ne compte pas.
 
 ## Activités outillées
 

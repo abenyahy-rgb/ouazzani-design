@@ -4,7 +4,7 @@
 
 ## WP-11 — Navigation, architecture de l'information et terminologie
 
-`design/spine/navigation.md · information-architecture.md · glossaire-utilisateur.md`
+`C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
 Cycle de vie : CORE INVARIANT · contrôlé en G0 · R/A : product-designer / Product Owner
 
@@ -19,7 +19,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 ## WP-12 — Modèle de données vivant
 
-`data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
+`C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 
 Cycle de vie : vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint · contrôlé en G0 · R/A : product-lead / Product Owner
 

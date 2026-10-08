@@ -31,6 +31,8 @@ Vérifier que les artefacts d'entrée déclarés par l'activité existent avant 
 
 Si un input est présent mais **sous-spécifié**, poser une seule salve de quatre questions au maximum avant toute production. Sans réponse, procéder sous hypothèses explicitement nommées et étiquetées `UNVALIDATED`, chacune devenant un point de test en aval.
 
+**Activité 1 — une question à la fois.** L'interrogatoire se conduit dans la conversation principale, par le skill `atelier-produit`, jamais dans ce sous-agent : un sous-agent ne peut pas attendre la réponse de l'humain. Ce rôle reçoit le Journal d'interrogatoire confirmé et rédige à partir de lui ; il ne pose pas les questions.
+
 ## Evidence et handover
 
 Un handover ne signifie pas « tâche terminée ». Il signifie que les sorties sont versionnées aux chemins déclarés au registre, que les vérifications de l'activité ont été exécutées, que les écarts et les unknowns sont visibles, et que le destinataire peut poursuivre sans reconstruire un contexte resté dans la tête de l'agent.

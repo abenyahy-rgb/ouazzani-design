@@ -1,6 +1,6 @@
 ---
 name: release-architecture
-description: "Découper le produit en releases désirables, livrables et mesurables seules ; les ordonner ; qualifier dépendances et risques ; arrêter le périmètre et les métriques de chacune. Utiliser aux activités 10, 11 de la méthode — Découpage et séquencement des releases · Périmètre et métriques de la release."
+description: "Découper le produit en releases désirables, livrables et mesurables seules ; les ordonner ; qualifier dépendances et risques ; arrêter le périmètre et les métriques de chacune. Utiliser aux activités 10, 11 de la méthode — Découpage et séquencement des releases · Périmètre, métriques et discovery ciblée de la release."
 ---
 
 # release-architecture
@@ -16,7 +16,7 @@ Découper le produit en releases désirables, livrables et mesurables seules ; l
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 10 | Découpage et séquencement des releases | `product-lead` | `Product Owner` |
-| 11 | Périmètre et métriques de la release | `product-lead` | `Product Owner` |
+| 11 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -24,10 +24,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-16 — Architecture et séquencement des releases | `releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/` | G0 |
-| WP-17 — Pack de preuves G0 | `gates/g0-product-architecture.md · spine-manifest.yaml` | G0 |
+| WP-16 — Architecture et séquencement des releases | `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/` | G0 |
+| WP-17 — Décision G0 et fermeture d'apprentissage | `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml` | G0 |
 | WP-18 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
-| WP-19 — Brief de conception | `releases/{release-id}/design-brief.md` | K1 et G1 |
+| WP-19 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -40,6 +40,8 @@ Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant
 Partir du squelette rendu par `apf template <WP-nn>` : il porte les sections du registre dans l'ordre, la règle et le guide de chacune, et le critère de complétude. Ne jamais renommer ni omettre un H2 — le titre est une clé.
 
 Chaque livrable existe au chemin déclaré, porte toutes les sections de son plan de contenu et satisfait son critère de complétude. Exécuter `apf check` avant de rendre la main.
+
+**Format Office.** `factory_declare` écrit le livrable en PowerPoint ou Word dans `dist/livrables/` (champ `office` de la réponse). En cas d'erreur : `apf livrable <WP-nn>`. Ne jamais l'éditer à la main : il est calculé depuis le Markdown.
 
 Puis projeter chaque livrable dans l'espace de travail lisible. **Si WP-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
 

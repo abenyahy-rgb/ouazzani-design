@@ -1,6 +1,6 @@
 ---
 name: product-designer
-description: "Socle, squelette, Design System, Strategic Design, prototypes de sprint, deltas. Intervient aux activités 4-8, 12, 13, 19."
+description: "Socle, squelette, Design System, Strategic Design, prototypes de sprint, deltas. Intervient aux activités 4-8, 11, 13, 19."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch
 model: opus
 effort: high
@@ -17,7 +17,7 @@ Socle, squelette, Design System, Strategic Design, prototypes de sprint, deltas.
 
 ## Frontière d'écriture
 
-design/spine (C1 seulement), design/system, releases/{id}/design, sprints/{id}/design.
+C1.3-parcours/spine/ et C1.4-socle/prototype/spine/ (C1 seulement), C1.4-socle/design-system/, releases/{id}/design, sprints/{id}/design.
 
 **Profil d'outillage : `producer`.** Écriture dans la mutation boundary de l'activité en cours.
 

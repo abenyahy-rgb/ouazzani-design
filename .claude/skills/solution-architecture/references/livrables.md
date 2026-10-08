@@ -4,7 +4,7 @@
 
 ## WP-14 — Architecture technique cible
 
-`architecture/target-architecture.md · integration-boundaries.md · data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md`
+`C1.4-socle/architecture/target-architecture.md · integration-boundaries.md · data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md`
 
 Cycle de vie : CORE INVARIANT · contrôlé en G0 · R/A : principal-engineer / autorité Tech
 
@@ -22,7 +22,7 @@ Ce qui est cher à changer côté technique. Le pendant exact du socle de design
 
 ## WP-15 — Décisions structurantes et build-vs-buy
 
-`decisions/adr/ · build-vs-buy.md`
+`C1.4-socle/decisions/adr/ · build-vs-buy.md`
 
 Cycle de vie : CORE INVARIANT ou EXTENSION selon la décision · contrôlé en G0 · R/A : principal-engineer / autorité Tech
 

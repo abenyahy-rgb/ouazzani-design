@@ -4,7 +4,7 @@
 
 ## WP-08 — Recherche et synthèse utilisateur
 
-`research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/`
+`C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/`
 
 Cycle de vie : vivant · contrôlé en G0 · R/A : product-designer / Product Owner
 
@@ -21,7 +21,7 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 
 ## WP-09 — Squelette de parcours cible
 
-`design/spine/journey-skeleton.md · stages/`
+`C1.3-parcours/spine/journey-skeleton.md · stages/`
 
 Cycle de vie : figé en G0 · contrôlé en G0 · R/A : product-designer / Product Owner
 

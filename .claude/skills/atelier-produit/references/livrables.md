@@ -1,4 +1,4 @@
-# bootstrap-product — livrables
+# atelier-produit — livrables
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 

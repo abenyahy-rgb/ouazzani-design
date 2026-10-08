@@ -24,8 +24,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-14 — Architecture technique cible | `architecture/target-architecture.md · integration-boundaries.md · data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md` | G0 |
-| WP-15 — Décisions structurantes et build-vs-buy | `decisions/adr/ · build-vs-buy.md` | G0 |
+| WP-14 — Architecture technique cible | `C1.4-socle/architecture/target-architecture.md · integration-boundaries.md · data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md` | G0 |
+| WP-15 — Décisions structurantes et build-vs-buy | `C1.4-socle/decisions/adr/ · build-vs-buy.md` | G0 |
 | WP-22 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
 | WP-23 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
 
@@ -40,6 +40,8 @@ Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant
 Partir du squelette rendu par `apf template <WP-nn>` : il porte les sections du registre dans l'ordre, la règle et le guide de chacune, et le critère de complétude. Ne jamais renommer ni omettre un H2 — le titre est une clé.
 
 Chaque livrable existe au chemin déclaré, porte toutes les sections de son plan de contenu et satisfait son critère de complétude. Exécuter `apf check` avant de rendre la main.
+
+**Format Office.** `factory_declare` écrit le livrable en PowerPoint ou Word dans `dist/livrables/` (champ `office` de la réponse). En cas d'erreur : `apf livrable <WP-nn>`. Ne jamais l'éditer à la main : il est calculé depuis le Markdown.
 
 Puis projeter chaque livrable dans l'espace de travail lisible. **Si WP-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
 

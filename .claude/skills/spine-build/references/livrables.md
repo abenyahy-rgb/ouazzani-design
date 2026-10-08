@@ -4,7 +4,7 @@
 
 ## WP-10 — Fondations du Design System
 
-`design/system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html`
+`C1.4-socle/design-system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html`
 
 Cycle de vie : cumulatif, jamais forké · contrôlé en G0 · R/A : product-designer / Product Owner
 
@@ -23,7 +23,7 @@ Les éléments visuels réutilisables et leurs règles. Enrichis à chaque relea
 
 ## WP-11 — Navigation, architecture de l'information et terminologie
 
-`design/spine/navigation.md · information-architecture.md · glossaire-utilisateur.md`
+`C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
 Cycle de vie : CORE INVARIANT · contrôlé en G0 · R/A : product-designer / Product Owner
 
@@ -38,7 +38,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 ## WP-12 — Modèle de données vivant
 
-`data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
+`C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 
 Cycle de vie : vivant sous contrôle — noyau CORE INVARIANT figé en G0, couche dérivée régénérée à chaque sprint · contrôlé en G0 · R/A : product-lead / Product Owner
 
@@ -64,34 +64,23 @@ Catégories de vérité  (disjointes)
 Propagation  ESTIMÉ + CONSTATÉ = ESTIMÉ.  Jamais CONSTATÉ.
 ```
 
-## WP-13 — Socle exécutable
+## WP-13 — Socle exécutable et prototype vivant
 
-`design/spine/src/ · dist/index.html · spine.yaml`
+`C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml`
 
 Cycle de vie : figé en G0 · contrôlé en G0 · R/A : product-designer / Product Owner
 
-Le socle navigable en très haute fidélité structurelle : toutes les étapes existent, la navigation fonctionne, le vocabulaire est réel, le détail des écrans ne l'est pas encore.
+Le socle navigable en très haute fidélité structurelle — toutes les étapes existent, la navigation fonctionne, le vocabulaire est réel — ET son état courant composé : socle ⊕ deltas de release ⊕ deltas de sprint. Un socle figé en G0 et un produit au sprint 5 ne sont pas deux livrables : c'est le même artefact vu à deux dates, et les tenir séparés obligeait à maintenir deux vérités.
 
 - **Source exécutable** — sur la STACK DE CONCEPTION déclarée en WP-15, et sur la base de composants qu'elle nomme — jamais une chaîne de rendu écrite pour ce produit seul
 - **Build et URL de preview DÉPLOYÉE** — déployée, pas seulement buildable : une URL que le métier ouvre sans rien installer. Un fichier local à ouvrir depuis un dépôt n'est pas une preview, c'est une pièce jointe
 - **Couverture du squelette** — chaque STG atteignable
 - **Liaison au corpus réel** — le socle lit WP-40 ; le chemin de données est nommé et vérifiable. AUCUNE fixture atteignable depuis ce livrable
 - **Rendu des champs ABSENTS** — un champ que le corpus ne source pas est rendu comme absent et dit pourquoi — jamais comblé par une valeur vraisemblable
-
-**Complétude.** Se parcourt de bout en bout sans écran mort. S'ouvre à une URL déployée. Le contenu vient de WP-40 : zéro fixture sur le chemin de données, point ÉLIMINATOIRE. Un socle conforme sur données inventées a déjà franchi G0 une fois — il n'a rien prouvé et a coûté une cadence entière.
-
-## WP-39 — Prototype vivant
-
-`design/current/index.html · manifest.yaml · unsubordinated.md · deltas.yaml`
-
-Cycle de vie : composé, régénéré à chaque sprint — jamais écrit à la main · contrôlé en G0 · R/A : product-designer / Product Owner
-
-L'état courant du produit, en un seul endroit ouvrable. La méthode gelait trois prototypes à trois niveaux — socle en G0, Strategic Design en G1, tranche de sprint en K1 — et aucun ne représente le produit au sprint 5 de la release 2 : le socle est périmé, le Strategic Design aussi, la tranche de sprint ne couvre que les écrans impactés. Le prototype vivant est leur COMPOSITION, dans l'ordre socle puis deltas de release puis deltas de sprint. Ce n'est pas un quatrième prototype à maintenir : il est calculé, donc il ne peut pas mentir.
-
 - **Composition** — socle ⊕ deltas de release ⊕ deltas de sprint, appliqués dans l'ordre — aucun écran écrit directement ici
 - **Manifeste de composition** — commit du socle, baseline de release, liste ordonnée des deltas de sprint appliqués, horodatage
 - **Couverture du squelette** — chaque STG reste atteignable après composition — un delta qui casse une étape est un défaut de subordination
 - **Écarts non subordonnés** — tout écran présent après composition qui ne trace ni vers une étape du socle ni vers un delta déclaré est listé : un design non autorisé, pas une nouveauté
 - **URL de preview courante** — une seule, celle que le métier ouvre
 
-**Complétude.** Régénéré par build, jamais édité : une édition directe est détectée par recomposition et comparaison. Manifeste présent et daté du dernier sprint clos. Zéro écart non subordonné. Chaque STG atteignable.
+**Complétude.** Se parcourt de bout en bout sans écran mort. S'ouvre à une URL déployée. Le contenu vient de WP-40 : zéro fixture sur le chemin de données, point ÉLIMINATOIRE. Un socle conforme sur données inventées a déjà franchi G0 une fois — il n'a rien prouvé et a coûté une cadence entière.

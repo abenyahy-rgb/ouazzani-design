@@ -1,4 +1,4 @@
-# bootstrap-product — activités outillées
+# atelier-produit — activités outillées
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 

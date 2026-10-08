@@ -25,11 +25,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-10 — Fondations du Design System | `design/system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html` | G0 |
-| WP-11 — Navigation, architecture de l'information et terminologie | `design/spine/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
-| WP-12 — Modèle de données vivant | `data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
-| WP-13 — Socle exécutable | `design/spine/src/ · dist/index.html · spine.yaml` | G0 |
-| WP-39 — Prototype vivant | `design/current/index.html · manifest.yaml · unsubordinated.md · deltas.yaml` | G0 |
+| WP-10 — Fondations du Design System | `C1.4-socle/design-system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html` | G0 |
+| WP-11 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
+| WP-12 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
+| WP-13 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -50,6 +49,8 @@ Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre qu
 Partir du squelette rendu par `apf template <WP-nn>` : il porte les sections du registre dans l'ordre, la règle et le guide de chacune, et le critère de complétude. Ne jamais renommer ni omettre un H2 — le titre est une clé.
 
 Chaque livrable existe au chemin déclaré, porte toutes les sections de son plan de contenu et satisfait son critère de complétude. Exécuter `apf check` avant de rendre la main.
+
+**Format Office.** `factory_declare` écrit le livrable en PowerPoint ou Word dans `dist/livrables/` (champ `office` de la réponse). En cas d'erreur : `apf livrable <WP-nn>`. Ne jamais l'éditer à la main : il est calculé depuis le Markdown.
 
 Puis projeter chaque livrable dans l'espace de travail lisible. **Si WP-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
 

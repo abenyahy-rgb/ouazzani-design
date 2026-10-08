@@ -1,6 +1,6 @@
 ---
 name: domain-critic
-description: "Instancier un critic métier depuis le gabarit : qualifier l'industrie, collecter et DATER les sources, appliquer l'échelle épistémique, éprouver le critic sur un cas connu vérifiable indépendamment. Utiliser aux activités 3 de la méthode — Domaine et critic métier."
+description: "Instancier un critic métier depuis le gabarit : qualifier l'industrie, collecter et DATER les sources, appliquer l'échelle épistémique, éprouver le critic sur un cas connu vérifiable indépendamment. Utiliser à l'activité 3 de la méthode — Domaine et critic métier."
 ---
 
 # domain-critic
@@ -23,8 +23,7 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-06 — Profil de domaine et sources approuvées | `domain/domain-profile.md · sources.md · rules.md` | G0 |
-| WP-07 — Définition du critic métier | `domain/critic-definition.md · critic-sources.md` | G0 |
+| WP-06 — Profil de domaine, sources approuvées et recevabilité | `C1.2-strategie/domain/domain-profile.md · sources.md · rules.md · critic-definition.md · critic-sources.md` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -37,6 +36,8 @@ Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant
 Partir du squelette rendu par `apf template <WP-nn>` : il porte les sections du registre dans l'ordre, la règle et le guide de chacune, et le critère de complétude. Ne jamais renommer ni omettre un H2 — le titre est une clé.
 
 Chaque livrable existe au chemin déclaré, porte toutes les sections de son plan de contenu et satisfait son critère de complétude. Exécuter `apf check` avant de rendre la main.
+
+**Format Office.** `factory_declare` écrit le livrable en PowerPoint ou Word dans `dist/livrables/` (champ `office` de la réponse). En cas d'erreur : `apf livrable <WP-nn>`. Ne jamais l'éditer à la main : il est calculé depuis le Markdown.
 
 Puis projeter chaque livrable dans l'espace de travail lisible. **Si WP-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
 

@@ -14,17 +14,17 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.3
 
-## Activité 12 — Discovery et parcours cibles
+## Activité 11 — Périmètre, métriques et discovery ciblée de la release
 
-**Entrée.** Périmètre arrêté ; recherche fondatrice disponible ; squelette et navigation figés.
+**Entrée.** G0 franchi ; release identifiée dans l'architecture.
 
-**Tâche.** Compléter la recherche sur les seuls parcours couverts, puis détailler les parcours cibles à l'intérieur du squelette figé.
+**Tâche.** Définir le périmètre désirable le plus petit qui tienne debout seul, ce qui en est exclu, et comment on saura que la release a produit l'effet attendu. Compléter dans le même mouvement la recherche sur les SEULS parcours couverts, puis détailler les parcours cibles à l'intérieur du squelette figé.
 
-**Vérification.** Recherche strictement limitée au périmètre. Les parcours s'inscrivent dans le squelette sans en modifier l'ordre ni le vocabulaire. Tout besoin de modification routé vers G0.
+**Vérification.** Le brief est renseigné par une recherche, pas l'inverse. Il tenait auparavant à l'étape précédente et la discovery à la suivante : on arrêtait donc un périmètre avant d'avoir cherché ce qui devait le déterminer. Chaque parcours cible se raccroche à une étape du squelette figé — aucun parcours hors squelette.
 
-**Sortie.** Insights et journeys/to-be commités.
+**Sortie.** scope.md, exclusions.md, success-metrics.md, design-brief.md, research/insights.md et research/journeys/to-be/ commités.
 
-Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.2
+Responsible : `product-lead et product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.1
 
 ## Activité 16 — Validation utilisateurs et convergence
 

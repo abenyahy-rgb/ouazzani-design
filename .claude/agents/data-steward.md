@@ -17,7 +17,7 @@ Acquérir, sourcer et tenir le CORPUS RÉEL du produit — les données que le p
 
 ## Frontière d'écriture
 
-data/corpus/ et design/spine/src/data/. Aucune écriture dans design/system, design/spine/src/build ni dans un artefact de stratégie.
+C1.3-parcours/corpus/ et C1.4-socle/prototype/spine/src/data/. Aucune écriture dans C1.4-socle/design-system/, C1.4-socle/prototype/spine/src/build ni dans un artefact de stratégie.
 
 **Profil d'outillage : `producer`.** Écriture dans la mutation boundary de l'activité en cours.
 

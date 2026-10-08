@@ -73,7 +73,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/project.yaml",
+      "path": "product/C1.1-initialisation/governance/project.yaml",
       "instance": null,
       "evidence": [],
       "completion": "partiel",
@@ -87,7 +87,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/artifact-schema.yaml",
+      "path": "product/C1.1-initialisation/governance/artifact-schema.yaml",
       "instance": null,
       "evidence": [
         "apf template verify WP-01 → CONFORME",
@@ -101,7 +101,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/project.yaml",
+      "path": "product/C1.1-initialisation/governance/project.yaml",
       "instance": null,
       "evidence": [
         "apf template verify WP-01 → CONFORME",
@@ -115,7 +115,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/workspace-map.yaml",
+      "path": "product/C1.1-initialisation/governance/workspace-map.yaml",
       "instance": null,
       "evidence": [
         "apf template verify WP-01 → CONFORME",
@@ -129,7 +129,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/existing-system.md",
+      "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -147,7 +147,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/constraints.md",
+      "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -165,7 +165,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/existing-system.md",
+      "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -185,7 +185,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/constraints.md",
+      "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -205,7 +205,7 @@
     {
       "activity": "2",
       "work_product": "WP-03",
-      "path": "product/strategy/product-thesis.md",
+      "path": "product/C1.2-strategie/strategy/product-thesis.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-03 --completion partiel → CONFORME",
@@ -223,7 +223,7 @@
     {
       "activity": "2",
       "work_product": "WP-04",
-      "path": "product/strategy/outcomes.md",
+      "path": "product/C1.2-strategie/strategy/outcomes.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-04 --completion partiel → CONFORME"
@@ -240,7 +240,7 @@
     {
       "activity": "2",
       "work_product": "WP-05",
-      "path": "product/strategy/assumptions.md",
+      "path": "product/C1.2-strategie/strategy/assumptions.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-05 --completion partiel → CONFORME",
@@ -258,7 +258,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/existing-system.md",
+      "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -279,7 +279,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/constraints.md",
+      "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -300,7 +300,7 @@
     {
       "activity": "2",
       "work_product": "WP-03",
-      "path": "product/strategy/product-thesis.md",
+      "path": "product/C1.2-strategie/strategy/product-thesis.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-03 --completion partiel → CONFORME",
@@ -319,7 +319,7 @@
     {
       "activity": "2",
       "work_product": "WP-04",
-      "path": "product/strategy/outcomes.md",
+      "path": "product/C1.2-strategie/strategy/outcomes.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-04 --completion partiel → CONFORME",
@@ -338,7 +338,7 @@
     {
       "activity": "2",
       "work_product": "WP-05",
-      "path": "product/strategy/assumptions.md",
+      "path": "product/C1.2-strategie/strategy/assumptions.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-05 --completion partiel → CONFORME",
@@ -357,7 +357,7 @@
     {
       "activity": "2",
       "work_product": "WP-03",
-      "path": "product/strategy/product-thesis.md",
+      "path": "product/C1.2-strategie/strategy/product-thesis.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-03 --completion partiel → CONFORME",
@@ -377,7 +377,7 @@
     {
       "activity": "2",
       "work_product": "WP-04",
-      "path": "product/strategy/outcomes.md",
+      "path": "product/C1.2-strategie/strategy/outcomes.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-04 --completion partiel → CONFORME",
@@ -397,7 +397,7 @@
     {
       "activity": "2",
       "work_product": "WP-05",
-      "path": "product/strategy/assumptions.md",
+      "path": "product/C1.2-strategie/strategy/assumptions.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-05 --completion partiel → CONFORME",
@@ -417,7 +417,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/constraints.md",
+      "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -436,7 +436,7 @@
     {
       "activity": "3",
       "work_product": "WP-06",
-      "path": "product/domain/domain-profile.md",
+      "path": "product/C1.2-strategie/domain/domain-profile.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-06 --completion partiel → CONFORME",
@@ -456,7 +456,7 @@
     {
       "activity": "3",
       "work_product": "WP-06",
-      "path": "product/domain/sources.md",
+      "path": "product/C1.2-strategie/domain/sources.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-06 --completion partiel → CONFORME",
@@ -476,7 +476,7 @@
     {
       "activity": "3",
       "work_product": "WP-06",
-      "path": "product/domain/rules.md",
+      "path": "product/C1.2-strategie/domain/rules.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-06 --completion partiel → CONFORME",
@@ -496,7 +496,7 @@
     {
       "activity": "3",
       "work_product": "WP-07",
-      "path": "product/domain/critic-definition.md",
+      "path": "product/C1.2-strategie/domain/critic-definition.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-07 --completion partiel → CONFORME",
@@ -515,7 +515,7 @@
     {
       "activity": "3",
       "work_product": "WP-07",
-      "path": "product/domain/critic-sources.md",
+      "path": "product/C1.2-strategie/domain/critic-sources.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-07 --completion partiel → CONFORME",
@@ -534,7 +534,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/artifact-schema.yaml",
+      "path": "product/C1.1-initialisation/governance/artifact-schema.yaml",
       "instance": null,
       "evidence": [
         "apf template verify WP-01 → CONFORME sur le registre 359d6ce",
@@ -549,7 +549,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/project.yaml",
+      "path": "product/C1.1-initialisation/governance/project.yaml",
       "instance": null,
       "evidence": [
         "apf template verify WP-01 → CONFORME sur le registre 359d6ce",
@@ -564,7 +564,7 @@
     {
       "activity": "1",
       "work_product": "WP-01",
-      "path": "product/governance/workspace-map.yaml",
+      "path": "product/C1.1-initialisation/governance/workspace-map.yaml",
       "instance": null,
       "evidence": [
         "apf template verify WP-01 → CONFORME sur le registre 359d6ce",
@@ -579,7 +579,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/existing-system.md",
+      "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -599,7 +599,7 @@
     {
       "activity": "1",
       "work_product": "WP-02",
-      "path": "product/context/constraints.md",
+      "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
         "apf template verify WP-02 --completion partiel → CONFORME",
@@ -619,7 +619,7 @@
     {
       "activity": "4",
       "work_product": "WP-08",
-      "path": "product/research/research-plan.md",
+      "path": "product/C1.3-parcours/research/research-plan.md",
       "instance": null,
       "evidence": [
         "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",
@@ -640,7 +640,7 @@
     {
       "activity": "4",
       "work_product": "WP-08",
-      "path": "product/research/insights.md",
+      "path": "product/C1.3-parcours/research/insights.md",
       "instance": null,
       "evidence": [
         "Protocole écrit AVANT recrutement, 15 questions en 4 blocs, ordre identique pour tous",

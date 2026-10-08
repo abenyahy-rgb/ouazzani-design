@@ -10,7 +10,7 @@
 
 **Vérification.** Le brief de conception est renseigné AVANT la première décision visuelle, et son absence produit BLOCKED — jamais une direction devinée : c'est l'emplacement du goût et des contraintes de l'humain, et une direction décidée sans lui se fait refuser après coup, deux fois s'il le faut. Au moins TROIS directions distinctes sont CONSTRUITES — vraies pages, vrai contenu, chacune engagée à fond — et présentées à l'arbitrage : une direction unique n'est pas un choix, c'est la première idée venue. La direction retenue porte un ADR nommant les alternatives écartées et ce qui les a départagées. Contraste WCAG AA vérifié par outil. Tokens exportables en CSS et JSON. Chaque composant expose les 7 états. Catalogue exécutable. Mode de surface déclaré. Plancher de craft lu immédiatement avant toute édition d'interface, et ses bans absolus vérifiés un à un : une fondation qui les enfreint n'est pas une variante de goût.
 
-**Sortie.** design/system/ commité ; catalogue navigable ; brief de conception et ADR de direction présents ; explorations écartées conservées, jamais supprimées — c'est la preuve qu'un choix a eu lieu.
+**Sortie.** C1.4-socle/design-system/ commité ; catalogue navigable ; brief de conception et ADR de direction présents ; explorations écartées conservées, jamais supprimées — c'est la preuve qu'un choix a eu lieu.
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 

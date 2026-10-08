@@ -4,7 +4,7 @@
 
 ## WP-08 — Recherche et synthèse utilisateur
 
-`research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/`
+`C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/`
 
 Cycle de vie : vivant · contrôlé en G0 · R/A : product-designer / Product Owner
 
@@ -19,20 +19,44 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 
 **Complétude.** Aucun insight sans observation source. Niveau d'evidence étiqueté sur chaque résultat. Personas challengés par critic(product).
 
-## WP-20 — Discovery ciblée et parcours cibles
+## WP-18 — Périmètre désirable et métriques de la release
 
-`releases/{release-id}/research/insights.md · journeys/to-be/`
+`releases/{release-id}/scope.md · exclusions.md · success-metrics.md`
 
-Cycle de vie : figé en G1 · contrôlé en G1 · R/A : product-designer / Product Owner
+Cycle de vie : figé en G1 · contrôlé en G1 · R/A : product-lead / Product Owner
 
-Complète la recherche sur les seuls parcours de la release, puis les détaille à l'intérieur du squelette figé.
+Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a produit l'effet attendu.
 
+- **Périmètre désirable**
+- **Exclusions** — écrites aussi précisément que les inclusions
+- **Étapes du squelette couvertes** — exactement celles affectées, ni plus ni moins
+- **Les trois tests, démontrés**
+- **Métriques de succès** — une par outcome, avec méthode de mesure et source de donnée
+
+**Complétude.** Le périmètre couvre exactement les étapes affectées. Aucune métrique non instrumentable avec ce que la release livre.
+
+## WP-19 — Brief de conception
+
+`releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
+
+Cycle de vie : vivant · contrôlé en K1 et G1 · R/A : product-lead / product-designer
+
+Contrat d'entrée des activités de conception. Un brief n'est jamais absent : il est sous-spécifié, et un designer autonome comble alors par inférence silencieuse.
+
+- **Sujet concret** — pas la catégorie — le vernaculaire du métier
+- **Utilisateur et conditions matérielles** — écran de chantier au soleil ≠ tableau de bord de bureau
+- **Job principal de l'écran ou du parcours**
+- **Ce que le socle fige déjà** — NON NÉGOCIABLE — la réponse est dans le dépôt
+- **Directions rejetées et pourquoi**
+- **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, SYNTHETIC ou UNVALIDATED
+- **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
+- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 16
 - **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog
 - **JRN-nn parcours cibles** — trace vers STG et REL
 - **Conformité au socle attestée** — ordre et vocabulaire inchangés
 - **Besoins de modification du socle** — routés vers G0 (EX3), jamais appliqués ici
 
-**Complétude.** Les parcours s'inscrivent dans le squelette sans en modifier l'ordre ni le vocabulaire. Aucun écart au socle non routé.
+**Complétude.** Les trois questions non négociables sont renseignées. Les questions manquantes ont fait l'objet d'une salve unique de quatre au maximum. Toute hypothèse posée a son point de test.
 
 ## WP-25 — Validation utilisateurs et convergence
 

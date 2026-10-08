@@ -45,16 +45,13 @@ Cycle de vie : vivant · contrôlé en G3 · R/A : principal-engineer / autorit�
 
 Rend visible tout écart entre ce qui était spécifié et ce qui est implémenté. L'absorption silencieuse est le défaut que ce livrable existe pour empêcher.
 
-- **Avancement par story**
 - **Écarts spec / implémentation** — classés : manquant · partiel · contredit · non demandé · intentionnellement superseded
-- **Mutation boundary respectée**
-- **NEEDS CLARIFICATION levés en cours de build** — marqués, jamais devinés
 
 **Complétude.** Tout écart classé. Aucune absorption silencieuse (EX4). Commits atomiques, tests locaux verts avant push.
 
 ## WP-33 — Stratégie, résultats et classification de tests
 
-`releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md · test-healing-decisions.md`
+`releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md · releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md · releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md · releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md`
 
 Cycle de vie : par sprint · contrôlé en G3 · R/A : quality-engineer produit · critic(quality) classe / factory-lead
 
@@ -65,6 +62,10 @@ Deux livrables distincts sous un même dossier : la preuve, produite par le qual
 - **VERDICT DE CLASSIFICATION** — PASS · PRODUCT FAILURE · TEST FAILURE · CANNOT VERIFY — rendu par critic(quality), jamais par le producteur du test
 - **Décisions de healing** — chacune déclarant sa cause ; un défaut produit n'est JAMAIS healed
 - **Re-vérifications indépendantes** — obligatoires avant fermeture d'un healing
+- **Matrice baseline — spec — code — tests — décisions** — complète, chaque écart classé
+- **Parcours métier critiques exécutés sur la preview** — pas seulement en test automatisé
+- **URL de preview et commit**
+- **Dette et risques résiduels acceptés** — nommés, avec échéance et porteur
 
 **Complétude.** Chaque AC matériel tracé vers une evidence exécutée. Classification rendue par critic(quality). Aucun PRODUCT FAILURE masqué. Trois healings sur le même AC = défaut produit non diagnostiqué, escalade N1.
 
