@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-11 — Navigation, architecture de l'information et terminologie
+## WP-08 — Navigation, architecture de l'information et terminologie
 
 `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
@@ -17,7 +17,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 **Complétude.** Chaque terme testé auprès d'un persona. La navigation couvre toutes les étapes. Figé par tag Git immuable.
 
-## WP-12 — Modèle de données vivant
+## WP-09 — Modèle de données vivant
 
 `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 
@@ -45,7 +45,7 @@ Catégories de vérité  (disjointes)
 Propagation  ESTIMÉ + CONSTATÉ = ESTIMÉ.  Jamais CONSTATÉ.
 ```
 
-## WP-22 — Solution design de la release
+## WP-18 — Solution design de la release
 
 `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md`
 
@@ -62,7 +62,7 @@ Comment les parcours de cette release se réalisent dans le socle technique. Le 
 
 **Complétude.** S'inscrit dans le socle technique sans modifier un CORE INVARIANT. Chaque contrat d'interface est testable.
 
-## WP-23 — Dépendances, risques techniques et tiers
+## WP-19 — Dépendances, risques techniques et tiers
 
 `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md`
 
@@ -78,7 +78,7 @@ L'entrée technique que l'activité 19 exigeait sans jamais l'avoir. Un backlog 
 
 **Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 19 est BLOCKED — input manquant.
 
-## WP-31 — Spécification fonctionnelle et technique
+## WP-26 — Spécification fonctionnelle et technique
 
 `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md`
 

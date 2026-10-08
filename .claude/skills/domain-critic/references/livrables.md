@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-06 — Profil de domaine, sources approuvées et recevabilité
+## WP-03 — Profil de domaine, sources approuvées et recevabilité
 
 `C1.2-strategie/domain/domain-profile.md · sources.md · rules.md · critic-definition.md · critic-sources.md`
 

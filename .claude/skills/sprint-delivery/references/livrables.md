@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-29 — Sprint goal et plan
+## WP-24 — Sprint goal et plan
 
 `releases/{release-id}/sprints/{sprint-id}/candidate-scope.md · sprint-goal.md · sprint-plan.md · risks.md`
 
@@ -19,7 +19,7 @@ Ce que le sprint doit produire, formulé en résultat utilisateur. L'acceptance 
 
 **Complétude.** Sprint Goal formulé en résultat utilisateur. Capacité confrontée au périmètre. Run Ledger ouvert (K8).
 
-## WP-31 — Spécification fonctionnelle et technique
+## WP-26 — Spécification fonctionnelle et technique
 
 `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md`
 
@@ -37,7 +37,7 @@ Le contrat d'implémentation. Figé avec la Design Baseline par un contrôle aut
 
 **Complétude.** Carte AC → Evidence complète (K3). Un AC matériel sans evidence planifiée est un motif de refus, jamais une réserve. Escalade humaine si le delta touche le socle ou si le tier est R2/R3.
 
-## WP-32 — Journal de build et écarts de périmètre
+## WP-27 — Journal de build et écarts de périmètre
 
 `releases/{release-id}/sprints/{sprint-id}/status.md · scope-changes.md`
 
@@ -49,7 +49,7 @@ Rend visible tout écart entre ce qui était spécifié et ce qui est implément
 
 **Complétude.** Tout écart classé. Aucune absorption silencieuse (EX4). Commits atomiques, tests locaux verts avant push.
 
-## WP-33 — Stratégie, résultats et classification de tests
+## WP-28 — Stratégie, résultats et classification de tests
 
 `releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md · releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md · releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md · releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md`
 

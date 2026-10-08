@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-08 — Recherche et synthèse utilisateur
+## WP-04 — Recherche et synthèse utilisateur
 
 `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/`
 
@@ -19,7 +19,7 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 
 **Complétude.** Aucun insight sans observation source. Niveau d'evidence étiqueté sur chaque résultat. Personas challengés par critic(product).
 
-## WP-18 — Périmètre désirable et métriques de la release
+## WP-15 — Périmètre désirable et métriques de la release
 
 `releases/{release-id}/scope.md · exclusions.md · success-metrics.md`
 
@@ -35,7 +35,7 @@ Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a pr
 
 **Complétude.** Le périmètre couvre exactement les étapes affectées. Aucune métrique non instrumentable avec ce que la release livre.
 
-## WP-19 — Brief de conception
+## WP-16 — Brief de conception
 
 `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
 
@@ -58,7 +58,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 
 **Complétude.** Les trois questions non négociables sont renseignées. Les questions manquantes ont fait l'objet d'une salve unique de quatre au maximum. Toute hypothèse posée a son point de test.
 
-## WP-25 — Validation utilisateurs et convergence
+## WP-21 — Validation utilisateurs et convergence
 
 `releases/{release-id}/research/tests/test-plan.md`
 

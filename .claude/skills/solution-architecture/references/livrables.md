@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-14 — Architecture technique cible
+## WP-11 — Architecture technique cible
 
 `C1.4-socle/architecture/target-architecture.md · integration-boundaries.md · data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md`
 
@@ -20,7 +20,7 @@ Ce qui est cher à changer côté technique. Le pendant exact du socle de design
 
 **Complétude.** Chaque élément classé. L'architecture couvre l'intégralité du squelette. Figée par tag Git : un CORE INVARIANT modifié hors C1 est bloqué par K4.
 
-## WP-15 — Décisions structurantes et build-vs-buy
+## WP-12 — Décisions structurantes et build-vs-buy
 
 `C1.4-socle/decisions/adr/ · build-vs-buy.md`
 
@@ -32,13 +32,13 @@ Les choix qu'on ne refait pas, et ce qu'ils excluent. Une décision d'architectu
 - **Alternatives rejetées** — au moins une, avec le motif du rejet
 - **Ce que la décision exclut** — la contrepartie, explicitement
 - **Build ou achat** — pour chaque capacité non différenciante
-- **Reprise de la stack de conception** — La STACK DE CONCEPTION est arrêtée en WP-10, à l'ouverture de l'activité 6 : elle conditionne la première décision visuelle et ne peut pas attendre l'activité 9. Elle est REPRISE ici pour être classée CORE INVARIANT ou EXTENSION et confrontée à l'architecture cible. Une divergence entre la stack de conception et la stack de build est un finding, jamais deux vérités qu'on réconcilie au premier sprint.
+- **Reprise de la stack de conception** — La STACK DE CONCEPTION est arrêtée en WP-07, à l'ouverture de l'activité 6 : elle conditionne la première décision visuelle et ne peut pas attendre l'activité 9. Elle est REPRISE ici pour être classée CORE INVARIANT ou EXTENSION et confrontée à l'architecture cible. Une divergence entre la stack de conception et la stack de build est un finding, jamais deux vérités qu'on réconcilie au premier sprint.
 - **Classement** — CORE INVARIANT si sa remise en cause invalide du livré, EXTENSION sinon
 - **Conditions de réexamen** — ce qui, si observé, rouvrirait la décision
 
 **Complétude.** Chaque ADR nomme au moins une alternative rejetée et ce que la décision exclut. Chaque décision est classée, l'ADR de stack de conception compris.
 
-## WP-22 — Solution design de la release
+## WP-18 — Solution design de la release
 
 `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md`
 
@@ -55,7 +55,7 @@ Comment les parcours de cette release se réalisent dans le socle technique. Le 
 
 **Complétude.** S'inscrit dans le socle technique sans modifier un CORE INVARIANT. Chaque contrat d'interface est testable.
 
-## WP-23 — Dépendances, risques techniques et tiers
+## WP-19 — Dépendances, risques techniques et tiers
 
 `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md`
 

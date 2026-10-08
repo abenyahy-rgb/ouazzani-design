@@ -1,5 +1,5 @@
 ---
-id: WP-03
+id: WP-02
 name: "Thèse produit"
 produced_by: "2"
 controlled_at: "G0"

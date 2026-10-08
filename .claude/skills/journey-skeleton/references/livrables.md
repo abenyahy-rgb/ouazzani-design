@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-08 — Recherche et synthèse utilisateur
+## WP-04 — Recherche et synthèse utilisateur
 
 `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/`
 
@@ -19,7 +19,7 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 
 **Complétude.** Aucun insight sans observation source. Niveau d'evidence étiqueté sur chaque résultat. Personas challengés par critic(product).
 
-## WP-09 — Squelette de parcours cible
+## WP-05 — Squelette de parcours cible
 
 `C1.3-parcours/spine/journey-skeleton.md · stages/`
 

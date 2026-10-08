@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-40 — Corpus réel et provenance
+## WP-06 — Corpus réel et provenance
 
 `C1.3-parcours/corpus/corpus-scope.md · provenance.yaml · truth-map.yaml · coverage.md · records/`
 
@@ -11,7 +11,7 @@ Cycle de vie : vivant, enrichi à chaque release ; sa PROVENANCE ne se réécrit
 Le contenu que le produit affiche à un utilisateur, avec de quoi le contredire. Dans un produit de données, le corpus EST le produit : un socle, un Design System et une architecture peuvent être justes tandis que le produit ne dit rien de vrai. Ce livrable existe parce que ce cas s'est produit — une cadence C1 complète, dix-sept livrables, huit revues, et un corpus de trente-deux enregistrements inventés étiquetés FIXTURE qui a franchi G0.
 
 - **Périmètre du corpus** — le minimum qui rend le squelette parcourable de bout en bout, dérivé des STG et non d'une ambition d'exhaustivité
-- **Sources retenues et écartées** — chacune tracée vers WP-06 ; une source hors sources approuvées est un écart, pas un raccourci
+- **Sources retenues et écartées** — chacune tracée vers WP-03 ; une source hors sources approuvées est un écart, pas un raccourci
 - **Provenance par enregistrement** — adresse, date de lecture, citation littérale. Les trois, ou l'enregistrement est UNVALIDATED
 - **Catégorie de vérité par champ** — SOURCÉ · DÉRIVÉ · ABSENT. Aucune quatrième valeur, et surtout pas une valeur vraisemblable
 - **Couverture mesurée contre le squelette** — chiffrée par STG, jamais appréciée en prose
@@ -20,7 +20,7 @@ Le contenu que le produit affiche à un utilisateur, avec de quoi le contredire.
 
 **Complétude.** Chaque enregistrement sourcé porte ses trois champs de recevabilité. Couverture chiffrée par STG et écarts nommés. Verdict de recevabilité de critic(domaine) présent. AUCUNE fixture sur un chemin servi à un livrable de design ou de produit — ce point est éliminatoire, il ne se solde pas en dette.
 
-## WP-11 — Navigation, architecture de l'information et terminologie
+## WP-08 — Navigation, architecture de l'information et terminologie
 
 `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
@@ -35,7 +35,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 **Complétude.** Chaque terme testé auprès d'un persona. La navigation couvre toutes les étapes. Figé par tag Git immuable.
 
-## WP-12 — Modèle de données vivant
+## WP-09 — Modèle de données vivant
 
 `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 

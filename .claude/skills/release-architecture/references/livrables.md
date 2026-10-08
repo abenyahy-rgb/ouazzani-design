@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-16 — Architecture et séquencement des releases
+## WP-13 — Architecture et séquencement des releases
 
 `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/`
 
@@ -29,7 +29,7 @@ REL-pilotage  Voir l'avancement sans appeler personne
   tier pressenti    R2  (accès aux données de chantier)
 ```
 
-## WP-17 — Décision G0 et fermeture d'apprentissage
+## WP-14 — Décision G0 et fermeture d'apprentissage
 
 `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml`
 
@@ -41,7 +41,7 @@ L'assemblage est DÉRIVÉ, il ne se recopie plus. Les éléments de charte vienn
 
 **Complétude.** Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable.
 
-## WP-18 — Périmètre désirable et métriques de la release
+## WP-15 — Périmètre désirable et métriques de la release
 
 `releases/{release-id}/scope.md · exclusions.md · success-metrics.md`
 
@@ -57,7 +57,7 @@ Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a pr
 
 **Complétude.** Le périmètre couvre exactement les étapes affectées. Aucune métrique non instrumentable avec ce que la release livre.
 
-## WP-19 — Brief de conception
+## WP-16 — Brief de conception
 
 `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
 

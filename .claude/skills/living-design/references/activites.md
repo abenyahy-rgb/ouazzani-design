@@ -4,11 +4,11 @@
 
 ## Activité 8 — Socle exécutable
 
-**Entrée.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-40) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
+**Entrée.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 
 **Tâche.** Produire le socle navigable en très haute fidélité structurelle, alimenté par le corpus réel, et le DÉPLOYER derrière une URL que le métier ouvre sans rien installer.
 
-**Vérification.** Se parcourt de bout en bout sans écran mort. Chaque étape atteignable. Le contenu affiché vient de WP-40 : AUCUNE fixture, et le point est éliminatoire — un socle sur fixtures est une maquette, il ne prouve pas que le produit dit quelque chose de vrai. Un champ ABSENT au corpus est rendu comme absent par l'interface, jamais comblé. Le socle est déployé et l'URL répond. Plancher de craft lu avant toute édition. Vérification en passes bornées : une inspection groupée desktop et mobile, une correction en lot, une confirmation, puis arrêt — un auto-QA en boucle coûte plus qu'il ne trouve.
+**Vérification.** Se parcourt de bout en bout sans écran mort. Chaque étape atteignable. Le contenu affiché vient de WP-06 : AUCUNE fixture, et le point est éliminatoire — un socle sur fixtures est une maquette, il ne prouve pas que le produit dit quelque chose de vrai. Un champ ABSENT au corpus est rendu comme absent par l'interface, jamais comblé. Le socle est déployé et l'URL répond. Plancher de craft lu avant toute édition. Vérification en passes bornées : une inspection groupée desktop et mobile, une correction en lot, une confirmation, puis arrêt — un auto-QA en boucle coûte plus qu'il ne trouve.
 
 **Sortie.** Ouvrable hors environnement de développement, à une URL déployée, sur corpus réel.
 

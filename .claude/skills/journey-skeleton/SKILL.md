@@ -24,8 +24,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-08 — Recherche et synthèse utilisateur | `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
-| WP-09 — Squelette de parcours cible | `C1.3-parcours/spine/journey-skeleton.md · stages/` | G0 |
+| WP-04 — Recherche et synthèse utilisateur | `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
+| WP-05 — Squelette de parcours cible | `C1.3-parcours/spine/journey-skeleton.md · stages/` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

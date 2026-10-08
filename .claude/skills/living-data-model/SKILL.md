@@ -25,11 +25,11 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-11 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
-| WP-12 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
-| WP-22 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
-| WP-23 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
-| WP-31 — Spécification fonctionnelle et technique | `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md` | K1 |
+| WP-08 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
+| WP-09 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
+| WP-18 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
+| WP-19 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
+| WP-26 — Spécification fonctionnelle et technique | `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md` | K1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

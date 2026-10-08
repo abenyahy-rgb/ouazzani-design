@@ -204,7 +204,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-03",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/product-thesis.md",
       "instance": null,
       "evidence": [
@@ -222,7 +222,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-04",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/outcomes.md",
       "instance": null,
       "evidence": [
@@ -239,7 +239,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-05",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/assumptions.md",
       "instance": null,
       "evidence": [
@@ -299,7 +299,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-03",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/product-thesis.md",
       "instance": null,
       "evidence": [
@@ -318,7 +318,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-04",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/outcomes.md",
       "instance": null,
       "evidence": [
@@ -337,7 +337,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-05",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/assumptions.md",
       "instance": null,
       "evidence": [
@@ -356,7 +356,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-03",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/product-thesis.md",
       "instance": null,
       "evidence": [
@@ -376,7 +376,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-04",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/outcomes.md",
       "instance": null,
       "evidence": [
@@ -396,7 +396,7 @@
     },
     {
       "activity": "2",
-      "work_product": "WP-05",
+      "work_product": "WP-02",
       "path": "product/C1.2-strategie/strategy/assumptions.md",
       "instance": null,
       "evidence": [
@@ -435,7 +435,7 @@
     },
     {
       "activity": "3",
-      "work_product": "WP-06",
+      "work_product": "WP-03",
       "path": "product/C1.2-strategie/domain/domain-profile.md",
       "instance": null,
       "evidence": [
@@ -455,7 +455,7 @@
     },
     {
       "activity": "3",
-      "work_product": "WP-06",
+      "work_product": "WP-03",
       "path": "product/C1.2-strategie/domain/sources.md",
       "instance": null,
       "evidence": [
@@ -475,7 +475,7 @@
     },
     {
       "activity": "3",
-      "work_product": "WP-06",
+      "work_product": "WP-03",
       "path": "product/C1.2-strategie/domain/rules.md",
       "instance": null,
       "evidence": [
@@ -495,7 +495,7 @@
     },
     {
       "activity": "3",
-      "work_product": "WP-07",
+      "work_product": "WP-03",
       "path": "product/C1.2-strategie/domain/critic-definition.md",
       "instance": null,
       "evidence": [
@@ -514,7 +514,7 @@
     },
     {
       "activity": "3",
-      "work_product": "WP-07",
+      "work_product": "WP-03",
       "path": "product/C1.2-strategie/domain/critic-sources.md",
       "instance": null,
       "evidence": [
@@ -618,7 +618,7 @@
     },
     {
       "activity": "4",
-      "work_product": "WP-08",
+      "work_product": "WP-04",
       "path": "product/C1.3-parcours/research/research-plan.md",
       "instance": null,
       "evidence": [
@@ -639,7 +639,7 @@
     },
     {
       "activity": "4",
-      "work_product": "WP-08",
+      "work_product": "WP-04",
       "path": "product/C1.3-parcours/research/insights.md",
       "instance": null,
       "evidence": [
@@ -660,7 +660,7 @@
     },
     {
       "activity": "4",
-      "work_product": "WP-08",
+      "work_product": "WP-04",
       "path": "product/research/interviews/",
       "instance": null,
       "evidence": [
@@ -681,7 +681,7 @@
     },
     {
       "activity": "4",
-      "work_product": "WP-08",
+      "work_product": "WP-04",
       "path": "product/research/personas/",
       "instance": null,
       "evidence": [
@@ -702,7 +702,7 @@
     },
     {
       "activity": "4",
-      "work_product": "WP-08",
+      "work_product": "WP-04",
       "path": "product/research/empathy-maps/",
       "instance": null,
       "evidence": [
@@ -723,7 +723,7 @@
     },
     {
       "activity": "4",
-      "work_product": "WP-08",
+      "work_product": "WP-04",
       "path": "product/research/journeys/as-is/",
       "instance": null,
       "evidence": [
@@ -745,5 +745,5 @@
   ],
   "gates": {},
   "baselines": {},
-  "numerotation": 2
+  "numerotation": 3
 }

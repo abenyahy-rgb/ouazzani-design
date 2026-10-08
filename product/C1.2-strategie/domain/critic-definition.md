@@ -1,5 +1,5 @@
 ---
-id: WP-07
+id: WP-03
 name: "Définition du critic métier"
 produced_by: "3"
 controlled_at: "G0"

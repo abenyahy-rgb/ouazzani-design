@@ -26,10 +26,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-29 — Sprint goal et plan | `releases/{release-id}/sprints/{sprint-id}/candidate-scope.md · sprint-goal.md · sprint-plan.md · risks.md` | G2 |
-| WP-31 — Spécification fonctionnelle et technique | `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md` | K1 |
-| WP-32 — Journal de build et écarts de périmètre | `releases/{release-id}/sprints/{sprint-id}/status.md · scope-changes.md` | G3 |
-| WP-33 — Stratégie, résultats et classification de tests | `releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md · releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md · releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md · releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md` | G3 |
+| WP-24 — Sprint goal et plan | `releases/{release-id}/sprints/{sprint-id}/candidate-scope.md · sprint-goal.md · sprint-plan.md · risks.md` | G2 |
+| WP-26 — Spécification fonctionnelle et technique | `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md` | K1 |
+| WP-27 — Journal de build et écarts de périmètre | `releases/{release-id}/sprints/{sprint-id}/status.md · scope-changes.md` | G3 |
+| WP-28 — Stratégie, résultats et classification de tests | `releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md · releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md · releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md · releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md` | G3 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

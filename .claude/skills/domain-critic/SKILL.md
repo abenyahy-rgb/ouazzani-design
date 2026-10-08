@@ -23,7 +23,7 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-06 — Profil de domaine, sources approuvées et recevabilité | `C1.2-strategie/domain/domain-profile.md · sources.md · rules.md · critic-definition.md · critic-sources.md` | G0 |
+| WP-03 — Profil de domaine, sources approuvées et recevabilité | `C1.2-strategie/domain/domain-profile.md · sources.md · rules.md · critic-definition.md · critic-sources.md` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-03 — Thèse produit, outcomes et hypothèses critiques
+## WP-02 — Thèse produit, outcomes et hypothèses critiques
 
 `C1.2-strategie/strategy/product-thesis.md · outcomes.md · assumptions.md`
 

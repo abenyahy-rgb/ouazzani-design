@@ -24,10 +24,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-16 — Architecture et séquencement des releases | `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/` | G0 |
-| WP-17 — Décision G0 et fermeture d'apprentissage | `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml` | G0 |
-| WP-18 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
-| WP-19 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
+| WP-13 — Architecture et séquencement des releases | `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/` | G0 |
+| WP-14 — Décision G0 et fermeture d'apprentissage | `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml` | G0 |
+| WP-15 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
+| WP-16 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

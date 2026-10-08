@@ -1,5 +1,5 @@
 ---
-id: WP-06
+id: WP-03
 name: "Profil de domaine et sources approuvées"
 produced_by: "3"
 controlled_at: "G0"

@@ -1,5 +1,5 @@
 ---
-id: WP-08
+id: WP-04
 name: "Recherche et synthèse utilisateur"
 produced_by: "4"
 controlled_at: "G0"

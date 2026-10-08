@@ -4,7 +4,7 @@
 
 ## Activité 27 — Corpus réel et provenance
 
-**Entrée.** Sources approuvées du domaine disponibles (WP-06) ; squelette de parcours arrêté (WP-09) — il donne le périmètre minimal que le corpus doit couvrir. L'un des deux absent produit BLOCKED.
+**Entrée.** Sources approuvées du domaine disponibles (WP-03) ; squelette de parcours arrêté (WP-05) — il donne le périmètre minimal que le corpus doit couvrir. L'un des deux absent produit BLOCKED.
 
 **Tâche.** Acquérir le corpus réel minimal suffisant pour parcourir le squelette de bout en bout, depuis les seules sources approuvées. Écrire la provenance enregistrement par enregistrement et la catégorie de vérité champ par champ. Mesurer la couverture contre le squelette et NOMMER ce qui manque.
 

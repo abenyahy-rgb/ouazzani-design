@@ -55,7 +55,7 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-03 — Thèse produit, outcomes et hypothèses critiques | `C1.2-strategie/strategy/product-thesis.md · outcomes.md · assumptions.md` | G0 |
+| WP-02 — Thèse produit, outcomes et hypothèses critiques | `C1.2-strategie/strategy/product-thesis.md · outcomes.md · assumptions.md` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

@@ -25,10 +25,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-08 — Recherche et synthèse utilisateur | `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
-| WP-18 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
-| WP-19 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
-| WP-25 — Validation utilisateurs et convergence | `releases/{release-id}/research/tests/test-plan.md` | G1 |
+| WP-04 — Recherche et synthèse utilisateur | `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
+| WP-15 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
+| WP-16 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
+| WP-21 — Validation utilisateurs et convergence | `releases/{release-id}/research/tests/test-plan.md` | G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
