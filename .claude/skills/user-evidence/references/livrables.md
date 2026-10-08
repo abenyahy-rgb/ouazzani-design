@@ -10,14 +10,14 @@ Cycle de vie : vivant · contrôlé en G0 · R/A : product-designer / Product Ow
 
 Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et sa synthèse en une passe.
 
-- **Plan de recherche** — écrit AVANT le recrutement
-- **Verbatims tracés** — échantillon et biais connus déclarés
+- **Plan de recherche** — écrit AVANT la collecte : questions, segments, sources et requêtes prévues, mode — documentaire par défaut, terrain si des humains sont disponibles
+- **Verbatims tracés** — adresse, date de consultation, citation littérale pour chacun ; plateformes, échantillon et biais déclarés
 - **Insights** — aucun sans observation source
-- **PER-nn personas** — chaque trait tracé vers ≥ 2 observations
-- **Empathy maps** — aucune projection non observée ; unknowns marqués
+- **PER-nn personas** — chaque trait tracé vers ≥ 2 verbatims de sources indépendantes ; proto-persona DOCUMENTARY tant qu'aucune observation de terrain
+- **Empathy maps** — aucune projection non sourcée ; inconnus marqués
 - **Journeys as-is et irritants** — chaque irritant daté, sourcé, rattaché à un persona
 
-**Complétude.** Aucun insight sans observation source. Niveau d'evidence étiqueté sur chaque résultat. Personas challengés par critic(product).
+**Complétude.** Aucun insight sans verbatim source. Niveau d'evidence étiqueté sur chaque résultat — DOCUMENTARY ou EMPIRICAL, jamais l'un pour l'autre. Personas challengés par critic(product). Les questions que le documentaire ne tranche pas sont listées en HYP-nn.
 
 ## WP-15 — Périmètre désirable et métriques de la release
 
@@ -48,7 +48,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 - **Job principal de l'écran ou du parcours**
 - **Ce que le socle fige déjà** — NON NÉGOCIABLE — la réponse est dans le dépôt
 - **Directions rejetées et pourquoi**
-- **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, SYNTHETIC ou UNVALIDATED
+- **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC ou UNVALIDATED
 - **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
 - **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 16
 - **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog
@@ -64,24 +64,28 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 
 Cycle de vie : par passe · contrôlé en G1 · R/A : product-lead / Product Owner
 
-La seule preuve qui établit un fait sur le comportement d'un utilisateur. Le livrable le plus abusable de la méthode.
+La preuve la plus forte disponible sur le comportement des utilisateurs, étiquetée pour ce qu'elle est. Sans participants : revue synthétique par persona, confrontation documentaire, et mesure en production pour ce que seule l'observation tranche. Le livrable le plus abusable de la méthode.
 
-- **Protocole** — écrit AVANT le recrutement, identique entre participants
+- **Protocole** — écrit AVANT le test, identique entre personas simulés comme entre participants
 - **Version testée** — figée par commit, citée
-- **Participants** — recrutement, nombre, biais connus déclarés
+- **Participants** — personas simulés PER-nn, chacun étiqueté SYNTHETIC, et l'agent qui les incarne ; participants réels s'il en existe — recrutement, nombre, biais
 - **Résultats bruts** — non filtrés, y compris ceux qui contredisent la thèse
-- **Niveau d'evidence** — EMPIRICAL · SYNTHETIC · UNVALIDATED — étiquette obligatoire
-- **Hypothèses UNVALIDATED confrontées** — chacune tranchée ou reportée avec motif
-- **Corrections** — chacune traçant vers une observation
+- **Niveau d'evidence** — EMPIRICAL · DOCUMENTARY · SYNTHETIC · UNVALIDATED — étiquette obligatoire
+- **Hypothèses UNVALIDATED confrontées** — chacune tranchée par des participants réels, ou reportée avec sa mesure en production — métrique, événement, seuil, décision
+- **Corrections** — chacune traçant vers un constat étiqueté — SYNTHETIC, DOCUMENTARY ou EMPIRICAL
 
-**Complétude.** Protocole antérieur au test. Version figée par commit. Résultats non filtrés. Niveau d'evidence étiqueté — une revue synthétique présentée comme empirique est un BLOCKER.
+**Complétude.** Protocole antérieur au test. Version figée par commit. Résultats non filtrés. Niveau d'evidence étiqueté — une revue synthétique ou documentaire présentée comme empirique est un BLOCKER. Chaque hypothèse de comportement non tranchée par des participants réels porte sa mesure en production.
 
 ```
-Protocole  écrit le 04/06, avant recrutement
+Protocole  écrit le 04/06, avant le test — 3 tâches
 Version    commit 7f2a91c, gelée
-Panel      6 conducteurs de travaux, 2 gérants
-            biais : tous issus du réseau du sponsor
-Niveau     EMPIRICAL
-HYP-03     falsifiée — 3 profils sur 10 hors cible
-            décrivent l'irritant. Périmètre resserré.
+Panel      PER-01 et PER-03 simulés · SYNTHETIC
+            incarnés par critic(product), qui n'a pas
+            conçu le prototype
+Niveau     SYNTHETIC · DOCUMENTARY
+HYP-02     fragilisée — PER-01 bute sur « ESTIMÉ » ;
+            S-07 le confirme. Libellé corrigé (C-2).
+HYP-04     reportée — mesure en production : relevés
+            par chef et par jour, seuil 0,8 à 4 semaines,
+            sous le seuil → relevé hebdomadaire.
 ```

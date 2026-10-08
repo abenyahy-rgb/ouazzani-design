@@ -1,6 +1,6 @@
 ---
 name: user-evidence
-description: "Produire une preuve utilisateur opposable : protocole écrit AVANT le recrutement, version figée par commit, protocole identique entre participants, résultats non filtrés, biais déclarés, étiquetage obligatoire du niveau. Utiliser aux activités 4, 11, 16 de la méthode — Recherche et synthèse utilisateur · Périmètre, métriques et discovery ciblée de la release · Validation utilisateurs et convergence."
+description: "Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Utiliser aux activités 4, 11, 16 de la méthode — Recherche et synthèse utilisateur · Périmètre, métriques et discovery ciblée de la release · Validation utilisateurs et convergence."
 ---
 
 # user-evidence
@@ -9,7 +9,7 @@ description: "Produire une preuve utilisateur opposable : protocole écrit AVANT
 
 ## Mandat
 
-Produire une preuve utilisateur opposable : protocole écrit AVANT le recrutement, version figée par commit, protocole identique entre participants, résultats non filtrés, biais déclarés, étiquetage obligatoire du niveau. Ne fait pas : requalifier une revue synthétique en preuve.
+Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Protocole écrit AVANT la collecte, version figée par commit, résultats non filtrés, biais déclarés, étiquetage obligatoire du niveau. Ne fait pas : inventer une citation, un chiffre ou un trait ; présenter le documentaire comme empirique ; requalifier une revue synthétique en preuve.
 
 ## Activités outillées
 

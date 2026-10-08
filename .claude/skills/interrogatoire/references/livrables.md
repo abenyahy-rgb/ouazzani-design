@@ -24,7 +24,7 @@ L'argument stratégique du produit, en un seul endroit : ce qu'on croit, ce qui 
 - **HYP-nn — énoncé**
 - **Trace vers OUT**
 - **Critère de falsification** — écrit au futur observable : « si l'on observe X, c'est faux »
-- **Étiquette** — EMPIRICAL · SYNTHETIC · UNVALIDATED
+- **Étiquette** — EMPIRICAL · DOCUMENTARY · SYNTHETIC · UNVALIDATED
 - **Point de test et porteur** — obligatoires pour toute UNVALIDATED
 
 **Complétude.** La thèse tient sans le produit : chaque claim matériel porte source et niveau d'evidence. Chaque outcome est mesurable avec ce qui existe aujourd'hui, sans rien construire — un outcome non instrumentable est rejeté, pas reformulé. Chaque hypothèse critique est tranchée avec motif, ou nommée HYP-nn étiquetée UNVALIDATED avec son critère de falsification et son point de test.

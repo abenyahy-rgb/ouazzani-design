@@ -70,7 +70,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 - **Job principal de l'écran ou du parcours**
 - **Ce que le socle fige déjà** — NON NÉGOCIABLE — la réponse est dans le dépôt
 - **Directions rejetées et pourquoi**
-- **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, SYNTHETIC ou UNVALIDATED
+- **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC ou UNVALIDATED
 - **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
 - **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 16
 - **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog

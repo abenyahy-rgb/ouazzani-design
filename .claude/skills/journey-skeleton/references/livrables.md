@@ -10,14 +10,14 @@ Cycle de vie : vivant · contrôlé en G0 · R/A : product-designer / Product Ow
 
 Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et sa synthèse en une passe.
 
-- **Plan de recherche** — écrit AVANT le recrutement
-- **Verbatims tracés** — échantillon et biais connus déclarés
+- **Plan de recherche** — écrit AVANT la collecte : questions, segments, sources et requêtes prévues, mode — documentaire par défaut, terrain si des humains sont disponibles
+- **Verbatims tracés** — adresse, date de consultation, citation littérale pour chacun ; plateformes, échantillon et biais déclarés
 - **Insights** — aucun sans observation source
-- **PER-nn personas** — chaque trait tracé vers ≥ 2 observations
-- **Empathy maps** — aucune projection non observée ; unknowns marqués
+- **PER-nn personas** — chaque trait tracé vers ≥ 2 verbatims de sources indépendantes ; proto-persona DOCUMENTARY tant qu'aucune observation de terrain
+- **Empathy maps** — aucune projection non sourcée ; inconnus marqués
 - **Journeys as-is et irritants** — chaque irritant daté, sourcé, rattaché à un persona
 
-**Complétude.** Aucun insight sans observation source. Niveau d'evidence étiqueté sur chaque résultat. Personas challengés par critic(product).
+**Complétude.** Aucun insight sans verbatim source. Niveau d'evidence étiqueté sur chaque résultat — DOCUMENTARY ou EMPIRICAL, jamais l'un pour l'autre. Personas challengés par critic(product). Les questions que le documentaire ne tranche pas sont listées en HYP-nn.
 
 ## WP-05 — Squelette de parcours cible
 
