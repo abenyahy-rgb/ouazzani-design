@@ -4,7 +4,7 @@
 
 ## Activité 2 — Thèse produit et outcomes
 
-**Entrée.** Sponsor disponible ; activité 1 terminée — canevas du produit (WP-41) confirmé par le porteur ; source d'opportunité identifiée.
+**Entrée.** Sponsor disponible ; activité 1 terminée — canevas du produit (WP-01) confirmé par le porteur ; source d'opportunité identifiée.
 
 **Tâche.** Approfondir le canevas en thèse opposable : problème, cible, proposition de valeur, outcomes chiffrés et hypothèses critiques, au niveau du produit entier. Ce que le canevas a tranché est repris, jamais reposé ; l'interrogatoire porte sur ce qu'il laisse ouvert ou UNVALIDATED.
 

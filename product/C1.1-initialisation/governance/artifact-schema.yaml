@@ -42,7 +42,7 @@ artefacts:
   # WP-01 — Registre canonique et configuration projet
   governance-artifact-schema:
     path: product/governance/artifact-schema.yaml
-    work_product: WP-01
+    work_product: SOC-01
     category: Registre
     produced_by: 1
     controlled_at: tout gate
@@ -52,7 +52,7 @@ artefacts:
     sections: [entrees-d-artefacts, mapping-d-arborescence, mapping-d-identifiants]
   governance-project:
     path: product/governance/project.yaml
-    work_product: WP-01
+    work_product: SOC-01
     category: Registre
     produced_by: 1
     controlled_at: tout gate
@@ -62,7 +62,7 @@ artefacts:
     sections: [autorites-de-gate, store-d-etat-du-backlog, correspondance-classe-de-capacite-modele, identite-du-produit, roles-de-la-methode-vers-personnes, run-mode-equipe-ou-solo]
   governance-workspace-map:
     path: product/governance/workspace-map.yaml
-    work_product: WP-01
+    work_product: SOC-01
     category: Registre
     produced_by: 1
     controlled_at: tout gate
@@ -74,7 +74,7 @@ artefacts:
   # WP-02 — Contexte et contraintes de l'existant
   context-existing-system:
     path: product/context/existing-system.md
-    work_product: WP-02
+    work_product: SOC-02
     category: "Décision"
     produced_by: 1
     controlled_at: G0
@@ -84,7 +84,7 @@ artefacts:
     sections: [perimetre-d-inspection-declare, architecture-et-dependances-existantes]
   context-constraints:
     path: product/context/constraints.md
-    work_product: WP-02
+    work_product: SOC-02
     category: "Décision"
     produced_by: 1
     controlled_at: G0

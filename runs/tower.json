@@ -72,7 +72,7 @@
   "declared": [
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/project.yaml",
       "instance": null,
       "evidence": [],
@@ -86,7 +86,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/artifact-schema.yaml",
       "instance": null,
       "evidence": [
@@ -100,7 +100,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/project.yaml",
       "instance": null,
       "evidence": [
@@ -114,7 +114,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/workspace-map.yaml",
       "instance": null,
       "evidence": [
@@ -128,7 +128,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
@@ -146,7 +146,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
@@ -164,7 +164,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
@@ -184,7 +184,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
@@ -257,7 +257,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
@@ -278,7 +278,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
@@ -416,7 +416,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
@@ -533,7 +533,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/artifact-schema.yaml",
       "instance": null,
       "evidence": [
@@ -548,7 +548,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/project.yaml",
       "instance": null,
       "evidence": [
@@ -563,7 +563,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-01",
+      "work_product": "SOC-01",
       "path": "product/C1.1-initialisation/governance/workspace-map.yaml",
       "instance": null,
       "evidence": [
@@ -578,7 +578,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/existing-system.md",
       "instance": null,
       "evidence": [
@@ -598,7 +598,7 @@
     },
     {
       "activity": "1",
-      "work_product": "WP-02",
+      "work_product": "SOC-02",
       "path": "product/C1.1-initialisation/context/constraints.md",
       "instance": null,
       "evidence": [
@@ -744,5 +744,6 @@
     }
   ],
   "gates": {},
-  "baselines": {}
+  "baselines": {},
+  "numerotation": 2
 }

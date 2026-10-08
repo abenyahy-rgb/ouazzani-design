@@ -23,8 +23,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-01 — Registre canonique et configuration projet | `C1.1-initialisation/governance/artifact-schema.yaml · project.yaml · workspace-map.yaml` | tout gate |
-| WP-02 — Contexte et contraintes de l'existant | `C1.1-initialisation/context/existing-system.md · constraints.md` | G0 |
+| SOC-01 — Registre canonique et configuration projet | `C1.1-initialisation/governance/artifact-schema.yaml · project.yaml · workspace-map.yaml` | tout gate |
+| SOC-02 — Contexte et contraintes de l'existant | `C1.1-initialisation/context/existing-system.md · constraints.md` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -44,7 +44,7 @@ Chaque livrable existe au chemin déclaré, porte toutes les sections de son pla
 
 **Format Office.** `factory_declare` écrit le livrable en PowerPoint ou Word dans `dist/livrables/` (champ `office` de la réponse). En cas d'erreur : `apf livrable <WP-nn>`. Ne jamais l'éditer à la main : il est calculé depuis le Markdown.
 
-Puis projeter chaque livrable dans l'espace de travail lisible. **Si WP-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
+Puis projeter chaque livrable dans l'espace de travail lisible. **Si SOC-01 porte `workspace_kind: launchpad`** (dépôt lancé depuis le launchpad), il n'y a rien à projeter : le workflow du dépôt dépose l'état à chaque push, `apf notion status` rend « sans objet », et la page est le commit. Sinon, dans cet ordre :
 
 ```bash
 apf notion where <WP-nn>   # la destination, et surtout l'ACTION

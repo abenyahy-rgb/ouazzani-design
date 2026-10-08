@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-41 — Canevas du produit
+## WP-01 — Canevas du produit
 
 `C1.1-initialisation/canvas/business-model-canvas.md`
 

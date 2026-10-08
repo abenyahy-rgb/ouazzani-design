@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-01 — Registre canonique et configuration projet
+## SOC-01 — Registre canonique et configuration projet
 
 `C1.1-initialisation/governance/artifact-schema.yaml · project.yaml · workspace-map.yaml`
 
@@ -34,7 +34,7 @@ release-scope:
   sections: [perimetre, exclusions, etapes-couvertes, trois-tests]
 ```
 
-## WP-02 — Contexte et contraintes de l'existant
+## SOC-02 — Contexte et contraintes de l'existant
 
 `C1.1-initialisation/context/existing-system.md · constraints.md`
 
