@@ -11,15 +11,16 @@ Cycle de vie : cumulatif, jamais forké · contrôlé en G0 · R/A : product-des
 Les éléments visuels réutilisables et leurs règles. Enrichis à chaque release ; jamais réinventés.
 
 - **Brief de conception** — renseigné AVEC l'humain qui répond du produit AVANT la première décision visuelle — public prioritaire, barre de craft, interdits, direction épinglée ou ouverte ; son absence produit BLOCKED
+- **Design system de départ et décision** — le départ servi par la tour, montré sur un vrai écran du produit ; la décision de l'humain — gardé, adapté ou écarté —, ce qui a changé s'il est adapté, qui a tranché et quand
 - **Stack de conception et base de composants** — ADR arrêté AVANT la première décision visuelle : framework d'interface, base de composants accessibles retenue, moteur de styles, cible de déploiement de la preview, et l'outillage de conception assistée employé. La méthode est agnostique de stack ; elle n'est pas agnostique du COÛT d'en écrire une. Ne rien déclarer ne laisse pas le choix ouvert : cela mandate de fait le tout-à-la-main. Le tout-à-la-main a produit, sur un produit de quatorze écrans, un socle mono-fichier de 345 ko, quatorze composants réécrits depuis zéro et une chaîne de rendu propriétaire — du budget de conception dépensé en plomberie. L'ADR nomme la base retenue et surtout CE QU'ELLE DISPENSE D'ÉCRIRE ; les tokens et les composants de ce produit en sont alors un DELTA, jamais une création ex nihilo.
-- **Directions concurrentes et direction retenue** — au moins trois directions construites, conservées dans explorations/ ; l'ADR de direction nomme les écartées et ce qui les a départagées
+- **Directions concurrentes et direction retenue** — départ gardé : il est la direction retenue et l'ADR le dit. Adapté ou écarté : au moins trois directions construites, le départ compris, conservées dans explorations/ ; l'ADR nomme les écartées et ce qui les a départagées
 - **Brief de surface et contrat de direction** — un brief par surface ; contrat de direction en six blocs — THESIS, OWN-WORLD, STORY, FIRST VIEWPORT, FORM, FINISH — écrit AVANT le code et jamais recopié dans un artefact livré au navigateur
-- **Tokens** — couleurs, typographies, espacements, grilles, responsive — exportables en CSS et JSON
+- **Tokens** — dérivés du départ retenu — couleurs avec leur rôle, typographies et échelle, espacements, rayons, ombres, surfaces —, grilles et responsive ; exportables en CSS et JSON
 - **Composants et variantes** — chacun exposant les 7 états : normal, hover, focus, erreur, vide, loading, disabled
 - **Accessibilité** — contraste WCAG AA vérifié par outil, pas à l'œil
 - **Catalogue navigable** — exécutable hors environnement de développement
 
-**Complétude.** Stack de conception arrêtée par ADR AVANT la première décision visuelle. Contraste AA vérifié par outil. Les 7 états couverts pour chaque composant. Catalogue ouvrable. Chaque composant écrit à la main l'est parce que la base retenue ne le couvre pas, et le dit — un composant réécrit sans motif est du budget de conception dépensé en plomberie.
+**Complétude.** La décision sur le design system de départ — gardé, adapté ou écarté — est consignée avec qui l'a prise. Stack de conception arrêtée par ADR AVANT la première décision visuelle. Contraste AA vérifié par outil. Les 7 états couverts pour chaque composant. Catalogue ouvrable. Chaque composant écrit à la main l'est parce que la base retenue ne le couvre pas, et le dit — un composant réécrit sans motif est du budget de conception dépensé en plomberie.
 
 ## WP-11 — Navigation, architecture de l'information et terminologie
 
