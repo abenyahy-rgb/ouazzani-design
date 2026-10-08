@@ -1,6 +1,6 @@
 ---
 name: atelier-produit
-description: "Conduire l'atelier produit de l'ouverture UNE QUESTION À LA FOIS : ce qu'on veut faire du produit, pour qui, quelle valeur, comment elle arrive et se paie, bloc par bloc du canevas, jusqu'à un récapitulatif confirmé. Utiliser à l'activité 1 de la méthode — Atelier produit et ouverture."
+description: "Conduire l'atelier produit de l'ouverture UNE QUESTION À LA FOIS : ce qu'on veut faire du produit, pour qui, quelle valeur, comment elle arrive et se paie, bloc par bloc du canevas, jusqu'à un récapitulatif confirmé. Utiliser à l'activité 1 de la méthode — Atelier produit."
 ---
 
 # atelier-produit
@@ -45,7 +45,7 @@ Si `grill-me` ou `grilling` est chargé pendant l'activité, garder son arbre de
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 1 | Atelier produit et ouverture | `factory-lead` | `Product Owner` |
+| 1 | Atelier produit | `product-lead` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -54,18 +54,12 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
 | WP-41 — Canevas du produit | `C1.1-initialisation/canvas/business-model-canvas.md` | G0 |
-| WP-01 — Registre canonique et configuration projet | `C1.1-initialisation/governance/artifact-schema.yaml · project.yaml · workspace-map.yaml` | tout gate |
-| WP-02 — Contexte et contraintes de l'existant | `C1.1-initialisation/context/existing-system.md · constraints.md` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
 ## Contrat d'entrée
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
-
-**Activité 1 — arrêt dur.** Run autorisé ; dépôt identifié ; aucune arborescence /product non sauvegardée ; NOM DU PRODUIT recueilli auprès d'un humain ; connecteur d'espace de travail et emplacement de la racine fournis — chacun absent produit BLOCKED, jamais deviné ni dérivé du nom du dépôt.
-
-Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 
 ## Vérification avant handover
 

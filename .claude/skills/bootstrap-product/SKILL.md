@@ -1,6 +1,6 @@
 ---
 name: bootstrap-product
-description: "Initialiser l'arborescence, le registre canonique, les conventions d'identifiants et le Run Ledger, de façon idempotente et SANS QUESTION à l'humain : tout se calcule depuis le registre et le dépôt. Utiliser à l'activité 1 de la méthode — Atelier produit et ouverture."
+description: "Initialiser l'arborescence, le registre canonique, les conventions d'identifiants et le Run Ledger, de façon idempotente et SANS QUESTION à l'humain : tout se calcule depuis le registre et le dépôt. Utiliser à l'activité 0 de la méthode — Socle technique automatique."
 ---
 
 # bootstrap-product
@@ -9,13 +9,13 @@ description: "Initialiser l'arborescence, le registre canonique, les conventions
 
 ## Mandat
 
-Initialiser l'arborescence, le registre canonique, les conventions d'identifiants et le Run Ledger, de façon idempotente et SANS QUESTION à l'humain : tout se calcule depuis le registre et le dépôt. Ne produit jamais de contenu, et ne commence qu'une fois l'atelier produit confirmé.
+Initialiser l'arborescence, le registre canonique, les conventions d'identifiants et le Run Ledger, de façon idempotente et SANS QUESTION à l'humain : tout se calcule depuis le registre et le dépôt. Exécuté par la tour à l'ouverture, avant l'atelier produit. Ne produit jamais de contenu.
 
 ## Activités outillées
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 1 | Atelier produit et ouverture | `factory-lead` | `Product Owner` |
+| 0 | Socle technique automatique | `factory-lead` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -23,7 +23,6 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-41 — Canevas du produit | `C1.1-initialisation/canvas/business-model-canvas.md` | G0 |
 | WP-01 — Registre canonique et configuration projet | `C1.1-initialisation/governance/artifact-schema.yaml · project.yaml · workspace-map.yaml` | tout gate |
 | WP-02 — Contexte et contraintes de l'existant | `C1.1-initialisation/context/existing-system.md · constraints.md` | G0 |
 
@@ -33,7 +32,7 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 1 — arrêt dur.** Run autorisé ; dépôt identifié ; aucune arborescence /product non sauvegardée ; NOM DU PRODUIT recueilli auprès d'un humain ; connecteur d'espace de travail et emplacement de la racine fournis — chacun absent produit BLOCKED, jamais deviné ni dérivé du nom du dépôt.
+**Activité 0 — arrêt dur.** Run autorisé ; dépôt identifié ; aucune arborescence /product non sauvegardée ; NOM DU PRODUIT recueilli auprès d'un humain ; connecteur d'espace de travail et emplacement de la racine fournis — chacun absent produit BLOCKED, jamais deviné ni dérivé du nom du dépôt.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 
