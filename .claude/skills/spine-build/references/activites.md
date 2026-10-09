@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 6 — Fondations du Design System
+## Activité 7 — Fondations du Design System
 
 **Entrée.** Squelette arrêté ; design-brief.md renseigné ; contraintes d'accessibilité, de langue et d'usage déclarées ; STACK DE CONCEPTION arrêtée par ADR — framework, base de composants, moteur de styles, cible de déploiement, outillage de conception assistée. Son absence produit BLOCKED : décider la stack après la première décision visuelle n'est plus une décision, c'est une justification.
 
@@ -14,7 +14,7 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 7 — Navigation, IA, terminologie et sémantique
+## Activité 8 — Navigation, IA, terminologie et sémantique
 
 **Entrée.** Squelette arrêté ; domaine qualifié.
 
@@ -26,7 +26,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1,
 
 Responsible : `product-designer et product-lead` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 8 — Socle exécutable
+## Activité 9 — Socle exécutable
 
 **Entrée.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 

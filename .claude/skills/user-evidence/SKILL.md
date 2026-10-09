@@ -1,6 +1,6 @@
 ---
 name: user-evidence
-description: "Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Utiliser aux activités 4, 11, 16 de la méthode — Recherche et synthèse utilisateur · Périmètre, métriques et discovery ciblée de la release · Validation utilisateurs et convergence."
+description: "Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Utiliser aux activités 4, 12, 16 de la méthode — Recherche et synthèse utilisateur · Périmètre, métriques et discovery ciblée de la release · Validation utilisateurs et convergence."
 ---
 
 # user-evidence
@@ -16,7 +16,7 @@ Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 4 | Recherche et synthèse utilisateur | `product-designer` | `Product Owner` |
-| 11 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
+| 12 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
 | 16 | Validation utilisateurs et convergence | `product-lead puis product-designer` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.

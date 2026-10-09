@@ -14,7 +14,7 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.3
 
-## Activité 11 — Périmètre, métriques et discovery ciblée de la release
+## Activité 12 — Périmètre, métriques et discovery ciblée de la release
 
 **Entrée.** G0 franchi ; release identifiée dans l'architecture.
 

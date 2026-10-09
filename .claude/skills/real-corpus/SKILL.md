@@ -1,6 +1,6 @@
 ---
 name: real-corpus
-description: "Constituer le CORPUS RÉEL du produit avant le socle : périmètre minimal suffisant pour parcourir le squelette de bout en bout, acquisition depuis les sources approuvées de WP-03, une ligne de provenance par enregistrement — adresse, date de lecture, citation littérale —, catégorie de vérité par champ, et couverture mesurée contre le squelette. Utiliser aux activités 27, 7 de la méthode — Corpus réel et provenance · Navigation, IA, terminologie et sémantique."
+description: "Constituer le CORPUS RÉEL du produit avant le socle : périmètre minimal suffisant pour parcourir le squelette de bout en bout, acquisition depuis les sources approuvées de WP-03, une ligne de provenance par enregistrement — adresse, date de lecture, citation littérale —, catégorie de vérité par champ, et couverture mesurée contre le squelette. Utiliser aux activités 6, 8 de la méthode — Corpus réel et provenance · Navigation, IA, terminologie et sémantique."
 ---
 
 # real-corpus
@@ -15,8 +15,8 @@ Constituer le CORPUS RÉEL du produit avant le socle : périmètre minimal suffi
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 27 | Corpus réel et provenance | `data-steward` | `Product Owner` |
-| 7 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
+| 6 | Corpus réel et provenance | `data-steward` | `Product Owner` |
+| 8 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -34,7 +34,7 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 27 — arrêt dur.** Sources approuvées du domaine disponibles (WP-03) ; squelette de parcours arrêté (WP-05) — il donne le périmètre minimal que le corpus doit couvrir. L'un des deux absent produit BLOCKED.
+**Activité 6 — arrêt dur.** Sources approuvées du domaine disponibles (WP-03) ; squelette de parcours arrêté (WP-05) — il donne le périmètre minimal que le corpus doit couvrir. L'un des deux absent produit BLOCKED.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 

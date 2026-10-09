@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 7 — Navigation, IA, terminologie et sémantique
+## Activité 8 — Navigation, IA, terminologie et sémantique
 
 **Entrée.** Squelette arrêté ; domaine qualifié.
 
@@ -22,7 +22,7 @@ Responsible : `product-designer et product-lead` · Accountable : `Product Owner
 
 **Vérification.** La solution s'inscrit dans le socle technique sans modifier un CORE INVARIANT ; tout besoin de modification est routé vers G0 (EX3), jamais appliqué. Chaque dépendance est nommée, datée, non circulaire. Chaque capacité porte un tier justifié. Chaque impact de migration est confronté au modèle de données vivant : une entité ou un champ touché qui porte l'étiquette CORE INVARIANT ouvre une EX3, il ne se modifie pas ici. Verdict critic(engineering) rendu.
 
-**Sortie.** Solution design et carte des dépendances commités. Impacts de migration rattachés aux entités du modèle de données vivant. C'est l'entrée technique de l'activité 19 : sans elle, un backlog ne peut ni qualifier ses dépendances ni proposer ses tiers.
+**Sortie.** Solution design et carte des dépendances commités. Impacts de migration rattachés aux entités du modèle de données vivant. C'est l'entrée technique de l'activité 17 : sans elle, un backlog ne peut ni qualifier ses dépendances ni proposer ses tiers.
 
 Responsible : `principal-engineer` · Accountable : `autorité Tech` · Cadence C2, étape C2.2
 

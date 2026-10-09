@@ -27,7 +27,7 @@ Déclare tous les chemins d'artefacts du projet et la configuration qui spécial
 release-scope:
   path: releases/{release-id}/scope.md
   category: décision
-  produced_by: 10
+  produced_by: 11
   controlled_at: G1
   baseline: release
   lifecycle: figé

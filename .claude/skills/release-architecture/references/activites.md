@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 10 — Découpage et séquencement des releases
+## Activité 11 — Découpage et séquencement des releases
 
 **Entrée.** Socle exécutable disponible.
 
@@ -14,7 +14,7 @@
 
 Responsible : `product-lead` · Accountable : `Product Owner` · Cadence C1, étape C1.5
 
-## Activité 11 — Périmètre, métriques et discovery ciblée de la release
+## Activité 12 — Périmètre, métriques et discovery ciblée de la release
 
 **Entrée.** G0 franchi ; release identifiée dans l'architecture.
 

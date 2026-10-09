@@ -1,6 +1,6 @@
 ---
 name: living-design
-description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 8, 13, 15, 18 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
+description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 9, 13, 15, 18 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
 ---
 
 # living-design
@@ -15,7 +15,7 @@ Produire le design exécutable à tout niveau — socle, Strategic Design de rel
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 8 | Socle exécutable | `product-designer` | `Product Owner` |
+| 9 | Socle exécutable | `product-designer` | `Product Owner` |
 | 13 | Exploration, direction et Strategic Design | `product-designer` | `Product Owner` |
 | 15 | Design QA | `critic(design)` | `Product Owner` |
 | 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
@@ -37,7 +37,7 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 8 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
+**Activité 9 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 

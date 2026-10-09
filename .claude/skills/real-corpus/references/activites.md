@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 27 — Corpus réel et provenance
+## Activité 6 — Corpus réel et provenance
 
 **Entrée.** Sources approuvées du domaine disponibles (WP-03) ; squelette de parcours arrêté (WP-05) — il donne le périmètre minimal que le corpus doit couvrir. L'un des deux absent produit BLOCKED.
 
@@ -14,7 +14,7 @@
 
 Responsible : `data-steward` · Accountable : `Product Owner` · Cadence C1, étape C1.3
 
-## Activité 7 — Navigation, IA, terminologie et sémantique
+## Activité 8 — Navigation, IA, terminologie et sémantique
 
 **Entrée.** Squelette arrêté ; domaine qualifié.
 

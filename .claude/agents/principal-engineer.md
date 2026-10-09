@@ -1,6 +1,6 @@
 ---
 name: principal-engineer
-description: "Socle technique, solution design de release, spécification technique, implémentation, faisabilité, dépendances. Intervient aux activités 1, 9, 14, 17, 18, 21."
+description: "Socle technique, solution design de release, spécification technique, implémentation, faisabilité, dépendances. Intervient aux activités 1, 10, 14, 17, 18, 19."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch
 model: opus
 effort: medium

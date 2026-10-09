@@ -1,6 +1,6 @@
 ---
 name: conformance-auditor
-description: "Exécuter et interpréter les huit contrôles déterministes ; vérifier la subordination des baselines et la conformité design/code. Intervient 15, 18, 23, 24, K1."
+description: "Exécuter et interpréter les huit contrôles déterministes ; vérifier la subordination des baselines et la conformité design/code. Intervient 15, 18, 20, 21, K1."
 tools: Read, Grep, Glob, WebFetch
 model: sonnet
 effort: medium

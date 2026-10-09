@@ -1,6 +1,6 @@
 ---
 name: solution-architecture
-description: "Arrêter l'architecture cible et la réalisation technique d'une release, classer chaque élément en CORE INVARIANT ou EXTENSION par rayon d'impact, et exiger une alternative rejetée pour toute décision structurante. Utiliser aux activités 9, 14 de la méthode — Socle technique et choix structurants · Solution design de la release."
+description: "Arrêter l'architecture cible et la réalisation technique d'une release, classer chaque élément en CORE INVARIANT ou EXTENSION par rayon d'impact, et exiger une alternative rejetée pour toute décision structurante. Utiliser aux activités 10, 14 de la méthode — Socle technique et choix structurants · Solution design de la release."
 ---
 
 # solution-architecture
@@ -15,7 +15,7 @@ Arrêter l'architecture cible et la réalisation technique d'une release, classe
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 9 | Socle technique et choix structurants | `principal-engineer` | `autorité Tech` |
+| 10 | Socle technique et choix structurants | `principal-engineer` | `autorité Tech` |
 | 14 | Solution design de la release | `principal-engineer` | `autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.

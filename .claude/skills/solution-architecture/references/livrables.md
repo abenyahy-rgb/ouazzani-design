@@ -32,7 +32,7 @@ Les choix qu'on ne refait pas, et ce qu'ils excluent. Une décision d'architectu
 - **Alternatives rejetées** — au moins une, avec le motif du rejet
 - **Ce que la décision exclut** — la contrepartie, explicitement
 - **Build ou achat** — pour chaque capacité non différenciante
-- **Reprise de la stack de conception** — La STACK DE CONCEPTION est arrêtée en WP-07, à l'ouverture de l'activité 6 : elle conditionne la première décision visuelle et ne peut pas attendre l'activité 9. Elle est REPRISE ici pour être classée CORE INVARIANT ou EXTENSION et confrontée à l'architecture cible. Une divergence entre la stack de conception et la stack de build est un finding, jamais deux vérités qu'on réconcilie à la première slice.
+- **Reprise de la stack de conception** — La STACK DE CONCEPTION est arrêtée en WP-07, à l'ouverture de l'activité 7 : elle conditionne la première décision visuelle et ne peut pas attendre l'activité 10. Elle est REPRISE ici pour être classée CORE INVARIANT ou EXTENSION et confrontée à l'architecture cible. Une divergence entre la stack de conception et la stack de build est un finding, jamais deux vérités qu'on réconcilie à la première slice.
 - **Classement** — CORE INVARIANT si sa remise en cause invalide du livré, EXTENSION sinon
 - **Conditions de réexamen** — ce qui, si observé, rouvrirait la décision
 

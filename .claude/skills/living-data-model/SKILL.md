@@ -1,6 +1,6 @@
 ---
 name: living-data-model
-description: "Tenir le modèle de données en trois couches : sémantique écrite à la main et figée en G0, modèle dérivé extrait du schéma exécuté, table de liaison qui rattache chaque entité et chaque champ à un terme du glossaire et à une catégorie de vérité. Utiliser aux activités 7, 14, 18 de la méthode — Navigation, IA, terminologie et sémantique · Solution design de la release · Contrat de slice."
+description: "Tenir le modèle de données en trois couches : sémantique écrite à la main et figée en G0, modèle dérivé extrait du schéma exécuté, table de liaison qui rattache chaque entité et chaque champ à un terme du glossaire et à une catégorie de vérité. Utiliser aux activités 8, 14, 18 de la méthode — Navigation, IA, terminologie et sémantique · Solution design de la release · Contrat de slice."
 ---
 
 # living-data-model
@@ -15,7 +15,7 @@ Tenir le modèle de données en trois couches : sémantique écrite à la main e
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 7 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
+| 8 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
 | 14 | Solution design de la release | `principal-engineer` | `autorité Tech` |
 | 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
 

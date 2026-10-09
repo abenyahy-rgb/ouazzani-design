@@ -1,6 +1,6 @@
 ---
 name: product-lead
-description: "Thèse, outcomes, domaine, périmètre, métriques, backlog, priorisation. Intervient aux activités 2, 3, 11, 16, 17, 18."
+description: "Thèse, outcomes, domaine, périmètre, métriques, backlog, priorisation. Intervient aux activités 2, 3, 12, 16, 17, 18."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch
 model: opus
 effort: high

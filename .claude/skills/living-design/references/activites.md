@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 8 — Socle exécutable
+## Activité 9 — Socle exécutable
 
 **Entrée.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 

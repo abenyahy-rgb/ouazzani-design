@@ -1,6 +1,6 @@
 ---
 name: factory-lead
-description: "Orchestrer les activités, tenir le Run Ledger, assembler les packs de preuves sans les pré-arbitrer, arbitrer les exceptions de procédure. Intervient 1, 3, 18, 21, 23, 24, tous les gates."
+description: "Orchestrer les activités, tenir le Run Ledger, assembler les packs de preuves sans les pré-arbitrer, arbitrer les exceptions de procédure. Intervient 1, 3, 18, 19, 20, 21, tous les gates."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch
 model: opus
 effort: high

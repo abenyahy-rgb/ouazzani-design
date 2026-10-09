@@ -1,6 +1,6 @@
 ---
 name: release-architecture
-description: "Découper le produit en releases désirables, livrables et mesurables seules ; les ordonner ; qualifier dépendances et risques ; arrêter le périmètre et les métriques de chacune. Utiliser aux activités 10, 11 de la méthode — Découpage et séquencement des releases · Périmètre, métriques et discovery ciblée de la release."
+description: "Découper le produit en releases désirables, livrables et mesurables seules ; les ordonner ; qualifier dépendances et risques ; arrêter le périmètre et les métriques de chacune. Utiliser aux activités 11, 12 de la méthode — Découpage et séquencement des releases · Périmètre, métriques et discovery ciblée de la release."
 ---
 
 # release-architecture
@@ -15,8 +15,8 @@ Découper le produit en releases désirables, livrables et mesurables seules ; l
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 10 | Découpage et séquencement des releases | `product-lead` | `Product Owner` |
-| 11 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
+| 11 | Découpage et séquencement des releases | `product-lead` | `Product Owner` |
+| 12 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 

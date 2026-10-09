@@ -14,7 +14,7 @@
 
 Responsible : `product-lead · product-designer · principal-engineer` · Accountable : `Product Owner et autorité Tech` · Cadence C3, étape C3.1
 
-## Activité 21 — Construction et tests
+## Activité 19 — Construction et tests
 
 **Entrée.** K1 franchi ; branche de travail créée ; environnement isolé ; critic(quality) disponible et indépendant.
 

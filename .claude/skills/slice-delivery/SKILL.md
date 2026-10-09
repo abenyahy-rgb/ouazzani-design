@@ -1,6 +1,6 @@
 ---
 name: slice-delivery
-description: "Conduire une slice verticale de bout en bout, une à la fois : contrat écrit avant le code — résultat utilisateur, budget de périmètre, critères de sortie avec leur preuve, tests définis d'avance —, implémentation dans la mutation boundary, exécution des tests, healing d'obsolescence, preuve E2E et déploiement en QA. Utiliser aux activités 18, 21 de la méthode — Contrat de slice · Construction et tests."
+description: "Conduire une slice verticale de bout en bout, une à la fois : contrat écrit avant le code — résultat utilisateur, budget de périmètre, critères de sortie avec leur preuve, tests définis d'avance —, implémentation dans la mutation boundary, exécution des tests, healing d'obsolescence, preuve E2E et déploiement en QA. Utiliser aux activités 18, 19 de la méthode — Contrat de slice · Construction et tests."
 ---
 
 # slice-delivery
@@ -16,7 +16,7 @@ Conduire une slice verticale de bout en bout, une à la fois : contrat écrit av
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
-| 21 | Construction et tests | `principal-engineer · quality-engineer produit · critic(quality) classe` | `autorité Tech` |
+| 19 | Construction et tests | `principal-engineer · quality-engineer produit · critic(quality) classe` | `autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 

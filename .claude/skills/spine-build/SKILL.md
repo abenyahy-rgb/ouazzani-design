@@ -1,6 +1,6 @@
 ---
 name: spine-build
-description: "Figer navigation, IA, terminologie et sémantique, puis produire le socle navigable en très haute fidélité structurelle avec ses fondations de Design System. Utiliser aux activités 6, 7, 8 de la méthode — Fondations du Design System · Navigation, IA, terminologie et sémantique · Socle exécutable."
+description: "Figer navigation, IA, terminologie et sémantique, puis produire le socle navigable en très haute fidélité structurelle avec ses fondations de Design System. Utiliser aux activités 7, 8, 9 de la méthode — Fondations du Design System · Navigation, IA, terminologie et sémantique · Socle exécutable."
 ---
 
 # spine-build
@@ -15,9 +15,9 @@ Figer navigation, IA, terminologie et sémantique, puis produire le socle naviga
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 6 | Fondations du Design System | `product-designer` | `Product Owner` |
-| 7 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
-| 8 | Socle exécutable | `product-designer` | `Product Owner` |
+| 7 | Fondations du Design System | `product-designer` | `Product Owner` |
+| 8 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
+| 9 | Socle exécutable | `product-designer` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -36,11 +36,11 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 6 — arrêt dur.** Squelette arrêté ; design-brief.md renseigné ; contraintes d'accessibilité, de langue et d'usage déclarées ; STACK DE CONCEPTION arrêtée par ADR — framework, base de composants, moteur de styles, cible de déploiement, outillage de conception assistée. Son absence produit BLOCKED : décider la stack après la première décision visuelle n'est plus une décision, c'est une justification.
+**Activité 7 — arrêt dur.** Squelette arrêté ; design-brief.md renseigné ; contraintes d'accessibilité, de langue et d'usage déclarées ; STACK DE CONCEPTION arrêtée par ADR — framework, base de composants, moteur de styles, cible de déploiement, outillage de conception assistée. Son absence produit BLOCKED : décider la stack après la première décision visuelle n'est plus une décision, c'est une justification.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 
-**Activité 8 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
+**Activité 9 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 
