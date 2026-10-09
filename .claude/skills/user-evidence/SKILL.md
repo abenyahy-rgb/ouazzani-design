@@ -11,6 +11,19 @@ description: "Produire une preuve utilisateur opposable, sans dépendre d'humain
 
 Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Protocole écrit AVANT la collecte, version figée par commit, résultats non filtrés, biais déclarés, étiquetage obligatoire du niveau. Ne fait pas : inventer une citation, un chiffre ou un trait ; présenter le documentaire comme empirique ; requalifier une revue synthétique en preuve.
 
+## Procédure
+
+1. Écrire et commiter le plan AVANT de chercher : les questions à trancher, les segments, les requêtes prévues par famille de sources, dans les MOTS des utilisateurs et non ceux du produit, et le biais attendu de chaque plateforme.
+2. Chercher soi-même, par la recherche web de l'activité : au moins quatre familles de sources — avis d'applications et de services concurrents, forums et communautés, questions-réponses, études et rapports publics, statistiques officielles — et y inclure ceux qui ont abandonné et ceux qui n'utilisent rien. Une seule plateforme épouse son biais.
+3. Consigner chaque verbatim dans interviews/S-nn.md à la lecture : adresse, date de consultation, citation LITTÉRALE, profil déclaré de l'auteur. Jamais de paraphrase entre guillemets.
+4. Chercher jusqu'à SATURATION : s'arrêter quand trois sources de suite n'apportent plus de thème nouveau, et l'écrire. Un persona porté par moins d'une dizaine de verbatims est un brouillon, et il le dit.
+5. Synthétiser par regroupement d'affinités : verbatims → thèmes → insights. Un insight est une TENSION dite en une phrase — ce que la personne veut, et ce qui l'en empêche —, avec ses sources et sa solidité ; un thème qu'une seule source porte est faible et le dit.
+6. Construire les personas sur des VARIABLES DE COMPORTEMENT : quatre à six axes tirés des verbatims (fréquence, outil, autonomie, rapport au risque…), placer chaque auteur, retenir les groupes qui se distinguent. Deux à quatre personas, un fichier PER-nn chacun ; leurs curseurs montrent ce qui les sépare. Deux personas qui parlent de la même voix n'en font qu'un.
+7. Une empathy map par persona : « Dit » en citations littérales, « Fait » rapporté par les sources, « Pense » et « Ressent » inférés et sourcés ; douleurs et gains pour finir. Un cadran que rien ne fonde reste vide.
+8. Un journey as-is par persona : trois à huit étapes dites dans ses mots, l'émotion de −2 à +2 tirée des sources, le moment de vérité au point bas, et pour chaque douleur majeure une opportunité formulée en « Comment pourrions-nous… », rattachée à son HYP-nn.
+9. Se relire contre les défauts du métier : stéréotype, détail inventé pour faire vrai, persona qui veut ce que le produit vend, citation reformulée, voix identique d'un persona à l'autre, courbe complétée sans source. Puis critic(product) vérifie chaque citation contre sa source.
+10. Rendre le livrable en PowerPoint (« apf livrable WP-04 ») : une planche par persona, une empathy map et un journey map par persona, le titre de chaque planche disant l'insight. Une planche que la machine refuse signale une donnée manquante : la compléter par une source, jamais par une estimation.
+
 ## Activités outillées
 
 | Activité | Nom | Responsible | Accountable |
