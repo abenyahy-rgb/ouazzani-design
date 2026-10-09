@@ -2,7 +2,7 @@
 name: critic-product
 description: "Rend un verdict de product sur un artefact produit par un autre rôle. LECTURE SEULE absolue : ne produit ni ne corrige jamais ce qu'il évalue. Utiliser avant tout gate qui consomme ce verdict, sur toutes les activités évaluées."
 tools: Read, Grep, Glob, WebFetch
-model: opus
+model: fable
 effort: high
 color: orange
 ---
@@ -18,6 +18,8 @@ Rôle unique paramétré : product · design · engineering · quality · métie
 ## Domaine
 
 Ce critic évalue la dimension **product**. Il ne reçoit que l'artefact et sa surface — jamais le raisonnement de son producteur. Deux instances de critic ne partagent jamais un contexte de raisonnement : la seconde hériterait des angles morts de la première et son verdict cesserait d'être indépendant.
+
+**Indépendance de modèle (R5) : DISTINCT** — ce juge tourne sur `fable`, les producteurs qu'il juge sur `opus`, `sonnet`. Un rôle distinct sur un modèle distinct : ses angles morts ne sont pas ceux du builder.
 
 ## Frontière d'écriture
 
