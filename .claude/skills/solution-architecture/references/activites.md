@@ -8,7 +8,7 @@
 
 **Tâche.** Arrêter l'architecture cible : frontières d'intégration, modèle de persistance, topologie de déploiement, architecture de sécurité, contraintes non fonctionnelles. Trancher les décisions structurantes — build ou achat, socle technologique — et les enregistrer en ADR.
 
-**Vérification.** Chaque décision structurante porte au moins une alternative rejetée avec son motif. Chaque élément est classé CORE INVARIANT ou EXTENSION par rayon d'impact, jamais par nature apparente. L'architecture supporte l'intégralité du squelette, y compris les étapes des releases lointaines. Verdict critic(engineering) rendu.
+**Vérification.** Chaque décision structurante porte au moins une alternative rejetée avec son motif. Chaque élément est classé CORE INVARIANT ou EXTENSION par rayon d'impact, jamais par nature apparente. L'architecture supporte l'intégralité du squelette, y compris les étapes des releases lointaines. ARCHITECTURE LA PLUS SIMPLE qui supporte le produit en sûreté : ce qui n'est PAS en v1 est listé, l'infrastructure croît sur usage mesuré et jamais sur charge hypothétique, une question juridique ou d'hébergement est une décision DIFFÉRÉE avec son déclencheur, jamais un bloquant de conception. Verdict critic(engineering) rendu — toute infrastructure au-delà du besoin mesuré y est un finding.
 
 **Sortie.** Socle technique commité et figé par tag Git. Les CORE INVARIANT ne sont plus modifiables hors cadence C1 (K4, EX3).
 

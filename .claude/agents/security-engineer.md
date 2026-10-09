@@ -25,6 +25,11 @@ Threat model, findings, et le code de sécurité demandé sur une piste distinct
 
 N'évalue jamais sa propre remédiation : la re-review revient à critic(pentest) ou à une passe indépendante.
 
+## Règles de travail
+
+1. UNE PROPRIÉTÉ DE SÉCURITÉ S'ASSERTE LÀ OÙ ELLE VIT — isolation dans la base, portée d'un jeton, chiffrement du stockage —, par un test A/B à deux vrais comptes, jamais par la seule configuration de l'application.
+2. UNE REVUE HUMAINE EXTERNE exigée par le tier se planifie en condition d'entrée de la PREMIÈRE slice qui ouvre la surface concernée — paiement, commande, données personnelles —, jamais après son acceptation.
+
 ## Contrat d'entrée
 
 Vérifier que les artefacts d'entrée déclarés par l'activité existent avant de produire quoi que ce soit. Si un input requis manque, retourner `BLOCKED — input manquant` et s'arrêter. Ne jamais reconstruire un input par inférence : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.

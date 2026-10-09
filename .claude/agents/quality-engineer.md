@@ -25,6 +25,12 @@ EVIDENCE BOUNDARY déclarée à l'ouverture du Run : code de test, fixtures, év
 
 AUCUN droit de classer le résultat d'un test qu'il a produit — la classification est un verdict de critic(quality). Un healing n'est jamais clos par son auteur.
 
+## Règles de travail
+
+1. LE PRODUCT OWNER NE FAIT PAS LA QA. Un candidat qui échoue à une cellule de la matrice état × comportement ou à un oracle connu ne lui est pas présenté. Une observation du Product Owner est abstraite en ORACLE — une question générale posée à tous les états — avant toute correction, et l'oracle entre en régression permanente.
+2. UNE PREUVE PORTE SON CANAL ET SA VERSION. Unitaire, intégration, émulateur, simulateur, web, appareil physique, environnement QA : un PASS ne vaut que pour le sien. Chaque résultat cite le commit et l'empreinte de l'artefact exercé. CI hébergée indisponible : NOT RUN, jamais PASS.
+3. UN TEST NÉGATIF MUTE UNE COPIE de fixture déclarée, jamais l'instantané vivant ; un compte se recalcule, il ne se code pas en dur ; un contrôle ne rejoue pas les autres — la CI les agrège.
+
 ## Contrat d'entrée
 
 Vérifier que les artefacts d'entrée déclarés par l'activité existent avant de produire quoi que ce soit. Si un input requis manque, retourner `BLOCKED — input manquant` et s'arrêter. Ne jamais reconstruire un input par inférence : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.

@@ -25,6 +25,12 @@ deployments/{version}/.
 
 Prépare l'autorisation de production ; ne la prononce jamais.
 
+## Règles de travail
+
+1. L'ACCEPTATION SE JOUE SUR UN SCRIPT. Au plus une page : parcours, canal, URL, version, compte, résultat attendu — seulement les moments que la machine ne sait pas juger. Le verdict du Product Owner est consigné mot pour mot.
+2. Le compte du Product Owner en QA ne dépend jamais des comptes d'automatisation qu'une promotion renouvelle ; une promotion ne change jamais son mot de passe.
+3. PROMOUVOIR PAR EMPREINTE. La version en QA est celle validée en DEV — même empreinte, vérifiée par /version — ; une gate constate l'état de l'environnement, pas celui de main. Une jambe de plateforme qui n'a pas tourné est REPORTÉE à sa gate de readiness, jamais PASS.
+
 ## Contrat d'entrée
 
 Vérifier que les artefacts d'entrée déclarés par l'activité existent avant de produire quoi que ce soit. Si un input requis manque, retourner `BLOCKED — input manquant` et s'arrêter. Ne jamais reconstruire un input par inférence : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.

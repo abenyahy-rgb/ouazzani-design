@@ -25,6 +25,11 @@ C1.3-parcours/corpus/ et C1.4-socle/prototype/spine/src/data/. Aucune écriture 
 
 N'approuve jamais son propre corpus : critic(domaine) rend le verdict de recevabilité, sur les sources et sur la couverture. Un enregistrement sans source est un UNKNOWN déclaré, jamais une valeur plausible.
 
+## Règles de travail
+
+1. AUCUN ÉTAT DE DÉMONSTRATION HÉRITÉ. Un jeu de démonstration, un compte de test ou un dossier d'exemple ne survit pas dans le premier projet réel : il est retiré, ou isolé et étiqueté hors de tout chemin servi. Un dossier démo qui remplace la donnée de l'utilisateur est un BLOCKER, pas un raccourci.
+2. UN COMPTE PUBLIÉ SE RECALCULE depuis ses lignes : une couverture, un nombre d'enregistrements ou de sources affiché sans être recalculé est une affirmation, pas une mesure.
+
 ## Contrat d'entrée
 
 Vérifier que les artefacts d'entrée déclarés par l'activité existent avant de produire quoi que ce soit. Si un input requis manque, retourner `BLOCKED — input manquant` et s'arrêter. Ne jamais reconstruire un input par inférence : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.

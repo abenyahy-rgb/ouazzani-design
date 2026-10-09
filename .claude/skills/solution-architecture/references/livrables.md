@@ -12,7 +12,7 @@ Ce qui est cher à changer côté technique. Le pendant exact du socle de design
 
 - **Frontières d'intégration** — ce que le produit possède, ce qu'il consomme, et le contrat entre les deux
 - **Modèle de persistance** — aligné sur les catégories de vérité du socle sémantique, jamais inventé à côté
-- **Topologie de déploiement**
+- **Topologie de déploiement** — DEV → QA → PROD, PREPROD seulement sur preuve ; un seul artefact, construit une fois et promu par empreinte — les environnements ne diffèrent que par configuration et secrets, jamais par le code ; acceptation en QA et mise en production sont deux décisions humaines distinctes
 - **Architecture de sécurité** — surfaces, authentification, autorisation, secrets — cohérente avec les tiers de risque
 - **Contraintes non fonctionnelles** — chacune chiffrée : sans nombre, ce n'est pas une contrainte
 - **Classement de chaque élément** — CORE INVARIANT ou EXTENSION, par rayon d'impact
