@@ -1,6 +1,6 @@
 ---
 description: "Constater l'état d'une gate : pack de preuves, livrables manquants, contrôles en échec."
-argument-hint: [G0 | G1 | G2 | K1 | G3 | G4]
+argument-hint: [G0 | G1 | K1 | G3 | G4]
 allowed-tools: Bash(node:*)
 ---
 

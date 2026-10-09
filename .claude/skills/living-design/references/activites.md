@@ -38,14 +38,14 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C2,
 
 Responsible : `critic(design)` · Accountable : `Product Owner` · Cadence C2, étape C2.2
 
-## Activité 19 — Design de sprint et prototype
+## Activité 18 — Contrat de slice
 
-**Entrée.** Sprint autorisé ; Release Baseline accessible.
+**Entrée.** G1 franchi ; carte des slices à jour ; slice précédente acceptée — une seule slice en cours à la fois.
 
-**Tâche.** Identifier écrans et parcours impactés, raffiner états et interactions, produire la tranche exécutable, créer le delta de DS nécessaire.
+**Tâche.** Écrire le contrat de la slice, AVANT tout code : le résultat utilisateur en une phrase ; le périmètre et son budget ; les critères de sortie EXIT-n, chacun avec sa preuve ; les tests définis avant le code ; la Baseline Delta Declaration, les écrans et le delta de Design System ; les règles, données, API et migrations ; le tier ; les points ouverts. Le prototype vivant est recomposé avec le delta de la slice.
 
-**Vérification.** Aucune story sans écran associé. Inventaire MUST PRESERVE produit AVANT toute modification. Le prototype exerce chaque story. Aucune modification silencieuse d'un composant existant. Plancher de craft lu avant toute modification d'un écran existant.
+**Vérification.** Résultat formulé en résultat utilisateur, pas en liste de tâches. Aucune story sans AC ni sans écran ; le prototype exerce chaque story. Chaque AC testable. Chaque critère de sortie a sa preuve et sa procédure. Chaque AC matériel a son test, défini avant le code. Inventaire MUST PRESERVE produit AVANT toute modification ; aucune modification silencieuse d'un composant existant ; plancher de craft lu avant toute modification d'un écran existant. Chaque règle cite la baseline, la décision produit ou le critic de domaine. Migrations et rollback décrits, chaque migration rattachée à sa story. Modèle dérivé régénéré : chaque entité et chaque champ créés par la slice résolvent vers un terme du glossaire et une catégorie de vérité. Tier proposé et justifié.
 
-**Sortie.** design/ et prototype commités ; Baseline Delta Declaration produite ; prototype vivant recomposé socle ⊕ deltas de release ⊕ deltas de sprint, manifeste daté de ce sprint, zéro écart non subordonné. C'est ce pas qui fait que le prototype suit les sprints au lieu de les précéder puis de périmer.
+**Sortie.** slice-contract.md, design/ et spec/ commités ; prototype vivant recomposé socle ⊕ deltas de release ⊕ deltas de slice, manifeste daté ; NEEDS CLARIFICATION résolus ou routés ; Run Ledger ouvert. C'est ce pas qui fait que le prototype suit les slices au lieu de les précéder puis de périmer. Un champ non résolu ou un NC ouvert ne passe pas K1.
 
-Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C3, étape C3.2
+Responsible : `product-lead · product-designer · principal-engineer` · Accountable : `Product Owner et autorité Tech` · Cadence C3, étape C3.1

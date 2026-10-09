@@ -1,24 +1,22 @@
 ---
-name: sprint-delivery
-description: "Conduire un sprint de bout en bout : goal, périmètre, spécification, implémentation dans la mutation boundary, plan de tests, exécution, healing d'obsolescence et preuve E2E. Utiliser aux activités 18, 20, 21, 22 de la méthode — Sprint goal et périmètre · Spécification fonctionnelle et technique · Build · Tests et evidence."
+name: slice-delivery
+description: "Conduire une slice verticale de bout en bout, une à la fois : contrat écrit avant le code — résultat utilisateur, budget de périmètre, critères de sortie avec leur preuve, tests définis d'avance —, implémentation dans la mutation boundary, exécution des tests, healing d'obsolescence, preuve E2E et déploiement en QA. Utiliser aux activités 18, 21 de la méthode — Contrat de slice · Construction et tests."
 ---
 
-# sprint-delivery
+# slice-delivery
 
 > Fichier **généré** depuis `core/method.yaml`. Ne pas éditer à la main.
 
 ## Mandat
 
-Conduire un sprint de bout en bout : goal, périmètre, spécification, implémentation dans la mutation boundary, plan de tests, exécution, healing d'obsolescence et preuve E2E.
+Conduire une slice verticale de bout en bout, une à la fois : contrat écrit avant le code — résultat utilisateur, budget de périmètre, critères de sortie avec leur preuve, tests définis d'avance —, implémentation dans la mutation boundary, exécution des tests, healing d'obsolescence, preuve E2E et déploiement en QA. Ne fait pas : laisser grandir une slice — un écart est un amendement daté, ce qui dépasse va à une slice suivante.
 
 ## Activités outillées
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 18 | Sprint goal et périmètre | `product-lead puis factory-lead` | `Product Owner` |
-| 20 | Spécification fonctionnelle et technique | `product-lead et principal-engineer` | `PO et autorité Tech` |
-| 21 | Build | `principal-engineer` | `autorité Tech` |
-| 22 | Tests et evidence | `quality-engineer produit · critic(quality) classe` | `factory-lead` |
+| 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
+| 21 | Construction et tests | `principal-engineer · quality-engineer produit · critic(quality) classe` | `autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -26,10 +24,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-24 — Sprint goal et plan | `releases/{release-id}/sprints/{sprint-id}/candidate-scope.md · sprint-goal.md · sprint-plan.md · risks.md` | G2 |
-| WP-26 — Spécification fonctionnelle et technique | `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md` | K1 |
-| WP-27 — Journal de build et écarts de périmètre | `releases/{release-id}/sprints/{sprint-id}/status.md · scope-changes.md` | G3 |
-| WP-28 — Stratégie, résultats et classification de tests | `releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md · releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md · releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md · releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md` | G3 |
+| WP-24 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
+| WP-25 — Construction et preuves | `releases/{release-id}/slices/{slice-id}/status.md · scope-changes.md · quality/test-strategy.md · quality/test-healing-decisions.md · acceptance/traceability-matrix.md · acceptance/preview-report.md` | G3 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

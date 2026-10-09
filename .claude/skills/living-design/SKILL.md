@@ -1,6 +1,6 @@
 ---
 name: living-design
-description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de sprint — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 8, 13, 15, 19 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Design de sprint et prototype."
+description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 8, 13, 15, 18 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
 ---
 
 # living-design
@@ -9,7 +9,7 @@ description: "Produire le design exécutable à tout niveau — socle, Strategic
 
 ## Mandat
 
-Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de sprint — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Recomposer le prototype vivant après chaque delta : socle ⊕ deltas de release ⊕ deltas de sprint, jamais une écriture directe dans l'artefact composé.
+Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Recomposer le prototype vivant après chaque delta : socle ⊕ deltas de release ⊕ deltas de slice, jamais une écriture directe dans l'artefact composé.
 
 ## Activités outillées
 
@@ -18,7 +18,7 @@ Produire le design exécutable à tout niveau — socle, Strategic Design de rel
 | 8 | Socle exécutable | `product-designer` | `Product Owner` |
 | 13 | Exploration, direction et Strategic Design | `product-designer` | `Product Owner` |
 | 15 | Design QA | `critic(design)` | `Product Owner` |
-| 19 | Design de sprint et prototype | `product-designer` | `Product Owner` |
+| 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -29,7 +29,7 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 | WP-10 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
 | WP-17 — Strategic Design de la release | `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/` | G1 |
 | WP-20 — Rapport de Design QA | `releases/{release-id}/design/qa/report.md` | G1 |
-| WP-25 — Design de sprint et Baseline Delta Declaration | `releases/{release-id}/sprints/{sprint-id}/design/scope.yaml · flows/ · prototype/ · design-system-delta/` | K1 |
+| WP-24 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

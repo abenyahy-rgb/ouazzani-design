@@ -8,7 +8,7 @@
 
 Cycle de vie : CORE INVARIANT · contrôlé en G0 · R/A : principal-engineer / autorité Tech
 
-Ce qui est cher à changer côté technique. Le pendant exact du socle de design : jusqu'ici la méthode gelait le vocabulaire en G0 et laissait la persistance se décider au premier sprint.
+Ce qui est cher à changer côté technique. Le pendant exact du socle de design : jusqu'ici la méthode gelait le vocabulaire en G0 et laissait la persistance se décider à la première slice.
 
 - **Frontières d'intégration** — ce que le produit possède, ce qu'il consomme, et le contrat entre les deux
 - **Modèle de persistance** — aligné sur les catégories de vérité du socle sémantique, jamais inventé à côté
@@ -32,7 +32,7 @@ Les choix qu'on ne refait pas, et ce qu'ils excluent. Une décision d'architectu
 - **Alternatives rejetées** — au moins une, avec le motif du rejet
 - **Ce que la décision exclut** — la contrepartie, explicitement
 - **Build ou achat** — pour chaque capacité non différenciante
-- **Reprise de la stack de conception** — La STACK DE CONCEPTION est arrêtée en WP-07, à l'ouverture de l'activité 6 : elle conditionne la première décision visuelle et ne peut pas attendre l'activité 9. Elle est REPRISE ici pour être classée CORE INVARIANT ou EXTENSION et confrontée à l'architecture cible. Une divergence entre la stack de conception et la stack de build est un finding, jamais deux vérités qu'on réconcilie au premier sprint.
+- **Reprise de la stack de conception** — La STACK DE CONCEPTION est arrêtée en WP-07, à l'ouverture de l'activité 6 : elle conditionne la première décision visuelle et ne peut pas attendre l'activité 9. Elle est REPRISE ici pour être classée CORE INVARIANT ou EXTENSION et confrontée à l'architecture cible. Une divergence entre la stack de conception et la stack de build est un finding, jamais deux vérités qu'on réconcilie à la première slice.
 - **Classement** — CORE INVARIANT si sa remise en cause invalide du livré, EXTENSION sinon
 - **Conditions de réexamen** — ce qui, si observé, rouvrirait la décision
 
@@ -61,7 +61,7 @@ Comment les parcours de cette release se réalisent dans le socle technique. Le 
 
 Cycle de vie : vivant · contrôlé en G1 · R/A : principal-engineer / autorité Tech
 
-L'entrée technique que l'activité 19 exigeait sans jamais l'avoir. Un backlog ne qualifie pas une dépendance ni ne propose un tier sans architecture de solution.
+L'entrée technique que l'activité 17 exigeait sans jamais l'avoir. Un backlog ne qualifie pas une dépendance ni ne propose un tier sans architecture de solution.
 
 - **Dépendances par capacité** — technique, de donnée, d'apprentissage — chacune nommée et datée
 - **Absence de cycle** — démontrée, pas affirmée
@@ -69,4 +69,4 @@ L'entrée technique que l'activité 19 exigeait sans jamais l'avoir. Un backlog 
 - **Tier de risque par capacité** — R0 à R3, justifié — commande l'evidence et les autorités en aval
 - **Capacités non faisables dans cette release** — nommées et routées
 
-**Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 19 est BLOCKED — input manquant.
+**Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 17 est BLOCKED — input manquant.

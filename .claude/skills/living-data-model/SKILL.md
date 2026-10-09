@@ -1,6 +1,6 @@
 ---
 name: living-data-model
-description: "Tenir le modèle de données en trois couches : sémantique écrite à la main et figée en G0, modèle dérivé extrait du schéma exécuté, table de liaison qui rattache chaque entité et chaque champ à un terme du glossaire et à une catégorie de vérité. Utiliser aux activités 7, 14, 20 de la méthode — Navigation, IA, terminologie et sémantique · Solution design de la release · Spécification fonctionnelle et technique."
+description: "Tenir le modèle de données en trois couches : sémantique écrite à la main et figée en G0, modèle dérivé extrait du schéma exécuté, table de liaison qui rattache chaque entité et chaque champ à un terme du glossaire et à une catégorie de vérité. Utiliser aux activités 7, 14, 18 de la méthode — Navigation, IA, terminologie et sémantique · Solution design de la release · Contrat de slice."
 ---
 
 # living-data-model
@@ -17,7 +17,7 @@ Tenir le modèle de données en trois couches : sémantique écrite à la main e
 |---|---|---|---|
 | 7 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
 | 14 | Solution design de la release | `principal-engineer` | `autorité Tech` |
-| 20 | Spécification fonctionnelle et technique | `product-lead et principal-engineer` | `PO et autorité Tech` |
+| 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -29,7 +29,7 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 | WP-09 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
 | WP-18 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
 | WP-19 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
-| WP-26 — Spécification fonctionnelle et technique | `releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md · acceptance-criteria.md · technical-spec.md` | K1 |
+| WP-24 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

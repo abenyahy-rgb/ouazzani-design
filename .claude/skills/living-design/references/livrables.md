@@ -8,15 +8,15 @@
 
 Cycle de vie : figé en G0 · contrôlé en G0 · R/A : product-designer / Product Owner
 
-Le socle navigable en très haute fidélité structurelle — toutes les étapes existent, la navigation fonctionne, le vocabulaire est réel — ET son état courant composé : socle ⊕ deltas de release ⊕ deltas de sprint. Un socle figé en G0 et un produit au sprint 5 ne sont pas deux livrables : c'est le même artefact vu à deux dates, et les tenir séparés obligeait à maintenir deux vérités.
+Le socle navigable en très haute fidélité structurelle — toutes les étapes existent, la navigation fonctionne, le vocabulaire est réel — ET son état courant composé : socle ⊕ deltas de release ⊕ deltas de slice. Un socle figé en G0 et un produit à la slice 5 ne sont pas deux livrables : c'est le même artefact vu à deux dates, et les tenir séparés obligeait à maintenir deux vérités.
 
 - **Source exécutable** — sur la STACK DE CONCEPTION déclarée en WP-12, et sur la base de composants qu'elle nomme — jamais une chaîne de rendu écrite pour ce produit seul
 - **Build et URL de preview DÉPLOYÉE** — déployée, pas seulement buildable : une URL que le métier ouvre sans rien installer. Un fichier local à ouvrir depuis un dépôt n'est pas une preview, c'est une pièce jointe
 - **Couverture du squelette** — chaque STG atteignable
 - **Liaison au corpus réel** — le socle lit WP-06 ; le chemin de données est nommé et vérifiable. AUCUNE fixture atteignable depuis ce livrable
 - **Rendu des champs ABSENTS** — un champ que le corpus ne source pas est rendu comme absent et dit pourquoi — jamais comblé par une valeur vraisemblable
-- **Composition** — socle ⊕ deltas de release ⊕ deltas de sprint, appliqués dans l'ordre — aucun écran écrit directement ici
-- **Manifeste de composition** — commit du socle, baseline de release, liste ordonnée des deltas de sprint appliqués, horodatage
+- **Composition** — socle ⊕ deltas de release ⊕ deltas de slice, appliqués dans l'ordre — aucun écran écrit directement ici
+- **Manifeste de composition** — commit du socle, baseline de release, liste ordonnée des deltas de slice appliqués, horodatage
 - **Couverture du squelette** — chaque STG reste atteignable après composition — un delta qui casse une étape est un défaut de subordination
 - **Écarts non subordonnés** — tout écran présent après composition qui ne trace ni vers une étape du socle ni vers un delta déclaré est listé : un design non autorisé, pas une nouveauté
 - **URL de preview courante** — une seule, celle que le métier ouvre
@@ -56,29 +56,33 @@ Premier handoff vers un évaluateur indépendant du producteur. Vérifie la coh�
 
 **Complétude.** Zéro BLOCKER ouvert. Captures multi-device produites. Contrôle accessibilité outillé, pas déclaratif.
 
-## WP-25 — Design de sprint et Baseline Delta Declaration
+## WP-24 — Contrat de slice
 
-`releases/{release-id}/sprints/{sprint-id}/design/scope.yaml · flows/ · prototype/ · design-system-delta/`
+`releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md`
 
-Cycle de vie : figée en K1 · contrôlé en K1 · R/A : product-designer / Product Owner
+Cycle de vie : par slice · contrôlé en K1 · R/A : product-lead, product-designer, principal-engineer / Product Owner et autorité Tech
 
-Un delta autorisé sur la Release Baseline, jamais un design autonome. La Baseline Delta Declaration est ce qui rend le delta contrôlable.
+Ce que la slice doit produire, et la preuve qui dira qu'elle l'a produit — écrite AVANT le code. Une slice est verticale : données, API, écrans et tests livrés ensemble, pour un résultat qu'un utilisateur voit. Le contrat réunit ce que trois livrables de sprint séparaient — objectif, design, spécification — parce qu'on ne les lisait jamais l'un sans l'autre.
 
-- **Périmètre design** — aucune story sans écran ni composant associé
-- **Baseline Delta Declaration** — MUST PRESERVE vs deltas autorisés — produite AVANT toute modification
-- **Écrans desktop, tablette, mobile**
-- **Prototype exécutable** — exerçant chaque story ; aucun parcours simulé par capture statique
+- **Résultat de la slice** — un résultat utilisateur en une phrase, démontrable en QA ; l'acceptation se prononce contre lui
+- **Périmètre et budget** — stories retenues et exclusions ; ce qu'aucun critère de sortie n'exige est reporté — la slice ne grandit pas
+- **Critères de sortie et preuves** — EXIT-n, chacun avec sa preuve : mode (automatique · manuel · mixte), procédure, réussite, échec, artefact retenu
+- **Tests définis avant le code** — chaque AC matériel → ≥ 1 test nommé ; changer un test, c'est amender le contrat
+- **Baseline Delta Declaration** — MUST PRESERVE avant toute modification ; chaque delta justifié par une story ; écart de socle → EX3
+- **Écrans et prototype** — chaque story exercée sur le prototype vivant, trois largeurs, états vides, erreur et chargement
 - **Delta de Design System** — justifié story par story ; aucune modification silencieuse d'un composant existant
+- **Règles, données, API, migrations** — chaque règle cite sa source ; migrations numérotées avec leur rollback
+- **Tier de risque et sécurité** — le plus haut tier des stories retenues ; R2 ou R3 → escalade humaine en K1
+- **Points ouverts** — NEEDS CLARIFICATION résolus ou routés — un NC ouvert ne passe pas K1 ; au plus une demande de décision au Product Owner, consolidée, avant l'acceptation
+- **Amendements** — un écart découvert en construction est un amendement daté, jamais une croissance : ce qui dépasse va à une slice suivante
 
-**Complétude.** Inventaire MUST PRESERVE produit avant toute modification. Chaque story exerçable dans le prototype. Zéro BLOCKER de critic(design) et de conformance-auditor.
+**Complétude.** Résultat formulé en résultat utilisateur. Chaque critère de sortie porte sa preuve. Chaque AC matériel a son test, défini avant le code. Baseline Delta Declaration produite avant toute modification. Aucun NEEDS CLARIFICATION ouvert. Run Ledger ouvert (K8).
 
 ```
-Baseline Delta Declaration  sprint 3
-MUST PRESERVE
-  navigation globale · glossaire · catégories de vérité
-  composant Carte-chantier, états 1 à 7
-DELTAS AUTORISÉS
-  variante compacte de Carte-chantier   justifiée par STO-014
-  jeton --densite-liste                 justifié par STO-016
-ÉCART SOCLE   aucun.  (sinon → G0, EX3)
+S-02  Un conducteur repère un écart et le signale sans appeler
+  EXIT-1   l'écart apparaît en tête de liste       automatique · e2e/ecart-tri.spec
+  EXIT-2   le signalement arrive au chef en < 1 min  mixte · e2e + relecture QA
+  EXIT-3   aucun ESTIMÉ présenté comme CONSTATÉ   automatique · unit/propagation.test
+  budget   tri secondaire, photos → S-04 ; la slice ne grandit pas
+  tier     R2 → escalade K1
 ```

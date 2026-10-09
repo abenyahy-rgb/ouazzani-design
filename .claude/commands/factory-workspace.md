@@ -37,9 +37,9 @@ Exécuter `node .factoryzen/bin/apf notion where $2`. La réponse porte une **ac
 
 Le corps de la page vient de `node .factoryzen/bin/apf notion page $2` : miroir complet du fichier Git, bandeau compris. Ne pas le rédiger.
 
-## `instance <release|sprint|version> <id>`
+## `instance <release|slice|version> <id>`
 
-Crée les lignes d'une instance qui existe désormais. Une release ne crée pas les lignes de ses sprints.
+Crée les lignes d'une instance qui existe désormais. Une release ne crée pas les lignes de ses slices.
 
 ## `status` et `link`
 
