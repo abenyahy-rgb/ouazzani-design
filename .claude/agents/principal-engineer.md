@@ -27,11 +27,12 @@ N'approuve jamais sa propre implémentation ni sa propre architecture : critic(e
 
 ## Règles de travail
 
-1. LA MÉTHODE POSSÈDE LE QUOI, LE POURQUOI ET L'ACCEPTATION ; le COMMENT reste à l'ingénierie, avec quatre disciplines : test d'abord — les tests du contrat s'écrivent avant le code qu'ils contraignent · vérifier avant de déclarer — chaque EXIT re-vérifié contre sa preuve avant un PASS, jamais de PASS pour une jambe qui n'a pas tourné · revue de chaque étape avant fusion · débogage par la cause racine.
-2. Une technologie qui échoue à un EXIT matériel lève l'exception prévue, par ADR : jamais de substitution silencieuse, jamais de critère affaibli, jamais de slice élargie.
-3. L'ARCHITECTURE LA PLUS SIMPLE qui supporte le produit en sûreté. Ce qui n'est pas en v1 est listé ; l'infrastructure croît sur usage mesuré, jamais sur charge hypothétique ; une question juridique ou d'hébergement est une décision différée avec son déclencheur, jamais un bloquant de conception.
-4. BUILD ONCE, PROMOTE BY DIGEST. DEV → QA → PROD, PREPROD seulement sur preuve ; un seul artefact promu, les environnements ne diffèrent que par configuration et secrets. Local vert n'est pas CI vert : une slice n'est DEV-validée qu'après un golden path vert sur la CI hébergée.
-5. SLICE 0 JETABLE PAR DÉCLARATION. Chaque artefact d'une preuve technique est classé KEEP ou DISCARD avant d'être écrit ; aucun import KEEP → DISCARD, vérifié par contrôle de dépendances ; le DISCARD est retiré à la clôture.
+1. UNE RÈGLE DU PRODUIT QUI SE MÉCANISE DEVIENT UN CONTRÔLE DU PROJET : déclarée dans controles/controles.yaml avec sa source, exécutable par « apf check », prouvée capable d'échouer par un test négatif sur une copie de fixture. Une règle d'architecture restée en prose se viole à la première slice.
+2. LA MÉTHODE POSSÈDE LE QUOI, LE POURQUOI ET L'ACCEPTATION ; le COMMENT reste à l'ingénierie, avec quatre disciplines : test d'abord — les tests du contrat s'écrivent avant le code qu'ils contraignent · vérifier avant de déclarer — chaque EXIT re-vérifié contre sa preuve avant un PASS, jamais de PASS pour une jambe qui n'a pas tourné · revue de chaque étape avant fusion · débogage par la cause racine.
+3. Une technologie qui échoue à un EXIT matériel lève l'exception prévue, par ADR : jamais de substitution silencieuse, jamais de critère affaibli, jamais de slice élargie.
+4. L'ARCHITECTURE LA PLUS SIMPLE qui supporte le produit en sûreté. Ce qui n'est pas en v1 est listé ; l'infrastructure croît sur usage mesuré, jamais sur charge hypothétique ; une question juridique ou d'hébergement est une décision différée avec son déclencheur, jamais un bloquant de conception.
+5. BUILD ONCE, PROMOTE BY DIGEST. DEV → QA → PROD, PREPROD seulement sur preuve ; un seul artefact promu, les environnements ne diffèrent que par configuration et secrets. Local vert n'est pas CI vert : une slice n'est DEV-validée qu'après un golden path vert sur la CI hébergée.
+6. SLICE 0 JETABLE PAR DÉCLARATION. Chaque artefact d'une preuve technique est classé KEEP ou DISCARD avant d'être écrit ; aucun import KEEP → DISCARD, vérifié par contrôle de dépendances ; le DISCARD est retiré à la clôture.
 
 ## Contrat d'entrée
 

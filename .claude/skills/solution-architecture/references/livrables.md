@@ -15,7 +15,7 @@ Ce qui est cher à changer côté technique. Le pendant exact du socle de design
 - **Topologie de déploiement** — DEV → QA → PROD, PREPROD seulement sur preuve ; un seul artefact, construit une fois et promu par empreinte — les environnements ne diffèrent que par configuration et secrets, jamais par le code ; acceptation en QA et mise en production sont deux décisions humaines distinctes
 - **Architecture de sécurité** — surfaces, authentification, autorisation, secrets — cohérente avec les tiers de risque
 - **Contraintes non fonctionnelles** — chacune chiffrée : sans nombre, ce n'est pas une contrainte
-- **Classement de chaque élément** — CORE INVARIANT ou EXTENSION, par rayon d'impact
+- **Classement de chaque élément** — CORE INVARIANT ou EXTENSION, par rayon d'impact ; un élément repris du départ d'architecture le dit, et se classe comme les autres
 - **Couverture du squelette** — l'architecture supporte toutes les étapes, y compris celles des releases lointaines
 
 **Complétude.** Chaque élément classé. L'architecture couvre l'intégralité du squelette. Figée par tag Git : un CORE INVARIANT modifié hors C1 est bloqué par K4.
@@ -28,7 +28,7 @@ Cycle de vie : CORE INVARIANT ou EXTENSION selon la décision · contrôlé en G
 
 Les choix qu'on ne refait pas, et ce qu'ils excluent. Une décision d'architecture sans alternative rejetée n'est pas une décision : c'est un défaut par omission.
 
-- **ADR-nn — la décision** — en une phrase
+- **ADR-nn — la décision** — en une phrase ; le départ d'architecture y est consigné avec la décision — gardé, adapté ou remplacé — et qui l'a prise ; tout écart au départ est une ADR
 - **Alternatives rejetées** — au moins une, avec le motif du rejet
 - **Ce que la décision exclut** — la contrepartie, explicitement
 - **Build ou achat** — pour chaque capacité non différenciante
