@@ -1,6 +1,6 @@
 ---
 name: slice-delivery
-description: "Conduire une slice verticale de bout en bout, une à la fois : contrat écrit avant le code — résultat utilisateur, budget de périmètre, critères de sortie avec leur preuve, tests définis d'avance —, implémentation dans la mutation boundary, exécution des tests, healing d'obsolescence, preuve E2E et déploiement en QA. Utiliser aux activités 18, 19 de la méthode — Contrat de slice · Construction et tests."
+description: "Conduire une slice verticale de bout en bout, une à la fois : contrat écrit avant le code — résultat utilisateur, budget de périmètre, critères de sortie avec leur preuve, tests définis d'avance —, implémentation dans la mutation boundary, exécution des tests, healing d'obsolescence, preuve E2E et déploiement en QA. Utiliser aux activités 19, 20 de la méthode — Contrat de slice · Construction et tests."
 ---
 
 # slice-delivery
@@ -14,7 +14,7 @@ Conduire une slice verticale de bout en bout, une à la fois : contrat écrit av
 ## Procédure
 
 1. Lire l'état : apf tower factory_state ; relire la clôture de la slice précédente et reporter chaque apprentissage « material » en condition d'entrée.
-2. Écrire le contrat (WP-24) : résultat utilisateur, budget, ENTRY-n avec statut, EXIT-n avec mode ET canal, tests avant le code, KEEP / DISCARD si preuve technique, points ouverts classés, une seule demande de décision consolidée avec valeur par défaut.
+2. Écrire le contrat (WP-25) : résultat utilisateur, budget, ENTRY-n avec statut, EXIT-n avec mode ET canal, tests avant le code, KEEP / DISCARD si preuve technique, points ouverts classés, une seule demande de décision consolidée avec valeur par défaut.
 3. Challenger le contrat par un critic en lecture seule, tenir les dispositions, échantillonner les citations ; puis K1.
 4. GO consigné mot pour mot — factory_record_direction ; aucun code avant.
 5. Construire par étapes de dépendance, test d'abord ; chaque étape revue avant fusion.
@@ -28,8 +28,8 @@ Conduire une slice verticale de bout en bout, une à la fois : contrat écrit av
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
-| 19 | Construction et tests | `principal-engineer · quality-engineer produit · critic(quality) classe` | `autorité Tech` |
+| 19 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
+| 20 | Construction et tests | `principal-engineer · quality-engineer produit · critic(quality) classe` | `autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -37,8 +37,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-24 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
-| WP-25 — Construction et preuves | `releases/{release-id}/slices/{slice-id}/status.md · scope-changes.md · quality/test-strategy.md · quality/test-healing-decisions.md · acceptance/traceability-matrix.md · acceptance/preview-report.md` | G3 |
+| WP-25 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
+| WP-26 — Construction et preuves | `releases/{release-id}/slices/{slice-id}/status.md · scope-changes.md · quality/test-strategy.md · quality/test-healing-decisions.md · acceptance/traceability-matrix.md · acceptance/preview-report.md` | G3 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

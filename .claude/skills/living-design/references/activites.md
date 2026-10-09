@@ -14,7 +14,7 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 13 — Exploration, direction et Strategic Design
+## Activité 14 — Exploration, direction et Strategic Design
 
 **Entrée.** Parcours cibles disponibles ; socle figé et accessible ; design-brief.md renseigné ; time-box déclarée.
 
@@ -26,7 +26,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1,
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.2
 
-## Activité 15 — Design QA
+## Activité 16 — Design QA
 
 **Entrée.** Build partageable disponible ; critic(design) indépendant du producteur.
 
@@ -38,7 +38,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C2,
 
 Responsible : `critic(design)` · Accountable : `Product Owner` · Cadence C2, étape C2.2
 
-## Activité 18 — Contrat de slice
+## Activité 19 — Contrat de slice
 
 **Entrée.** G1 franchi ; carte des slices à jour ; slice précédente acceptée — une seule slice en cours à la fois.
 

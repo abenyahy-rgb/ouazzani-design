@@ -1,7 +1,7 @@
 ---
 id: SOC-02
 name: "Contexte et contraintes de l'existant"
-produced_by: "1"
+produced_by: "0"
 controlled_at: "G0"
 completion: partiel
 reserves: ["Révision 3, RÉDUITE sous EX1 : deux refus de critic(engineering) sur le même critère interdisent une troisième soumission à l'identique. Le périmètre est réduit de 18 contraintes à 11.", "L'absence d'existant hors dépôt est DÉCLARÉE par le sponsor, non établie par recherche (U-03).", "Quatre sources B de la révision 2 citaient des fichiers que ce périmètre déclarait non lus : elles sont retirées, non recitées.", "U-01 à U-07 ouverts."]

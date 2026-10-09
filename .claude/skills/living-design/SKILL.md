@@ -1,6 +1,6 @@
 ---
 name: living-design
-description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 9, 13, 15, 18 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
+description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 9, 14, 16, 19 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
 ---
 
 # living-design
@@ -16,9 +16,9 @@ Produire le design exécutable à tout niveau — socle, Strategic Design de rel
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 9 | Socle exécutable | `product-designer` | `Product Owner` |
-| 13 | Exploration, direction et Strategic Design | `product-designer` | `Product Owner` |
-| 15 | Design QA | `critic(design)` | `Product Owner` |
-| 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
+| 14 | Exploration, direction et Strategic Design | `product-designer` | `Product Owner` |
+| 16 | Design QA | `critic(design)` | `Product Owner` |
+| 19 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -27,9 +27,9 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
 | WP-10 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
-| WP-17 — Strategic Design de la release | `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/` | G1 |
-| WP-20 — Rapport de Design QA | `releases/{release-id}/design/qa/report.md` | G1 |
-| WP-24 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
+| WP-18 — Strategic Design de la release | `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/` | G1 |
+| WP-21 — Rapport de Design QA | `releases/{release-id}/design/qa/report.md` | G1 |
+| WP-25 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 18 — Contrat de slice
+## Activité 19 — Contrat de slice
 
 **Entrée.** G1 franchi ; carte des slices à jour ; slice précédente acceptée — une seule slice en cours à la fois.
 
@@ -14,7 +14,7 @@
 
 Responsible : `product-lead · product-designer · principal-engineer` · Accountable : `Product Owner et autorité Tech` · Cadence C3, étape C3.1
 
-## Activité 19 — Construction et tests
+## Activité 20 — Construction et tests
 
 **Entrée.** K1 franchi ; branche de travail créée ; environnement isolé ; critic(quality) disponible et indépendant.
 

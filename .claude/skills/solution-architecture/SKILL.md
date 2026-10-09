@@ -1,6 +1,6 @@
 ---
 name: solution-architecture
-description: "Arrêter l'architecture cible et la réalisation technique d'une release, classer chaque élément en CORE INVARIANT ou EXTENSION par rayon d'impact, et exiger une alternative rejetée pour toute décision structurante. Utiliser aux activités 10, 14 de la méthode — Socle technique et choix structurants · Solution design de la release."
+description: "Arrêter l'architecture cible et la réalisation technique d'une release, classer chaque élément en CORE INVARIANT ou EXTENSION par rayon d'impact, et exiger une alternative rejetée pour toute décision structurante. Utiliser aux activités 10, 15 de la méthode — Socle technique et choix structurants · Solution design de la release."
 ---
 
 # solution-architecture
@@ -16,7 +16,7 @@ Arrêter l'architecture cible et la réalisation technique d'une release, classe
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 10 | Socle technique et choix structurants | `principal-engineer` | `autorité Tech` |
-| 14 | Solution design de la release | `principal-engineer` | `autorité Tech` |
+| 15 | Solution design de la release | `principal-engineer` | `autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -26,8 +26,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 |---|---|---|
 | WP-11 — Architecture technique cible | `C1.4-socle/architecture/target-architecture.md · integration-boundaries.md · data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md` | G0 |
 | WP-12 — Décisions structurantes et build-vs-buy | `C1.4-socle/decisions/adr/ · build-vs-buy.md` | G0 |
-| WP-18 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
-| WP-19 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
+| WP-19 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
+| WP-20 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

@@ -1,6 +1,6 @@
 ---
 name: user-evidence
-description: "Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Utiliser aux activités 4, 12, 16 de la méthode — Recherche et synthèse utilisateur · Périmètre, métriques et discovery ciblée de la release · Validation utilisateurs et convergence."
+description: "Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter : en recherche DOCUMENTAIRE par défaut — verbatims d'utilisateurs réels lus dans des sources publiques, chacun avec adresse, date de consultation et citation littérale, deux sources indépendantes par trait retenu — et sur le terrain quand des participants existent. Utiliser aux activités 4, 13, 17 de la méthode — Recherche et synthèse utilisateur · Périmètre, métriques et discovery ciblée de la release · Validation utilisateurs et convergence."
 ---
 
 # user-evidence
@@ -16,8 +16,8 @@ Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 4 | Recherche et synthèse utilisateur | `product-designer` | `Product Owner` |
-| 12 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
-| 16 | Validation utilisateurs et convergence | `product-lead puis product-designer` | `Product Owner` |
+| 13 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
+| 17 | Validation utilisateurs et convergence | `product-lead puis product-designer · quality-engineer orchestre la campagne SUX` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -26,9 +26,9 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
 | WP-04 — Recherche et synthèse utilisateur | `C1.3-parcours/research/research-plan.md · interviews/ · insights.md · personas/ · empathy-maps/ · journeys/as-is/` | G0 |
-| WP-15 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
-| WP-16 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
-| WP-21 — Validation utilisateurs et convergence | `releases/{release-id}/research/tests/test-plan.md` | G1 |
+| WP-16 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
+| WP-17 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
+| WP-22 — Validation utilisateurs et convergence | `releases/{release-id}/research/tests/test-plan.md · sux/` | G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

@@ -19,7 +19,7 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 
 **Complétude.** Aucun insight sans verbatim source. Niveau d'evidence étiqueté sur chaque résultat — DOCUMENTARY ou EMPIRICAL, jamais l'un pour l'autre. Personas challengés par critic(product). Les questions que le documentaire ne tranche pas sont listées en HYP-nn.
 
-## WP-15 — Périmètre désirable et métriques de la release
+## WP-16 — Périmètre désirable et métriques de la release
 
 `releases/{release-id}/scope.md · exclusions.md · success-metrics.md`
 
@@ -35,7 +35,7 @@ Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a pr
 
 **Complétude.** Le périmètre couvre exactement les étapes affectées. Aucune métrique non instrumentable avec ce que la release livre.
 
-## WP-16 — Brief de conception
+## WP-17 — Brief de conception
 
 `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
 
@@ -50,7 +50,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 - **Directions rejetées et pourquoi**
 - **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC ou UNVALIDATED
 - **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
-- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 16
+- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 17
 - **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog
 - **JRN-nn parcours cibles** — trace vers STG et REL
 - **Conformité au socle attestée** — ordre et vocabulaire inchangés
@@ -58,9 +58,9 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 
 **Complétude.** Les trois questions non négociables sont renseignées. Les questions manquantes ont fait l'objet d'une salve unique de quatre au maximum. Toute hypothèse posée a son point de test.
 
-## WP-21 — Validation utilisateurs et convergence
+## WP-22 — Validation utilisateurs et convergence
 
-`releases/{release-id}/research/tests/test-plan.md`
+`releases/{release-id}/research/tests/test-plan.md · sux/`
 
 Cycle de vie : par passe · contrôlé en G1 · R/A : product-lead / Product Owner
 
@@ -68,13 +68,15 @@ La preuve la plus forte disponible sur le comportement des utilisateurs, étique
 
 - **Protocole** — écrit AVANT le test, identique entre personas simulés comme entre participants
 - **Version testée** — figée par commit, citée
-- **Participants** — personas simulés PER-nn, chacun étiqueté SYNTHETIC, et l'agent qui les incarne ; participants réels s'il en existe — recrutement, nombre, biais
+- **Participants** — personas PER-nn de la revue experte, étiquetés SYNTHETIC · AXR, et l'agent qui les incarne ; sessions de la campagne SUX, étiquetées SYNTHETIC · SUX, comptées en « sessions synthétiques » ; participants réels s'il en existe — recrutement, nombre, biais
 - **Résultats bruts** — non filtrés, y compris ceux qui contredisent la thèse
-- **Niveau d'evidence** — EMPIRICAL · DOCUMENTARY · SYNTHETIC · UNVALIDATED — étiquette obligatoire
+- **Niveau d'evidence** — EMPIRICAL · DOCUMENTARY · SYNTHETIC · AXR · SYNTHETIC · SUX · UNVALIDATED — étiquette obligatoire
 - **Hypothèses UNVALIDATED confrontées** — chacune tranchée par des participants réels, ou reportée avec sa mesure en production — métrique, événement, seuil, décision
-- **Corrections** — chacune traçant vers un constat étiqueté — SYNTHETIC, DOCUMENTARY ou EMPIRICAL
+- **Corrections** — chacune traçant vers un constat étiqueté — SYNTHETIC · AXR, SYNTHETIC · SUX, DOCUMENTARY ou EMPIRICAL
+- **Revue experte (AXR)** — critic(product), qui connaît l'intention et n'a pas conçu le prototype : plan de couverture écrit avant, résultat par unité, constats observés et reproduits — jamais présentée comme un test d'utilisateur
+- **Campagne SUX** — utilisateurs synthétiques aveugles sur le prototype de release figé, même protocole qu'avant G0 : pare-feu, manifeste haché, résultats bruts, patterns, triage ; la campagne vit sous sux/
 
-**Complétude.** Protocole antérieur au test. Version figée par commit. Résultats non filtrés. Niveau d'evidence étiqueté — une revue synthétique ou documentaire présentée comme empirique est un BLOCKER. Chaque hypothèse de comportement non tranchée par des participants réels porte sa mesure en production.
+**Complétude.** Protocole antérieur au test. Version figée par commit. Résultats non filtrés. Revue experte AXR et campagne SUX séparées, chacune étiquetée ; K7 rejoue la campagne SUX sans constat. Niveau d'evidence étiqueté — une revue synthétique ou documentaire présentée comme empirique est un BLOCKER, une revue experte présentée comme un test d'utilisateur aussi. Chaque hypothèse de comportement non tranchée par des participants réels porte sa mesure en production.
 
 ```
 Protocole  écrit le 04/06, avant le test — 3 tâches

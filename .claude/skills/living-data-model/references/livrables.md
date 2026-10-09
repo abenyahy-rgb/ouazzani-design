@@ -45,7 +45,7 @@ Catégories de vérité  (disjointes)
 Propagation  ESTIMÉ + CONSTATÉ = ESTIMÉ.  Jamais CONSTATÉ.
 ```
 
-## WP-18 — Solution design de la release
+## WP-19 — Solution design de la release
 
 `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md`
 
@@ -62,13 +62,13 @@ Comment les parcours de cette release se réalisent dans le socle technique. Le 
 
 **Complétude.** S'inscrit dans le socle technique sans modifier un CORE INVARIANT. Chaque contrat d'interface est testable.
 
-## WP-19 — Dépendances, risques techniques et tiers
+## WP-20 — Dépendances, risques techniques et tiers
 
 `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md`
 
 Cycle de vie : vivant · contrôlé en G1 · R/A : principal-engineer / autorité Tech
 
-L'entrée technique que l'activité 17 exigeait sans jamais l'avoir. Un backlog ne qualifie pas une dépendance ni ne propose un tier sans architecture de solution.
+L'entrée technique que l'activité 18 exigeait sans jamais l'avoir. Un backlog ne qualifie pas une dépendance ni ne propose un tier sans architecture de solution.
 
 - **Dépendances par capacité** — technique, de donnée, d'apprentissage — chacune nommée et datée
 - **Absence de cycle** — démontrée, pas affirmée
@@ -76,9 +76,9 @@ L'entrée technique que l'activité 17 exigeait sans jamais l'avoir. Un backlog 
 - **Tier de risque par capacité** — R0 à R3, justifié — commande l'evidence et les autorités en aval
 - **Capacités non faisables dans cette release** — nommées et routées
 
-**Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 17 est BLOCKED — input manquant.
+**Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 18 est BLOCKED — input manquant.
 
-## WP-24 — Contrat de slice
+## WP-25 — Contrat de slice
 
 `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md`
 

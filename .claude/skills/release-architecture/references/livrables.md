@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-13 — Architecture et séquencement des releases
+## WP-14 — Architecture et séquencement des releases
 
 `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/`
 
@@ -29,7 +29,7 @@ REL-pilotage  Voir l'avancement sans appeler personne
   tier pressenti    R2  (accès aux données de chantier)
 ```
 
-## WP-14 — Décision G0 et fermeture d'apprentissage
+## WP-15 — Décision G0 et fermeture d'apprentissage
 
 `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml`
 
@@ -41,7 +41,7 @@ L'assemblage est DÉRIVÉ, il ne se recopie plus. Les éléments de charte vienn
 
 **Complétude.** Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable.
 
-## WP-15 — Périmètre désirable et métriques de la release
+## WP-16 — Périmètre désirable et métriques de la release
 
 `releases/{release-id}/scope.md · exclusions.md · success-metrics.md`
 
@@ -57,7 +57,7 @@ Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a pr
 
 **Complétude.** Le périmètre couvre exactement les étapes affectées. Aucune métrique non instrumentable avec ce que la release livre.
 
-## WP-16 — Brief de conception
+## WP-17 — Brief de conception
 
 `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
 
@@ -72,7 +72,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 - **Directions rejetées et pourquoi**
 - **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC ou UNVALIDATED
 - **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
-- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 16
+- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 17
 - **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog
 - **JRN-nn parcours cibles** — trace vers STG et REL
 - **Conformité au socle attestée** — ordre et vocabulaire inchangés

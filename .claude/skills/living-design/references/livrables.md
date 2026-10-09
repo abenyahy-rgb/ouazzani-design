@@ -23,7 +23,7 @@ Le socle navigable en très haute fidélité structurelle — toutes les étapes
 
 **Complétude.** Se parcourt de bout en bout sans écran mort. S'ouvre à une URL déployée. Le contenu vient de WP-06 : zéro fixture sur le chemin de données, point ÉLIMINATOIRE. Un socle conforme sur données inventées a déjà franchi G0 une fois — il n'a rien prouvé et a coûté une cadence entière.
 
-## WP-17 — Strategic Design de la release
+## WP-18 — Strategic Design de la release
 
 `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/`
 
@@ -40,7 +40,7 @@ Le prototype exécutable très haute fidélité couvrant de bout en bout l'expé
 
 **Complétude.** Couvre tous les parcours sans écran mort. N'altère ni navigation, ni IA, ni vocabulaire du socle. Aucun composant du socle modifié silencieusement.
 
-## WP-20 — Rapport de Design QA
+## WP-21 — Rapport de Design QA
 
 `releases/{release-id}/design/qa/report.md`
 
@@ -56,7 +56,7 @@ Premier handoff vers un évaluateur indépendant du producteur. Vérifie la coh�
 
 **Complétude.** Zéro BLOCKER ouvert. Captures multi-device produites. Contrôle accessibilité outillé, pas déclaratif.
 
-## WP-24 — Contrat de slice
+## WP-25 — Contrat de slice
 
 `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md`
 

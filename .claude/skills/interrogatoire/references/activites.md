@@ -10,6 +10,6 @@
 
 **Vérification.** Chaque claim matériel porte source et niveau d'evidence. L'intention a été interrogée jusqu'à épuisement des décisions implicites. Verdict critic(product) rendu.
 
-**Sortie.** AUCUNE hypothèse critique ne sort non résolue : chaque branche est tranchée avec motif, ou nommée HYP-nn étiquetée UNVALIDATED avec critère de falsification et point de test à l'activité 16.
+**Sortie.** AUCUNE hypothèse critique ne sort non résolue : chaque branche est tranchée avec motif, ou nommée HYP-nn étiquetée UNVALIDATED avec critère de falsification et point de test à l'activité 17.
 
 Responsible : `product-lead` · Accountable : `Product Owner` · Cadence C1, étape C1.2

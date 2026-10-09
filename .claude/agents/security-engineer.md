@@ -1,6 +1,6 @@
 ---
 name: security-engineer
-description: "Threat model, revue de sécurité, remédiation sur piste explicitement autorisée et distincte. Intervient aux activités 18, 20, 22."
+description: "Threat model, revue de sécurité, remédiation sur piste explicitement autorisée et distincte. Intervient aux activités 19, 21, 23."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch
 model: opus
 effort: high

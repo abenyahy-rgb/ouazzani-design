@@ -1,6 +1,6 @@
 ---
 name: release-architecture
-description: "Découper le produit en releases désirables, livrables et mesurables seules ; les ordonner ; qualifier dépendances et risques ; arrêter le périmètre et les métriques de chacune. Utiliser aux activités 11, 12 de la méthode — Découpage et séquencement des releases · Périmètre, métriques et discovery ciblée de la release."
+description: "Découper le produit en releases désirables, livrables et mesurables seules ; les ordonner ; qualifier dépendances et risques ; arrêter le périmètre et les métriques de chacune. Utiliser aux activités 12, 13 de la méthode — Découpage et séquencement des releases · Périmètre, métriques et discovery ciblée de la release."
 ---
 
 # release-architecture
@@ -15,8 +15,8 @@ Découper le produit en releases désirables, livrables et mesurables seules ; l
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 11 | Découpage et séquencement des releases | `product-lead` | `Product Owner` |
-| 12 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
+| 12 | Découpage et séquencement des releases | `product-lead` | `Product Owner` |
+| 13 | Périmètre, métriques et discovery ciblée de la release | `product-lead et product-designer` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -24,10 +24,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-13 — Architecture et séquencement des releases | `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/` | G0 |
-| WP-14 — Décision G0 et fermeture d'apprentissage | `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml` | G0 |
-| WP-15 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
-| WP-16 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
+| WP-14 — Architecture et séquencement des releases | `C1.5-lancement/releases/release-architecture.md · sequencing.md · dependencies.md · risk-map.md · fiches/` | G0 |
+| WP-15 — Décision G0 et fermeture d'apprentissage | `C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml` | G0 |
+| WP-16 — Périmètre désirable et métriques de la release | `releases/{release-id}/scope.md · exclusions.md · success-metrics.md` | G1 |
+| WP-17 — Brief de conception | `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/` | K1 et G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

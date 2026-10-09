@@ -8,13 +8,13 @@
 
 **Tâche.** Figer la navigation, l'architecture de l'information, le vocabulaire utilisateur, les catégories de vérité, les statuts et les règles financières.
 
-**Vérification.** Chaque terme unique, non ambigu, testé auprès d'un persona. La navigation couvre toutes les étapes. Chaque catégorie de vérité est disjointe. Un calcul n'améliore jamais le statut de vérité de ses entrées. La table de liaison résout chaque entité et chaque champ du noyau vers un terme du glossaire.
+**Vérification.** Chaque terme unique, non ambigu, et ÉPROUVÉ par la campagne SUX du socle (activité 11, SYNTHETIC · SUX) — un terme non compris retourne à WP-08 avant le gel. La navigation couvre toutes les étapes. Chaque catégorie de vérité est disjointe. Un calcul n'améliore jamais le statut de vérité de ses entrées. La table de liaison résout chaque entité et chaque champ du noyau vers un terme du glossaire.
 
 **Sortie.** Figés par tag Git. Noyau du modèle de données classé CORE INVARIANT ou EXTENSION, élément par élément. Toute évolution ultérieure du noyau rouvre G0.
 
 Responsible : `product-designer et product-lead` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 14 — Solution design de la release
+## Activité 15 — Solution design de la release
 
 **Entrée.** Parcours cibles disponibles ; socle technique figé et accessible ; périmètre arrêté.
 
@@ -22,11 +22,11 @@ Responsible : `product-designer et product-lead` · Accountable : `Product Owner
 
 **Vérification.** La solution s'inscrit dans le socle technique sans modifier un CORE INVARIANT ; tout besoin de modification est routé vers G0 (EX3), jamais appliqué. Chaque dépendance est nommée, datée, non circulaire. Chaque capacité porte un tier justifié. Chaque impact de migration est confronté au modèle de données vivant : une entité ou un champ touché qui porte l'étiquette CORE INVARIANT ouvre une EX3, il ne se modifie pas ici. Verdict critic(engineering) rendu.
 
-**Sortie.** Solution design et carte des dépendances commités. Impacts de migration rattachés aux entités du modèle de données vivant. C'est l'entrée technique de l'activité 17 : sans elle, un backlog ne peut ni qualifier ses dépendances ni proposer ses tiers.
+**Sortie.** Solution design et carte des dépendances commités. Impacts de migration rattachés aux entités du modèle de données vivant. C'est l'entrée technique de l'activité 18 : sans elle, un backlog ne peut ni qualifier ses dépendances ni proposer ses tiers.
 
 Responsible : `principal-engineer` · Accountable : `autorité Tech` · Cadence C2, étape C2.2
 
-## Activité 18 — Contrat de slice
+## Activité 19 — Contrat de slice
 
 **Entrée.** G1 franchi ; carte des slices à jour ; slice précédente acceptée — une seule slice en cours à la fois.
 

@@ -676,7 +676,7 @@ artefacts:
   # WP-16 — Architecture et séquencement des releases
   releases-release-architecture:
     path: product/releases/release-architecture.md
-    work_product: WP-13
+    work_product: WP-14
     category: "Décision"
     produced_by: 10
     controlled_at: G0
@@ -686,7 +686,7 @@ artefacts:
     sections: [rel-nom-une-fiche-par-release, les-trois-tests-demontres-par-release, liens-types-vers-le-squelette]
   releases-sequencing:
     path: product/releases/sequencing.md
-    work_product: WP-13
+    work_product: WP-14
     category: "Décision"
     produced_by: 10
     controlled_at: G0
@@ -696,7 +696,7 @@ artefacts:
     sections: [sequencement]
   releases-dependencies:
     path: product/releases/dependencies.md
-    work_product: WP-13
+    work_product: WP-14
     category: "Décision"
     produced_by: 10
     controlled_at: G0
@@ -706,7 +706,7 @@ artefacts:
     sections: [dependances]
   releases-risk-map:
     path: product/releases/risk-map.md
-    work_product: WP-13
+    work_product: WP-14
     category: "Décision"
     produced_by: 10
     controlled_at: G0
@@ -716,7 +716,7 @@ artefacts:
     sections: [tier-de-risque-pressenti-par-release]
   releases-fiches:
     path: product/releases/fiches/
-    work_product: WP-13
+    work_product: WP-14
     category: "Décision"
     produced_by: 10
     controlled_at: G0
@@ -727,7 +727,7 @@ artefacts:
   # WP-17 — Pack de preuves G0
   gates-g0-product-architecture:
     path: product/gates/g0-product-architecture.md
-    work_product: WP-14
+    work_product: WP-15
     category: Preuve
     produced_by: gate
     controlled_at: G0
@@ -737,7 +737,7 @@ artefacts:
     sections: [les-huit-elements-de-la-charte-g0, resultats-des-controles-k1-k2-k3, verdicts-critic-product-et-critic-domaine, niveau-d-evidence-par-element, decision-motif-autorite-date-commit, fermeture-d-apprentissage]
   gates-spine-manifest:
     path: product/gates/spine-manifest.yaml
-    work_product: WP-14
+    work_product: WP-15
     category: Preuve
     produced_by: gate
     controlled_at: G0
@@ -748,7 +748,7 @@ artefacts:
   # WP-18 — Périmètre désirable et métriques de la release
   releases-scope:
     path: product/releases/{release-id}/scope.md
-    work_product: WP-15
+    work_product: WP-16
     category: "Décision"
     produced_by: 11
     controlled_at: G1
@@ -758,7 +758,7 @@ artefacts:
     sections: [perimetre-desirable, etapes-du-squelette-couvertes, les-trois-tests-demontres]
   releases-exclusions:
     path: product/releases/{release-id}/exclusions.md
-    work_product: WP-15
+    work_product: WP-16
     category: "Décision"
     produced_by: 11
     controlled_at: G1
@@ -768,7 +768,7 @@ artefacts:
     sections: [exclusions]
   releases-success-metrics:
     path: product/releases/{release-id}/success-metrics.md
-    work_product: WP-15
+    work_product: WP-16
     category: "Décision"
     produced_by: 11
     controlled_at: G1
@@ -780,7 +780,7 @@ artefacts:
   # WP-19 — Brief de conception
   releases-design-brief:
     path: product/releases/{release-id}/design-brief.md
-    work_product: WP-16
+    work_product: WP-17
     category: "Décision"
     produced_by: "10 → 13"
     controlled_at: K1 et G1
@@ -792,7 +792,7 @@ artefacts:
   # WP-20 — Discovery ciblée et parcours cibles
   releases-research-insights:
     path: product/releases/{release-id}/research/insights.md
-    work_product: WP-16
+    work_product: WP-17
     category: Preuve
     produced_by: 12
     controlled_at: G1
@@ -802,7 +802,7 @@ artefacts:
     sections: [insights-de-release, conformite-au-socle-attestee, besoins-de-modification-du-socle]
   releases-research-journeys-to-be:
     path: product/releases/{release-id}/research/journeys/to-be/
-    work_product: WP-16
+    work_product: WP-17
     category: Preuve
     produced_by: 12
     controlled_at: G1
@@ -814,7 +814,7 @@ artefacts:
   # WP-21 — Strategic Design de la release
   releases-design-concept:
     path: product/releases/{release-id}/design/concept/
-    work_product: WP-17
+    work_product: WP-18
     category: Design
     produced_by: 13
     controlled_at: G1
@@ -824,7 +824,7 @@ artefacts:
     sections: [alternatives-explorees, direction-retenue, storyboard-de-la-release]
   releases-design-src:
     path: product/releases/{release-id}/design/src/
-    work_product: WP-17
+    work_product: WP-18
     category: Design
     produced_by: 13
     controlled_at: G1
@@ -834,7 +834,7 @@ artefacts:
     sections: [fixtures]
   releases-design-dist:
     path: product/releases/{release-id}/design/dist/
-    work_product: WP-17
+    work_product: WP-18
     category: Design
     produced_by: 13
     controlled_at: G1
@@ -844,7 +844,7 @@ artefacts:
     sections: [source-executable-et-build-partageable]
   releases-design-system-delta:
     path: product/releases/{release-id}/design-system-delta/
-    work_product: WP-17
+    work_product: WP-18
     category: Design
     produced_by: 13
     controlled_at: G1
@@ -856,7 +856,7 @@ artefacts:
   # WP-22 — Solution design de la release
   releases-architecture-solution-design:
     path: product/releases/{release-id}/architecture/solution-design.md
-    work_product: WP-18
+    work_product: WP-19
     category: "Spécification"
     produced_by: 14
     controlled_at: G1
@@ -866,7 +866,7 @@ artefacts:
     sections: [composants-touches-et-crees, flux-de-donnees, attestation-de-conformite-au-socle-technique, ecarts-au-socle]
   releases-architecture-interface-contracts:
     path: product/releases/{release-id}/architecture/interface-contracts.md
-    work_product: WP-18
+    work_product: WP-19
     category: "Spécification"
     produced_by: 14
     controlled_at: G1
@@ -876,7 +876,7 @@ artefacts:
     sections: [contrats-d-interface]
   releases-architecture-migration-impact:
     path: product/releases/{release-id}/architecture/migration-impact.md
-    work_product: WP-18
+    work_product: WP-19
     category: "Spécification"
     produced_by: 14
     controlled_at: G1
@@ -888,7 +888,7 @@ artefacts:
   # WP-23 — Dépendances, risques techniques et tiers
   releases-architecture-dependencies:
     path: product/releases/{release-id}/architecture/dependencies.md
-    work_product: WP-19
+    work_product: WP-20
     category: Registre
     produced_by: 14
     controlled_at: G1
@@ -898,7 +898,7 @@ artefacts:
     sections: [dependances-par-capacite, absence-de-cycle]
   releases-architecture-technical-risks:
     path: product/releases/{release-id}/architecture/technical-risks.md
-    work_product: WP-19
+    work_product: WP-20
     category: Registre
     produced_by: 14
     controlled_at: G1
@@ -908,7 +908,7 @@ artefacts:
     sections: [risques-techniques]
   releases-architecture-risk-tiers:
     path: product/releases/{release-id}/architecture/risk-tiers.md
-    work_product: WP-19
+    work_product: WP-20
     category: Registre
     produced_by: 14
     controlled_at: G1
@@ -920,7 +920,7 @@ artefacts:
   # WP-24 — Rapport de Design QA
   releases-design-qa-report:
     path: product/releases/{release-id}/design/qa/report.md
-    work_product: WP-20
+    work_product: WP-21
     category: Preuve
     produced_by: 15
     controlled_at: G1
@@ -932,7 +932,7 @@ artefacts:
   # WP-25 — Validation utilisateurs et convergence
   releases-research-tests-test-plan:
     path: product/releases/{release-id}/research/tests/test-plan.md
-    work_product: WP-21
+    work_product: WP-22
     category: Preuve
     produced_by: 16
     controlled_at: G1
@@ -944,7 +944,7 @@ artefacts:
   # WP-26 — Backlog de la release
   releases-backlog-epics:
     path: product/releases/{release-id}/backlog/epics/
-    work_product: WP-22
+    work_product: WP-23
     category: Registre
     produced_by: 17
     controlled_at: G1 puis G2
@@ -954,7 +954,7 @@ artefacts:
     sections: [epc-nn-epics]
   releases-backlog-stories:
     path: product/releases/{release-id}/backlog/stories/
-    work_product: WP-22
+    work_product: WP-23
     category: Registre
     produced_by: 17
     controlled_at: G1 puis G2
@@ -964,7 +964,7 @@ artefacts:
     sections: [sto-nn-stories, ac-nn-n-acceptance-criteria]
   releases-backlog-traceability:
     path: product/releases/{release-id}/backlog/traceability.md
-    work_product: WP-22
+    work_product: WP-23
     category: Registre
     produced_by: 17
     controlled_at: G1 puis G2
@@ -973,7 +973,7 @@ artefacts:
     structure: fichier
   releases-backlog-priorities:
     path: product/releases/{release-id}/backlog/priorities.md
-    work_product: WP-22
+    work_product: WP-23
     category: Registre
     produced_by: 17
     controlled_at: G1 puis G2
@@ -983,7 +983,7 @@ artefacts:
     sections: [priorites]
   releases-backlog-dependencies:
     path: product/releases/{release-id}/backlog/dependencies.md
-    work_product: WP-22
+    work_product: WP-23
     category: Registre
     produced_by: 17
     controlled_at: G1 puis G2
@@ -993,7 +993,7 @@ artefacts:
     sections: [dependances]
   releases-backlog-risk-map:
     path: product/releases/{release-id}/backlog/risk-map.md
-    work_product: WP-22
+    work_product: WP-23
     category: Registre
     produced_by: 17
     controlled_at: G1 puis G2
@@ -1005,7 +1005,7 @@ artefacts:
   # WP-27 — Plan de sprints et readiness de delivery
   releases-planning-sprint-map:
     path: product/releases/{release-id}/planning/sprint-map.md
-    work_product: WP-22
+    work_product: WP-23
     category: "Décision"
     produced_by: 17
     controlled_at: G1
@@ -1015,7 +1015,7 @@ artefacts:
     sections: [decoupage-en-sprints, affectation-des-stories, needs-clarification-ouverts]
   releases-handoff-delivery-readiness:
     path: product/releases/{release-id}/handoff/delivery-readiness.md
-    work_product: WP-22
+    work_product: WP-23
     category: "Décision"
     produced_by: 17
     controlled_at: G1
@@ -1024,7 +1024,7 @@ artefacts:
     structure: fichier
   releases-handoff-baseline-manifest:
     path: product/releases/{release-id}/handoff/baseline-manifest.md
-    work_product: WP-22
+    work_product: WP-23
     category: "Décision"
     produced_by: 17
     controlled_at: G1
@@ -1036,7 +1036,7 @@ artefacts:
   # WP-28 — Pack de preuves G1
   gates-g1-release-id:
     path: product/gates/g1-{release-id}.md
-    work_product: WP-23
+    work_product: WP-24
     category: Preuve
     produced_by: gate
     controlled_at: G1
@@ -1046,7 +1046,7 @@ artefacts:
     sections: [perimetre-exclusions-metriques, strategic-design-preview-commit-fige, attestation-de-conformite-au-socle, delta-de-design-system-integre, resultats-de-validation-protocole-version-testee-niveau-d-evidence, backlog-trace-priorites-dependances-tiers, plan-de-sprints, verdicts-critic-product-critic-design-critic-domaine, hypotheses-non-validees-et-unknowns, fermeture-d-apprentissage]
   gates-release-baseline:
     path: product/gates/release-baseline.yaml
-    work_product: WP-23
+    work_product: WP-24
     category: Preuve
     produced_by: gate
     controlled_at: G1
@@ -1057,7 +1057,7 @@ artefacts:
   # WP-29 — Sprint goal et plan
   releases-sprints-candidate-scope:
     path: product/releases/{release-id}/sprints/{sprint-id}/candidate-scope.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Décision"
     produced_by: 18
     controlled_at: G2
@@ -1067,7 +1067,7 @@ artefacts:
     sections: [stories-retenues]
   releases-sprints-sprint-goal:
     path: product/releases/{release-id}/sprints/{sprint-id}/sprint-goal.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Décision"
     produced_by: 18
     controlled_at: G2
@@ -1077,7 +1077,7 @@ artefacts:
     sections: [sprint-goal, tier-de-risque-pressenti]
   releases-sprints-sprint-plan:
     path: product/releases/{release-id}/sprints/{sprint-id}/sprint-plan.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Décision"
     produced_by: 18
     controlled_at: G2
@@ -1087,7 +1087,7 @@ artefacts:
     sections: [sequencement-et-capacite-confrontee-au-perimetre, chemin-express-declare-le-cas-echeant]
   releases-sprints-risks:
     path: product/releases/{release-id}/sprints/{sprint-id}/risks.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Décision"
     produced_by: 18
     controlled_at: G2
@@ -1099,7 +1099,7 @@ artefacts:
   # WP-30 — Design de sprint et Baseline Delta Declaration
   releases-sprints-design-scope:
     path: product/releases/{release-id}/sprints/{sprint-id}/design/scope.yaml
-    work_product: WP-24
+    work_product: WP-25
     category: Design
     produced_by: 19
     controlled_at: K1
@@ -1109,7 +1109,7 @@ artefacts:
     sections: [perimetre-design, baseline-delta-declaration]
   releases-sprints-design-flows:
     path: product/releases/{release-id}/sprints/{sprint-id}/design/flows/
-    work_product: WP-24
+    work_product: WP-25
     category: Design
     produced_by: 19
     controlled_at: K1
@@ -1119,7 +1119,7 @@ artefacts:
     sections: [ecrans-desktop-tablette-mobile]
   releases-sprints-design-prototype:
     path: product/releases/{release-id}/sprints/{sprint-id}/design/prototype/
-    work_product: WP-24
+    work_product: WP-25
     category: Design
     produced_by: 19
     controlled_at: K1
@@ -1129,7 +1129,7 @@ artefacts:
     sections: [prototype-executable]
   releases-sprints-design-system-delta:
     path: product/releases/{release-id}/sprints/{sprint-id}/design/design-system-delta/
-    work_product: WP-24
+    work_product: WP-25
     category: Design
     produced_by: 19
     controlled_at: K1
@@ -1141,7 +1141,7 @@ artefacts:
   # WP-31 — Spécification fonctionnelle et technique
   releases-sprints-spec-functional-spec:
     path: product/releases/{release-id}/sprints/{sprint-id}/spec/functional-spec.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Spécification"
     produced_by: 20
     controlled_at: K1
@@ -1151,7 +1151,7 @@ artefacts:
     sections: [stories-detaillees-regles-metier-cas-limites, needs-clarification]
   releases-sprints-spec-acceptance-criteria:
     path: product/releases/{release-id}/sprints/{sprint-id}/spec/acceptance-criteria.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Spécification"
     produced_by: 20
     controlled_at: K1
@@ -1161,7 +1161,7 @@ artefacts:
     sections: [ac, carte-ac-evidence]
   releases-sprints-spec-technical-spec:
     path: product/releases/{release-id}/sprints/{sprint-id}/spec/technical-spec.md
-    work_product: WP-24
+    work_product: WP-25
     category: "Spécification"
     produced_by: 20
     controlled_at: K1
@@ -1173,7 +1173,7 @@ artefacts:
   # WP-32 — Journal de build et écarts de périmètre
   releases-sprints-status:
     path: product/releases/{release-id}/sprints/{sprint-id}/status.md
-    work_product: WP-25
+    work_product: WP-26
     category: Registre
     produced_by: 21
     controlled_at: G3
@@ -1183,7 +1183,7 @@ artefacts:
     sections: [avancement-par-story, mutation-boundary-respectee, needs-clarification-leves-en-cours-de-build]
   releases-sprints-scope-changes:
     path: product/releases/{release-id}/sprints/{sprint-id}/scope-changes.md
-    work_product: WP-25
+    work_product: WP-26
     category: Registre
     produced_by: 21
     controlled_at: G3
@@ -1195,7 +1195,7 @@ artefacts:
   # WP-33 — Stratégie, résultats et classification de tests
   releases-sprints-quality-test-strategy:
     path: product/releases/{release-id}/sprints/{sprint-id}/quality/test-strategy.md
-    work_product: WP-25
+    work_product: WP-26
     category: Preuve
     produced_by: 22
     controlled_at: G3
@@ -1205,7 +1205,7 @@ artefacts:
     sections: [strategie-de-test, resultats-bruts, verdict-de-classification]
   releases-sprints-quality-test-healing-decisions:
     path: product/releases/{release-id}/sprints/{sprint-id}/quality/test-healing-decisions.md
-    work_product: WP-25
+    work_product: WP-26
     category: Preuve
     produced_by: 22
     controlled_at: G3
@@ -1217,7 +1217,7 @@ artefacts:
   # WP-34 — Verdicts de revue indépendante
   releases-sprints-reviews-engineering-review:
     path: product/releases/{release-id}/sprints/{sprint-id}/reviews/engineering-review.md
-    work_product: WP-26
+    work_product: WP-27
     category: Preuve
     produced_by: 23
     controlled_at: G3 puis G4
@@ -1227,7 +1227,7 @@ artefacts:
     sections: [revue-d-ingenierie, findings]
   releases-sprints-reviews-design-conformance:
     path: product/releases/{release-id}/sprints/{sprint-id}/reviews/design-conformance.md
-    work_product: WP-26
+    work_product: WP-27
     category: Preuve
     produced_by: 23
     controlled_at: G3 puis G4
@@ -1237,7 +1237,7 @@ artefacts:
     sections: [conformite-design]
   releases-sprints-security-review:
     path: product/releases/{release-id}/sprints/{sprint-id}/security/security-review.md
-    work_product: WP-26
+    work_product: WP-27
     category: Preuve
     produced_by: 23
     controlled_at: G3 puis G4
@@ -1247,7 +1247,7 @@ artefacts:
     sections: [revue-de-securite]
   releases-sprints-security-threat-model:
     path: product/releases/{release-id}/sprints/{sprint-id}/security/threat-model.md
-    work_product: WP-26
+    work_product: WP-27
     category: Preuve
     produced_by: 23
     controlled_at: G3 puis G4
@@ -1256,7 +1256,7 @@ artefacts:
     structure: fichier
   releases-sprints-security-pentest-summary:
     path: product/releases/{release-id}/sprints/{sprint-id}/security/pentest-summary.md
-    work_product: WP-26
+    work_product: WP-27
     category: Preuve
     produced_by: 23
     controlled_at: G3 puis G4
@@ -1268,7 +1268,7 @@ artefacts:
   # WP-35 — Matrice de réconciliation et rapport de preview
   releases-sprints-acceptance-traceability-matrix:
     path: product/releases/{release-id}/sprints/{sprint-id}/acceptance/traceability-matrix.md
-    work_product: WP-25
+    work_product: WP-26
     category: Preuve
     produced_by: 24
     controlled_at: G3
@@ -1278,7 +1278,7 @@ artefacts:
     sections: [matrice-baseline-spec-code-tests-decisions, dette-et-risques-residuels-acceptes]
   releases-sprints-acceptance-preview-report:
     path: product/releases/{release-id}/sprints/{sprint-id}/acceptance/preview-report.md
-    work_product: WP-25
+    work_product: WP-26
     category: Preuve
     produced_by: 24
     controlled_at: G3
@@ -1290,7 +1290,7 @@ artefacts:
   # WP-36 — Pack de preuves G3
   gates-g3-sprint-id:
     path: product/gates/g3-{sprint-id}.md
-    work_product: WP-27
+    work_product: WP-28
     category: Preuve
     produced_by: gate
     controlled_at: G3
@@ -1302,7 +1302,7 @@ artefacts:
   # WP-37 — Readiness de mise en production et plan de rollback
   deployments-release-readiness:
     path: product/deployments/{version}/release-readiness.md
-    work_product: WP-28
+    work_product: WP-29
     category: "Spécification"
     produced_by: 25
     controlled_at: G4
@@ -1312,7 +1312,7 @@ artefacts:
     sections: [qualite-securite-migrations-observabilite-documentation, evidence-securite-proportionnelle-au-tier, verdict-de-re-review, plan-d-observabilite-et-seuils-d-alerte, fenetre-de-deploiement-et-criteres-d-abandon, en-tier-r3-deux-autorites-humaines-distinctes]
   deployments-rollback-plan:
     path: product/deployments/{version}/rollback-plan.md
-    work_product: WP-28
+    work_product: WP-29
     category: "Spécification"
     produced_by: 25
     controlled_at: G4
@@ -1324,7 +1324,7 @@ artefacts:
   # WP-38 — Enregistrement de déploiement et vérification
   deployments-deployment-record:
     path: product/deployments/{version}/deployment-record.md
-    work_product: WP-29
+    work_product: WP-30
     category: Preuve
     produced_by: 26
     controlled_at: "—"
@@ -1334,7 +1334,7 @@ artefacts:
     sections: [strategie-progressive-appliquee, dep-vx-y-stories-livrees, decision-garder-rollback]
   deployments-post-deploy-verification:
     path: product/deployments/{version}/post-deploy-verification.md
-    work_product: WP-29
+    work_product: WP-30
     category: Preuve
     produced_by: 26
     controlled_at: "—"

@@ -14,7 +14,7 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.3
 
-## Activité 12 — Périmètre, métriques et discovery ciblée de la release
+## Activité 13 — Périmètre, métriques et discovery ciblée de la release
 
 **Entrée.** G0 franchi ; release identifiée dans l'architecture.
 
@@ -26,14 +26,14 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1,
 
 Responsible : `product-lead et product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.1
 
-## Activité 16 — Validation utilisateurs et convergence
+## Activité 17 — Validation utilisateurs et convergence
 
-**Entrée.** Prototype QA-clean ; personas PER-nn documentés (WP-04) ; participants réels seulement s'il en existe, explicitement identifiés.
+**Entrée.** Prototype QA-clean et figé par commit, déployé ; personas PER-nn documentés (WP-04) ; participants réels seulement s'il en existe, explicitement identifiés.
 
-**Tâche.** Écrire le protocole AVANT le test ; figer la version testée ; conduire la revue synthétique par persona et la confrontation documentaire ; traiter les résultats, corriger le prototype et stabiliser le périmètre ; donner à chaque hypothèse de comportement non tranchée sa mesure en production.
+**Tâche.** Écrire le protocole AVANT le test ; figer la version testée ; conduire la revue experte AXR par persona, PUIS la campagne SUX aveugle sur la même version figée, et la confrontation documentaire ; traiter les résultats — une correction produit un nouveau candidat, et la régression SUX rejoue les mêmes personas et missions sur lui — ; stabiliser le périmètre ; donner à chaque hypothèse de comportement non tranchée sa mesure en production.
 
-**Vérification.** Version testée figée par commit. Protocole identique entre personas simulés comme entre participants. Revue synthétique conduite par un agent qui n'a pas conçu le prototype. Résultats non filtrés, y compris ceux qui contredisent la thèse. Chaque correction trace vers un constat étiqueté — SYNTHETIC, DOCUMENTARY ou EMPIRICAL. Aucune hypothèse de comportement déclarée validée sur une revue synthétique ou documentaire : elle est tranchée par des participants réels, ou reportée avec sa mesure en production.
+**Vérification.** Version testée figée par commit. Revue experte conduite par un agent qui n'a pas conçu le prototype, étiquetée SYNTHETIC · AXR. Campagne SUX aveugle étiquetée SYNTHETIC · SUX, et K7 rejoue SUX1 à SUX6 sur ses octets. Une revue experte présentée comme un test d'utilisateur est un BLOCKER. Résultats non filtrés, y compris ceux qui contredisent la thèse. Chaque correction trace vers un constat étiqueté — SYNTHETIC · AXR, SYNTHETIC · SUX, DOCUMENTARY ou EMPIRICAL. Aucune hypothèse de comportement déclarée validée sur une preuve synthétique ou documentaire : elle est tranchée par des participants réels, ou reportée avec sa mesure en production.
 
-**Sortie.** Résultats commités avec la version testée, chacun étiqueté ; hypothèses UNVALIDATED tranchées, ou reportées avec leur mesure en production — métrique, événement, seuil, décision.
+**Sortie.** Résultats commités avec la version testée, chacun étiqueté ; campagne SUX de release commitée ; hypothèses UNVALIDATED tranchées, ou reportées avec leur mesure en production — métrique, événement, seuil, décision.
 
-Responsible : `product-lead puis product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.3
+Responsible : `product-lead puis product-designer · quality-engineer orchestre la campagne SUX` · Accountable : `Product Owner` · Cadence C2, étape C2.3

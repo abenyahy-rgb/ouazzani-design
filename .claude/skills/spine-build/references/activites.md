@@ -20,7 +20,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1,
 
 **Tâche.** Figer la navigation, l'architecture de l'information, le vocabulaire utilisateur, les catégories de vérité, les statuts et les règles financières.
 
-**Vérification.** Chaque terme unique, non ambigu, testé auprès d'un persona. La navigation couvre toutes les étapes. Chaque catégorie de vérité est disjointe. Un calcul n'améliore jamais le statut de vérité de ses entrées. La table de liaison résout chaque entité et chaque champ du noyau vers un terme du glossaire.
+**Vérification.** Chaque terme unique, non ambigu, et ÉPROUVÉ par la campagne SUX du socle (activité 11, SYNTHETIC · SUX) — un terme non compris retourne à WP-08 avant le gel. La navigation couvre toutes les étapes. Chaque catégorie de vérité est disjointe. Un calcul n'améliore jamais le statut de vérité de ses entrées. La table de liaison résout chaque entité et chaque champ du noyau vers un terme du glossaire.
 
 **Sortie.** Figés par tag Git. Noyau du modèle de données classé CORE INVARIANT ou EXTENSION, élément par élément. Toute évolution ultérieure du noyau rouvre G0.
 

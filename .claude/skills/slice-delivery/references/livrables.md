@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-24 — Contrat de slice
+## WP-25 — Contrat de slice
 
 `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md`
 
@@ -35,7 +35,7 @@ S-02  Un conducteur repère un écart et le signale sans appeler
   tier     R2 → escalade K1
 ```
 
-## WP-25 — Construction et preuves
+## WP-26 — Construction et preuves
 
 `releases/{release-id}/slices/{slice-id}/status.md · scope-changes.md · quality/test-strategy.md · quality/test-healing-decisions.md · acceptance/traceability-matrix.md · acceptance/preview-report.md`
 

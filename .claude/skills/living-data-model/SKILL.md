@@ -1,6 +1,6 @@
 ---
 name: living-data-model
-description: "Tenir le modèle de données en trois couches : sémantique écrite à la main et figée en G0, modèle dérivé extrait du schéma exécuté, table de liaison qui rattache chaque entité et chaque champ à un terme du glossaire et à une catégorie de vérité. Utiliser aux activités 8, 14, 18 de la méthode — Navigation, IA, terminologie et sémantique · Solution design de la release · Contrat de slice."
+description: "Tenir le modèle de données en trois couches : sémantique écrite à la main et figée en G0, modèle dérivé extrait du schéma exécuté, table de liaison qui rattache chaque entité et chaque champ à un terme du glossaire et à une catégorie de vérité. Utiliser aux activités 8, 15, 19 de la méthode — Navigation, IA, terminologie et sémantique · Solution design de la release · Contrat de slice."
 ---
 
 # living-data-model
@@ -16,8 +16,8 @@ Tenir le modèle de données en trois couches : sémantique écrite à la main e
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 8 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
-| 14 | Solution design de la release | `principal-engineer` | `autorité Tech` |
-| 18 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
+| 15 | Solution design de la release | `principal-engineer` | `autorité Tech` |
+| 19 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -27,9 +27,9 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 |---|---|---|
 | WP-08 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
 | WP-09 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
-| WP-18 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
-| WP-19 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
-| WP-24 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
+| WP-19 — Solution design de la release | `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md` | G1 |
+| WP-20 — Dépendances, risques techniques et tiers | `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md` | G1 |
+| WP-25 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
