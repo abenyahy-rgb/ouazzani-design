@@ -54,7 +54,7 @@ Un sous-agent rend la main par un rapport, et seul ce rapport atteint l'appelant
 6. **Questions** pour l'appelant, quatre au plus, chacune avec sa réponse recommandée.
 7. **Prochaine action** — une seule, nommée.
 
-Un rôle sans écriture n'a pas de livrable à chemin : son verdict EST le livrable, rendu en sortie et déposé tel quel. « Complétude » y devient le plan de couverture et le résultat de chacune de ses unités.
+Un rôle sans écriture n'a pas de livrable à chemin : ce qu'il rend — critiques d'un critic, verdict d'un auditeur — EST le livrable, rendu en sortie et déposé tel quel. « Complétude » y devient ce qui a été lu et ce qui ne l'a pas été — pour un auditeur, le plan de couverture et le résultat de chacune de ses unités (MCR-004).
 
 ## Où lire la méthode
 

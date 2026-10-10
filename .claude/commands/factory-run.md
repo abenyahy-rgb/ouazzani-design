@@ -15,13 +15,14 @@ Répéter jusqu'à un arrêt : `node .factoryzen/bin/apf tower factory_next`, pu
 - **INTERROGER** : ouvrir l'activité si besoin, puis conduire l'interrogatoire avec l'humain dans cette conversation, une question à la fois. C'est le seul moment où il est attendu.
 - **OUVRIR** : appeler l'opération rendue (`factory_open_activity`). Si la réponse porte `autopilote.delegations`, appliquer le choix consigné sans poser la question.
 - **PRODUIRE** : invoquer chaque rôle avec le `model` et l'`effort` rendus — la garde refuse un autre routage. Il produit depuis le fragment et déclare chaque livrable (`factory_declare`).
-- **JUGER** : invoquer le critic avec son routage, déposer son verdict TEL QUEL au chemin `depot` — il se termine par « SÉVÉRITÉS — BLOCKER: n · MAJOR: n · MINOR: n » —, puis `factory_record_verdict`. Zéro BLOCKER et zéro MAJOR : le livrable converge. 2 tours au plus : au-delà, l'arbitrage entre en file et la boucle passe à la suite.
-- **REPRENDRE** : renvoyer le livrable à son producteur avec le verdict ; chaque BLOCKER et chaque MAJOR traité ou contesté par une disposition sourcée ; redéclarer.
+- **JUGER** : invoquer le critic avec son routage. Il rend au plus sept critiques au format CRIT-n, chacune avec sa recommandation — il ne tranche rien. Déposer sa sortie TELLE QUELLE au chemin `depot`, puis `factory_record_verdict` : chaque critique entre en file pour le porteur, et la boucle passe au livrable suivant.
+- **REPRENDRE** : renvoyer le livrable à son producteur avec les seules critiques que le porteur a RETENUES ; les écartées ne se traitent pas ; redéclarer.
 - **REPRENDRE_DECISION** : l'humain a tranché autrement qu'un défaut délégué ; rouvrir l'activité, appliquer son choix, redéclarer, puis `factory_autopilot_resume`.
 - **CORRIGER** : traiter chaque manque et chaque contrôle en échec du pack de G0 dans l'activité qui le porte.
 
 ## Les arrêts
 
+- **STOP_TRI** : à la fin d'une étape de C1, les critiques en attente. Les trier avec le porteur par grill-me (le skill route vers `grilling`) : une critique par question, la recommandation du critic en premier ; sa réponse, Retenir ou Écarter, par `factory_answer_decision`. C'est lui qui juge de la pertinence — jamais le critic, jamais l'orchestrateur.
 - **STOP_DECISION** : une décision que seul l'humain peut prendre. L'exposer, une question à la fois, et attendre. La réponse : `factory_answer_decision`.
 - **STOP_G0** : le pack est prêt. Présenter les décisions à trancher, puis les décisions déléguées à ratifier, par rayon d'impact. L'autopilote ne franchit JAMAIS G0 : c'est l'humain, nommément.
 
