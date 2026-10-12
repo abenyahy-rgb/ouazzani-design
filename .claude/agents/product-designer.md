@@ -1,6 +1,6 @@
 ---
 name: product-designer
-description: "Socle, squelette, Design System, Strategic Design, prototypes de slice, deltas. Intervient aux activités 4, 5, 7-9, 13, 14, 17, 19."
+description: "Socle, squelette, Design System, Strategic Design, prototypes de slice, deltas. Intervient aux activités 4, 5, 8-10, 14, 15, 18, 20."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: opus
 effort: high

@@ -20,7 +20,7 @@ Le contenu que le produit affiche à un utilisateur, avec de quoi le contredire.
 
 **Complétude.** Chaque enregistrement sourcé porte ses trois champs de recevabilité. Couverture chiffrée par STG et écarts nommés. Verdict de recevabilité de critic(domaine) présent. AUCUNE fixture sur un chemin servi à un livrable de design ou de produit — ce point est éliminatoire, il ne se solde pas en dette.
 
-## WP-08 — Navigation, architecture de l'information et terminologie
+## WP-09 — Navigation, architecture de l'information et terminologie
 
 `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
@@ -35,7 +35,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 **Complétude.** Chaque terme testé auprès d'un persona. La navigation couvre toutes les étapes. Figé par tag Git immuable.
 
-## WP-09 — Modèle de données vivant
+## WP-10 — Modèle de données vivant
 
 `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 

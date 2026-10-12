@@ -1,6 +1,6 @@
 ---
 name: living-design
-description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 9, 14, 16, 19 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
+description: "Produire le design exécutable à tout niveau — socle, Strategic Design de release, prototype de slice — avec son delta de Design System en extension du socle et jamais en fork, et son Design QA. Utiliser aux activités 10, 15, 17, 20 de la méthode — Socle exécutable · Exploration, direction et Strategic Design · Design QA · Contrat de slice."
 ---
 
 # living-design
@@ -15,10 +15,10 @@ Produire le design exécutable à tout niveau — socle, Strategic Design de rel
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 9 | Socle exécutable | `product-designer` | `Product Owner` |
-| 14 | Exploration, direction et Strategic Design | `product-designer` | `Product Owner` |
-| 16 | Design QA | `critic(design)` | `Product Owner` |
-| 19 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
+| 10 | Socle exécutable | `product-designer` | `Product Owner` |
+| 15 | Exploration, direction et Strategic Design | `product-designer` | `Product Owner` |
+| 17 | Design QA | `critic(design)` | `Product Owner` |
+| 20 | Contrat de slice | `product-lead · product-designer · principal-engineer` | `Product Owner et autorité Tech` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -26,10 +26,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-10 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
-| WP-18 — Strategic Design de la release | `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/` | G1 |
-| WP-21 — Rapport de Design QA | `releases/{release-id}/design/qa/report.md` | G1 |
-| WP-25 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
+| WP-11 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
+| WP-19 — Strategic Design de la release | `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/` | G1 |
+| WP-22 — Rapport de Design QA | `releases/{release-id}/design/qa/report.md` | G1 |
+| WP-26 — Contrat de slice | `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md` | K1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -37,7 +37,7 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 9 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
+**Activité 10 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 

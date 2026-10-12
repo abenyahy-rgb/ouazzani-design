@@ -1,6 +1,6 @@
 ---
 name: real-corpus
-description: "Constituer le CORPUS RÉEL du produit avant le socle : périmètre minimal suffisant pour parcourir le squelette de bout en bout, acquisition depuis les sources approuvées de WP-03, une ligne de provenance par enregistrement — adresse, date de lecture, citation littérale —, catégorie de vérité par champ, et couverture mesurée contre le squelette. Utiliser aux activités 6, 8 de la méthode — Corpus réel et provenance · Navigation, IA, terminologie et sémantique."
+description: "Constituer le CORPUS RÉEL du produit avant le socle : périmètre minimal suffisant pour parcourir le squelette de bout en bout, acquisition depuis les sources approuvées de WP-03, une ligne de provenance par enregistrement — adresse, date de lecture, citation littérale —, catégorie de vérité par champ, et couverture mesurée contre le squelette. Utiliser aux activités 6, 9 de la méthode — Corpus réel et provenance · Navigation, IA, terminologie et sémantique."
 ---
 
 # real-corpus
@@ -16,7 +16,7 @@ Constituer le CORPUS RÉEL du produit avant le socle : périmètre minimal suffi
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
 | 6 | Corpus réel et provenance | `data-steward` | `Product Owner` |
-| 8 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
+| 9 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -25,8 +25,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
 | WP-06 — Corpus réel et provenance | `C1.3-parcours/corpus/corpus-scope.md · provenance.yaml · truth-map.yaml · coverage.md · records/` | G0 |
-| WP-08 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
-| WP-09 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
+| WP-09 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
+| WP-10 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 

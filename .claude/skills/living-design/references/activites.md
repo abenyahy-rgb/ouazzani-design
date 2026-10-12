@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 9 — Socle exécutable
+## Activité 10 — Socle exécutable
 
 **Entrée.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 
@@ -14,7 +14,7 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 14 — Exploration, direction et Strategic Design
+## Activité 15 — Exploration, direction et Strategic Design
 
 **Entrée.** Parcours cibles disponibles ; socle figé et accessible ; design-brief.md renseigné ; time-box déclarée.
 
@@ -26,7 +26,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1,
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.2
 
-## Activité 16 — Design QA
+## Activité 17 — Design QA
 
 **Entrée.** Build partageable disponible ; critic(design) indépendant du producteur.
 
@@ -38,7 +38,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C2,
 
 Responsible : `critic(design)` · Accountable : `Product Owner` · Cadence C2, étape C2.2
 
-## Activité 19 — Contrat de slice
+## Activité 20 — Contrat de slice
 
 **Entrée.** G1 franchi ; carte des slices à jour ; slice précédente acceptée — une seule slice en cours à la fois.
 

@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-10 — Socle exécutable et prototype vivant
+## WP-11 — Socle exécutable et prototype vivant
 
 `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml`
 
@@ -10,7 +10,7 @@ Cycle de vie : figé en G0 · contrôlé en G0 · R/A : product-designer / Produ
 
 Le socle navigable en très haute fidélité structurelle — toutes les étapes existent, la navigation fonctionne, le vocabulaire est réel — ET son état courant composé : socle ⊕ deltas de release ⊕ deltas de slice. Un socle figé en G0 et un produit à la slice 5 ne sont pas deux livrables : c'est le même artefact vu à deux dates, et les tenir séparés obligeait à maintenir deux vérités.
 
-- **Source exécutable** — sur la STACK DE CONCEPTION déclarée en WP-12, et sur la base de composants qu'elle nomme — jamais une chaîne de rendu écrite pour ce produit seul
+- **Source exécutable** — sur la STACK DE CONCEPTION déclarée en WP-13, et sur la base de composants qu'elle nomme — jamais une chaîne de rendu écrite pour ce produit seul
 - **Build et URL de preview DÉPLOYÉE** — déployée, pas seulement buildable : une URL que le métier ouvre sans rien installer. Un fichier local à ouvrir depuis un dépôt n'est pas une preview, c'est une pièce jointe
 - **Couverture du squelette** — chaque STG atteignable
 - **Liaison au corpus réel** — le socle lit WP-06 ; le chemin de données est nommé et vérifiable. AUCUNE fixture atteignable depuis ce livrable
@@ -23,7 +23,7 @@ Le socle navigable en très haute fidélité structurelle — toutes les étapes
 
 **Complétude.** Se parcourt de bout en bout sans écran mort. S'ouvre à une URL déployée. Le contenu vient de WP-06 : zéro fixture sur le chemin de données, point ÉLIMINATOIRE. Un socle conforme sur données inventées a déjà franchi G0 une fois — il n'a rien prouvé et a coûté une cadence entière.
 
-## WP-18 — Strategic Design de la release
+## WP-19 — Strategic Design de la release
 
 `releases/{release-id}/design/concept/ · design/src/ · design/dist/ · design-system-delta/`
 
@@ -40,7 +40,7 @@ Le prototype exécutable très haute fidélité couvrant de bout en bout l'expé
 
 **Complétude.** Couvre tous les parcours sans écran mort. N'altère ni navigation, ni IA, ni vocabulaire du socle. Aucun composant du socle modifié silencieusement.
 
-## WP-21 — Rapport de Design QA
+## WP-22 — Rapport de Design QA
 
 `releases/{release-id}/design/qa/report.md`
 
@@ -56,7 +56,7 @@ Premier handoff vers un évaluateur indépendant du producteur. Vérifie la coh�
 
 **Complétude.** Zéro BLOCKER ouvert. Captures multi-device produites. Contrôle accessibilité outillé, pas déclaratif.
 
-## WP-25 — Contrat de slice
+## WP-26 — Contrat de slice
 
 `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md`
 

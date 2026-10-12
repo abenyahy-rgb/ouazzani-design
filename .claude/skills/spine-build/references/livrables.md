@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-07 — Fondations du Design System
+## WP-08 — Fondations du Design System
 
 `C1.4-socle/design-system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html`
 
@@ -22,7 +22,7 @@ Les éléments visuels réutilisables et leurs règles. Enrichis à chaque relea
 
 **Complétude.** La décision sur le design system de départ — gardé, adapté ou écarté — est consignée avec qui l'a prise. Stack de conception arrêtée par ADR AVANT la première décision visuelle. Contraste AA vérifié par outil. Les 7 états couverts pour chaque composant. Catalogue ouvrable. Chaque composant écrit à la main l'est parce que la base retenue ne le couvre pas, et le dit — un composant réécrit sans motif est du budget de conception dépensé en plomberie.
 
-## WP-08 — Navigation, architecture de l'information et terminologie
+## WP-09 — Navigation, architecture de l'information et terminologie
 
 `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
@@ -37,7 +37,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 **Complétude.** Chaque terme testé auprès d'un persona. La navigation couvre toutes les étapes. Figé par tag Git immuable.
 
-## WP-09 — Modèle de données vivant
+## WP-10 — Modèle de données vivant
 
 `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 
@@ -65,7 +65,7 @@ Catégories de vérité  (disjointes)
 Propagation  ESTIMÉ + CONSTATÉ = ESTIMÉ.  Jamais CONSTATÉ.
 ```
 
-## WP-10 — Socle exécutable et prototype vivant
+## WP-11 — Socle exécutable et prototype vivant
 
 `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml`
 
@@ -73,7 +73,7 @@ Cycle de vie : figé en G0 · contrôlé en G0 · R/A : product-designer / Produ
 
 Le socle navigable en très haute fidélité structurelle — toutes les étapes existent, la navigation fonctionne, le vocabulaire est réel — ET son état courant composé : socle ⊕ deltas de release ⊕ deltas de slice. Un socle figé en G0 et un produit à la slice 5 ne sont pas deux livrables : c'est le même artefact vu à deux dates, et les tenir séparés obligeait à maintenir deux vérités.
 
-- **Source exécutable** — sur la STACK DE CONCEPTION déclarée en WP-12, et sur la base de composants qu'elle nomme — jamais une chaîne de rendu écrite pour ce produit seul
+- **Source exécutable** — sur la STACK DE CONCEPTION déclarée en WP-13, et sur la base de composants qu'elle nomme — jamais une chaîne de rendu écrite pour ce produit seul
 - **Build et URL de preview DÉPLOYÉE** — déployée, pas seulement buildable : une URL que le métier ouvre sans rien installer. Un fichier local à ouvrir depuis un dépôt n'est pas une preview, c'est une pièce jointe
 - **Couverture du squelette** — chaque STG atteignable
 - **Liaison au corpus réel** — le socle lit WP-06 ; le chemin de données est nommé et vérifiable. AUCUNE fixture atteignable depuis ce livrable

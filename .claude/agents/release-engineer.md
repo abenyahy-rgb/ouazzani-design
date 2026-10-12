@@ -1,6 +1,6 @@
 ---
 name: release-engineer
-description: "Readiness, rollback, déploiement progressif, vérification post-déploiement. Intervient aux activités 22, 23, 24."
+description: "Readiness, rollback, déploiement progressif, vérification post-déploiement. Intervient aux activités 23, 24, 25."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: opus
 effort: high

@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Chargé à la demande, jamais d'office.
 
-## Activité 7 — Fondations du Design System
+## Activité 8 — Fondations du Design System
 
 **Entrée.** Squelette arrêté ; design-brief.md renseigné ; contraintes d'accessibilité, de langue et d'usage déclarées ; STACK DE CONCEPTION arrêtée par ADR — framework, base de composants, moteur de styles, cible de déploiement, outillage de conception assistée. Son absence produit BLOCKED : décider la stack après la première décision visuelle n'est plus une décision, c'est une justification.
 
@@ -14,19 +14,19 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 8 — Navigation, IA, terminologie et sémantique
+## Activité 9 — Navigation, IA, terminologie et sémantique
 
 **Entrée.** Squelette arrêté ; domaine qualifié.
 
 **Tâche.** Figer la navigation, l'architecture de l'information, le vocabulaire utilisateur, les catégories de vérité, les statuts et les règles financières.
 
-**Vérification.** Chaque terme unique, non ambigu, et ÉPROUVÉ par la campagne SUX du socle (activité 11, SYNTHETIC · SUX) — un terme non compris retourne à WP-08 avant le gel. La navigation couvre toutes les étapes. Chaque catégorie de vérité est disjointe. Un calcul n'améliore jamais le statut de vérité de ses entrées. La table de liaison résout chaque entité et chaque champ du noyau vers un terme du glossaire.
+**Vérification.** Chaque terme unique, non ambigu, et ÉPROUVÉ par la campagne SUX du socle (activité 12, SYNTHETIC · SUX) — un terme non compris retourne à WP-09 avant le gel. La navigation couvre toutes les étapes. Chaque catégorie de vérité est disjointe. Un calcul n'améliore jamais le statut de vérité de ses entrées. La table de liaison résout chaque entité et chaque champ du noyau vers un terme du glossaire.
 
 **Sortie.** Figés par tag Git. Noyau du modèle de données classé CORE INVARIANT ou EXTENSION, élément par élément. Toute évolution ultérieure du noyau rouvre G0.
 
 Responsible : `product-designer et product-lead` · Accountable : `Product Owner` · Cadence C1, étape C1.4
 
-## Activité 9 — Socle exécutable
+## Activité 10 — Socle exécutable
 
 **Entrée.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 

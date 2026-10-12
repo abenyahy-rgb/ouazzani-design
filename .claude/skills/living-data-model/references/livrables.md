@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-08 — Navigation, architecture de l'information et terminologie
+## WP-09 — Navigation, architecture de l'information et terminologie
 
 `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md`
 
@@ -17,7 +17,7 @@ Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate 
 
 **Complétude.** Chaque terme testé auprès d'un persona. La navigation couvre toutes les étapes. Figé par tag Git immuable.
 
-## WP-09 — Modèle de données vivant
+## WP-10 — Modèle de données vivant
 
 `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml`
 
@@ -45,7 +45,7 @@ Catégories de vérité  (disjointes)
 Propagation  ESTIMÉ + CONSTATÉ = ESTIMÉ.  Jamais CONSTATÉ.
 ```
 
-## WP-19 — Solution design de la release
+## WP-20 — Solution design de la release
 
 `releases/{release-id}/architecture/solution-design.md · interface-contracts.md · migration-impact.md`
 
@@ -62,13 +62,13 @@ Comment les parcours de cette release se réalisent dans le socle technique. Le 
 
 **Complétude.** S'inscrit dans le socle technique sans modifier un CORE INVARIANT. Chaque contrat d'interface est testable.
 
-## WP-20 — Dépendances, risques techniques et tiers
+## WP-21 — Dépendances, risques techniques et tiers
 
 `releases/{release-id}/architecture/dependencies.md · technical-risks.md · risk-tiers.md`
 
 Cycle de vie : vivant · contrôlé en G1 · R/A : principal-engineer / autorité Tech
 
-L'entrée technique que l'activité 18 exigeait sans jamais l'avoir. Un backlog ne qualifie pas une dépendance ni ne propose un tier sans architecture de solution.
+L'entrée technique que l'activité 19 exigeait sans jamais l'avoir. Un backlog ne qualifie pas une dépendance ni ne propose un tier sans architecture de solution.
 
 - **Dépendances par capacité** — technique, de donnée, d'apprentissage — chacune nommée et datée
 - **Absence de cycle** — démontrée, pas affirmée
@@ -76,9 +76,9 @@ L'entrée technique que l'activité 18 exigeait sans jamais l'avoir. Un backlog 
 - **Tier de risque par capacité** — R0 à R3, justifié — commande l'evidence et les autorités en aval
 - **Capacités non faisables dans cette release** — nommées et routées
 
-**Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 18 est BLOCKED — input manquant.
+**Complétude.** Aucune dépendance circulaire ni vers une release postérieure. Chaque capacité porte un tier justifié. Sans ce livrable, l'activité 19 est BLOCKED — input manquant.
 
-## WP-25 — Contrat de slice
+## WP-26 — Contrat de slice
 
 `releases/{release-id}/slices/{slice-id}/slice-contract.md · design/scope.yaml · design/prototype/ · design/design-system-delta/ · spec/acceptance-criteria.md · spec/technical-spec.md`
 

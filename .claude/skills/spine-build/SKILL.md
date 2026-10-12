@@ -1,6 +1,6 @@
 ---
 name: spine-build
-description: "Figer navigation, IA, terminologie et sémantique, puis produire le socle navigable en très haute fidélité structurelle avec ses fondations de Design System. Utiliser aux activités 7, 8, 9 de la méthode — Fondations du Design System · Navigation, IA, terminologie et sémantique · Socle exécutable."
+description: "Figer navigation, IA, terminologie et sémantique, puis produire le socle navigable en très haute fidélité structurelle avec ses fondations de Design System. Utiliser aux activités 8, 9, 10 de la méthode — Fondations du Design System · Navigation, IA, terminologie et sémantique · Socle exécutable."
 ---
 
 # spine-build
@@ -15,9 +15,9 @@ Figer navigation, IA, terminologie et sémantique, puis produire le socle naviga
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 7 | Fondations du Design System | `product-designer` | `Product Owner` |
-| 8 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
-| 9 | Socle exécutable | `product-designer` | `Product Owner` |
+| 8 | Fondations du Design System | `product-designer` | `Product Owner` |
+| 9 | Navigation, IA, terminologie et sémantique | `product-designer et product-lead` | `Product Owner` |
+| 10 | Socle exécutable | `product-designer` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -25,10 +25,10 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-07 — Fondations du Design System | `C1.4-socle/design-system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html` | G0 |
-| WP-08 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
-| WP-09 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
-| WP-10 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
+| WP-08 — Fondations du Design System | `C1.4-socle/design-system/design-brief.md · explorations/ · surface-briefs/ · tokens.css · tokens.json · fonts/ · icons/ · components/ · component-catalog.html` | G0 |
+| WP-09 — Navigation, architecture de l'information et terminologie | `C1.4-socle/navigation/navigation.md · information-architecture.md · glossaire-utilisateur.md` | G0 |
+| WP-10 — Modèle de données vivant | `C1.4-socle/data/semantics.md · status-model.md · financial-semantics.md · model.generated.md · binding.yaml · migrations.md · semantics.yaml · schema.introspected.yaml` | G0 |
+| WP-11 — Socle exécutable et prototype vivant | `C1.4-socle/prototype/spine/src/ · C1.4-socle/prototype/spine/dist/index.html · C1.4-socle/prototype/spine/spine.yaml · C1.4-socle/prototype/current/index.html · C1.4-socle/prototype/current/manifest.yaml · C1.4-socle/prototype/current/unsubordinated.md · C1.4-socle/prototype/current/deltas.yaml` | G0 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -36,11 +36,11 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 7 — arrêt dur.** Squelette arrêté ; design-brief.md renseigné ; contraintes d'accessibilité, de langue et d'usage déclarées ; STACK DE CONCEPTION arrêtée par ADR — framework, base de composants, moteur de styles, cible de déploiement, outillage de conception assistée. Son absence produit BLOCKED : décider la stack après la première décision visuelle n'est plus une décision, c'est une justification.
+**Activité 8 — arrêt dur.** Squelette arrêté ; design-brief.md renseigné ; contraintes d'accessibilité, de langue et d'usage déclarées ; STACK DE CONCEPTION arrêtée par ADR — framework, base de composants, moteur de styles, cible de déploiement, outillage de conception assistée. Son absence produit BLOCKED : décider la stack après la première décision visuelle n'est plus une décision, c'est une justification.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 
-**Activité 9 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
+**Activité 10 — arrêt dur.** Fondations, composants, navigation, IA et sémantique disponibles. CORPUS RÉEL recevable (WP-06) : son absence produit BLOCKED, et jamais un jeu de fixtures écrit pour débloquer l'activité.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 

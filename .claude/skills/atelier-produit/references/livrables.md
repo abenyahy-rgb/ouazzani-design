@@ -20,6 +20,7 @@ Ce qu'on veut faire du produit, sur une page, avant tout détail technique — l
 - **Ressources clés** — ce sans quoi la valeur ne se produit pas
 - **Activités clés** — ce qu'il faut faire excellemment
 - **Partenaires clés** — qui apporte quoi, et ce qu'il y gagne
+- **Équipe par activité clé** — pour chaque activité clé : les compétences techniques, humaines et métier qu'elle exige, qui les couvre, et les manques ; l'expérience de création d'entreprise de l'équipe ; un manque se nomme, il se finance par la demande du pitch
 - **Structure de coûts** — les postes qui décident, avant le premier revenu
 - **Avantage difficile à copier** — une raison, ou « aucun pour l'instant »
 - **Indicateurs clés** — deux ou trois nombres mesurables sans rien construire

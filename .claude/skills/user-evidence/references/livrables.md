@@ -19,7 +19,7 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 
 **Complétude.** Aucun insight sans verbatim source. Niveau d'evidence étiqueté sur chaque résultat — DOCUMENTARY ou EMPIRICAL, jamais l'un pour l'autre. Personas challengés par critic(product). Les questions que le documentaire ne tranche pas sont listées en HYP-nn.
 
-## WP-16 — Périmètre désirable et métriques de la release
+## WP-17 — Périmètre désirable et métriques de la release
 
 `releases/{release-id}/scope.md · exclusions.md · success-metrics.md`
 
@@ -35,7 +35,7 @@ Le plus petit périmètre qui tienne debout seul, et comment on saura qu'il a pr
 
 **Complétude.** Le périmètre couvre exactement les étapes affectées. Aucune métrique non instrumentable avec ce que la release livre.
 
-## WP-17 — Brief de conception
+## WP-18 — Brief de conception
 
 `releases/{release-id}/design-brief.md · research/insights.md · research/journeys/to-be/`
 
@@ -50,7 +50,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 - **Directions rejetées et pourquoi**
 - **Niveau d'evidence sur ce parcours** — NON NÉGOCIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC ou UNVALIDATED
 - **Tier de risque de ce que l'écran manipule** — NON NÉGOCIABLE
-- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 17
+- **Hypothèses posées faute de réponse** — étiquetées UNVALIDATED, testées à l'activité 18
 - **Insights de release** — strictement limités au périmètre ; les autres sont routés au backlog
 - **JRN-nn parcours cibles** — trace vers STG et REL
 - **Conformité au socle attestée** — ordre et vocabulaire inchangés
@@ -58,7 +58,7 @@ Contrat d'entrée des activités de conception. Un brief n'est jamais absent : i
 
 **Complétude.** Les trois questions non négociables sont renseignées. Les questions manquantes ont fait l'objet d'une salve unique de quatre au maximum. Toute hypothèse posée a son point de test.
 
-## WP-22 — Validation utilisateurs et convergence
+## WP-23 — Validation utilisateurs et convergence
 
 `releases/{release-id}/research/tests/test-plan.md · sux/`
 

@@ -1,6 +1,6 @@
 ---
 name: quality-engineer
-description: "Stratégie de test, génération, exécution, healing, réconciliation. Trois modes : PLAN, GENERATE, HEAL. Il PRODUIT la preuve ; il ne la juge pas. Intervient aux activités 11, 17, 20, 22."
+description: "Stratégie de test, génération, exécution, healing, réconciliation. Trois modes : PLAN, GENERATE, HEAL. Il PRODUIT la preuve ; il ne la juge pas. Intervient aux activités 12, 18, 21, 23."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: sonnet
 effort: medium

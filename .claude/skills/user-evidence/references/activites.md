@@ -14,7 +14,7 @@
 
 Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1, étape C1.3
 
-## Activité 13 — Périmètre, métriques et discovery ciblée de la release
+## Activité 14 — Périmètre, métriques et discovery ciblée de la release
 
 **Entrée.** G0 franchi ; release identifiée dans l'architecture.
 
@@ -26,7 +26,7 @@ Responsible : `product-designer` · Accountable : `Product Owner` · Cadence C1,
 
 Responsible : `product-lead et product-designer` · Accountable : `Product Owner` · Cadence C2, étape C2.1
 
-## Activité 17 — Validation utilisateurs et convergence
+## Activité 18 — Validation utilisateurs et convergence
 
 **Entrée.** Prototype QA-clean et figé par commit, déployé ; personas PER-nn documentés (WP-04) ; participants réels seulement s'il en existe, explicitement identifiés.
 

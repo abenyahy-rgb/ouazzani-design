@@ -2,7 +2,7 @@
 
 > Généré depuis `core/method.yaml`. Le plan de contenu est le squelette du fichier, pas une suggestion.
 
-## WP-13 — Campagne SUX du socle
+## WP-14 — Campagne SUX du socle
 
 `C1.4-socle/experience/sux/protocole.md · plan-de-campagne.yaml · pare-feu.yaml · resultats/ · annotations/ · synthese.md · patterns.yaml`
 
@@ -15,12 +15,12 @@ Cycle de vie : Figée par candidat : une campagne est liée au sha256 du socle q
 - **Personas et missions** — fiches de faits de vie tirées des PER-nn et de leurs verbatims, rendues en prose, contrôle de cohérence ; missions dites avec les mots de l'utilisateur, avec leur arrêt naturel ; aucun mot de l'interface
 - **Pare-feu** — liste fermée du vocabulaire interne (TRM-nn, écrans, étapes) et manifeste haché des entrées exactes de chaque session, écrit avant elle
 - **Résultats bruts** — une capture par action, journal de chaque session, fin consignée ; index des empreintes — immuables ; une session racontée est rejetée
-- **Patterns et triage** — chaque pattern cite les sessions qui le montrent et celles qui le contredisent ; chaque constat trié est routé vers WP-05, WP-08, WP-10, ou classé ARRÊT ATTENDU, HORS CHAMP, SANS SUITE
+- **Patterns et triage** — chaque pattern cite les sessions qui le montrent et celles qui le contredisent ; chaque constat trié est routé vers WP-05, WP-09, WP-11, ou classé ARRÊT ATTENDU, HORS CHAMP, SANS SUITE
 - **Limites** — « N sessions synthétiques », jamais « N utilisateurs » ; sessions corrélées (même modèle, mêmes gabarits) ; aucun score ni seuil ; n'établit aucun fait sur une personne réelle
 
-**Complétude.** Les sept pièces présentes ; K7 rejoue SUX1–SUX6 sans constat : manifeste antérieur et haché, candidat égal au socle figé, filtre de vocabulaire passé, interaction réelle, patterns cités, étiquetage synthétique. Chaque constat routé vers WP-05, WP-08 ou WP-10 est traité, ou porté en réserve datée, avant G0.
+**Complétude.** Les sept pièces présentes ; K7 rejoue SUX1–SUX6 sans constat : manifeste antérieur et haché, candidat égal au socle figé, filtre de vocabulaire passé, interaction réelle, patterns cités, étiquetage synthétique. Chaque constat routé vers WP-05, WP-09 ou WP-11 est traité, ou porté en réserve datée, avant G0.
 
-## WP-22 — Validation utilisateurs et convergence
+## WP-23 — Validation utilisateurs et convergence
 
 `releases/{release-id}/research/tests/test-plan.md · sux/`
 

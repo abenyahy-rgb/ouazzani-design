@@ -1,6 +1,6 @@
 ---
 name: principal-engineer
-description: "Socle technique, solution design de release, spécification technique, implémentation, faisabilité, dépendances. Intervient aux activités 1, 10, 15, 18, 19, 20."
+description: "Socle technique, solution design de release, spécification technique, implémentation, faisabilité, dépendances. Intervient aux activités 1, 11, 16, 19, 20, 21."
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: opus
 effort: high
@@ -75,4 +75,4 @@ apf template <WP-nn>      # squelette à remplir — mêmes sections, guide et e
 apf show gate <Gn>        # la frontière suivante et son pack de preuves
 ```
 
-_Classe de capacité déclarée : AVANCÉE, effort élevé. Élevé, et non moyen : un effort fixé une fois pour toutes ne distingue pas l'architecture du build routinier, et l'erreur qui coûte est du côté de l'architecture — l'activité 10 décide ce que tout le reste construit._
+_Classe de capacité déclarée : AVANCÉE, effort élevé. Élevé, et non moyen : un effort fixé une fois pour toutes ne distingue pas l'architecture du build routinier, et l'erreur qui coûte est du côté de l'architecture — l'activité 11 décide ce que tout le reste construit._

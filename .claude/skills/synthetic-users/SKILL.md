@@ -1,6 +1,6 @@
 ---
 name: synthetic-users
-description: "Conduire une campagne SUX — test d'expérience par utilisateurs synthétiques AVEUGLES — sur un candidat figé et déployé : le socle avant G0 (activité 11), le prototype de release en validation (activité 17). Utiliser aux activités 11, 17 de la méthode — Test d'expérience synthétique du socle · Validation utilisateurs et convergence."
+description: "Conduire une campagne SUX — test d'expérience par utilisateurs synthétiques AVEUGLES — sur un candidat figé et déployé : le socle avant G0 (activité 12), le prototype de release en validation (activité 18). Utiliser aux activités 12, 18 de la méthode — Test d'expérience synthétique du socle · Validation utilisateurs et convergence."
 ---
 
 # synthetic-users
@@ -9,18 +9,18 @@ description: "Conduire une campagne SUX — test d'expérience par utilisateurs 
 
 ## Mandat
 
-Conduire une campagne SUX — test d'expérience par utilisateurs synthétiques AVEUGLES — sur un candidat figé et déployé : le socle avant G0 (activité 11), le prototype de release en validation (activité 17). Protocole du run BatiZen sans affaiblissement : orchestrateur, agent utilisateur aveugle, observateur, chercheur et triage séparés ; persona, mission et point d'entrée seuls donnés à l'agent, écrits dans un manifeste haché AVANT la session ; filtre déterministe sur la liste fermée du vocabulaire interne ; interaction réelle, une capture par action ; observations immuables liées au sha256 du candidat. Ne fait pas : une revue experte qui connaît l'intention — c'est critic(product), étiquetée SYNTHETIC · AXR ; un score ou un seuil ; un comptage en « utilisateurs » ; une correction sur le candidat testé.
+Conduire une campagne SUX — test d'expérience par utilisateurs synthétiques AVEUGLES — sur un candidat figé et déployé : le socle avant G0 (activité 12), le prototype de release en validation (activité 18). Protocole du run BatiZen sans affaiblissement : orchestrateur, agent utilisateur aveugle, observateur, chercheur et triage séparés ; persona, mission et point d'entrée seuls donnés à l'agent, écrits dans un manifeste haché AVANT la session ; filtre déterministe sur la liste fermée du vocabulaire interne ; interaction réelle, une capture par action ; observations immuables liées au sha256 du candidat. Ne fait pas : une revue experte qui connaît l'intention — c'est critic(product), étiquetée SYNTHETIC · AXR ; un score ou un seuil ; un comptage en « utilisateurs » ; une correction sur le candidat testé.
 
 ## Procédure
 
 1. Figer le candidat : commit, sha256 du build, URL DÉPLOYÉE. Un socle encore modifié n'est pas testable : finir l'activité qui le construit.
-2. Construire la liste fermée du vocabulaire interne depuis WP-08 (termes TRM-nn, écrans) et WP-05 (étapes) ; l'écrire dans pare-feu.yaml.
+2. Construire la liste fermée du vocabulaire interne depuis WP-09 (termes TRM-nn, écrans) et WP-05 (étapes) ; l'écrire dans pare-feu.yaml.
 3. Écrire les personas — une fiche de faits de vie par PER-nn de WP-04, avec ses verbatims, rendue en prose ; contrôle de cohérence fiche ↔ prose — et les missions, avec les mots de l'utilisateur et leur arrêt naturel. Passer le filtre : aucun mot de l'interface.
 4. Écrire protocole.md et plan-de-campagne.yaml AVANT toute session ; aucun score, aucun seuil ; déclarer la corrélation des sessions.
 5. Pour chaque session : écrire l'entrée du manifeste — empreintes du persona et de la mission, point d'entrée, horodatage — PUIS lancer l'agent utilisateur en contexte FRAIS, qui pilote le socle avec un navigateur réel, une capture par action, pense à voix haute, et s'arrête quand il le juge ; entretien neutre à questions fixes.
 6. Indexer les preuves brutes (resultats/index.yaml, sha256 par fichier) : à partir de là, elles sont immuables.
 7. Observateur, une session à la fois : passe O1 à l'aveugle, figée ; puis O2. Chercheur : patterns R1 à l'aveugle — sessions qui montrent, qui contredisent, citations, fréquence en « k sur N sessions synthétiques », valeurs aberrantes gardées —, figés ; puis R2.
-8. Triage (factory-lead) : chaque constat routé vers WP-05, WP-08 ou WP-10, ou classé ARRET_ATTENDU, HORS_CHAMP, SANS_SUITE. Un champ ABSENT du corpus donne un ARRÊT ATTENDU, jamais un défaut.
+8. Triage (factory-lead) : chaque constat routé vers WP-05, WP-09 ou WP-11, ou classé ARRET_ATTENDU, HORS_CHAMP, SANS_SUITE. Un champ ABSENT du corpus donne un ARRÊT ATTENDU, jamais un défaut.
 9. Lancer apf check : K7 rejoue SUX1 à SUX6 sur les octets ; zéro constat avant de rendre la main.
 10. Une correction est une mutation séparée qui produit un NOUVEAU candidat ; la régression rejoue les MÊMES personas et missions sur lui, dans une nouvelle campagne liée au nouveau sha256.
 
@@ -28,8 +28,8 @@ Conduire une campagne SUX — test d'expérience par utilisateurs synthétiques 
 
 | Activité | Nom | Responsible | Accountable |
 |---|---|---|---|
-| 11 | Test d'expérience synthétique du socle | `quality-engineer et factory-lead` | `product-lead` |
-| 17 | Validation utilisateurs et convergence | `product-lead puis product-designer · quality-engineer orchestre la campagne SUX` | `Product Owner` |
+| 12 | Test d'expérience synthétique du socle | `quality-engineer et factory-lead` | `product-lead` |
+| 18 | Validation utilisateurs et convergence | `product-lead puis product-designer · quality-engineer orchestre la campagne SUX` | `Product Owner` |
 
 Critères d'entrée, tâche, vérification et sortie de chacune : **`references/activites.md`**.
 
@@ -37,8 +37,8 @@ Critères d'entrée, tâche, vérification et sortie de chacune : **`references/
 
 | Livrable | Chemin | Contrôlé en |
 |---|---|---|
-| WP-13 — Campagne SUX du socle | `C1.4-socle/experience/sux/protocole.md · plan-de-campagne.yaml · pare-feu.yaml · resultats/ · annotations/ · synthese.md · patterns.yaml` | G0 |
-| WP-22 — Validation utilisateurs et convergence | `releases/{release-id}/research/tests/test-plan.md · sux/` | G1 |
+| WP-14 — Campagne SUX du socle | `C1.4-socle/experience/sux/protocole.md · plan-de-campagne.yaml · pare-feu.yaml · resultats/ · annotations/ · synthese.md · patterns.yaml` | G0 |
+| WP-23 — Validation utilisateurs et convergence | `releases/{release-id}/research/tests/test-plan.md · sux/` | G1 |
 
 Plan de contenu et critère de complétude de chacun : **`references/livrables.md`**.
 
@@ -46,7 +46,7 @@ Plan de contenu et critère de complétude de chacun : **`references/livrables.m
 
 Si un artefact d'entrée déclaré manque, retourner `BLOCKED — input manquant`. Ne jamais inférer : produire sur un matériau deviné donne un résultat plausible et invérifiable, ce que la méthode existe pour empêcher.
 
-**Activité 11 — arrêt dur.** Socle exécutable DÉPLOYÉ et figé — commit et sha256 du build connus (WP-10) ; glossaire et navigation (WP-08) ; squelette (WP-05) ; personas PER-nn et verbatims (WP-04). Sans socle déployé : BLOCKED, jamais un test sur un fichier local.
+**Activité 12 — arrêt dur.** Socle exécutable DÉPLOYÉ et figé — commit et sha256 du build connus (WP-11) ; glossaire et navigation (WP-09) ; squelette (WP-05) ; personas PER-nn et verbatims (WP-04). Sans socle déployé : BLOCKED, jamais un test sur un fichier local.
 
 Ces inputs se RECUEILLENT auprès d'un humain, dans la salve unique de quatre questions au maximum (EX2). Ne jamais les dériver du nom du dépôt, du contexte de la session, ni d'un fichier existant.
 
