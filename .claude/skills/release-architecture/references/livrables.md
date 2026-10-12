@@ -31,15 +31,16 @@ REL-pilotage  Voir l'avancement sans appeler personne
 
 ## WP-15 — Décision G0 et fermeture d'apprentissage
 
-`C1.5-lancement/gates/g0-product-architecture.md · spine-manifest.yaml`
+`C1.5-lancement/gates/g0-product-architecture.md · investor-deck.md · spine-manifest.yaml`
 
 Cycle de vie : figé · contrôlé en G0 · R/A : factory-lead / Product Owner
 
 L'assemblage est DÉRIVÉ, il ne se recopie plus. Les éléments de charte viennent des livrables qui les portent, les résultats de contrôle des contrôles eux-mêmes, les verdicts des critics, et la décision — motif, autorité, date, commit — du Run Ledger où la tour l'a inscrite au franchissement. Recopier à la main ce que la machine sait déjà produisait un document qui pouvait CONTREDIRE ses propres sources, et c'est le seul document qu'un gate lit. Reste ici ce qu'aucune machine ne sait écrire : ce que ce passage nous a appris.
 
 - **Fermeture d'apprentissage** — ce qui a coûté · ce qui a surpris · ce qu'un agent aurait dû détecter
+- **Pitch investisseurs** — dix planches dans l'ordre du seed deck YC · le titre est l'idée · chaque chiffre sourcé · la demande décidée par le porteur
 
-**Complétude.** Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable.
+**Complétude.** Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable. Pitch investisseurs : format « pitch » vérifié.
 
 ## WP-16 — Périmètre désirable et métriques de la release
 
