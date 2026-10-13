@@ -19,7 +19,7 @@ Un atelier mené en questionnaire se remplit en diagonale : le canevas ressemble
 
 1. UNE seule question par message : ni liste numérotée, ni « et aussi », ni post-scriptum.
 2. Le produit d'abord, la technique jamais : aucune question sur la stack, le dépôt, l'hébergement ou les conventions — cela se calcule.
-3. Ordre : intention, segment, problème, proposition de valeur, puis canaux, relation, revenus, ressources, activités, partenaires, coûts, avantage, indicateurs. Sauter un bloc déjà tranché.
+3. Ordre : intention, segment, OPÉRATEURS — qui fait tourner le service au quotidien : coach, préparateur, support, administrateur ? —, problème, proposition de valeur, puis canaux, relation, revenus, ressources, activités, partenaires, coûts, avantage, indicateurs. Sauter un bloc déjà tranché.
 4. Chaque question : titre court, pourquoi elle compte maintenant, la question, la réponse recommandée et son motif.
 5. Réponse fermée — deux à quatre options — : questions structurées du harness, une par appel, la recommandée en premier. Sinon en texte, une seule.
 6. Attendre la réponse ; ne jamais la supposer pour gagner un tour.

@@ -14,7 +14,7 @@ Produire une preuve utilisateur opposable, sans dépendre d'humains à recruter 
 ## Procédure
 
 1. Écrire et commiter le plan AVANT de chercher : les questions à trancher, les segments, les requêtes prévues par famille de sources, dans les MOTS des utilisateurs et non ceux du produit, et le biais attendu de chaque plateforme.
-2. Chercher soi-même, par la recherche web de l'activité : au moins quatre familles de sources — avis d'applications et de services concurrents, forums et communautés, questions-réponses, études et rapports publics, statistiques officielles — et y inclure ceux qui ont abandonné et ceux qui n'utilisent rien. Une seule plateforme épouse son biais.
+2. Chercher soi-même, par la recherche web de l'activité : au moins quatre familles de sources — avis d'applications et de services concurrents, forums et communautés, questions-réponses, études et rapports publics, statistiques officielles — et y inclure ceux qui ont abandonné, ceux qui n'utilisent rien, et les opérateurs du canevas, un persona chacun. Une seule plateforme épouse son biais.
 3. Consigner chaque verbatim dans interviews/S-nn.md à la lecture : adresse, date de consultation, citation LITTÉRALE, profil déclaré de l'auteur. Jamais de paraphrase entre guillemets.
 4. Chercher jusqu'à SATURATION : s'arrêter quand trois sources de suite n'apportent plus de thème nouveau, et l'écrire. Un persona porté par moins d'une dizaine de verbatims est un brouillon, et il le dit.
 5. Synthétiser par regroupement d'affinités : verbatims → thèmes → insights. Un insight est une TENSION dite en une phrase — ce que la personne veut, et ce qui l'en empêche —, avec ses sources et sa solidité ; un thème qu'une seule source porte est faible et le dit.

@@ -12,6 +12,7 @@ Ce qu'on veut faire du produit, sur une page, avant tout détail technique — l
 
 - **Intention** — ce qu'on veut en faire · pourquoi maintenant · à quoi on saura que c'est réussi
 - **Segments de clients** — qui l'utilise, qui paie · le premier segment visé, nommé
+- **Opérateurs du service** — qui fait tourner le service au quotidien — coach, préparateur, livreur, support, administrateur, partenaire qui opère — chacun avec l'activité clé qu'il porte et ce qu'il doit voir et faire dans le produit ; « aucun opérateur » est une décision motivée (K1)
 - **Problème** — les trois plus coûteux · ce qu'il fait aujourd'hui
 - **Proposition de valeur** — ce qui change le lendemain · ce qu'il arrête de faire
 - **Canaux** — découvre · essaie · adopte

@@ -13,7 +13,7 @@ Le corpus d'observations sur l'ensemble du parcours, avant tout découpage, et s
 - **Plan de recherche** — écrit AVANT la collecte : questions, segments, sources et requêtes prévues, mode — documentaire par défaut, terrain si des humains sont disponibles
 - **Verbatims tracés** — adresse, date de consultation, citation littérale pour chacun ; plateformes, échantillon et biais déclarés
 - **Insights** — aucun sans observation source
-- **PER-nn personas** — chaque trait tracé vers ≥ 2 verbatims de sources indépendantes ; proto-persona DOCUMENTARY tant qu'aucune observation de terrain
+- **PER-nn personas** — chaque trait tracé vers ≥ 2 verbatims de sources indépendantes ; proto-persona DOCUMENTARY tant qu'aucune observation de terrain ; deux familles, chacune déclarée : les clients externes et les opérateurs internes — un persona par opérateur du canevas
 - **Empathy maps** — aucune projection non sourcée ; inconnus marqués
 - **Journeys as-is et irritants** — chaque irritant daté, sourcé, rattaché à un persona
 

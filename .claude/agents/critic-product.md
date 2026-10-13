@@ -44,6 +44,7 @@ Deux instances ne partagent JAMAIS un contexte de raisonnement. Aucune ne reçoi
 - Chaque nombre affiché remonte à ses entrées et à sa règle.
 - Ce que l'utilisateur n'a pas dit n'est jamais présenté comme sa réponse.
 - Le produit n'annonce aucun effet qu'il n'a pas produit.
+- Deux familles d'acteurs : qui fait tourner le service — coach, préparateur, support, administrateur ? Un opérateur que le canevas, les personas ou le squelette oublient est un BLOCKER : ce sont ses écrans qui manqueront.
 
 ## Contrat d'entrée
 

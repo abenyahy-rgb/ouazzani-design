@@ -28,7 +28,7 @@ Cycle de vie : CORE INVARIANT · contrôlé en G0 · R/A : product-designer / Pr
 
 Ce qui est cher à changer plus tard. Toute évolution après G0 rouvre le gate sur toutes les releases livrées.
 
-- **Navigation globale** — couvrant toutes les étapes du squelette
+- **Navigation globale** — couvrant toutes les étapes du squelette — celles des clients ET celles des opérateurs, chacun dans son espace
 - **Architecture de l'information**
 - **TRM-nn glossaire utilisateur** — chaque terme unique, non ambigu, testé auprès d'un persona
 - **Trace TRM → STG**

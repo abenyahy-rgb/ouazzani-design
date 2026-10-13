@@ -9,7 +9,7 @@ description: "Produire le squelette exhaustif et ordonné du parcours cible, nom
 
 ## Mandat
 
-Produire le squelette exhaustif et ordonné du parcours cible, nommé avec le vocabulaire de l'utilisateur, avant tout découpage. Un squelette incomplet ne se rattrape pas : il se paie en réouvertures de G0.
+Produire le squelette exhaustif et ordonné du parcours cible, nommé avec le vocabulaire de l'utilisateur, avant tout découpage. Un squelette incomplet ne se rattrape pas : il se paie en réouvertures de G0. Un parcours par famille d'acteur : celui du client et celui de chaque opérateur du canevas — ses étapes sont des écrans du produit, pas un back-office qu'on découvrira en construction.
 
 ## Activités outillées
 
