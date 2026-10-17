@@ -12,7 +12,7 @@ privé ne se clone pas, il se rabat sur un dépôt frère `../Autonomous-Product
 attaché à l'environnement. Sans plugin, la garde **refuse** toute écriture : un défaut
 d'installation ne devient jamais un contournement silencieux.
 
-`apf` se lit `node .factoryzen/bin/apf`. Les commandes `/factory-*`, les rôles et les skills
+`apf` se lit `.claude/factoryzen.sh apf`. Les commandes `/factory-*`, les rôles et les skills
 sous `.claude/` sont des projections du plugin épinglé, regénérées par le workflow à chaque
 push : ne pas y éditer.
 
@@ -22,7 +22,7 @@ Ouvrir l'activité par la tour de contrôle. Elle est la **seule** source du fra
 la frontière d'écriture et du critère de sortie :
 
 ```bash
-node .factoryzen/bin/apf tower factory_open_activity '{"activity":"<n>","actor":"<rôle>"}'
+.claude/factoryzen.sh apf tower factory_open_activity '{"activity":"<n>","actor":"<rôle>"}'
 ```
 
 Ne jamais lire `core/method.yaml` du plugin pour s'en passer : un agent reçoit son
@@ -58,9 +58,9 @@ s'est passé, le Run Ledger dit ce qui est prouvé, et confondre les deux ferait
 effaçable une pièce opposable.
 
 ```bash
-node .factoryzen/bin/apf trace tail      # ce qui vient de se passer, ici
-node .factoryzen/bin/apf trace status    # ce poste est-il relié au launchpad
-node .factoryzen/bin/apf connect         # l'y relier : un code, approuvé dans le launchpad
+.claude/factoryzen.sh apf trace tail      # ce qui vient de se passer, ici
+.claude/factoryzen.sh apf trace status    # ce poste est-il relié au launchpad
+.claude/factoryzen.sh apf connect         # l'y relier : un code, approuvé dans le launchpad
 ```
 
 Sans poste appairé, la trace reste locale et tout fonctionne à l'identique : elle **échoue

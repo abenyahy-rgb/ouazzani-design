@@ -59,13 +59,29 @@ export function provenanceFindings(project = process.env.CLAUDE_PROJECT_DIR || p
     return f;
   }
 
+  const short = c => String(c).slice(0, 7);
+
+  /* LA COPIE EMBARQUÉE est un emplacement légitime, pas un repli : le launchpad la dépose
+     sous .claude/factoryzen-runtime/ pour qu'une session à un seul dépôt — où le
+     sous-module privé ne se clone pas — garde la garde. Elle vit DANS le dépôt produit :
+     « git rev-parse » y rendrait le commit du produit, jamais celui du plugin. Sa version
+     est le fichier PIN que le provisionnement y écrit, confronté à l'épinglage. */
+  const embarquee = resolve(project, '.claude', 'factoryzen-runtime');
+  if (resolve(ROOT) === embarquee) {
+    const pin = existsSync(join(embarquee, 'PIN')) ? readFileSync(join(embarquee, 'PIN'), 'utf8').trim() : '';
+    if (!/^[0-9a-f]{40}$/.test(pin))
+      f.push(`provenance : la copie embarquée ${'.claude/factoryzen-runtime'} ne déclare aucun commit (PIN « ${pin || 'absent'} ») — sa conformité à l'épinglage est invérifiable`);
+    else if (pin !== pinned)
+      f.push(`provenance : la copie embarquée est sur ${short(pin)}, le dépôt produit épingle ${short(pinned)} — la gouvernance tourne sur un autre registre que celui déclaré`);
+    return f;
+  }
+
   const running = git(ROOT, 'rev-parse', 'HEAD');
   if (!running) {
     f.push(`provenance : le plugin exécuté (${ROOT}) n'est pas un dépôt Git — sa version est invérifiable, donc sa conformité à l'épinglage aussi`);
     return f;
   }
 
-  const short = c => String(c).slice(0, 7);
   const expected = resolve(project, sub.path);
 
   /* DEUX DÉFAUTS DISTINCTS, et la distinction compte pour qui doit corriger.
