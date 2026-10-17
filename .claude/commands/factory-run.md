@@ -1,16 +1,16 @@
 ---
 description: "Autopilote de la cadence C1 : enchaîner les activités jusqu'à G0, l'humain au-dessus de la boucle."
 argument-hint: [votre nom — celui qui ratifiera en G0]
-allowed-tools: Bash(node:*), Agent, Task, Read, Write, Edit, Glob, Grep
+allowed-tools: Bash(.claude/factoryzen.sh:*), Agent, Task, Read, Write, Edit, Glob, Grep
 ---
 
 ## Démarrer
 
-Si l'autopilote n'est pas actif : `node .factoryzen/bin/apf tower factory_autopilot_start '{"par":"$1"}'`. Sans nom, demander à l'humain le sien — une seule question —, c'est lui qui ratifiera en G0.
+Si l'autopilote n'est pas actif : `.claude/factoryzen.sh apf tower factory_autopilot_start '{"par":"$1"}'`. Sans nom, demander à l'humain le sien — une seule question —, c'est lui qui ratifiera en G0.
 
 ## La boucle — sans rendre la main
 
-Répéter jusqu'à un arrêt : `node .factoryzen/bin/apf tower factory_next`, puis exécuter l'action rendue.
+Répéter jusqu'à un arrêt : `.claude/factoryzen.sh apf tower factory_next`, puis exécuter l'action rendue.
 
 - **INTERROGER** : ouvrir l'activité si besoin, puis conduire l'interrogatoire avec l'humain dans cette conversation, une question à la fois. C'est le seul moment où il est attendu.
 - **OUVRIR** : appeler l'opération rendue (`factory_open_activity`). Si la réponse porte `autopilote.delegations`, appliquer le choix consigné sans poser la question.

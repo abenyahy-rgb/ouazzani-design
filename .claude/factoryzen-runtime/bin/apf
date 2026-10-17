@@ -1,0 +1,712 @@
+#!/usr/bin/env node
+import { readFileSync as fsReadFileSync, writeFileSync as fsWriteFileSync, existsSync as fsExistsSync } from 'node:fs';
+import { resolve as pathResolve, join as join_path } from 'node:path';
+import { spawn as spawnChild } from 'node:child_process';
+const require_child = () => ({ spawn: spawnChild });
+import { registry, byId, activityFragment, cheminDe, ROOT } from '../lib/registry.mjs';
+import { runAll, loadProject } from '../lib/checks.mjs';
+import { executerControles } from '../lib/controles-projet.mjs';
+import { bootstrap } from '../lib/bootstrap.mjs';
+import { OPERATIONS, brief as briefState, loadState } from '../lib/tower.mjs';
+import { vendorFindings, fingerprint } from '../lib/vendor.mjs';
+import { composeModel, composePrototype } from '../lib/living.mjs';
+import { guardFromHookPayload } from '../lib/guard.mjs';
+import { conduiteFromHookPayload } from '../lib/conduite.mjs';
+import { aligner } from '../lib/alignement.mjs';
+import { workspacePlan, planShape, link as notionLink, linkStatus, planFindings, where as notionWhere, pageBody, instancePlan, readMap, writeMap, stepProgress, sync as notionSync, projectRowBody, pullProjection } from '../lib/notion.mjs';
+import { workspaceDrift } from '../lib/drift.mjs';
+import { fromHook, read as traceRead, cursor as traceCursor } from '../lib/trace.mjs';
+import { agentHook, tableau, retention } from '../lib/tableau.mjs';
+import { applyPreset, presets } from '../lib/presets.mjs';
+import { credential, edgeUrl, forgetCredential, maybePush, pairPoll, pairStart, projectRef, push as tracePush, saveCredential, status as traceStatus, tracePairing } from '../lib/launchpad.mjs';
+import { renderTemplate, templateFindings, templateIndex, scaffoldArtifact, checkArtifactForm } from '../lib/templates.mjs';
+import { packModel } from '../lib/pack.mjs';
+
+const [cmd, ...args] = process.argv.slice(2);
+const C = { g:'\x1b[32m', r:'\x1b[31m', y:'\x1b[33m', d:'\x1b[2m', b:'\x1b[1m', x:'\x1b[0m' };
+const out = s => process.stdout.write(s + '\n');
+const rule = () => out(C.d + '─'.repeat(72) + C.x);
+
+function check() {
+  const proj = loadProject(process.cwd());
+  const results = runAll(proj);
+  rule();
+  out(`${C.b}Contrôles déterministes${C.x}  ${C.d}${proj ? 'dépôt produit détecté' : 'registre seul — aucune arborescence product/'}${C.x}`);
+  rule();
+  for (const r of results) {
+    const col = r.status === 'PASS' ? C.g : r.status === 'FAIL' ? C.r : C.y;
+    out(`${col}${r.status.padEnd(8)}${C.x}${C.b}${r.id}${C.x}  ${r.name}`);
+    out(`         ${C.d}${r.detail}${C.x}`);
+    r.findings.slice(0, 12).forEach(f => out(`         ${C.r}·${C.x} ${f}`));
+    if (r.findings.length > 12) out(`         ${C.d}… ${r.findings.length - 12} autres${C.x}`);
+  }
+  /* LES CONTRÔLES DU PROJET, exécutés ici — dans l'environnement du projet, jamais dans le
+     Launchpad. Chacun sur le dépôt, puis ses tests négatifs sur une copie de fixture. */
+  const pc = proj ? executerControles(process.cwd()) : { present: false };
+  if (pc.present) {
+    rule();
+    out(`${C.b}Contrôles du projet${C.x}  ${C.d}controles/controles.yaml — ${pc.controles.length} contrôle(s)${C.x}`);
+    for (const c of pc.controles) {
+      const ok = c.depot === 'PASS' && c.negatifs.every(n => n.ok);
+      out(`${ok ? C.g : C.r}${(ok ? 'PASS' : 'FAIL').padEnd(8)}${C.x}${C.b}${c.id}${C.x}  ${c.nom}  ${C.d}(${c.source}) · ${c.negatifs.filter(n => n.ok).length}/${c.negatifs.length} test(s) négatif(s) tenu(s)${C.x}`);
+    }
+    pc.findings.slice(0, 12).forEach(f => out(`         ${C.r}·${C.x} ${f.split('\n')[0]}`));
+  }
+  rule();
+  const failed = results.filter(r => r.status === 'FAIL');
+  const passed = results.filter(r => r.status === 'PASS').length;
+  const skipped = results.filter(r => r.status === 'SKIPPED').length;
+  out(`${passed} PASS · ${failed.length} FAIL · ${skipped} SKIPPED${pc.present ? ` · contrôles du projet : ${pc.findings.length ? `${pc.findings.length} écart(s)` : 'tenus'}` : ''}`);
+  if (skipped) out(`${C.d}Un contrôle SKIPPED ne vaut pas PASS : il attend une instance de projet.${C.x}`);
+  process.exit(failed.length || (pc.present && pc.findings.length) ? 1 : 0);
+}
+
+function show(kind, id) {
+  const r = registry();
+  const map = { activity:'activities', wp:'work_products', gate:'gates', agent:'agents',
+                skill:'skills', control:'controls', principle:'principles' };
+  if (!map[kind]) { out(`Objet inconnu : ${kind}. Attendu : ${Object.keys(map).join(' · ')}`); process.exit(2); }
+  const o = kind === 'activity' ? activityFragment(id) : byId(r[map[kind]], id);
+  if (!o) { out(`Introuvable : ${kind} ${id}`); process.exit(2); }
+  out(JSON.stringify(o, null, 2));
+}
+
+function list(kind) {
+  const r = registry();
+  const map = { activities:'activities', wp:'work_products', gates:'gates', agents:'agents',
+                skills:'skills', controls:'controls', principles:'principles' };
+  const k = map[kind];
+  if (!k) { out(`Collection inconnue. Attendu : ${Object.keys(map).join(' · ')}`); process.exit(2); }
+  for (const o of r[k]) out(`${String(o.id).padEnd(22)} ${C.d}${o.name || o.mandate || o.rule || ''}${C.x}`.slice(0, 180));
+}
+
+function stats() {
+  const r = registry();
+  const full = JSON.stringify(r).length;
+  const frag = JSON.stringify(activityFragment(12)).length;
+  rule();
+  out(`${C.b}${r.method.name} v${r.method.version}${C.x}  ${C.d}${r.method.status}${C.x}`);
+  rule();
+  const rows = [['cadences',r.cadences.length],['activités',r.activities.length],['livrables',r.work_products.length],
+    ['gates',r.gates.length],['agents',r.agents.length],['skills',r.skills.length],
+    ['contrôles',r.controls.length],['principes',r.principles.length],['entités de trace',r.traceability.length]];
+  rows.forEach(([k,v]) => out(`  ${String(v).padStart(3)}  ${k}`));
+  rule();
+  out(`  registre complet          ${(full/1024).toFixed(1)} ko`);
+  out(`  fragment d'une activité   ${(frag/1024).toFixed(1)} ko  ${C.d}soit ${(frag/full*100).toFixed(1)} % — ce qu'un agent reçoit${C.x}`);
+  const impl = r.controls.filter(c => c.implemented).length;
+  out(`  contrôles implémentés     ${impl} / ${r.controls.length}`);
+}
+
+const HELP = `${C.b}apf${C.x} — Autonomous Product Factory
+
+  ${C.b}apf bootstrap${C.x} --product <nom> [--root-location <id>] [--dry-run]
+                             initialise product/ et runs/ — idempotent. Le NOM est un
+                             input de l'activité 1, recueilli auprès d'un humain.
+  ${C.b}apf check${C.x}                  exécute les huit contrôles déterministes
+  ${C.b}apf stats${C.x}                  état du registre et coût de contexte
+  ${C.b}apf tableau${C.x} [--json]          les boucles : chaque livrable par stade, ses critiques,
+                             l'agent en cours, ce qui vous attend, et la rétention
+  ${C.b}apf list${C.x} <collection>      activities · wp · gates · agents · skills · controls · principles
+  ${C.b}apf show${C.x} <objet> <id>      activity · wp · gate · agent · skill · control · principle
+  ${C.b}apf template${C.x} <WP-nn>       squelette Markdown du livrable — registre + gabarit (core/templates.yaml)
+                             [--example] [--instance REL-x[/S-nn] | vX.Y] · list · check
+                             office [WP-nn …] — gabarits PowerPoint ou Word dans dist/gabarits/
+  ${C.b}apf livrable${C.x} [WP-nn …]       les livrables du projet en PowerPoint ou Word, dans dist/livrables/
+  ${C.b}apf migrer${C.x}                  aligne un projet sur ce plugin : numérotation des livrables, puis chemins actuels
+  ${C.b}apf entretien${C.x}               range, puis écrit les fichiers Office manquants — lancé à chaque ouverture de session
+  ${C.b}apf template write${C.x} <WP-nn>  écrit le squelette aux chemins déclarés, sans écraser [--example] [--instance …]
+  ${C.b}apf template verify${C.x} <WP-nn> confronte le livrable produit à sa forme [--instance …] [--completion complet|partiel]
+  ${C.b}apf preset${C.x} <WP-nn>         remplit ce qui est DÉJÀ SU — registre, conventions, identité recueillie —
+                             et laisse une QUESTION aux sections qui demandent une décision. N'écrase
+                             jamais. Tant qu'une « À DÉCIDER » subsiste, « complet » est refusé.
+                             ${C.d}« apf preset list » : ce qui est calculé, par défaut, ou à décider${C.x}
+  ${C.b}apf tower${C.x} <op> [json]      appelle la tour de contrôle — mêmes opérations que le serveur MCP
+  ${C.b}apf release-check${C.x} <build…>  G4 a-t-elle autorisé ce build (commit ou empreinte), dans sa validité ? sortie 1 sinon
+  ${C.b}apf vendor${C.x} [--relock]      vérifie l'intégrité des skills externes livrés, ou réépingle après montée de version
+  ${C.b}apf model${C.x}                   dérive le modèle de données du schéma exécuté et le lie au glossaire
+  ${C.b}apf compose${C.x}                 recompose le prototype vivant : socle ⊕ deltas de release ⊕ deltas de slice
+  ${C.b}apf guard${C.x}                   garde en boucle — appelée par le hook PreToolUse, lit la charge sur stdin
+  ${C.b}apf connect${C.x} [--label <nom>]   appaire ce poste au launchpad — un code, une approbation, aucun secret saisi
+  ${C.b}apf disconnect${C.x}                oublie le jeton de ce poste
+  ${C.b}apf pack [cadence] [--pptx]${C.x}   projette les livrables en pack : modèle vérifié (dist/pack-C1.json), PowerPoint avec --pptx
+  ${C.b}apf trace tail${C.x} [n]            ce que les agents ont fait — local, non versionné, jamais une preuve
+  ${C.b}apf trace push${C.x}                envoie ce qui n'est pas parti · ${C.b}apf trace status${C.x} état du poste
+  ${C.b}apf notion plan${C.x} [produit]    calcule le plan de l'espace de travail — l'adaptateur l'exécute
+  ${C.d}(« apf workspace » est un alias ; sur un espace TIRÉ — workspace_kind: launchpad — les projections rendent « sans objet »)${C.x}
+  ${C.b}apf notion status${C.x}            quels livrables sont reliés à leur page — rapport, jamais refus
+  ${C.b}apf notion where${C.x} <WP>        où va ce livrable, et surtout : update ou create
+  ${C.b}apf notion page${C.x} <WP>         le corps de la page — miroir complet du fichier Git
+  ${C.b}apf notion instance${C.x} <k> <id> crée les lignes d'une release, d'une slice ou d'une version
+  ${C.b}apf notion map${C.x} [--set k id]  carte clé → identifiant, ce qui rend le rejeu idempotent
+  ${C.b}apf notion link${C.x} <WP> <url>   enregistre le pointeur — front-matter, ou carte si le fichier n'en porte pas
+  ${C.b}apf notion sync${C.x} <WP>         date la projection : APRÈS avoir écrit la page, jamais avant
+  ${C.b}apf notion drift${C.x}             ce qui a été produit et n'a pas suivi — hors ligne, arrête une activité
+  ${C.b}apf notion project${C.x}           le corps de la ligne de projet : étape courante et avancement
+  ${C.b}apf notion progress${C.x}          avancement des étapes, CALCULÉ depuis le journal de la tour
+
+${C.d}Le registre canonique est core/method.yaml. Tout le reste en est une projection.${C.x}`;
+
+/* GABARITS. « apf show wp » rend le plan de contenu ; « apf template » rend le SQUELETTE
+   que l'agent remplit — mêmes sections, plus le guide et l'exemple de core/templates.yaml.
+   Le gabarit est subordonné au registre : « apf template check » refuse toute divergence. */
+function template(what) {
+  if (!what || what === 'list') {
+    for (const t of templateIndex())
+      out(`${t.id.padEnd(7)} ${t.format.padEnd(11)} ${String(t.guided).padStart(2)}/${String(t.sections).padEnd(2)} sections guidées  ${C.d}${t.name} · ${t.controlled_at}${C.x}`);
+    return;
+  }
+  if (what === 'check') {
+    const f = templateFindings();
+    if (f.length) { out(`${C.r}FAIL${C.x}  gabarits ↔ registre : ${f.length} écart(s)`); f.forEach(x => out(`  ${C.r}·${C.x} ${x}`)); process.exit(1); }
+    out(`${C.g}PASS${C.x}  gabarits ↔ registre : ${templateIndex().length} livrables, sections identiques au registre`);
+    return;
+  }
+  const inst = argOf('--instance') || (argOf('--release') ? { release: argOf('--release'), slice: argOf('--slice') || argOf('--sprint'), version: argOf('--version') } : (argOf('--version') ? { version: argOf('--version') } : null));
+  if (what === 'write') {
+    const res = scaffoldArtifact(process.cwd(), args[1], { instance: inst, example: args.includes('--example') });
+    if (!res.ok) { out(`${C.r}REFUSÉ${C.x}  ${res.reason}`); process.exit(1); }
+    res.written.forEach(f => out(`${C.g}écrit${C.x}   ${f}`));
+    res.kept.forEach(f => out(`${C.d}gardé   ${f}${C.x}`));
+    return;
+  }
+  if (what === 'verify') {
+    const res = checkArtifactForm(process.cwd(), args[1], { instance: inst, completion: argOf('--completion') });
+    res.findings.forEach(x => out(`  ${C.r}·${C.x} ${x}`));
+    res.observations.forEach(x => out(`  ${C.y}·${C.x} ${x}`));
+    out(res.ok ? `${C.g}CONFORME${C.x}  ${args[1]} porte ses fichiers, son front-matter et ses sections`
+               : `${C.r}NON CONFORME${C.x}  ${args[1]} — ${res.findings.length} écart(s) ; « complet » serait refusé`);
+    process.exit(res.ok ? 0 : 1);
+  }
+  /* Le gabarit en fichier Office : PowerPoint ou Word, selon ce que le gabarit déclare. */
+  if (what === 'office' || args.includes('--office')) return templateOffice(what === 'office' ? args.slice(1).filter(a => /^WP-\d+$/i.test(a)) : [what]);
+  const md = renderTemplate(what, { example: args.includes('--example'), instance: inst });
+  if (!md) { out(`Introuvable : livrable ${what}. « apf template list » pour l'index.`); process.exit(2); }
+  process.stdout.write(md);
+}
+
+/* Les livrables RÉELS du projet en fichiers Office, dans dist/livrables/. La tour le fait
+   à chaque déclaration ; cette commande le refait à la main, pour un livrable ou tous. */
+async function livrableOffice() {
+  const ids = args.filter(a => /^WP-\d+$/i.test(a)).map(a => a.toUpperCase());
+  const { ecrireLivrablesOffice } = await import('../render/livrables-office.mjs');
+  const res = await ecrireLivrablesOffice(process.cwd(), ids);
+  if (args.includes('--json')) { out(JSON.stringify(res)); return; }
+  if (!res.length) out(`${C.y}aucun livrable produit${C.x} — rien à rendre sous product/`);
+  for (const x of res) {
+    if (x.erreur) { out(`${C.r}échec${C.x}   ${x.id} — ${x.erreur}`); process.exitCode = 1; continue; }
+    if (x.absent) { out(`${C.d}absent  ${x.id} — ${x.raison}${C.x}`); continue; }
+    out(`${C.g}écrit${C.x}   ${x.id}  ${x.office.padEnd(4)}  ${x.fichier.replace(process.cwd() + '/', '')}  ${C.d}${x.completion}${C.x}`);
+    for (const r of x.refuses || []) out(`  ${C.r}format refusé${C.x}  ${r.format} — ${r.defauts.join(' ; ')}`);
+  }
+}
+
+/* Entretien d'un projet, sans réseau ni workflow : l'aligner sur ce plugin — numérotation,
+   puis livrables restés aux anciens chemins —, puis écrire les fichiers Office qui manquent,
+   ou tous si le design system du projet a changé. Lancé par le hook d'ouverture de session ;
+   rejoué, il ne fait rien. */
+async function entretien() {
+  const ex = fsExistsSync;
+  const root = process.cwd();
+  if (!ex(join_path(root, 'product'))) { if (!args.includes('--quiet')) out('aucun product/ — rien à entretenir'); return; }
+  const alignement = aligner(root);
+  if (!alignement.ok) { if (!args.includes('--quiet')) out(`${C.y}refusé${C.x}  ${alignement.reason}`); return; }
+  const deplaces = alignement.disposition.deplaces;
+  const renum = alignement.numerotation.migre ? alignement.numerotation : null;
+  /* les manquants — et tous si le design system du projet a changé depuis leur écriture */
+  const { alignerLivrablesOffice } = await import('../render/livrables-office.mjs');
+  const ecrits = (await alignerLivrablesOffice(root)).ecrits.map(r => r.fichier.replace(root + '/', ''));
+  if (renum || deplaces.length || ecrits.length) {
+    const { trace } = await import('../lib/trace.mjs');
+    trace(root, { type: 'notice', name: 'entretien', detail: `${renum ? `numérotation ${renum.de} → ${renum.a} · ` : ''}${deplaces.length} livrable(s) rangé(s), ${ecrits.length} fichier(s) Office écrit(s)`,
+                  paths: [...deplaces.map(d => d.nouveau), ...ecrits] });
+  }
+  if (!args.includes('--quiet')) {
+    if (renum) out(`${C.g}renuméroté${C.x} numérotation ${renum.de} → ${renum.a} · ${renum.fichiers.length} fichier(s) réécrit(s)`);
+    for (const d of deplaces) out(`${C.g}rangé${C.x}   ${d.ancien}  →  ${d.nouveau}`);
+    for (const f of ecrits) out(`${C.g}écrit${C.x}   ${f}`);
+    if (!renum && !deplaces.length && !ecrits.length) out(`${C.g}à jour${C.x} — rien à ranger, aucun fichier Office manquant`);
+  }
+}
+
+async function templateOffice(ids) {
+  let rendu;
+  try { rendu = await import('../render/gabarits-office.mjs'); }
+  catch (e) { out(`${C.r}rendu Office indisponible${C.x} — ${e.message}\n  ${C.d}le bundle vendor/office/office.mjs est-il présent ? « apf check » vérifie son empreinte${C.x}`); process.exitCode = 2; return; }
+  const sortie = argOf('--sortie');
+  try {
+    for (const x of await rendu.ecrireGabaritsOffice(ids.map(i => i.toUpperCase()), sortie ? pathResolve(sortie) : null, argOf('--lang') || undefined))
+      out(`${C.g}écrit${C.x}   ${x.id}  ${x.office.padEnd(4)}  ${x.fichier}`);
+  } catch (e) { out(`${C.r}REFUSÉ${C.x}  ${e.message}`); process.exitCode = 1; }
+}
+
+const argOf = (flag) => { const i = args.indexOf(flag); return i >= 0 ? args[i + 1] : null; };
+
+function doBootstrap() {
+  const dry = args.includes('--dry-run');
+  const res = bootstrap(process.cwd(), { dryRun: dry, product: argOf('--product'), rootLocation: argOf('--root-location') });
+  if (res.blocked) {
+    rule();
+    out(`${C.r}BLOCKED — input manquant${C.x}`);
+    rule();
+    out(`  ${res.what}`);
+    out(`  ${C.d}${res.collected_by}${C.x}`);
+    out('');
+    out(`  ${C.b}apf bootstrap --product "<nom du produit>" --root-location <identifiant>${C.x}`);
+    process.exit(1);
+  }
+  const { created, kept } = res;
+  rule();
+  out(`${C.b}Bootstrap${C.x}  ${C.d}${res.product} — ${dry ? 'simulation' : process.cwd()}${C.x}`);
+  rule();
+  created.forEach(c => out(`  ${C.g}+${C.x} ${c}`));
+  if (kept.length) out(`  ${C.d}${kept.length} emplacement(s) déjà présent(s), laissés intacts${C.x}`);
+  if (!created.length) out(`  ${C.d}rien à créer — le bootstrap est idempotent${C.x}`);
+}
+
+/* La tour est joignable par la CLI ET par MCP. La logique vit dans lib/tower.mjs :
+   un handler MCP qui porterait une règle serait une source de vérité de plus. */
+function tower(op, json) {
+  if (!op) {
+    rule(); out(`${C.b}Tour de contrôle${C.x}  ${C.d}${OPERATIONS.length} opérations — mêmes que le serveur MCP${C.x}`); rule();
+    OPERATIONS.forEach(o => { out(`  ${C.b}${o.name}${C.x} ${C.d}(${o.args.join(', ') || '—'})${C.x}`); out(`      ${C.d}${o.desc}${C.x}`); });
+    return;
+  }
+  const o = OPERATIONS.find(x => x.name === op || x.name === `factory_${op}`);
+  if (!o) { out(`Opération inconnue : ${op}`); process.exit(2); }
+  let a = {};
+  try { a = json ? JSON.parse(json) : {}; } catch { out('Argument JSON invalide'); process.exit(2); }
+  const r = o.fn(process.cwd(), a);
+  out(JSON.stringify(r, null, 2));
+  process.exit(r?.ok === false ? 1 : 0);
+}
+
+function vendor(relock) {
+  const r = registry();
+  if (relock) {
+    const { readFileSync, writeFileSync } = require_fs();
+    let src = readFileSync('core/method.yaml', 'utf8');
+    /* Les deux familles vendorées sont réépinglées ensemble : une dépendance d'exécution
+       oubliée au relock redeviendrait une copie non contrôlée. */
+    for (const s of [...(r.external_capabilities?.sources || []), ...(r.runtime_dependencies?.packages || [])]) {
+      if (!s.vendor) continue;
+      const fp = fingerprint(s.vendor.root);
+      if (!fp) { out(`${C.r}arbre absent${C.x} ${s.vendor.root}`); process.exit(1); }
+      for (const [f, h] of Object.entries(fp)) {
+        const re = new RegExp(`(          "${f.replace(/[.*+?^\${}()|[\]\\]/g, '\\$&')}": )[0-9a-f]{64}`);
+        src = re.test(src) ? src.replace(re, `$1${h}`) : src;
+      }
+    }
+    writeFileSync('core/method.yaml', src);
+    out(`${C.g}empreintes réépinglées${C.x} — relisez le diff avant de committer`);
+    return;
+  }
+  const f = vendorFindings();
+  rule();
+  out(`${C.b}Skills externes livrés avec le plugin${C.x}`);
+  rule();
+  for (const s of r.skills.filter(x => x.origin === 'external'))
+    out(`  ${C.b}${s.id}${C.x}  ${C.d}${s.vendor_path}${C.x}`);
+  for (const src of r.external_capabilities?.sources || [])
+    if (src.vendor) out(`  ${C.d}${src.id} @ ${src.pinned_commit.slice(0, 12)} — ${Object.keys(src.vendor.files).length} fichiers épinglés${C.x}`);
+  rule();
+  if (!f.length) { out(`${C.g}intégrité conforme${C.x} — aucune dérive par rapport au commit épinglé`); return; }
+  f.forEach(x => out(`  ${C.r}·${C.x} ${x}`));
+  process.exit(1);
+}
+
+function require_fs() { return { readFileSync: fsReadFileSync, writeFileSync: fsWriteFileSync }; }
+
+function living(kind) {
+  const r = kind === 'model' ? composeModel(process.cwd()) : composePrototype(process.cwd());
+  rule();
+  out(`${C.b}${kind === 'model' ? 'Modèle de données vivant' : 'Prototype vivant'}${C.x}`);
+  rule();
+  if (r.reason && !r.ok && (r.entities === undefined && r.screens === undefined)) { out(`  ${C.r}·${C.x} ${r.reason}`); process.exit(1); }
+  if (kind === 'model') {
+    out(`  ${r.entities} entités · ${r.fields} champs liés`);
+    (r.unresolved || []).forEach(x => out(`  ${C.r}·${C.x} ${x} — non résolu`));
+  } else {
+    out(`  ${r.screens} écrans composés · ${r.deltas} deltas appliqués dans l'ordre`);
+    (r.unsubordinated || []).forEach(x => out(`  ${C.r}·${C.x} ${x} — non subordonné`));
+    (r.unreachable_stages || []).forEach(x => out(`  ${C.r}·${C.x} étape ${x} inatteignable après composition`));
+    out(`  ${C.d}${r.note}${C.x}`);
+  }
+  rule();
+  out(r.ok ? `${C.g}conforme${C.x}` : `${C.r}${r.reason || 'défauts constatés — K4 refusera'}${C.x}`);
+  process.exit(r.ok ? 0 : 1);
+}
+
+/* Appelée par le hook : la charge du harness arrive sur stdin, le verdict sort en JSON.
+   Aucune règle ici — lib/guard.mjs rend le verdict, que le pre-commit et la CI relisent. */
+/* Contrôle de conduite : « question » avant le mécanisme de questions structurées,
+   « fin » à la fin du tour. La règle vient du registre ; ici, on ne fait que lire le hook. */
+function doConduite(kind) {
+  let buf = '';
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', d => buf += d);
+  process.stdin.on('end', () => {
+    let payload = null;
+    try { payload = buf.trim() ? JSON.parse(buf) : null; } catch { payload = null; }
+    const { hook } = conduiteFromHookPayload(kind === 'question' ? 'question' : 'fin', payload, process.cwd());
+    process.stdout.write(JSON.stringify(hook) + '\n');
+    process.exit(0);
+  });
+}
+
+/* LE HOOK STOP DE L'AUTOPILOTE (MCR-002). Il refuse la fin de tour tant qu'il reste une
+   action et que le run progresse ; il laisse finir à un arrêt, à un interrogatoire, ou quand
+   rien n'a bougé depuis la relance précédente. Il échoue OUVERT : une erreur rend la main. */
+function doAutopiloteStop() {
+  let buf = '';
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', d => buf += d);
+  process.stdin.on('end', async () => {
+    try {
+      const payload = buf.trim() ? JSON.parse(buf) : {};
+      const { decisionStop } = await import('../lib/autopilote.mjs');
+      const v = decisionStop(payload.cwd || process.cwd());
+      process.stdout.write(JSON.stringify(v.bloquer ? { decision: 'block', reason: v.raison } : {}) + '\n');
+    } catch { process.stdout.write('{}\n'); }
+    process.exit(0);
+  });
+}
+
+function doGuard() {
+  let buf = '';
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', d => buf += d);
+  process.stdin.on('end', () => {
+    let payload = null;
+    try { payload = buf.trim() ? JSON.parse(buf) : null; } catch { payload = null; }
+    const { verdict, hook } = guardFromHookPayload(payload, process.cwd());
+    process.stdout.write(JSON.stringify(hook) + '\n');
+    process.exit(verdict.decision === 'deny' ? 2 : 0);
+  });
+}
+
+/* Le noyau CALCULE le plan ; l'adaptateur l'EXÉCUTE, lui seul détenant l'accès.
+   Aucun jeton, aucun appel réseau ici : un service tiers ne doit pas se retrouver
+   sur le chemin critique de la gouvernance. */
+function notion(sub, a, b) {
+  /* Espace de travail TIRÉ : les opérations de projection poussée n'ont pas d'objet. */
+  if (!['project', 'progress'].includes(sub)) {
+    const pull = pullProjection(process.cwd(), sub);
+    if (pull) { out(JSON.stringify(pull, null, 2)); return; }
+  }
+  if (sub === 'plan') {
+    const bad = planFindings();
+    if (bad.length) { bad.forEach(x => out(`${C.r}·${C.x} ${x}`)); process.exit(1); }
+    const plan = workspacePlan(process.cwd());
+    out(JSON.stringify(plan, null, 2));
+    process.exit(plan.blocked ? 1 : 0);
+  }
+  if (sub === 'link') {
+    const r = notionLink(process.cwd(), { work_product: a, url: b });
+    out(JSON.stringify(r, null, 2));
+    process.exit(r.ok ? 0 : 1);
+  }
+  if (sub === 'sync')     { const x = notionSync(process.cwd(), { work_product: a }); out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+  /* Sort en 1 sur dérive : cette commande est faite pour être enchaînée avant d'ouvrir
+     l'activité suivante. Elle n'est adossée à AUCUNE gate — voir lib/drift.mjs. */
+  if (sub === 'project')  { const x = projectRowBody(process.cwd()); out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+  if (sub === 'drift')    { const x = workspaceDrift(process.cwd());  out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+  if (sub === 'where')    { const x = notionWhere(a, process.cwd()); out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+  if (sub === 'page')     { const x = pageBody(process.cwd(), a);    out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+  if (sub === 'instance') { const x = instancePlan(a, b);            out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+  if (sub === 'map') {
+    if (a === '--set') { const x = writeMap(process.cwd(), b, args[3]); out(JSON.stringify(x, null, 2)); process.exit(x.ok ? 0 : 1); }
+    out(JSON.stringify(readMap(process.cwd()), null, 2));
+    return;
+  }
+  if (sub === 'progress') {
+    /* L'avancement se CALCULE depuis le journal et s'écrit dans l'espace : sans cette
+       commande, la projection restait au « 0 / n » posé au bootstrap. */
+    out(JSON.stringify(stepProgress(process.cwd()), null, 2));
+    return;
+  }
+  if (sub === 'status') {
+    const r = linkStatus(process.cwd());
+    const plan = planShape();
+    rule();
+    out(`${C.b}Espace de travail${C.x}  ${C.d}projection — ne bloque jamais un gate${C.x}`);
+    rule();
+    /* Le produit est une LIGNE de projet dans la base de l'organisation, jamais une page
+       autonome. Annoncer des nœuds de navigation décrirait une arborescence qui n'existe
+       plus : on parcourt par vue. */
+    out(`  1 ligne de projet · ${plan.summary.bases} bases · ${plan.summary.vues} vues — ${plan.summary.noeuds_navigation} nœud de navigation`);
+    out(`  ${plan.summary.lignes_etapes} étapes · ${plan.summary.lignes_instanciees} livrables au bootstrap · ${plan.summary.lignes_differees} différés jusqu'à l'existence de leur instance`);
+    if (r.note && r.produced === undefined) { out(`  ${C.d}${r.note}${C.x}`); rule(); return; }
+    out(`  ${C.g}${r.linked}${C.x} livrable(s) relié(s) sur ${r.produced} produit(s)`);
+    r.unlinked.forEach(x => out(`  ${C.y}·${C.x} ${x} — non relié`));
+    rule();
+    out(`${C.d}${r.note}${C.x}`);
+    return;
+  }
+  out('Sous-commande inconnue. Attendu : plan · where · page · instance · map · status · link');
+  process.exit(2);
+}
+
+/* ── contenus par défaut ───────────────────────────────────────────────── */
+
+function doPreset(id, rest) {
+  if (!id || id === 'list') {
+    const p = presets();
+    rule();
+    out(`${C.b}Contenus par défaut${C.x}  ${C.d}ce qu'un humain ne devrait pas avoir à taper${C.x}`);
+    rule();
+    for (const t of p.templates || []) {
+      const n = (k) => (t.sections || []).filter(s => s.kind === k).length;
+      out(`  ${C.b}${t.id}${C.x}  ${C.g}${n('derive')} calculée(s)${C.x} · ${C.y}${n('default')} par défaut${C.x} · ${C.r}${n('decision')} à décider${C.x}`);
+      for (const s of t.sections || []) {
+        const col = s.kind === 'decision' ? C.r : s.kind === 'default' ? C.y : C.g;
+        out(`     ${col}${s.kind.padEnd(9)}${C.x}${C.d}${s.title}${C.x}`);
+      }
+    }
+    rule();
+    out(`${C.d}${p.contract.replace(/\s+/g, ' ')}${C.x}`);
+    return;
+  }
+  const ii = rest.indexOf('--instance');
+  const r = applyPreset(process.cwd(), id.toUpperCase(),
+                        { dryRun: rest.includes('--dry-run'), instance: ii >= 0 ? rest[ii + 1] : null });
+  if (!r.ok) { out(`${C.r}${r.reason}${C.x}`); if (r.declares) out(`${C.d}Déclarés : ${r.declares.join(' · ')}${C.x}`); process.exit(2); }
+  rule();
+  out(`${C.b}${r.work_product}${C.x}  ${C.d}${rest.includes('--dry-run') ? 'simulation' : 'écrit'}${C.x}`);
+  rule();
+  r.written.forEach(f => out(`  ${C.g}+${C.x} ${f}`));
+  r.kept.forEach(f => out(`  ${C.d}· ${f} — inchangé, un preset n'écrase jamais${C.x}`));
+  if (r.rempli.length) { out(''); r.rempli.forEach(x => out(`  ${C.g}rempli${C.x}    ${C.d}${x}${C.x}`)); }
+  if (r.a_decider.length) { out(''); r.a_decider.forEach(x => out(`  ${C.r}à décider${C.x} ${x}`)); }
+  rule();
+  out(r.a_decider.length ? `${C.y}${r.note}${C.x}` : `${C.g}${r.note}${C.x}`);
+}
+
+/* ── trace et appairage ────────────────────────────────────────────────── */
+
+/** Lit une charge JSON sur stdin. Les hooks du harness n'écrivent rien d'autre. */
+function stdinJson(then) {
+  let buf = '';
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', d => buf += d);
+  process.stdin.on('end', () => { let p = null; try { p = buf.trim() ? JSON.parse(buf) : null; } catch { p = null; } then(p); });
+}
+
+/* LE TABLEAU DES BOUCLES, au terminal — la même lecture que le Launchpad, sans attendre la
+   synchronisation : chaque livrable par stade, ses critiques, l'agent en cours. */
+function doTableau(json) {
+  const root = process.cwd(), t = tableau(root);
+  if (!t) { out(`${C.y}aucun run ouvert ici${C.x} — runs/tower.json absent`); process.exit(2); }
+  const ret = retention(loadState(root));
+  if (json) return out(JSON.stringify({ ...t, retention: ret }, null, 2));
+  const LIB = { 'À_VENIR': 'à venir', EN_PRODUCTION: 'en production', EN_CRITIQUE: 'en critique', 'À_TRIER': 'À TRIER (vous)',
+    EN_REPRISE: 'en reprise', ARBITRAGE: 'ARBITRAGE (vous)', SATISFAIT: 'satisfait' };
+  const PUCE = { 'À_TRIER': `${C.y}?${C.x}`, Retenir: `${C.g}✓${C.x}`, 'Écarter': `${C.d}✗${C.x}` };
+  out(`${C.b}Boucles ${t.portee}${C.x}  ·  vous attendent : ${t.attente.critiques} critique(s) à trier, ${t.attente.arbitrages} arbitrage(s), ${t.attente.bloquantes} bloquante(s) · ${t.attente.a_ratifier} à ratifier en G0`);
+  for (const a of t.agents.en_cours) out(`${C.g}▶ en cours${C.x}  ${a.role}${a.work_product ? ` sur ${a.work_product}` : ''} — depuis ${String(a.depuis).slice(11, 16)}${a.model ? ` · ${a.model}${a.effort ? `/${a.effort}` : ''}` : ''}`);
+  let etape = null;
+  for (const c of t.cartes) {
+    if (c.etape !== etape) { etape = c.etape; out(`\n${C.d}${etape}${C.x}`); }
+    const vous = c.attend_humain ? C.y : '';
+    const puces = c.critiques.map(x => `${PUCE[x.statut] || '·'}${x.severite[0]}`).join(' ');
+    out(`  ${vous}${c.work_product.padEnd(7)} ${LIB[c.stade].padEnd(17)}${C.x} ${c.critic || '—'}${c.tours ? ` · ${c.tours} tour(s)` : ''}${puces ? `  ${puces}` : ''}${c.note ? `  ${C.d}${c.note}${C.x}` : ''}`);
+  }
+  if (ret.lignes.length) {
+    out(`\n${C.b}Rétention des critiques${C.x}  (${ret.tranchees}/${ret.critiques} tranchées${ret.blockers_ecartes != null ? ` · BLOCKER écartés : ${ret.blockers_ecartes} %` : ''})`);
+    for (const l of ret.lignes) out(`  ${l.critic.padEnd(20)} ${String(l.proposees).padStart(3)} proposées · gardées ${l.retention ?? '—'} % · accord avec le critic ${l.accord ?? '—'} %`);
+  }
+}
+
+/* LE HOOK DE TRACE SORT TOUJOURS EN 0, quoi qu'il arrive. Un hook qui échoue en PreToolUse
+   REFUSE l'écriture : une trace cassée arrêterait le travail qu'elle est censée observer.
+   La garde, elle, refuse à sûreté inverse — c'est l'inverse exact, et c'est voulu. */
+function doTraceHook(event) {
+  const done = () => process.exit(0);
+  try {
+    stdinJson(payload => {
+      try {
+        fromHook(process.cwd(), event, payload);
+        agentHook(process.cwd(), event, payload);
+        maybePush(process.cwd());
+        /* L'ENTRETIEN SE FAIT À L'OUVERTURE DE SESSION, PAS DANS UN WORKFLOW. Un projet ne
+           dépend plus de GitHub Actions pour se ranger ni pour recevoir ses fichiers Office :
+           le hook de session, déjà présent dans chaque projet, lance l'entretien détaché —
+           il ne retient jamais l'ouverture de la session. */
+        if (event === 'SessionStart') {
+          const { spawn } = require_child();
+          spawn(process.execPath, [join_path(ROOT, 'bin', 'apf'), 'entretien', '--quiet'],
+            { cwd: payload?.cwd || process.cwd(), detached: true, stdio: 'ignore' }).unref();
+          /* L'ÉTAT GOUVERNÉ EST RENDU À LA SESSION QUI S'OUVRE — démarrage, reprise, après
+             compaction. Calculé par la tour depuis runs/tower.json, jamais depuis la trace ;
+             rien d'ouvert, ou un calcul en échec : la session s'ouvre sans lui. */
+          let resume = null;
+          try { resume = briefState(payload?.cwd || process.cwd()); } catch { resume = null; }
+          if (resume) return process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: 'SessionStart', additionalContext: resume } }) + '\n', done);
+        }
+      } catch { /* la trace n'arrête rien */ }
+      done();
+    });
+    /* stdin fermé sans données : ne jamais rester suspendu dans un hook. */
+    setTimeout(done, 5000).unref();
+  } catch { done(); }
+}
+
+async function doTrace(sub, rest) {
+  const quiet = rest.includes('--quiet');
+  if (sub === 'hook') return doTraceHook(rest[0]);
+
+  if (sub === 'push') {
+    let r;
+    try { r = await tracePush(process.cwd()); }
+    catch (e) { r = { ok: false, reason: e.message }; }
+    if (quiet) process.exit(0);
+    if (!r.ok) { out(`${C.y}trace non envoyée${C.x} — ${r.reason}`); process.exit(r.need_pairing ? 3 : 1); }
+    out(`${C.g}${r.sent}${C.x} événement(s) envoyé(s)${r.sent ? ` — jusqu'au n°${r.to}` : ''}`);
+    return;
+  }
+
+  if (sub === 'tail') {
+    const n = parseInt(rest.find(a => /^\d+$/.test(a)) || '20', 10);
+    const all = traceRead(process.cwd(), 0, 100000);
+    const sent = traceCursor(process.cwd());
+    rule();
+    out(`${C.b}Trace locale${C.x}  ${C.d}runs/trace.ndjson — non versionnée, jamais une preuve${C.x}`);
+    rule();
+    for (const e of all.slice(-n)) {
+      const mark = e.seq <= sent ? `${C.d}·${C.x}` : `${C.y}↑${C.x}`;
+      const col = e.outcome === 'deny' || e.outcome === 'erreur' || e.outcome === 'refusé' ? C.r : e.outcome === 'ask' ? C.y : C.g;
+      out(`${mark} ${C.d}${e.at.slice(11, 19)}${C.x} ${String(e.type).padEnd(13)} ${col}${(e.name || '').padEnd(16)}${C.x} ${C.d}${(e.detail || '').slice(0, 70)}${C.x}`);
+    }
+    rule();
+    out(`${all.length} événement(s) · ${sent} envoyé(s) · ${all.length - sent} en attente`);
+    return;
+  }
+
+  if (sub === 'status') { out(JSON.stringify(traceStatus(process.cwd()), null, 2)); return; }
+
+  out('Sous-commande inconnue. Attendu : push · tail · status · hook');
+  process.exit(2);
+}
+
+/* APPAIRAGE DU POSTE — un device flow, et le choix est un refus.
+   Un secret déposé dans le dépôt produit se copie, ne s'expire pas, et ne dit à personne
+   quel poste l'a employé. Ici : un code affiché, approuvé là où l'humain est déjà
+   authentifié, un jeton scellé par le serveur. Le dépôt n'en porte jamais la trace. */
+async function doConnect(rest) {
+  const root = process.cwd();
+  const ref = projectRef(root);
+  if (!ref) {
+    out(`${C.r}Ce dépôt ne déclare aucun projet de launchpad.${C.x}`);
+    out(`${C.d}SOC-01 — product/${cheminDe('SOC-01','project.yaml')} — doit porter « workspace_root_location: <launchpad>/projects/<slug> ».${C.x}`);
+    process.exit(2);
+  }
+  const li = rest.indexOf('--label');
+  const label = li >= 0 ? rest[li + 1] : `${(await import('node:os')).hostname()}`;
+
+  const edge = await edgeUrl(ref.launchpad);
+  const start = await pairStart(edge, label);
+  rule();
+  out(`${C.b}Appairer ce poste${C.x}  ${C.d}${ref.name || ref.slug}${C.x}`);
+  rule();
+  out(`  1. Ouvrir  ${C.b}${start.verification_uri}${C.x}`);
+  out(`  2. Saisir  ${C.b}${start.user_code}${C.x}`);
+  out(`${C.d}  Le code expire dans ${Math.round((start.expires_in || 600) / 60)} minutes. Rien d'autre à configurer.${C.x}`);
+  rule();
+
+  const interval = Math.max(2, start.interval || 5) * 1000;
+  const deadline = Date.now() + (start.expires_in || 600) * 1000;
+  for (;;) {
+    if (Date.now() > deadline) { out(`${C.r}Code expiré sans approbation.${C.x}`); process.exit(1); }
+    await new Promise(r => setTimeout(r, interval));
+    let r;
+    try { r = await pairPoll(edge, start.device_code); }
+    catch (e) { out(`${C.r}${e.message}${C.x}`); process.exit(1); }
+    if (r.status === 'pending') continue;
+    if (r.status !== 'approved') { out(`${C.r}Appairage ${r.status}.${C.x}`); process.exit(1); }
+    saveCredential(ref.launchpad, { token: r.token, edge, label, user: r.user || null, expires_at: r.expires_at || null, paired_at: new Date().toISOString() });
+    tracePairing(root, label);
+    out(`${C.g}Poste appairé${C.x} — ${label}${r.user ? ` · ${r.user}` : ''}`);
+    out(`${C.d}Jeton scellé dans ~/.factoryzen/credentials.json, hors du dépôt. Portée : écriture de trace, rien d'autre.${C.x}`);
+    const p = await tracePush(root).catch(e => ({ ok: false, reason: e.message }));
+    if (p.ok && p.sent) out(`${C.d}${p.sent} événement(s) en attente envoyé(s).${C.x}`);
+    return;
+  }
+}
+
+function doDisconnect() {
+  const ref = projectRef(process.cwd());
+  if (!ref) { out('Aucun launchpad déclaré par ce dépôt.'); process.exit(2); }
+  out(forgetCredential(ref.launchpad)
+    ? `Jeton oublié pour ${ref.launchpad}. La trace reste locale.\n${C.d}Révoquer le poste côté serveur : ${ref.launchpad}/postes${C.x}`
+    : `Aucun jeton pour ${ref.launchpad}.`);
+}
+
+
+
+/** Projette le dépôt en modèle de pack. Le pack grandit quand un livrable apparaît. */
+async function doPack() {
+  const cad = (args.find(a => /^c\d$/i.test(a)) || 'C1').toUpperCase();
+  let m;
+  try { m = packModel(process.cwd(), cad); }
+  catch (e) { out(`${C.r}${e.message}${C.x}`); process.exitCode = 2; return; }
+  const chemin = `dist/pack-${cad}.json`;
+  fsWriteFileSync(chemin, JSON.stringify(m, null, 2) + '\n');
+  out(`${C.b}${m.nom}${C.x} — ${m.compte.produits}/${m.compte.total} livrables${m.compte.sans_objet ? ` (+ ${m.compte.sans_objet} sans objet)` : ''}, ${m.planches.length} planches dont ${m.compte.formats} de format vérifiées, ${m.compte.reserves} réserves`);
+  for (const s of m.sections) {
+    const faits = s.livrables.filter(w => w.etat === 'partiel' || w.etat === 'complet').length;
+    const dus = s.livrables.filter(w => w.etat !== 'sans_objet').length;
+    const jauge = s.livrables.map(w => w.etat === 'absent' ? '·' : w.etat === 'sans_objet' ? '○' : '●').join('');
+    out(`  ${s.etape}  ${jauge.padEnd(7)} ${String(faits)}/${dus}  ${C.d}${s.nom}${C.x}`);
+  }
+  /* Une planche refusée se dit : un format dont les données manquent ou sont démenties
+     par le calcul n'est pas montré, et l'opérateur doit savoir pourquoi. */
+  for (const d of m.defauts) for (const x of d.defauts) out(`  ${C.r}refusé${C.x}   ${d.wp} · ${d.format} — ${x}`);
+  for (const x of m.manquants) out(`  ${C.y}absent${C.x}   ${x.wp} · ${x.format} — données absentes (front-matter « exhibits »)`);
+  for (const c of m.constats) out(`  ${C.b}constat${C.x}  ${c.format} — ${c.texte}`);
+  out(`${C.d}modèle écrit : ${chemin}${C.x}`);
+  if (!args.includes('--pptx')) return;
+  let rendu;
+  try { rendu = await import('../render/pack-pptx.mjs'); }
+  catch (e) { out(`${C.r}rendu indisponible — ${e.message.split('\n')[0]}${C.x}\n${C.d}le plugin reste sans dépendance ; le rendu en a une : npm install --prefix ${ROOT}/render${C.x}`); process.exitCode = 2; return; }
+  const r = await rendu.ecrirePack(process.cwd(), cad, { couverture: argOf('--couverture'), sortie: argOf('--sortie') });
+  out(`${C.d}pack écrit : ${r.fichier} — ${r.planches} planches${C.x}`);
+}
+
+switch (cmd) {
+  case 'notion': case 'workspace': notion(args[0], args[1], args[2]); break;
+  case 'guard': doGuard(); break;
+  case 'autopilote': if (args[0] === 'stop') doAutopiloteStop(); else tower('factory_autopilot_state'); break;
+  case 'conduite': doConduite(args[0]); break;
+  case 'livrable': case 'livrables': await livrableOffice(); break;
+  case 'entretien': await entretien(); break;
+  case 'migrer': {
+    const a = aligner(process.cwd());
+    if (!a.ok) { out(`${C.r}refusé${C.x}  ${a.reason}`); process.exitCode = 1; break; }
+    const n = a.numerotation, { deplaces } = a.disposition;
+    out(n.migre ? `${C.g}renuméroté${C.x} numérotation ${n.de} → ${n.a} · ${n.fichiers.length} fichier(s) réécrit(s)`
+                : `${C.g}numérotation à jour${C.x}`);
+    if (!deplaces.length) out(`${C.g}disposition à jour${C.x} — aucun livrable aux anciens chemins`);
+    for (const d of deplaces) out(`${C.g}déplacé${C.x}  ${d.ancien}  →  ${d.nouveau}`);
+    break;
+  }
+  case 'model':   living('model'); break;
+  case 'compose': living('proto'); break;
+  case 'tower':  tower(args[0], args[1]); break;
+  /* La gate de production, relue par le workflow de mise en production avant tout
+     déploiement : code de sortie 0 si G4 a autorisé CE build dans sa validité, 1 sinon. */
+  case 'release-check': tower('factory_release_check', JSON.stringify({ build: args.join(' ') })); break;
+  case 'vendor': vendor(args.includes('--relock')); break;
+  case 'bootstrap': doBootstrap(); break;
+  case 'check': check(); break;
+  case 'stats': stats(); break;
+  case 'tableau': doTableau(args.includes('--json')); break;
+  case 'list':  list(args[0]); break;
+  case 'show':  show(args[0], args[1]); break;
+  case 'template': await template(args[0]); break;
+  case 'preset': doPreset(args[0], args.slice(1)); break;
+  case 'trace': doTrace(args[0], args.slice(1)); break;
+  case 'connect': doConnect(args); break;
+  case 'disconnect': doDisconnect(); break;
+  case 'pack': await doPack(); break;
+  default: out(HELP);
+}

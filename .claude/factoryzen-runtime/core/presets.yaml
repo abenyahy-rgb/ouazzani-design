@@ -1,0 +1,155 @@
+# Contenus PAR DÉFAUT des livrables — ce qu'un humain ne devrait jamais avoir à taper.
+#
+# SUBORDONNÉ à core/method.yaml, comme core/templates.yaml et pour la même raison : le
+# registre déclare les sections, ce fichier dit seulement comment en pré-remplir certaines.
+# Il ne crée aucune section, n'en supprime aucune, n'en reformule aucun titre.
+#
+# LE DÉFAUT CORRIGÉ. L'activité 1 demandait quatorze sections. Onze d'entre elles étaient
+# déjà connues — soit calculables depuis le registre lui-même, soit une convention standard,
+# soit déjà recueillies au lancement. Les faire retaper à un humain était du cérémonial :
+# cher, sans valeur ajoutée, et d'autant plus dangereux qu'un travail perçu comme inutile se
+# bâcle. C'est ainsi qu'on obtient un SOC-01 « complet » que personne n'a lu.
+#
+# CE QU'UN PRÉ-REMPLISSAGE NE FERA JAMAIS. Une DÉCISION ne se pré-remplit pas. Qui décide
+# G0, quelle personne porte quel rôle, en équipe ou en solo : personne d'autre que l'humain
+# qui en répond ne peut l'écrire. Un défaut plausible y serait exactement le défaut que la
+# méthode existe pour empêcher — du contenu vraisemblable et invérifié. Ces sections
+# reçoivent une QUESTION, pas une réponse, et tant qu'elles la portent le livrable ne peut
+# pas être déclaré complet.
+
+schema_version: 1
+
+contract: >-
+  Un preset remplit ce qui est DÉJÀ SU, et rend visible ce qui ne l'est pas. Il fait gagner
+  du temps de saisie, jamais du temps de décision. Un livrable pré-rempli le dit dans son
+  front-matter, et reste « partiel » tant qu'une question ouverte y subsiste.
+
+marker: À DÉCIDER
+
+kinds:
+  - id: derive
+    means: >-
+      CALCULÉ depuis le registre ou depuis l'adaptateur. Aucun humain ne devrait le taper, et
+      le retaper serait une seconde source de vérité — donc une divergence en attente.
+    human_input: aucun
+  - id: default
+    means: >-
+      CONVENTION STANDARD, vraie tant que le projet ne s'en écarte pas. Elle est écrite en
+      clair pour être contredite : un défaut qu'on peut lire se corrige, un défaut implicite
+      se subit.
+    human_input: relecture, et correction si le projet s'en écarte
+  - id: decision
+    means: >-
+      Ni calculable ni standard : quelqu'un doit trancher, et en répondre. La section reçoit
+      la QUESTION. Tant qu'elle y est, la forme est incomplète et « complet » est refusé.
+    human_input: obligatoire — c'est le seul endroit où le temps de l'humain est irremplaçable
+
+templates:
+  - id: SOC-01
+    note: >-
+      Dix sections, dont sept déjà connues au moment où le projet s'ouvre. Les trois
+      restantes désignent des personnes et un mode de fonctionnement : elles sont la raison
+      d'être de ce livrable, et tout le reste était du remplissage.
+    sections:
+      - title: "Entrées d'artefacts"
+        kind: derive
+        from: artifact-entries
+        keys: [artefacts]
+        why: >-
+          Le registre déclare déjà chaque chemin, son activité productrice, son gate et son
+          niveau de baseline. Le guide de rédaction disait lui-même « ne rien inventer :
+          chaque chemin vient de work_products.base + files » — et faisait pourtant recopier
+          cent vingt-quatre lignes à la main.
+
+      - title: "Mapping d'arborescence"
+        kind: default
+        keys: [arborescence]
+        value: |-
+          arborescence:
+            racine_produit: product/
+            convention_preexistante: aucune
+            note: >-
+              Défaut appliqué : aucune convention d'arborescence préexistante n'a été
+              déclarée, celle du registre s'applique telle quelle. Si le dépôt en a une
+              (monorepo, docs/), la déclarer ICI plutôt que la contourner.
+
+      - title: "Mapping d'identifiants"
+        kind: default
+        keys: [identifiants]
+        value: |-
+          identifiants:
+            convention: méthode
+            note: >-
+              Défaut appliqué : aucune nomenclature locale imposée, les préfixes de la
+              méthode sont conservés (STG, STO, AC, OUT, REL, DEP). Si l'organisation en
+              impose une, déclarer ici la correspondance préfixe méthode → préfixe local.
+              La CHAÎNE de traçabilité reste celle de la méthode ; seul le vocabulaire change.
+
+      - title: "Autorités de gate"
+        kind: decision
+        keys: [gates]
+        question: >-
+          Qui décide G0, G1, G2, G3 et G4 ? Une personne NOMMÉE par gate. « L'équipe » n'est
+          pas une autorité, et un rôle non plus : une gate franchie sans nom est une décision
+          dont personne ne répond.
+
+      - title: "Store d'état du backlog"
+        kind: default
+        keys: [backlog_store]
+        value: |-
+          backlog_store:
+            kind: depot
+            path: product/backlog/
+            note: >-
+              Défaut appliqué : le backlog vit dans le dépôt, comme le reste des artefacts
+              gouvernés. Un seul store, jamais deux — deux stores, c'est deux vérités.
+
+      - title: "Correspondance classe de capacité → modèle"
+        kind: derive
+        from: capability-model-map
+        keys: [capability_classes]
+        why: >-
+          La table vit dans l'adaptateur, qui seul nomme des modèles. La recopier ici en
+          ferait une seconde source, périmée dès la première montée de version.
+
+      - title: "Identité du produit"
+        kind: derive
+        from: product-identity
+        keys: [name, opened_at]
+        why: >-
+          Recueillie auprès d'un humain au LANCEMENT, dans le launchpad, et déjà écrite par
+          le bootstrap. La redemander ici reviendrait à demander deux fois la même chose,
+          avec le risque que les deux réponses diffèrent.
+
+      - title: "Carte de l'espace de travail"
+        kind: derive
+        from: workspace-map
+        keys: [map]
+        why: >-
+          Sur un espace TIRÉ — workspace_kind launchpad — il n'y a aucun identifiant de page
+          à porter : la page EST le commit. La carte est donc vide, et le DIRE vaut mieux que
+          laisser croire à un oubli.
+
+      - title: "Rôles de la méthode vers personnes"
+        kind: decision
+        keys: [roles]
+        question: >-
+          Quelle personne porte quel rôle ? Sans nom en face d'un rôle, les colonnes
+          Responsible et Accountable sont du texte mort, et une gate reste infranchissable.
+
+      - title: "RUN MODE — équipe ou solo"
+        kind: decision
+        keys: [run_mode]
+        question: >-
+          ÉQUIPE ou SOLO, avec le nombre d'humains réellement disponibles ? ÉQUIPE est le
+          mode par défaut et la méthode telle qu'écrite. SOLO ne relâche AUCUN contrôle,
+          AUCUNE autorité de gate et AUCUNE séparation des devoirs : il ne change que le
+          traitement de l'input absent (EX2). Il se déclare ; il ne se devine pas, et c'est
+          pourquoi il n'a pas de défaut ici alors que le registre en nomme un.
+
+# SOC-02 N'A PLUS DE CONTENU PAR DÉFAUT, ET C'EST MIEUX AINSI.
+# Son défaut disait « produit neuf : aucun existant » — or c'est exactement le cas où le
+# registre le déclare désormais SANS OBJET (conditions → brownfield). Écrire quatre sections
+# pour dire qu'elles ne s'appliquent pas, puis les faire relire, était du remplissage poli.
+# Sur un dépôt qui porte réellement un système, en revanche, aucun défaut n'est honnête :
+# personne ne peut pré-remplir la description de l'existant de quelqu'un d'autre.

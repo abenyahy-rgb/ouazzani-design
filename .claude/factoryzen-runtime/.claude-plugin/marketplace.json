@@ -1,0 +1,20 @@
+{
+  "name": "factoryzen",
+  "owner": { "name": "Abdelaziz Benyahya" },
+  "description": "FactoryZen — l'Autonomous Product Factory : une méthode de delivery produit pilotée par agents, autonome à l'intérieur de chaque activité et déterministe à ses frontières.",
+  "plugins": [
+    {
+      "name": "autonomous-product-factory",
+      "source": "./",
+      "displayName": "Autonomous Product Factory",
+      "description": "4 cadences, 25 activités, 30 livrables présentés, 4 gates humains et 1 checkpoint automatisé, 10 rôles, 8 contrôles déterministes, une tour de contrôle MCP et un espace de travail lisible calculé depuis le registre.",
+      "version": "0.5.0",
+      "author": { "name": "Abdelaziz Benyahya" },
+      "repository": "https://github.com/abenyahy-rgb/Autonomous-Product-Factory",
+      "license": "UNLICENSED",
+      "keywords": ["méthode", "delivery", "gouvernance", "gates", "traçabilité"],
+      "category": "workflow",
+      "defaultEnabled": true
+    }
+  ]
+}

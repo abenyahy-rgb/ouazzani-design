@@ -1,0 +1,24 @@
+{
+  "name": "autonomous-product-factory",
+  "displayName": "Autonomous Product Factory",
+  "description": "Gouverne le delivery d'un produit de l'intention au déploiement : 4 cadences, 25 activités, 30 livrables présentés, 4 gates humains et 1 checkpoint automatisé, 10 rôles, 8 contrôles déterministes, une tour de contrôle MCP.",
+  "version": "0.5.0",
+  "license": "UNLICENSED",
+  "skills": [
+    "./vendor/mattpocock-skills",
+    "./vendor/impeccable"
+  ],
+  "mcpServers": {
+    "factory-control-tower": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/server.mjs"
+      ],
+      "env": {
+        "CLAUDE_PLUGIN_ROOT": "${CLAUDE_PLUGIN_ROOT}",
+        "CLAUDE_PROJECT_DIR": "${CLAUDE_PROJECT_DIR}"
+      }
+    }
+  },
+  "hooks": "./hooks/hooks.json"
+}

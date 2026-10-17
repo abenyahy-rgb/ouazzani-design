@@ -1,0 +1,3029 @@
+# THE METHOD IN ENGLISH — overlay of core/method.yaml (French is the source of truth).
+# Text only, filed under the registry's ids: no id, rule or order is changed here. A field
+# missing from this file keeps its French text; tests/i18n.test.mjs lists what is missing.
+# Read by lib/i18n.mjs (registreEn('en')) — the Launchpad's English methodology.
+categories:
+  dec:
+    name: Decision
+    recevabilite: Names the authority, the rationale, and what the decision excludes.
+  spec:
+    name: Specification
+    recevabilite: Every statement is testable. An unverifiable statement is a defect.
+  des:
+    name: Design
+    recevabilite: Executable. A non-executable design is not a baseline.
+  pre:
+    name: Evidence
+    recevabilite: Carries its date, its commit-frozen version and its evidence level.
+  reg:
+    name: Registry
+    recevabilite: Schema-validatable. Machine-readable before it is human-readable.
+cadences:
+  - id: C1
+    name: Product vision and foundation
+    frequence: 1× per product
+    fige: Spine Baseline and release architecture
+  - id: C2
+    name: Release cycle
+    frequence: 1× per release
+    fige: Release Baseline, backlog and slice map
+  - id: C3
+    name: Slice loop
+    frequence: one slice at a time, N per release
+    fige: Slice contract, slice accepted in QA
+  - id: C4
+    name: Release to production
+    frequence: 1..n× per release
+    fige: Authorized and verified deployment
+steps:
+  - id: C1.1
+    name: Product workshop
+  - id: C1.2
+    name: Product strategy
+  - id: C1.3
+    name: Journey and market tests
+  - id: C1.4
+    name: 'Product foundation: design and technical'
+  - id: C1.5
+    name: Release architecture
+  - id: C2.1
+    name: Scope and framing
+  - id: C2.2
+    name: Release design
+  - id: C2.3
+    name: Validation
+  - id: C2.4
+    name: Backlog and handoff
+  - id: C3.1
+    name: Slice contract
+  - id: C3.2
+    name: Build and evidence
+  - id: C3.3
+    name: Slice acceptance
+  - id: C4.1
+    name: Readiness and deployment
+activities:
+  - id: 0
+    name: Automatic technical foundation
+    entry: >-
+      Run authorized; repository identified; no unsaved /product tree; PRODUCT NAME collected from a
+      human; workspace connector and root location provided — each one missing produces BLOCKED,
+      never guessed nor derived from the repository name.
+    task: >-
+      Compute, without asking: the tree, conventions, path registry, Run Ledger and workspace are
+      derived from the registry; the existing system, if there is one, is read from the repository.
+      Questions only a human can settle — gate authorities, roles — are recorded as reservations,
+      never asked here.
+    verification: >-
+      Idempotent bootstrap replayed on empty: no artifact overwritten. Two sources per constraint of
+      the existing system. No question asked of the human.
+    exit: >-
+      /product and /runs initialized; artifact-schema.yaml validated; unknowns listed; workspace
+      instantiated according to the computed plan — “apf notion plan” gives the count — and its map
+      recorded in SOC-01.
+    automatique: >-
+      Executed by the control tower when the project opens — by the launchpad at creation, or at the
+      first session launch. No one opens it, no one answers it: it does not appear in the human's
+      journey, which starts at activity 1.
+  - id: 1
+    name: Product workshop
+    entry: >-
+      Foundation laid by activity 0, automatic; PRODUCT NAME collected from a human; the product
+      owner available for the workshop.
+    task: >-
+      Run a product workshop with the owner, one question at a time: what we want to do with it, for
+      whom, which problem, what value, how it arrives and gets paid for, what makes it hard to copy,
+      how we will know it works — the product canvas, modeled on the Business Model Canvas. No
+      technical question: what is technical is already computed, or awaits its activity.
+    verification: >-
+      Each canvas block carries an answer from the owner, or a hypothesis HYP-nn labeled UNVALIDATED
+      with what would settle it. The first segment is named. No technical question asked.
+      Both families of actors are named: the external customers — who pays, who uses — and the internal operators who run the service — coach, picker, support, administrator; "no operator" is a reasoned decision, never an oversight.
+    exit: >-
+      Canvas confirmed by the owner in a single recap. Activity 2 starts from the canvas: it asks
+      again no question the canvas has settled.
+  - id: 2
+    name: Product thesis and outcomes
+    entry: >-
+      Sponsor available; activity 1 complete — product canvas (WP-01) confirmed by the owner;
+      opportunity source identified.
+    task: >-
+      Deepen the canvas into an enforceable thesis: problem, target, value proposition, quantified
+      outcomes and critical hypotheses, at the level of the whole product. What the canvas settled
+      is carried over, never asked again; the questioning bears on what it leaves open or
+      UNVALIDATED.
+    verification: >-
+      Each material claim carries a source and an evidence level. The intent has been questioned
+      until implicit decisions are exhausted. critic(product) verdict delivered.
+    exit: >-
+      NO critical hypothesis leaves unresolved: each branch is settled with a rationale, or named
+      HYP-nn labeled UNVALIDATED with a falsification criterion and a test point at activity 18.
+  - id: 3
+    name: Domain and domain critic
+    entry: Industry identified; access to regulatory or professional sources.
+    task: Qualify the industry and its rules, then instantiate the domain critic from the template.
+    verification: >-
+      Each rule cites a dated source — no source = UNKNOWN, never a fact. The critic cites external
+      sources, not the model's memory. Definition reviewed by a human.
+    exit: Critic deployed and tested on a known case whose answer is independently verifiable.
+  - id: 4
+    name: User research and synthesis
+    mode: >-
+      DOCUMENTARY BY DEFAULT, AGENT-LED. The owner does not have to recruit or interview: the agent
+      reads what real users already write — reviews of competing apps and services, forums and
+      communities, Q&A sites, public studies and reports, official statistics — and derives
+      personas, empathy maps and as-is journeys from them. FIELD work (interviews, observations) is
+      added when humans are available; it is no longer an entry condition. What documentary research
+      cannot settle is not guessed: it is a hypothesis HYP-nn, tested later.
+    entry: >-
+      Thesis approved (WP-02); domain profile and approved sources (WP-03). Field mode only:
+      participants' consent obtained.
+    task: >-
+      Write the research plan BEFORE collection: questions to settle, targeted segments, planned
+      sources and queries, expected biases. Then collect, across the whole journey and before any
+      slicing, verbatims from real users in public sources — each with address, date of consultation
+      and literal quotation; several platforms, so as not to adopt the bias of a single one. Derive
+      from them, in one pass, insights, proto-personas PER-nn, their empathy maps and their as-is
+      journeys with pain points.
+    verification: >-
+      Each verbatim carries address, date of consultation and literal quotation; without all three,
+      it is UNVALIDATED and grounds nothing. Each persona trait traces to ≥ 2 verbatims from
+      INDEPENDENT sources — two messages from the same thread or three pages citing the same study
+      are one source. No demographic data, no figure, no quotation invented or paraphrased into a
+      quotation. Sample and biases declared: who writes online, on which platform, what that
+      excludes. Evidence level labeled on each finding — DOCUMENTARY for documentary research,
+      EMPIRICAL for field work alone. Questions only an observation can settle are listed as HYP-nn.
+      The personas cover both families: each operator declared in the canvas has a persona, researched like a customer — their work today, their tools, their words.
+    exit: >-
+      Corpus committed; evidence level labeled on each finding; hypotheses to test listed, with the
+      activity that will test them.
+  - id: 5
+    name: Target journey skeleton
+    entry: As-is journeys and personas available.
+    task: >-
+      Name and order every step of the target journey — one journey per family of actor: the
+      customer's, and that of each operator declared in the canvas (prepare, operate, follow up,
+      correct) —, without designing its detail.
+    verification: >-
+      Each step named in the user's vocabulary, not the business's. Sequence validated by the domain
+      critic.
+      Each operator in the canvas has their journey in the skeleton: its steps will become screens of the product, never an implicit out-of-scope (K1).
+    exit: Exhaustive skeleton committed; no step of the real journey missing.
+  - id: 6
+    name: Real corpus and provenance
+    entry: >-
+      Approved domain sources available (WP-03); journey skeleton settled (WP-05) — it gives the
+      minimal scope the corpus must cover. Either one missing produces BLOCKED.
+    task: >-
+      Acquire the minimal real corpus sufficient to walk the skeleton end to end, from approved
+      sources only. Write the provenance record by record and the truth category field by field.
+      Measure coverage against the skeleton and NAME what is missing.
+    verification: >-
+      Each record carries address, date of reading and literal quotation — without all three it is
+      UNVALIDATED, never a plausible value. Two independent sources on every structuring fact; three
+      pages citing the same press release are ONE source. No fabricated record, under any pretext of
+      unblocking downstream work. A field that cannot be sourced is rendered ABSENT and the
+      interface will say so, never filled with a plausible value. Coverage is MEASURED against the
+      skeleton, not estimated. Admissibility verdict delivered by critic(domaine), never by the
+      producer of the corpus.
+    exit: >-
+      C1.3-parcours/corpus/ committed, provenance complete, coverage quantified and gaps named. No
+      fixture remains on a path served to a design or product work product.
+  - id: 7
+    name: Market tests and learnings
+    capabilities_note: >-
+      The prices and offers of the alternatives, and the communities where the target can be found,
+      are external facts: they are searched for, not assumed.
+    entry: >-
+      Critical hypotheses named and ranked, each with its test card (WP-02); user research and
+      personas (WP-04); journey skeleton (WP-05) — it gives the promise the tests expose. Any of them
+      missing produces BLOCKED.
+    task: >-
+      BEFORE BUILDING THE FOUNDATION, put the critical hypotheses to the test of the real market,
+      with the cheapest tests that settle them (INSEAD NBV, Lean Startup): landing page at the REAL
+      price with a waitlist, fake door, deposit or pre-order, service delivered by hand, interviews
+      without pitching. Prepare each test — page, message, targeting, budget —, have it DECIDED by
+      the product owner before any publication or spend, run it, and record each result as a
+      learning card: we believed, we did, we observed, at which reliability rung, therefore we decide.
+    verification: >-
+      Each learning card cites its HYP-nn hypothesis, its success criterion written BEFORE the test,
+      the raw observation and its E-nn source — analytics export, form responses, payments, dated
+      interview notes. The reliability rung is that of the observation: a statement ("I'd buy that")
+      is never an action, a sign-up is never a payment. No SYNTHETIC or DOCUMENTARY result settles a
+      hypothesis here. A disproven hypothesis says so, and routes to WP-02.
+    exit: >-
+      At least one critical hypothesis settled at the action rung (sign-up, buy click) or the payment
+      rung, or the impossibility of doing so written as a reservation with its reason. The learning
+      cards committed; the thesis (WP-02) reworked on every disproven hypothesis before the
+      foundation.
+  - id: 8
+    name: Design System foundations
+    entry: >-
+      Skeleton settled; design-brief.md filled in; accessibility, language and usage constraints
+      declared; DESIGN STACK settled by ADR — framework, component base, styling engine, deployment
+      target, AI-assisted design tooling. Its absence produces BLOCKED: deciding the stack after the
+      first visual decision is no longer a decision, it is a justification.
+    task: >-
+      START FROM THE STARTER DESIGN SYSTEM served by the control tower: apply it to a real screen of
+      the product, show it, then ask ONE question of the human accountable for the product — keep
+      it, adapt it, or set it aside. Kept: it becomes the selected direction. Adapted: its structure
+      is kept and what was named is changed. Set aside: have at least three built directions
+      COMPETE, one of which may remain it. Then derive from it tokens, colors, typography, spacing,
+      grids, responsive behavior, accessibility, components, variants and states.
+    verification: >-
+      The design brief is filled in BEFORE the first visual decision, and its absence produces
+      BLOCKED — never a guessed direction: it is where the human's taste and constraints live, and a
+      direction decided without it gets rejected after the fact, twice if need be. The starter
+      design system has been shown on a real screen and the decision — kept, adapted or set aside —
+      is recorded with who made it. If set aside, at least THREE distinct directions are BUILT —
+      real pages, real content, each one fully committed — and presented for arbitration: a single
+      unchosen direction is not a choice, it is the first idea that came along. The selected
+      direction carries an ADR naming the alternatives set aside, or the decision to keep the
+      starter, and what settled it. WCAG AA contrast verified by tool. Tokens exportable as CSS and
+      JSON. Each component exposes the 7 states. Executable catalog. Surface mode declared. Craft
+      floor read immediately before any interface edit, and its absolute bans checked one by one: a
+      foundation that violates them is not a variant of taste.
+    exit: >-
+      C1.4-socle/design-system/ committed; navigable catalog; design brief and direction ADR
+      present; explorations set aside preserved, never deleted — they are the evidence that a choice
+      took place.
+    point_de_depart:
+      nom: Standard starter
+      fichiers:
+        - role: >-
+            Tokens in W3C Design Tokens format (DTCG) — colors and roles, fonts, typography, spacing,
+            radii, shadows, surfaces. Kept or adapted: it becomes the project's tokens.json source.
+        - role: >-
+            The same tokens as CSS variables (:root), with the named type scale and per-component
+            radii — to be regenerated from tokens.json, never maintained alongside it.
+        - role: The Tailwind v4 theme (@theme), if the design stack settles on Tailwind.
+      options:
+        - Keep — it becomes the chosen direction, as is
+        - Adapt — we keep the structure, we change what I name (colors, typography, shapes)
+        - Set aside — we build three competing directions
+      question: >-
+        This starter design system, applied to our main screen: do we keep it, adapt it, or set it
+        aside?
+      garde_fous:
+        - >-
+          A starting point, never a brand: no name, logo or illustration taken from a source into
+          the product.
+        - >-
+          A single family, Inter: 400 to 700 for text, 900 for display. No proprietary typeface —
+          the original reference carried one, it has been removed from the files.
+        - >-
+          WCAG AA contrast is re-checked on OUR color pairs: the lime is never used as text on a
+          light background.
+        - >-
+          The files are an extraction: --section-gap and --element-gap carry ranges (64-80px,
+          8-12px) that are not CSS values. Settle on a value, or remove them, before turning them
+          into the project's tokens.
+        - >-
+          The type scale fits in TEN named sizes — micro, caption, body-sm, body, body-lg,
+          subheading, heading-sm, heading, heading-lg, display —, the same in all three files. An
+          eleventh is justified by a screen, never by convenience.
+  - id: 9
+    name: Navigation, IA, terminology and semantics
+    entry: Skeleton settled; domain qualified.
+    task: >-
+      Freeze the navigation, the information architecture, the user vocabulary, the truth
+      categories, the statuses and the financial rules.
+    verification: >-
+      Each term unique, unambiguous, and PROVEN by the foundation SUX campaign (activity 12,
+      SYNTHETIC · SUX) — a term not understood goes back to WP-09 before the freeze. The navigation
+      covers every step. Each truth category is disjoint. A calculation never improves the truth
+      status of its inputs. The mapping table resolves each entity and each field of the core to a
+      glossary term.
+    exit: >-
+      Frozen by Git tag. Core of the data model classified CORE INVARIANT or EXTENSION, element by
+      element. Any later change to the core reopens G0.
+  - id: 10
+    name: Executable foundation
+    entry: >-
+      Foundations, components, navigation, IA and semantics available. Admissible REAL CORPUS
+      (WP-06): its absence produces BLOCKED, and never a set of fixtures written to unblock the
+      activity.
+    task: >-
+      Produce the navigable foundation at very high structural fidelity, fed by the real corpus, and
+      DEPLOY it behind a URL the business opens without installing anything.
+    verification: >-
+      Can be walked end to end without a dead screen. Every step reachable. The displayed content
+      comes from WP-06: NO fixture, and the point is eliminatory — a foundation on fixtures is a
+      mockup, it does not prove the product says something true. A field ABSENT from the corpus is
+      rendered as absent by the interface, never filled in. The foundation is deployed and the URL
+      responds. Craft floor read before any edit. Verification in bounded passes: one grouped
+      desktop and mobile inspection, one batch correction, one confirmation, then stop — a looping
+      self-QA costs more than it finds.
+    exit: Openable outside the development environment, at a deployed URL, on the real corpus.
+  - id: 11
+    name: Technical foundation and structuring choices
+    entry: >-
+      Journey skeleton settled; data semantics frozen; constraints of the existing system
+      established.
+    task: >-
+      START FROM THE ARCHITECTURE STARTER served by the tower: confront it with the skeleton and the
+      constraints, then ask ONE question to the Tech authority — do we keep it, adapt it, or
+      replace it. Settle the target architecture: integration boundaries, persistence model,
+      deployment topology, security architecture, non-functional constraints. Settle the
+      structuring decisions — build or buy, technology foundation — and record them as ADRs.
+    point_de_depart:
+      nom: Standard architecture starter
+      fichiers:
+        - role: >-
+            Nine ADRs in the WP-13 format. Kept, an ADR is carried into decisions/adr/; adapted,
+            rewritten; set aside, replaced by an ADR that says why.
+        - role: >-
+            DEV → QA → PROD, PREPROD on evidence: isolation, data, promotion gates, migrations.
+        - role: The checks that hold the starter in CI, each attached to its ADR.
+        - role: >-
+            A golden CI path as an example: built once, promoted to QA by digest, released to
+            production on a human decision.
+      question: >-
+        This architecture starter, confronted with our skeleton and our constraints: do we keep it,
+        adapt it, or replace it?
+      options:
+        - Keep — its ADRs become ours, each one re-checked
+        - Adapt — we keep the shape, we change what I name (stack, hosting, environments)
+        - Replace — we settle another architecture, backed by an ADR
+      garde_fous:
+        - >-
+          A kept starter exempts from none of the activity's checks: skeleton coverage,
+          classification, rejected alternative, critic(engineering) verdict.
+        - 'Any divergence from the starter is an ADR: what changes, why, what it excludes.'
+        - >-
+          The starter quantifies nothing and pins no version: constraints and versions are set on
+          OUR product, against today's documentation.
+        - 'Simpler wins: if the product holds with less, replacing it is the right answer.'
+    verification: >-
+      The decision on the architecture starter — kept, adapted or replaced — is recorded with who
+      made it. Each structuring decision carries at least one rejected alternative with its rationale. Each
+      element is classified CORE INVARIANT or EXTENSION by blast radius, never by apparent nature.
+      The architecture supports the entire skeleton, including the steps of distant releases. THE
+      SIMPLEST ARCHITECTURE that supports the product safely: what is NOT in v1 is listed,
+      infrastructure grows on measured usage and never on hypothetical load, a legal or hosting
+      question is a DEFERRED decision with its trigger, never a design blocker. critic(engineering)
+      verdict delivered — any infrastructure beyond the measured need is a finding there.
+    exit: >-
+      Technical foundation committed and frozen by Git tag. CORE INVARIANT elements can no longer be
+      modified outside cadence C1 (K4, EX3).
+  - id: 12
+    name: Synthetic experience test of the foundation
+    mode: >-
+      SYNTHETIC · SUX — BLIND test, protocol taken from the BatiZen run with nothing weakened. Five
+      separate roles: the orchestrator (quality-engineer) prepares and launches; the user agent, in
+      a FRESH context, receives only its persona, its mission and the entry point of the DEPLOYED
+      foundation; the observer annotates one session, blind first; the researcher aggregates
+      patterns, without severity or recommendation; triage (factory-lead) classifies and routes.
+      Nothing flows back to a user agent.
+    entry: >-
+      Executable foundation DEPLOYED and frozen — commit and build sha256 known (WP-11); glossary
+      and navigation (WP-09); skeleton (WP-05); PER-nn personas and verbatims (WP-04). Without a
+      deployed foundation: BLOCKED, never a test on a local file.
+    task: >-
+      Write the protocol and the campaign plan BEFORE any session: personas as fact sheets of life
+      facts drawn from the PER-nn and their verbatims, rendered in prose; missions stated in the
+      user's own words, with their natural stopping point; closed list of internal vocabulary built
+      from WP-09 (TRM-nn terms, screens) and WP-05 (stages). Write the hashed firewall manifest
+      BEFORE each session. Run the sessions, one per persona × mission, in a fresh context; annotate
+      (blind pass O1 frozen, then O2); aggregate patterns (R1 frozen, then R2); triage and ROUTE
+      each finding to WP-05, WP-09 or WP-11 before the freeze.
+    verification: >-
+      THE TEST IS ON STRUCTURE: finding one's way, understanding the words, completing the money and
+      rights journeys — paying, changing one's mind, stopping, pausing. Teaching content is out of
+      scope; a session that hits a field ABSENT from the corpus records an EXPECTED STOP, not a
+      defect. Neither persona nor mission contains a word of the interface (deterministic filter on
+      the closed list). Observations immutable, bound to the sha256 of the foundation tested; a fix
+      produces a NEW candidate, and regression runs on it, with the SAME personas and missions. No
+      score or threshold until a run has set them on evidence. Always “N synthetic sessions”, never
+      “N users”; sessions on the same model are declared CORRELATED. An expert review that knows the
+      intent presented as this test is a BLOCKER. K7 replays SUX1 to SUX6 on the campaign's bytes.
+    exit: >-
+      SUX campaign committed: protocol prior to the sessions, hashed foundation, raw results,
+      annotations, patterns, triage; each finding routed to WP-05, WP-09 or WP-11 and handled BEFORE
+      the freeze — a term not understood goes back to WP-09, a stage not found to WP-05, a failed
+      money or rights journey to WP-11. A corrected candidate is re-tested.
+  - id: 13
+    name: Release slicing and sequencing
+    entry: Executable foundation available.
+    task: >-
+      Slice the product into releases with a standalone value proposition, order them, qualify
+      dependencies, risks and hypotheses.
+    verification: >-
+      Each release satisfies the three tests. Each step assigned to exactly one release (K1). No
+      circular dependency. Anticipated tier per release.
+    exit: Architecture committed; first release identified.
+  - id: 14
+    name: Release scope, metrics and targeted discovery
+    mode: >-
+      DOCUMENTARY BY DEFAULT, AGENT-LED, BEFORE THE SCOPE. The targeted research reads what real
+      users write about the covered journeys only — same admissibility rules as in activity 4:
+      address, date of consultation, literal quotation, two independent sources per learning,
+      nothing invented. It is committed BEFORE scope.md: the scope is read from the research, the
+      research does not justify the scope. Field work is added if humans are available; it is never
+      required.
+    entry: G0 passed; release identified in the architecture.
+    task: >-
+      Define the smallest desirable scope that stands on its own, what is excluded from it, and how
+      we will know the release produced the expected effect. In the same movement, complete the
+      research on the covered journeys ONLY, then detail the target journeys within the frozen
+      skeleton.
+    verification: >-
+      The brief is informed by research, not the other way around. It used to sit at the previous
+      step and discovery at the next one: a scope was therefore settled before searching for what
+      should determine it. Each target journey attaches to a step of the frozen skeleton — no
+      journey outside the skeleton.
+    exit: >-
+      scope.md, exclusions.md, success-metrics.md, design-brief.md, research/insights.md and
+      research/journeys/to-be/ committed.
+  - id: 15
+    name: Exploration, direction and Strategic Design
+    entry: >-
+      Target journeys available; foundation frozen and accessible; design-brief.md filled in;
+      time-box declared.
+    task: >-
+      Produce ≥ 3 distinct alternatives, settle a reasoned direction, then the very high fidelity
+      end-to-end prototype with its Design System delta.
+    verification: >-
+      The direction is compared with the rejected alternatives, on the visual world and not on
+      variants of the same direction. The surface mode of each screen is declared, chosen according
+      to the surface and never according to the product. The prototype covers every journey without
+      a dead screen. It alters neither the navigation, nor the IA, nor the vocabulary of the
+      foundation. Each addition to the DS is justified by a journey. Craft floor read before any
+      edit.
+    exit: >-
+      design/src/, dist/, design-system-delta/ committed; direction ADR. Living prototype recomposed
+      and its manifest dated: without recomposition, Strategic Design is yet another frozen fourth
+      prototype.
+  - id: 16
+    name: Release solution design
+    entry: Target journeys available; technical foundation frozen and accessible; scope settled.
+    task: >-
+      Design the technical realization of this release within the foundation: affected components,
+      interface contracts, data flows, migration impacts. Qualify feasibility, technical
+      dependencies and risk tier of each capability.
+    verification: >-
+      The solution fits within the technical foundation without modifying a CORE INVARIANT; any need
+      for modification is routed to G0 (EX3), never applied. Each dependency is named, dated,
+      non-circular. Each capability carries a justified tier. Each migration impact is checked
+      against the living data model: an affected entity or field that carries the CORE INVARIANT
+      label opens an EX3, it is not modified here. critic(engineering) verdict delivered.
+    exit: >-
+      Solution design and dependency map committed. Migration impacts attached to the entities of
+      the living data model. It is the technical input to activity 19: without it, a backlog can
+      neither qualify its dependencies nor propose its tiers.
+  - id: 17
+    name: Design QA
+    entry: Shareable build available; critic(design) independent of the producer.
+    task: >-
+      Verify consistency, responsiveness, accessibility, edge states, conformance to the Design
+      System and subordination to the foundation.
+    verification: >-
+      Multi-device screenshots produced, and EACH screenshot is opened and checked against its name
+      before being passed on: truncated, empty or misaligned evidence invalidates the review that
+      relies on it, and the judge must reject it rather than score on it. Tool-assisted
+      accessibility check. The critique and audit playbooks are executed and their findings
+      reclassified into the single findings taxonomy — a heuristic score is not a finding, and a
+      verdict delivered under an external skill is never a control PASS. A SUBSTITUTED polish review
+      — the evaluator shipped with the external skill not being installed — is disclosed in one line
+      in the verdict, never kept silent.
+    exit: Report committed; zero open BLOCKER.
+  - id: 18
+    name: User validation and convergence
+    mode: >-
+      AUTONOMOUS BY DEFAULT, IN FOUR LABELLED PIECES OF EVIDENCE, never conflated. (1) Expert review
+      — SYNTHETIC · AXR: critic(product), who did not design the prototype but KNOWS the intent,
+      walks through it in the posture of each PER-nn persona, task by task, on the frozen version;
+      it finds conformance and design defects, it establishes no fact about a user. (2) Blind test —
+      SYNTHETIC · SUX: a campaign of synthetic users who DO NOT KNOW the intent, on the frozen
+      release prototype, same protocol as before G0 (activity 12) — firewall, hashed manifest,
+      closed list, real interaction, correlated sessions, no threshold. (3) DOCUMENTARY comparison:
+      each design choice is set against the behaviours documented in WP-04 and in the release
+      research, verbatims cited. (4) Production measurement: a BEHAVIOUR assumption that only
+      observation settles is not declared validated; it gets its measurement — metric, event
+      instrumented by the release, threshold, decision taken if the threshold is not met — and
+      becomes EMPIRICAL when real usage settles it. A test with real participants is added if any
+      exist; it is never required.
+    entry: >-
+      QA-clean prototype, frozen by commit, deployed; PER-nn personas documented (WP-04); real
+      participants only if any exist, explicitly identified.
+    task: >-
+      Write the protocol BEFORE the test; freeze the tested version; run the AXR expert review per
+      persona, THEN the blind SUX campaign on the same frozen version, and the documentary
+      comparison; process the results — a fix produces a new candidate, and the SUX regression
+      replays the same personas and missions on it —; stabilise the scope; give each unresolved
+      behaviour assumption its production measurement.
+    verification: >-
+      Tested version frozen by commit. Expert review run by an agent that did not design the
+      prototype, labelled SYNTHETIC · AXR. Blind SUX campaign labelled SYNTHETIC · SUX, and K7
+      replays SUX1 to SUX6 on its bytes. An expert review presented as a user test is a BLOCKER.
+      Unfiltered results, including those that contradict the thesis. Each fix traces to a labelled
+      finding — SYNTHETIC · AXR, SYNTHETIC · SUX, DOCUMENTARY or EMPIRICAL. No behaviour assumption
+      declared validated on synthetic or documentary evidence: it is settled by real participants,
+      or deferred with its production measurement.
+    exit: >-
+      Results committed with the tested version, each labelled; release SUX campaign committed;
+      UNVALIDATED assumptions settled, or deferred with their production measurement — metric,
+      event, threshold, decision.
+  - id: 19
+    name: Backlog and slice map
+    entry: >-
+      Prototype validated and scope stabilized; solution design and dependency map available
+      (activity 16). Without them, BLOCKED — missing input.
+    task: >-
+      Turn the release into traceable epics, stories and ACs; qualify value, risks, dependencies;
+      order the release into vertical slices S-nn — each one a demonstrable user outcome, delivering
+      data, API, screens and tests together. No platform slice: technical work lives in the slice
+      that needs it. First release: a foundation Slice 0, small, that proves the path end to end.
+      Before it, settle the RELEASE PLATFORM POLICY — platforms accepted in v1, platforms kept by
+      the architecture but outside acceptance — and the VALIDATION CHANNEL of product acceptance,
+      which may differ from the distribution channel. Slices inherit them; physical evidence for a
+      platform outside v1 is DEFERRED, never PASS.
+    verification: >-
+      Each story traces to a journey and a screen. Each AC verifiable. 100% coverage (K3).
+      Dependencies and tiers carried over from the activity 16 work product, never reinvented here.
+      Each story assigned to a slice or explicitly deferred. Slice order: dependencies, then value
+      for the user, risk retired, learning — only one slice in progress at a time. Each open point
+      attached to the FIRST slice that needs it, and CLASSIFIED: decide before the contract · decide
+      before acceptance · outside v1 · technical.
+    exit: backlog/, planning/slice-map.md, handoff/ committed. No new release created here.
+  - id: 20
+    name: Slice contract
+    entry: >-
+      G1 passed; slice map up to date; previous slice accepted — only one slice in progress at a
+      time.
+    task: >-
+      Write the slice contract, BEFORE any code: the user outcome in one sentence; the scope and its
+      budget; the exit criteria EXIT-n, each with its evidence; the tests defined before the code;
+      the Baseline Delta Declaration, the screens and the Design System delta; the rules, data, API
+      and migrations; the tier; the open points. The living prototype is recomposed with the slice
+      delta.
+    verification: >-
+      Outcome phrased as a user outcome, not as a task list. No story without AC or without a
+      screen; the prototype exercises each story. Each AC testable. Each exit criterion has its
+      evidence and its procedure. Each material AC has its test, defined before the code. MUST
+      PRESERVE inventory produced BEFORE any modification; no silent modification of an existing
+      component; craft floor read before any modification of an existing screen. Each rule cites the
+      baseline, the product decision or the domain critic. Migrations and rollback described, each
+      migration attached to its story. Derived model regenerated: each entity and each field created
+      by the slice resolves to a glossary term and a truth category. Tier proposed and justified.
+      Each entry condition ENTRY-n carries its status — MET · PENDING · DEFERRED — and what lifts
+      it; EXTERNAL prerequisites — repository, hosts, stores and signing, toolchain, the Product
+      Owner's stable QA account — are verified BEFORE the GO, and each "material" learning of the
+      previous slice is carried into them. Slice 0 and any technical proof: each artifact classified
+      KEEP or DISCARD before it is written. REFERENCED, NOT RESTATED: the contract cites each input
+      by path, authority rank, base commit and fingerprint, without copying its content, and fits in
+      600 rendered lines — beyond that, the slice is too big or the contract restates. Before K1, at
+      least 20 citations, or all of them if there are fewer, are checked against their source by a
+      critic, and "n confirmed / m corrected" is written into the contract.
+    exit: >-
+      slice-contract.md, design/ and spec/ committed; living prototype recomposed as foundation ⊕
+      release deltas ⊕ slice deltas, manifest dated; NEEDS CLARIFICATION items resolved or routed;
+      Run Ledger opened. This is the step that makes the prototype follow the slices instead of
+      preceding them and then going stale. An unresolved field or an open NC does not pass K1.
+  - id: 21
+    name: Build and tests
+    entry: >-
+      K1 passed; working branch created; isolated environment; critic(quality) available and
+      independent.
+    task: >-
+      Implement the slice from the frozen contract, within the declared mutation boundary; run the
+      tests defined in the contract, produce the evidence for each exit criterion, repair obsolete
+      tests in HEAL mode; deploy to QA and play the critical journeys on the living prototype. Any
+      deviation is a dated amendment: the slice does not grow.
+    verification: >-
+      No modification outside the mutation boundary. Atomic commits. Every product rule that can be
+      mechanised — invariant, architecture decision, exit criterion — becomes a PROJECT CONTROL
+      (controles/controles.yaml), with its source and at least one negative test on a copy of a
+      fixture; “apf check” runs them. Local tests green before push, AND golden path green at least
+      once on hosted CI: a slice is not DEV-validated until its CI-only paths — image build,
+      emulator, promotion — have run; hosted CI unavailable, say so — NOT RUN, never PASS. Evidence
+      is only worth its CHANNEL: a simulator proves build and launch, never the device; the web
+      never proves native. Every deviation classified. NEEDS CLARIFICATION flagged rather than an
+      invented behavior. THE CLASSIFICATION of a red test is delivered by critic(quality), never by
+      the producer of the test or the code. Any healing requires independent re-verification.
+      Critical journeys executed in QA, on the recomposed living prototype, not only in automated
+      tests. BEFORE any presentation to the Product Owner, the E2E campaign is played on the version
+      deployed in QA, at the reference mobile width: for each inventory item touched by the slice —
+      question, screen, state —, reachable, reached, input, forward, Back, restored after reload,
+      edit persisted, the rest unchanged, conditional consequences, exit then re-entry, downstream;
+      each cell is PASS, or N/A with its reason. Each Product Owner observation from a previous
+      slice has become an ORACLE — a general question asked of every reachable state — and replays
+      without a hit.
+    exit: >-
+      Code pushed; status.md and scope-changes.md up to date; evidence for each exit criterion
+      retained, with its channel; quality/ and acceptance/ committed; no PRODUCT FAILURE masked;
+      identity of the built version recorded — commit, artifact fingerprint, migration version,
+      configuration fingerprint —, the same in QA as in DEV; state × behavior matrix and oracles
+      green in QA; QA URL recorded — that of the living prototype, a single one.
+  - id: 22
+    name: Independent reviews
+    entry: Implementation stabilized; QA deployed; evaluators independent of the authors.
+    task: >-
+      Four PARALLEL tracks: engineering · design conformance · security · proportionate pentest if
+      tier R2 or R3.
+    verification: >-
+      Review grounded in the actual diff. AC → Evidence map verified as effective, not merely
+      present. No secret in clear text. Findings demonstrated, not assumed. No destructive or
+      out-of-scope action.
+    exit: reviews/ and security/ committed; zero BLOCKER.
+  - id: 23
+    name: Slice acceptance
+    entry: >-
+      Exit evidence retained; reviews complete, zero BLOCKER; QA up to date on the built version —
+      same fingerprint as the version validated in DEV; state × behavior matrix and known oracles
+      green in QA. The Product Owner does not do QA: a candidate that fails a cell or an oracle is
+      not presented to them.
+    task: >-
+      Reconcile contract, code, tests and decisions; present to the Product Owner, in QA, the slice
+      outcome and the evidence for each exit criterion, with the ACCEPTANCE SCRIPT — journeys to
+      play, channel, URL, version, stable QA account, expected result, and only the moments the
+      machine cannot judge — and any consolidated decision request, each item with its default
+      value; record the acceptance or the refusal, then open the next slice.
+    verification: >-
+      Complete matrix, every deviation classified, none silently absorbed. Acceptance bears on the
+      slice outcome, observed in QA by the Product Owner — an automatic validation is not an
+      acceptance, and an accepted slice is not a production release. An evidence leg that has not
+      run is DEFERRED to a named gate, or OUT OF SCOPE — never PASS. The Product Owner's verdict is
+      recorded word for word.
+    exit: >-
+      Acceptance decision recorded in the Run Ledger; cumulative state updated — foundation ⊕ ACTIVE
+      deltas, minus recorded supersessions — and no-loss audit replayed in both directions; DISCARD
+      removed; learning close-out written, each "material" learning carried into an entry condition
+      of the next slice; next action written; next slice ready to open.
+  - id: 24
+    name: Readiness and rollback
+    entry: Acceptance obtained on the included slices.
+    task: >-
+      Verify quality, security, rollback, migrations, observability and documentation before going
+      to production.
+    verification: >-
+      Rollback TESTED, not merely documented. Observability in place. Security evidence
+      proportionate to the tier. Re-review verdict for each corrected finding.
+    exit: release-readiness.md and rollback-plan.md committed.
+  - id: 25
+    name: Deployment and verification
+    entry: G4 passed.
+    task: >-
+      Deploy with a progressive and reversible strategy, then verify health, metrics, errors,
+      security and critical journeys over the defined window.
+    verification: >-
+      Rollback point verified BEFORE cutover. Keep/rollback decision recorded. Signals confronted
+      with the success metrics; conclusions distinguished from data.
+    exit: deployment-record.md, post-deploy-verification.md, learning/ committed; backlog updated.
+work_products:
+  - id: WP-01
+    name: Product canvas
+    purpose: >-
+      What we intend to do with the product, on one page, before any technical detail — the Business
+      Model Canvas, extended with intent and key metrics. A product that starts with its repository
+      starts with its least risky part.
+    completion: >-
+      Every block carries an answer from the human or an HYP-nn UNVALIDATED with what would settle
+      it. First segment named. No technical decision. Confirmed in a single recap.
+    lifecycle: living
+    sections:
+      - title: Intent
+        rule: what we intend to do with it · why now · how we will know it has succeeded
+      - title: Customer segments
+        rule: who uses it, who pays · the first target segment, named
+      - title: Service operators
+        rule: "who runs the service day to day — coach, picker, delivery driver, support, administrator, partner who operates — each with the key activity they carry and what they must see and do in the product; \"no operator\" is a reasoned decision (K1)"
+      - title: Problem
+        rule: the three most costly · what they do today
+      - title: Value proposition
+        rule: what changes the next day · what they stop doing
+      - title: Channels
+        rule: discovers · tries · adopts
+      - title: Customer relationship
+        rule: what brings them back
+      - title: Revenue streams
+        rule: who pays, how much, how often
+      - title: Key resources
+        rule: what the value cannot be produced without
+      - title: Key activities
+        rule: what must be done excellently
+      - title: Key partners
+        rule: who brings what, and what they gain from it
+      - title: Team by key activity
+        rule: "for each key activity: the technical, people and domain skills it requires, who covers them, and the gaps; the team's startup experience; a gap is named, and funded by the pitch's ask"
+      - title: Cost structure
+        rule: the cost items that decide, before the first revenue
+      - title: Hard-to-copy advantage
+        rule: one reason, or “none for now”
+      - title: Key metrics
+        rule: two or three numbers measurable without building anything
+      - title: Workshop ledger
+        rule: question · answer · who · settled or HYP-nn UNVALIDATED
+  - id: WP-02
+    name: Product thesis, outcomes and critical hypotheses
+    purpose: >-
+      The product's strategic argument, in a single place: what we believe, what must move and by
+      how much, and what remains to be verified. The three answered one another without ever being
+      read together — an outcome without a thesis is an orphan number, a hypothesis without an
+      outcome is tested against nothing.
+    completion: >-
+      The thesis stands without the product: every material claim carries a source and an evidence
+      level. Every outcome is measurable with what exists today, without building anything — a
+      non-instrumentable outcome is rejected, not reworded. Every critical hypothesis is settled
+      with a rationale, or named HYP-nn labelled UNVALIDATED with its falsification criterion and
+      its test point. Competition is typed and the status quo is in it; two alternative business
+      models are written; the "economie-unitaire" format is checked.
+    lifecycle: living under control
+    sections:
+      - title: Problem
+        rule: whose · how we know · what they do today · what it costs them
+      - title: Target
+        rule: a describable person, not a segment. How many. How we reach them
+      - title: Value proposition
+        rule: what changes the next day · what the person stops doing
+      - title: Alternative and status quo
+        rule: what happens if we do nothing · who else solves this · why this one wins
+      - title: Competitor grid
+        rule: "direct · indirect · future · the status quo, always present; three to five dimensions that matter to the target; each cell with its source and the quality of its evidence; where the product wins, where it loses"
+      - title: Alternative business models
+        rule: two models written before choosing the main one — who pays, for what, how; why the main one is chosen, and what would tip it towards another
+      - title: Business model assessment
+        rule: "the seven strengths of the model — switching costs, recurring revenue, earning before spending, cost structure, others do the work, scalability, protection — each weak · medium · strong with its rationale; the strength of the value proposition: pain, frequency, urgency, willingness to pay, each sourced"
+      - title: Unit economics
+        rule: "revenue and cost per customer, contribution margin, churn, computed lifetime value, acquisition cost drawn from the market tests, computed LTV / CAC and payback period; each figure with its origin — carries the \"economie-unitaire\" format"
+      - title: Abandonment criterion
+        rule: which result would make us give up, who pronounces it, on what date we look
+      - title: Interrogation ledger
+        rule: branches settled, branches switched to UNVALIDATED
+      - title: OUT-nn — statement
+      - title: Tracked number
+      - title: Current value
+        rule: if unknown, it is the first measurement to make
+      - title: Target value and deadline
+      - title: Measurement method and data source
+      - title: HYP-nn — statement
+      - title: Trace to OUT
+      - title: Falsification criterion
+        rule: 'written in the observable future: “if we observe X, it is false”'
+      - title: Label
+        rule: EMPIRICAL · DOCUMENTARY · SYNTHETIC · UNVALIDATED
+      - title: Test point and owner
+        rule: mandatory for every UNVALIDATED
+  - id: WP-03
+    name: Domain profile, approved sources and admissibility
+    purpose: >-
+      What the domain imposes, where we get it from, and what an admissible claim is judged against.
+      Separating the list of sources from the criterion that makes them binding let judgements be
+      made on a corpus nobody had settled.
+    completion: Every rule cites a dated source. UNKNOWNs are routed, not filled in.
+    lifecycle: living
+    sections:
+      - title: Industry profile
+      - title: Approved sources
+        rule: each one dated. A rule without a dated source is UNKNOWN, never FACT
+      - title: Business rules
+        rule: each citing its source and the date of its last change
+      - title: Unwritten practices
+        rule: who knows them, how they were gathered
+      - title: Sanctions and authority
+        rule: who enforces what in case of violation
+      - title: Backing sources and epistemic scale
+        rule: FACT · PRACTICE · ABSTRACTION · INFERENCE · UNKNOWN
+      - title: Known test case
+        rule: whose answer is independently verifiable
+  - id: WP-04
+    name: User research and synthesis
+    purpose: >-
+      The corpus of observations across the whole journey, before any slicing, and its synthesis in
+      a single pass.
+    completion: >-
+      No insight without a source verbatim. Evidence level labelled on every finding — DOCUMENTARY
+      or EMPIRICAL, never one for the other. Personas challenged by critic(product). Questions the
+      documentary research does not settle are listed as HYP-nn.
+    lifecycle: living
+    sections:
+      - title: Research plan
+        rule: >-
+          written BEFORE collection: questions, segments, planned sources and queries, mode —
+          documentary by default, field research if humans are available
+      - title: Traced verbatims
+        rule: >-
+          address, consultation date, literal quotation for each; platforms, sample and biases
+          declared
+      - title: Insights
+        rule: none without a source observation
+      - title: PER-nn personas
+        rule: >-
+          every trait traced to ≥ 2 verbatims from independent sources; DOCUMENTARY proto-persona as
+          long as there is no field observation
+          ; two families, each declared: the external customers and the internal operators — one persona per operator in the canvas
+      - title: Empathy maps
+        rule: no unsourced projection; unknowns marked
+      - title: As-is journeys and pain points
+        rule: every pain point dated, sourced, attached to a persona
+  - id: WP-05
+    name: Target journey skeleton
+    purpose: >-
+      The backbone of the foundation. Everything hangs on it: releases are sliced from it,
+      navigation follows it, the backlog traces to it.
+    completion: >-
+      Exhaustive: no step of the real journey missing. Sequence validated by the domain critic.
+      Every step carries exactly one INTRODUCES link (K1). Every step declares its family, and every
+      operator in the canvas has theirs (K1).
+    lifecycle: frozen at G0
+    sections:
+      - title: STG-nn — named and ordered steps
+        rule: in the user's vocabulary, never the business's
+      - title: Milestones of each step
+      - title: Trace to PER and OUT
+      - title: Operator journeys
+        rule: "the journey of each operator declared in the canvas — what they prepare, operate, follow up and correct — as STG-nn steps of family operateur; its steps are screens of the product, not a back-office discovered during construction"
+      - title: Steps outside the product's scope
+        rule: named, to prove exhaustiveness
+  - id: WP-06
+    name: Real corpus and provenance
+    purpose: >-
+      The content the product shows a user, along with what is needed to contradict it. In a data
+      product, the corpus IS the product: a foundation, a Design System and an architecture can be
+      right while the product says nothing true. This work product exists because that case happened
+      — a complete C1 cadence, seventeen work products, eight reviews, and a corpus of thirty-two
+      invented records labelled FIXTURE that passed G0.
+    completion: >-
+      Every sourced record carries its three admissibility fields. Coverage quantified per STG and
+      gaps named. Admissibility verdict from critic(domain) present. NO fixture on a path served to
+      a design or product work product — this point is disqualifying, it cannot be settled as debt.
+    lifecycle: living, enriched at every release; its PROVENANCE is never rewritten
+    sections:
+      - title: Corpus scope
+        rule: >-
+          the minimum that makes the skeleton traversable end to end, derived from the STGs and not
+          from an ambition of exhaustiveness
+      - title: Sources kept and set aside
+        rule: each traced to WP-03; a source outside the approved sources is a deviation, not a shortcut
+      - title: Provenance per record
+        rule: address, reading date, literal quotation. All three, or the record is UNVALIDATED
+      - title: Truth category per field
+        rule: SOURCED · DERIVED · ABSENT. No fourth value, and above all not a plausible value
+      - title: Coverage measured against the skeleton
+        rule: quantified per STG, never assessed in prose
+      - title: Gaps and unsourceable fields
+        rule: named one by one; an ABSENT field is information about the world, not a hole to fill
+      - title: Test fixtures and their containment
+        rule: >-
+          if any exist, they live outside the paths served to the product and say so; a fixture
+          reachable from a design work product is a defect, not a convenience
+  - id: WP-07
+    name: Market tests and learnings
+    purpose: >-
+      The proof that the market wants the product, before spending to build it. A foundation, a
+      Design System and an architecture can be right for a product nobody buys: this work product
+      exists so that a critical hypothesis is settled by what real people DID — sign up, click to
+      buy, pay —, not by what they said or by what an agent simulated.
+    completion: >-
+      The "apprentissages" format checked. At least one critical hypothesis settled at the action or
+      payment rung, or a reservation saying why and when it will be. No card without a criterion
+      written before the test, or without a source.
+    lifecycle: living; a learning card is never rewritten, it is added to
+    sections:
+      - title: Test plan
+        rule: >-
+          the three to five most critical hypotheses, the cheapest test that settles each, its cost,
+          its duration, its success criterion written beforehand — taken from the WP-02 test cards
+      - title: Product owner decisions
+        rule: no page published, no message sent on the product owner's behalf, no euro spent without their named and dated decision
+      - title: Learning cards
+        rule: we believed · we did · we observed · reliability rung · therefore we decide; each with its HYP-nn and its E-nn source
+      - title: Raw results
+        rule: exports, responses, payments as they are, under results/; never only the summary figure
+      - title: What the tests change
+        rule: >-
+          each disproven hypothesis routed to WP-02 and the thesis reworked; each unsettled
+          hypothesis kept UNVALIDATED with its next test
+  - id: WP-08
+    name: Design System foundations
+    purpose: The reusable visual elements and their rules. Enriched at every release; never reinvented.
+    completion: >-
+      The decision on the starter design system — kept, adapted or set aside — is recorded along
+      with who made it. Design stack settled by ADR BEFORE the first visual decision. AA contrast
+      verified by tool. The 7 states covered for every component. Catalogue openable. Every
+      hand-written component is hand-written because the chosen base does not cover it, and says so
+      — a component rewritten without reason is design budget spent on plumbing.
+    lifecycle: cumulative, never forked
+    sections:
+      - title: Design brief
+        rule: >-
+          filled in WITH the human accountable for the product BEFORE the first visual decision —
+          priority audience, craft bar, prohibitions, direction pinned or open; its absence produces
+          BLOCKED
+      - title: Starter design system and decision
+        rule: >-
+          the starter served by the control tower, shown on a real screen of the product; the
+          human's decision — kept, adapted or set aside —, what changed if adapted, who decided and
+          when
+      - title: Design stack and component base
+        rule: >-
+          ADR settled BEFORE the first visual decision: UI framework, chosen accessible component
+          base, styling engine, preview deployment target, and the assisted design tooling used. The
+          method is stack-agnostic; it is not agnostic to the COST of writing one. Declaring nothing
+          does not leave the choice open: it de facto mandates everything-by-hand.
+          Everything-by-hand produced, on a fourteen-screen product, a 345 KB single-file
+          foundation, fourteen components rewritten from scratch and a proprietary rendering
+          pipeline — design budget spent on plumbing. The ADR names the chosen base and above all
+          WHAT IT SPARES US FROM WRITING; this product's tokens and components are then a DELTA on
+          it, never a creation ex nihilo.
+      - title: Competing directions and chosen direction
+        rule: >-
+          starter kept: it is the chosen direction and the ADR says so. Adapted or set aside: at
+          least three directions built, the starter included, kept in explorations/; the ADR names
+          the set-aside ones and what decided between them
+      - title: Surface brief and direction contract
+        rule: >-
+          one brief per surface; direction contract in six blocks — THESIS, OWN-WORLD, STORY, FIRST
+          VIEWPORT, FORM, FINISH — written BEFORE the code and never copied into an artefact
+          delivered to the browser
+      - title: Tokens
+        rule: >-
+          derived from the chosen starter — colours with their role, typefaces and scale, spacing,
+          radii, shadows, surfaces —, grids and responsive; exportable to CSS and JSON; color.role →
+          Office work products
+      - title: Components and variants
+        rule: 'each exposing the 7 states: normal, hover, focus, error, empty, loading, disabled'
+      - title: Accessibility
+        rule: WCAG AA contrast verified by tool, not by eye
+      - title: Browsable catalogue
+        rule: runnable outside the development environment
+  - id: WP-09
+    name: Navigation, information architecture and terminology
+    purpose: >-
+      What is expensive to change later. Any change after G0 reopens the gate on all delivered
+      releases.
+    completion: Every term tested with a persona. Navigation covers all steps. Frozen by an immutable Git tag.
+    lifecycle: CORE INVARIANT
+    sections:
+      - title: Global navigation
+        rule: "covering all steps of the skeleton — the customers' AND the operators', each in their own space"
+      - title: Information architecture
+      - title: TRM-nn user glossary
+        rule: every term unique, unambiguous, tested with a persona
+      - title: Trace TRM → STG
+  - id: WP-10
+    name: Living data model
+    purpose: >-
+      The product's data model in three layers, only one of which is hand-written. The semantics —
+      truth categories, statuses, financial rules — are settled in the foundation and frozen at G0.
+      The derived model is extracted from the executed schema, never drafted. The linking table
+      attaches every entity and every field to a glossary term and a truth category: it is what
+      makes a semantic drift visible at the slice where it occurs rather than two releases later.
+    completion: >-
+      Disjoint categories. Propagation rule written and impossible to bypass. Reviewed by the domain
+      critic. Derived model regenerated from the executed schema and not edited. Zero unresolved
+      items in the linking table. Any modification of a CORE INVARIANT element outside C1 carries a
+      declared EX exception, otherwise K4 blocks.
+    lifecycle: >-
+      living under control — CORE INVARIANT core frozen at G0, derived layer regenerated at every
+      slice
+    sections:
+      - title: Truth categories
+        rule: defined and disjoint
+      - title: Status and progression model
+      - title: Structuring financial rules
+        rule: reviewed by the domain critic
+      - title: Propagation rule
+        rule: a computation never improves the truth status of its inputs
+      - title: Derived model
+        rule: >-
+          entities, fields, relations extracted from the executed schema — regenerated, never
+          hand-written
+      - title: Linking table
+        rule: >-
+          every entity and every field resolves to a glossary term and a truth category — an
+          unresolved item is a semantic drift
+      - title: Core classification
+        rule: >-
+          every entity and every field of the core labelled CORE INVARIANT or EXTENSION by blast
+          radius, frozen at G0
+      - title: Migration ledger
+        rule: >-
+          every migration attached to the slice and the story that motivates it; an orphan migration
+          is an undeclared foundation change
+  - id: WP-11
+    name: Executable foundation and living prototype
+    purpose: >-
+      The navigable foundation at very high structural fidelity — all steps exist, navigation works,
+      the vocabulary is real — AND its current composed state: foundation ⊕ release deltas ⊕ slice
+      deltas. A foundation frozen at G0 and a product at slice 5 are not two work products: they are
+      the same artefact seen on two dates, and keeping them separate meant maintaining two truths.
+    completion: >-
+      Can be traversed end to end with no dead screen. Opens at a deployed URL. The content comes
+      from WP-06: zero fixtures on the data path, a DISQUALIFYING point. A compliant foundation on
+      invented data has already passed G0 once — it proved nothing and cost an entire cadence.
+    lifecycle: frozen at G0
+    sections:
+      - title: Executable source
+        rule: >-
+          on the DESIGN STACK declared in WP-13, and on the component base it names — never a
+          rendering pipeline written for this product alone
+      - title: Build and DEPLOYED preview URL
+        rule: >-
+          deployed, not merely buildable: a URL the business opens without installing anything. A
+          local file to open from a repository is not a preview, it is an attachment
+      - title: Skeleton coverage
+        rule: every STG reachable
+      - title: Link to the real corpus
+        rule: >-
+          the foundation reads WP-06; the data path is named and verifiable. NO fixture reachable
+          from this work product
+      - title: Rendering of ABSENT fields
+        rule: >-
+          a field the corpus does not source is rendered as absent and says why — never filled with
+          a plausible value
+      - title: Composition
+        rule: >-
+          foundation ⊕ release deltas ⊕ slice deltas, applied in order — no screen written directly
+          here
+      - title: Composition manifest
+        rule: foundation commit, release baseline, ordered list of applied slice deltas, timestamp
+      - title: Skeleton coverage
+        rule: >-
+          every STG remains reachable after composition — a delta that breaks a step is a
+          subordination defect
+      - title: Non-subordinated deviations
+        rule: >-
+          any screen present after composition that traces neither to a foundation step nor to a
+          declared delta is listed: an unauthorised design, not a novelty
+      - title: Current preview URL
+        rule: a single one, the one the business opens
+  - id: WP-12
+    name: Target technical architecture
+    purpose: >-
+      What is expensive to change on the technical side. The exact counterpart of the design
+      foundation: until now the method froze the vocabulary at G0 and left persistence to be decided
+      at the first slice.
+    completion: >-
+      Every element classified. The architecture covers the entire skeleton. Frozen by Git tag: a
+      CORE INVARIANT modified outside C1 is blocked by K4.
+    lifecycle: CORE INVARIANT
+    sections:
+      - title: Integration boundaries
+        rule: what the product owns, what it consumes, and the contract between the two
+      - title: Persistence model
+        rule: aligned with the truth categories of the semantic foundation, never invented on the side
+      - title: Deployment topology
+        rule: >-
+          DEV → QA → PROD, PREPROD only on evidence; a single artifact, built once and promoted by
+          fingerprint — environments differ only by configuration and secrets, never by code;
+          acceptance in QA and production release are two distinct human decisions
+      - title: Security architecture
+        rule: surfaces, authentication, authorisation, secrets — consistent with the risk tiers
+      - title: Non-functional constraints
+        rule: 'each one quantified: without a number, it is not a constraint'
+      - title: Classification of every element
+        rule: >-
+          CORE INVARIANT or EXTENSION, by blast radius; an element taken from the architecture
+          starter says so, and is classified like the others
+      - title: Skeleton coverage
+        rule: the architecture supports all steps, including those of distant releases
+  - id: WP-13
+    name: Structuring decisions and build-vs-buy
+    purpose: >-
+      The choices we do not remake, and what they exclude. An architecture decision without a
+      rejected alternative is not a decision: it is a default by omission.
+    completion: >-
+      Every ADR names at least one rejected alternative and what the decision excludes. Every
+      decision is classified, the design stack ADR included.
+    lifecycle: CORE INVARIANT or EXTENSION depending on the decision
+    sections:
+      - title: ADR-nn — the decision
+        rule: >-
+          in one sentence; the architecture starter is recorded there with the decision — kept,
+          adapted or replaced — and who made it; any divergence from the starter is an ADR
+      - title: Rejected alternatives
+        rule: at least one, with the reason for rejection
+      - title: What the decision excludes
+        rule: the trade-off, explicitly
+      - title: Build or buy
+        rule: for every non-differentiating capability
+      - title: Carry-over of the design stack
+        rule: >-
+          The DESIGN STACK is settled in WP-08, at the opening of activity 8: it conditions the
+          first visual decision and cannot wait for activity 11. It is CARRIED OVER here to be
+          classified CORE INVARIANT or EXTENSION and confronted with the target architecture. A
+          divergence between the design stack and the build stack is a finding, never two truths to
+          be reconciled at the first slice.
+      - title: Classification
+        rule: CORE INVARIANT if challenging it invalidates delivered work, EXTENSION otherwise
+      - title: Review conditions
+        rule: what, if observed, would reopen the decision
+  - id: WP-14
+    name: Foundation SUX campaign
+    purpose: >-
+      Test the STRUCTURE of the foundation — path, words, money and rights journeys — with BLIND
+      synthetic users, before G0 freezes it as CORE INVARIANT. The only evidence, before the freeze,
+      that the skeleton, navigation and glossary are understood without knowing the intent.
+    completion: >-
+      The seven pieces present; K7 replays SUX1–SUX6 with no finding: prior, hashed manifest,
+      candidate equal to the frozen foundation, vocabulary filter passed, real interaction, cited
+      patterns, synthetic labelling. Each finding routed to WP-05, WP-09 or WP-11 is handled, or
+      carried as a dated reservation, before G0.
+    lifecycle: >-
+      Frozen per candidate: a campaign is bound to the sha256 of the foundation it tested; a
+      corrected foundation calls for a regression, never the rewriting of an observation.
+    sections:
+      - title: Protocol
+        rule: >-
+          written BEFORE the sessions; protocol version, separate roles — orchestrator, blind user
+          agent, observer, researcher, triage — and what each receives and never receives
+      - title: Candidate tested
+        rule: foundation commit, build sha256, DEPLOYED URL; every session opens and closes on it
+      - title: Personas and missions
+        rule: >-
+          fact sheets of life facts drawn from the PER-nn and their verbatims, rendered in prose,
+          consistency check; missions in the user's words, with their natural stopping point; no
+          word of the interface
+      - title: Firewall
+        rule: >-
+          closed list of internal vocabulary (TRM-nn, screens, stages) and hashed manifest of the
+          exact inputs of each session, written before it
+      - title: Raw results
+        rule: >-
+          one capture per action, log of each session, recorded end; fingerprint index — immutable;
+          a narrated session is rejected
+      - title: Patterns and triage
+        rule: >-
+          each pattern cites the sessions that show it and those that contradict it; each triaged
+          finding is routed to WP-05, WP-09, WP-11, or classified EXPECTED STOP, OUT OF SCOPE, NO
+          FOLLOW-UP
+      - title: Limits
+        rule: >-
+          “N synthetic sessions”, never “N users”; correlated sessions (same model, same templates);
+          no score or threshold; establishes no fact about a real person
+  - id: WP-15
+    name: Release architecture and sequencing
+    purpose: >-
+      The breakdown into slices with a standalone value proposition, and their order. The most
+      structuring decision of the cycle.
+    completion: >-
+      Every STG assigned to exactly one release via INTRODUCES (K1). No circular dependency nor any
+      dependency on a later release.
+    lifecycle: living under control
+    sections:
+      - title: REL-name — one sheet per release
+        rule: value proposition, steps covered
+      - title: The three tests, demonstrated per release
+        rule: desirable alone · deliverable alone · measurable alone
+      - title: Typed links to the skeleton
+        rule: INTRODUCES exactly once · ENRICHES without limit · DEPENDS-ON towards an earlier release
+      - title: Sequencing
+        rule: ordered by value and by risk, never by ease
+      - title: Dependencies
+        rule: each one named and dated, no cycle
+      - title: Anticipated risk tier per release
+  - id: WP-16
+    name: G0 decision and learning close-out
+    purpose: >-
+      The assembly is DERIVED, it is no longer copied by hand. The charter elements come from the
+      work products that carry them, the control results from the controls themselves, the verdicts
+      from the critics, and the decision — rationale, authority, date, commit — from the Run Ledger
+      where the control tower recorded it at the crossing. Copying by hand what the machine already
+      knows produced a document that could CONTRADICT its own sources, and it is the only document a
+      gate reads. What remains here is what no machine can write: what this passage taught us.
+    completion: >-
+      Every charter element present (K7). Zero open BLOCKER. Foundation frozen by an immutable Git
+      tag. Investor pitch and targeted investors: "pitch" and "investisseurs" formats checked.
+    lifecycle: frozen
+    sections:
+      - title: Learning close-out
+        rule: what it cost · what surprised us · what an agent should have detected
+      - title: Targeted investors
+        rule: at least three people, not firms · sector, geography, portfolio without competitor, track record · each sourced · ticket and access declared
+      - title: Investor pitch
+        rule: eleven slides — YC seed deck and INSEAD NBV tools · the title is the idea · every figure sourced · traction on the reliability ladder · the ask decided by the product owner and tied to the hypotheses it settles
+  - id: WP-17
+    name: Desirable scope and release metrics
+    purpose: >-
+      The smallest scope that stands on its own, and how we will know it has produced the expected
+      effect.
+    completion: >-
+      The scope covers exactly the assigned steps. No metric that cannot be instrumented with what
+      the release delivers.
+    lifecycle: frozen at G1
+    sections:
+      - title: Desirable scope
+      - title: Exclusions
+        rule: written as precisely as the inclusions
+      - title: Skeleton steps covered
+        rule: exactly those assigned, no more, no less
+      - title: The three tests, demonstrated
+      - title: Success metrics
+        rule: one per outcome, with measurement method and data source
+  - id: WP-18
+    name: Design brief
+    purpose: >-
+      Entry contract for the design activities. A brief is never absent: it is under-specified, and
+      an autonomous designer then fills the gap by silent inference.
+    completion: >-
+      The three non-negotiable questions are answered. Missing questions have been the subject of a
+      single round of at most four. Every hypothesis made has its test point.
+    lifecycle: living
+    sections:
+      - title: Concrete subject
+        rule: not the category — the trade's vernacular
+      - title: User and physical conditions
+        rule: worksite screen in the sun ≠ office dashboard
+      - title: Main job of the screen or journey
+      - title: What the foundation already freezes
+        rule: NON-NEGOTIABLE — the answer is in the repository
+      - title: Rejected directions and why
+      - title: Evidence level on this journey
+        rule: NON-NEGOTIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC or UNVALIDATED
+      - title: Risk tier of what the screen handles
+        rule: NON-NEGOTIABLE
+      - title: Hypotheses made for lack of an answer
+        rule: labelled UNVALIDATED, tested at activity 18
+      - title: Release insights
+        rule: strictly limited to the scope; the others are routed to the backlog
+      - title: JRN-nn target journeys
+        rule: trace to STG and REL
+      - title: Attested conformity to the foundation
+        rule: order and vocabulary unchanged
+      - title: Foundation change needs
+        rule: routed to G0 (EX3), never applied here
+  - id: WP-19
+    name: Release Strategic Design
+    purpose: >-
+      The very high fidelity executable prototype covering the release experience end to end, by
+      filling in the foundation.
+    completion: >-
+      Covers all journeys with no dead screen. Alters neither the navigation, nor the IA, nor the
+      vocabulary of the foundation. No foundation component silently modified.
+    lifecycle: frozen at G1
+    sections:
+      - title: Alternatives explored
+        rule: ≥ 3 materially distinct before convergence
+      - title: Chosen direction
+        rule: explicitly compared to the rejected ones, with rationale; direction ADR
+      - title: Release storyboard
+      - title: Executable source and shareable build
+        rule: preview URL + frozen commit
+      - title: Design System delta
+        rule: >-
+          every addition justified by a journey, the 7 states covered, integrated into the global
+          system
+      - title: Fixtures
+        rule: realistic, never invented data presented as real
+  - id: WP-20
+    name: Release solution design
+    purpose: >-
+      How this release's journeys are realised within the technical foundation. The counterpart of
+      Strategic Design, on the engineering side, at the same cadence.
+    completion: >-
+      Fits within the technical foundation without modifying a CORE INVARIANT. Every interface
+      contract is testable.
+    lifecycle: frozen at G1
+    sections:
+      - title: Components touched and created
+      - title: Interface contracts
+        rule: each one versioned and testable
+      - title: Data flows
+        rule: confronted with the truth categories of the foundation
+      - title: Migration impacts and reversibility
+      - title: Attestation of conformity to the technical foundation
+        rule: or deltas explicitly carried to G0
+      - title: Deviations from the foundation
+        rule: routed to G0 (EX3), never applied here
+  - id: WP-21
+    name: Dependencies, technical risks and tiers
+    purpose: >-
+      The technical input that activity 19 required without ever having it. A backlog neither
+      qualifies a dependency nor proposes a tier without a solution architecture.
+    completion: >-
+      No circular dependency nor any dependency on a later release. Every capability carries a
+      justified tier. Without this work product, activity 19 is BLOCKED — missing input.
+    lifecycle: living
+    sections:
+      - title: Dependencies per capability
+        rule: technical, data, learning — each one named and dated
+      - title: Absence of cycles
+        rule: demonstrated, not asserted
+      - title: Technical risks
+        rule: each one with its mitigation or its named acceptance
+      - title: Risk tier per capability
+        rule: R0 to R3, justified — drives the evidence and the authorities downstream
+      - title: Capabilities not feasible in this release
+        rule: named and routed
+  - id: WP-22
+    name: Design QA report
+    purpose: >-
+      First handoff to an evaluator independent of the producer. Verifies consistency and
+      subordination to the foundation.
+    completion: >-
+      Zero open BLOCKER. Multi-device screenshots produced. Accessibility check tool-based, not
+      declarative.
+    lifecycle: per pass
+    sections:
+      - title: Consistency and conformity to the Design System
+      - title: Responsive and edge states
+      - title: Accessibility
+        rule: tool-based check, multi-device screenshots
+      - title: Subordination to the foundation
+        rule: PASS or FAIL with evidence
+      - title: Findings
+        rule: classified BLOCKER · MAJOR · MINOR · OBSERVATION
+  - id: WP-23
+    name: User validation and convergence
+    purpose: >-
+      The strongest evidence available on user behaviour, labelled for what it is. Without
+      participants: synthetic review per persona, documentary cross-checking, and production
+      measurement for what only observation can settle. The most abusable work product of the
+      method.
+    completion: >-
+      Protocol prior to the test. Version frozen by commit. Unfiltered results. AXR expert review
+      and SUX campaign kept separate, each labelled; K7 replays the SUX campaign with no finding.
+      Evidence level labelled — a synthetic or documentary review presented as empirical is a
+      BLOCKER, and so is an expert review presented as a user test. Each behaviour assumption not
+      settled by real participants carries its production measurement.
+    lifecycle: per pass
+    sections:
+      - title: Protocol
+        rule: written BEFORE the test, identical across simulated personas as across participants
+      - title: Version tested
+        rule: frozen by commit, cited
+      - title: Participants
+        rule: >-
+          PER-nn personas of the expert review, labelled SYNTHETIC · AXR, and the agent that
+          embodies them; sessions of the SUX campaign, labelled SYNTHETIC · SUX, counted as
+          “synthetic sessions”; real participants if any exist — recruitment, number, biases
+      - title: Raw results
+        rule: unfiltered, including those that contradict the thesis
+      - title: Evidence level
+        rule: >-
+          EMPIRICAL · DOCUMENTARY · SYNTHETIC · AXR · SYNTHETIC · SUX · UNVALIDATED — mandatory
+          label
+      - title: UNVALIDATED hypotheses confronted
+        rule: >-
+          each one settled by real participants, or deferred with its production measurement —
+          metric, event, threshold, decision
+      - title: Corrections
+        rule: >-
+          each tracing to a labelled finding — SYNTHETIC · AXR, SYNTHETIC · SUX, DOCUMENTARY or
+          EMPIRICAL
+      - title: Expert review (AXR)
+        rule: >-
+          critic(product), who knows the intent and did not design the prototype: coverage plan
+          written beforehand, outcome per unit, observed and reproduced findings — never presented
+          as a user test
+      - title: SUX campaign
+        rule: >-
+          blind synthetic users on the frozen release prototype, same protocol as before G0:
+          firewall, hashed manifest, raw results, patterns, triage; the campaign lives under sux/
+  - id: WP-24
+    name: Release backlog and slice map
+    purpose: >-
+      What remains to be done, in what order, and what must be true to start. Putting the backlog in
+      order IS the slice map: every slice is a demonstrable user outcome, vertical — data, API,
+      screens and tests together —, only one in progress at a time. Milestones are named slices, not
+      dates.
+    completion: >-
+      Release coverage at 100%. Every story traces to a journey and a screen. Every AC verifiable
+      (K3).
+    lifecycle: living
+    sections:
+      - title: EPC-nn epics
+        rule: trace to JRN and REL
+      - title: STO-nn stories
+        rule: trace to EPC and a Strategic Design screen
+      - title: AC-nn.n acceptance criteria
+        rule: each one verifiable and unambiguous
+      - title: Priorities
+        rule: by value and by risk
+      - title: Dependencies
+        rule: validated by principal-engineer, none on a later release
+      - title: Risk tier per capability
+      - title: Slice map
+        rule: >-
+          S-nn ordered — dependencies, value, risk retired, learning; each one a demonstrable user
+          outcome, vertical; no platform slice; only one in progress at a time
+      - title: Story assignment
+        rule: each one assigned to a slice or explicitly deferred
+      - title: Baseline manifest
+        rule: Release Baseline, foundation, Design System — versions and commits
+      - title: Open NEEDS CLARIFICATION
+        rule: >-
+          owner, deadline, the FIRST slice that needs it, and a CLASS: DECIDE BEFORE THE CONTRACT ·
+          DECIDE BEFORE ACCEPTANCE — the prototype's value is the default proposal, carried as a
+          named, versioned parameter · OUTSIDE V1 · TECHNICAL; a point is to be decided before the
+          contract only if the contract cannot say HOW to build without it
+  - id: WP-25
+    name: G1 decision and learning close-out
+    purpose: >-
+      The assembly is DERIVED, it is no longer copied by hand. The charter elements come from the
+      work products that carry them, the control results from the controls themselves, the verdicts
+      from the critics, and the decision — rationale, authority, date, commit — from the Run Ledger
+      where the control tower recorded it at the crossing. Copying by hand what the machine already
+      knows produced a document that could CONTRADICT its own sources, and it is the only document a
+      gate reads. What remains here is what no machine can write: what this passage taught us.
+    completion: >-
+      Every charter element present (K7). K3 green. Zero BLOCKER. Release Baseline frozen by an
+      immutable Git tag.
+    lifecycle: frozen
+    sections:
+      - title: Learning close-out
+  - id: WP-26
+    name: Slice contract
+    purpose: >-
+      What the slice must produce, and the evidence that will say it produced it — written BEFORE
+      the code. A slice is vertical: data, API, screens and tests delivered together, for an outcome
+      a user sees. The contract brings together what three separate sprint work products kept apart
+      — objective, design, specification — because they were never read one without the other.
+    completion: >-
+      Outcome phrased as a user outcome. Each exit criterion carries its evidence and its channel.
+      Each material AC has its test, defined before the code. Baseline Delta Declaration produced
+      before any modification. Each entry condition carries its status and what lifts it. Citations
+      sampled and "n confirmed / m corrected" written. No NEEDS CLARIFICATION open. Run Ledger
+      opened (K8).
+    lifecycle: per slice
+    sections:
+      - title: Slice outcome
+        rule: a user outcome in one sentence, demonstrable in QA; acceptance is pronounced against it
+      - title: Scope and budget
+        rule: >-
+          stories kept and exclusions; what no exit criterion requires is deferred — the slice does
+          not grow
+      - title: Exit criteria and evidence
+        rule: >-
+          EXIT-n, each with its evidence: mode (automatic · manual · mixed), CHANNEL (unit ·
+          integration · emulator · simulator · web · physical device · QA environment), procedure,
+          success, failure, retained artifact; evidence is only worth its channel, and a leg not
+          executed is DEFERRED to a named gate, or OUT OF SCOPE — never PASS
+      - title: Tests defined before the code
+        rule: every material AC → ≥ 1 named test; changing a test means amending the contract
+      - title: Baseline Delta Declaration
+        rule: >-
+          MUST PRESERVE before any modification; every delta justified by a story; foundation
+          deviation → EX3
+      - title: Screens and prototype
+        rule: >-
+          every story exercised on the living prototype, three widths, empty, error and loading
+          states
+      - title: Design System delta
+        rule: justified story by story; no silent modification of an existing component
+      - title: Rules, data, API, migrations
+        rule: every rule cites its source; migrations numbered with their rollback
+      - title: Risk tier and security
+        rule: the highest tier among the stories kept; R2 or R3 → human escalation at K1
+      - title: Open points
+        rule: >-
+          NEEDS CLARIFICATION resolved or routed — an open NC does not pass K1; at most one decision
+          request to the Product Owner, consolidated, before acceptance
+      - title: Amendments
+        rule: >-
+          a deviation discovered during construction is a dated amendment, never growth: what
+          exceeds goes to a later slice
+      - title: Entry conditions
+        rule: >-
+          ENTRY-n, each with its status MET · PENDING · DEFERRED and what lifts it; includes
+          EXTERNAL prerequisites — ability to create the repository, host credentials, store
+          membership and signing, toolchain imposed by the SDK, a stable QA account for the Product
+          Owner, whose password they set themselves outside Git and outside the chat — and each
+          "material" learning of the previous slice. An external prerequisite is not a product
+          decision, but it is verified BEFORE the GO
+      - title: KEEP / DISCARD
+        rule: >-
+          Slice 0 and any technical proof: each artifact classified KEEP or DISCARD BEFORE it is
+          written; no KEEP → DISCARD import, verified by a dependency check; DISCARD is removed at
+          close-out, forward-only migration included. Any other slice: "not applicable" and why
+  - id: WP-27
+    name: Construction and evidence
+    purpose: >-
+      What was built against the contract, and the evidence for every exit criterion. Makes visible
+      any deviation between the contract and the code: silent absorption is the defect this work
+      product exists to prevent. The classification of a red test is rendered by critic(quality),
+      never by whoever wrote the test or the code.
+    completion: >-
+      Each exit criterion carries its retained evidence, with its channel. Every deviation
+      classified (EX4). Each red test classified by critic(quality). No PRODUCT FAILURE masked.
+      Critical journeys executed in QA on the living prototype. State × behavior matrix with no
+      empty cell; known oracles replayed without a hit. Version in QA identical, by fingerprint, to
+      the version validated in DEV.
+    lifecycle: per slice
+    sections:
+      - title: Contract / implementation deviations
+        rule: >-
+          classified: missing · partial · contradicted · not requested · intentionally superseded —
+          each one decided or routed
+      - title: Results per exit criterion
+        rule: >-
+          per EXIT and per AC: test, GREEN or RED, date, commit — observable fact, without
+          interpretation
+      - title: CLASSIFICATION VERDICT
+        rule: >-
+          PASS · PRODUCT FAILURE · TEST FAILURE · CANNOT VERIFY, per red test, rendered by
+          critic(quality) only
+      - title: Healing and re-verifications
+        rule: >-
+          only for TEST FAILURE, every healing re-verified by an independent pass; a product defect
+          is never healed
+      - title: Contract — code — tests — decisions matrix
+        rule: one row per story; every deviation classified, nothing absorbed
+      - title: Journeys run in QA
+        rule: >-
+          played on the recomposed living prototype — a single URL and its commit —, not only in
+          automated tests
+      - title: Accepted debt and residual risks
+        rule: named, with owner and deadline
+      - title: State × behavior matrix
+        rule: >-
+          one inventory item touched by the slice per row; reached · forward · Back · restored ·
+          edited · persisted · rest unchanged · downstream; PASS or justified N/A — never empty;
+          played in QA, on the deployed version
+      - title: Oracles and root causes
+        rule: >-
+          each oracle: the general question, the states swept, the hits; hits grouped by root cause
+          — fix the mechanism, never the instance; an oracle enters permanent regression
+      - title: Version identity
+        rule: >-
+          commit, artifact fingerprint, migration version, configuration fingerprint, pinned
+          versions; the artifact validated in DEV is the one promoted to QA — same fingerprint,
+          checked through /version; hosted CI golden path: GREEN, or NOT RUN with its reason — never
+          PASS
+  - id: WP-28
+    name: Independent review verdicts
+    purpose: >-
+      Four parallel tracks, four distinct and independent verdicts. No evaluator fixes what it
+      evaluates.
+    completion: >-
+      Zero BLOCKER in the PRODUCT domain. Each finding attached to its entity, to its domain and to
+      what it blocks. Each finding and each objection carries its disposition. No finding fixed by
+      its own judge — closure requires a new pass by the issuing critic.
+    lifecycle: per pass
+    sections:
+      - title: Engineering review
+        rule: based on the actual diff; AC → Evidence map verified as effective, not merely present
+      - title: Design conformity
+        rule: screen-by-screen comparison, visual diffs, deviations classified
+      - title: Security review
+        rule: threat model; secrets, auth, data access, dependencies; no secret in clear text
+      - title: Proportionate pentest
+        rule: if tier R2 or R3 — findings demonstrated, not assumed; no destructive action
+      - title: Findings
+        rule: >-
+          classified according to the single taxonomy, attached to their surface tier; each carries
+          a DOMAIN — PRODUCT, a defect of the judged artifact, or CONTROL, a defect of a template, a
+          K control, a validator —, what it BLOCKS — this gate · acceptance · production release ·
+          debt — and its DEADLINE; product eligibility is computed on PRODUCT alone — a CONTROL
+          BLOCKER blocks the transition that depends on the broken control, never the product gate
+      - title: Dispositions
+        rule: >-
+          one line per finding and per objection: ACCEPTED (change made, commit) · NARROWED (part
+          kept, part routed as an open point) · REJECTED (rationale and evidence) · NOT VERIFIED
+          (pointer, no effect); each disposition is verified against the canonical source by someone
+          other than the issuer, and ONLY what is verified changes the state of the product or of
+          the method; accepted / narrowed / rejected counts published
+  - id: WP-29
+    name: Slice acceptance and learning close-out
+    purpose: >-
+      The assembly is DERIVED, it is no longer copied by hand. The charter elements come from the
+      work products that carry them, the control results from the controls themselves, the verdicts
+      from the critics, and the decision — rationale, authority, date, commit — from the Run Ledger
+      where the control tower recorded it at acceptance. What remains here is what no machine can
+      write: the script the Product Owner plays, what acceptance leaves intact, what this slice
+      taught us, and what comes next.
+    completion: >-
+      Zero BLOCKER, including security ones. Slice accepted in QA by the Product Owner, verdict
+      recorded word for word. No-loss audit at zero unexplained disappearance. Next action written.
+      Does NOT constitute production authorisation: G3 and G4 are distinct.
+    lifecycle: frozen
+    sections:
+      - title: Learning close-out
+        rule: >-
+          what cost, surprised, should have been detected — attached and routed; each "material"
+          learning becomes an entry condition of the next slice
+      - title: Acceptance script
+        rule: >-
+          one page at most: journeys to play, channel, URL, version (/version), the Product Owner's
+          STABLE QA account, expected result per journey; only the moments the machine cannot judge;
+          the consolidated decision request first, each item with its default value — "confirm all"
+          is a complete answer
+      - title: No-loss audit
+        rule: >-
+          direction A — each ACTIVE element has a destination in the current product; direction B —
+          each element of the original experience has a disposition; both counted, zero unexplained
+          disappearance — absence from a later work product is not a supersession
+      - title: Next action
+        rule: 'one line: the next activity, its missing input, who lifts it'
+  - id: WP-30
+    name: Production readiness and rollback plan
+    purpose: >-
+      A documented rollback is not a rollback. Missing evidence of its execution is grounds for
+      automatic refusal.
+    completion: >-
+      Rollback tested. Observability in place. An untested rollback is an automatic refusal, with no
+      verbal exception.
+    lifecycle: per version
+    sections:
+      - title: Quality, security, migrations, observability, documentation
+      - title: Rollback plan AND evidence of its execution
+        rule: tested, not merely described
+      - title: Security evidence proportionate to the tier
+        rule: pentest if R2 or R3
+      - title: Re-review verdict
+        rule: for every finding fixed since the last pass
+      - title: Observability plan and alert thresholds
+      - title: Deployment window and abort criteria
+      - title: 'In tier R3: two distinct human authorities'
+        rule: recorded separately
+  - id: WP-31
+    name: Deployment record and verification
+    purpose: >-
+      Closes the loop: what was deployed, what was observed, and what it says about the targeted
+      outcome.
+    completion: >-
+      Rollback point verified before cutover. Signals confronted with the release metrics. Backlog
+      and release architecture updated.
+    lifecycle: per version
+    sections:
+      - title: Progressive strategy applied
+        rule: rollback point verified BEFORE cutover
+      - title: DEP-vX.Y — stories delivered
+      - title: Post-deployment verification
+        rule: health, metrics, errors, critical journeys, over the defined window
+      - title: Keep / rollback decision
+        rule: recorded
+      - title: Signals confronted with the success metrics
+        rule: conclusions distinguished from data
+      - title: Product decision
+        rule: continue · fix · re-slice · pivot · stop
+gates:
+  - id: G0
+    name: Product Architecture Gate
+    authority: Product Owner — NON-DELEGABLE
+    question: Are the foundation and the release breakdown right?
+    evidence_pack:
+      - Exhaustive, ordered skeleton
+      - >-
+        MARKET TESTS: at least one critical hypothesis settled by an action or a payment from real
+        people, sourced learning cards — a foundation built without any market evidence comes with
+        that absence written down
+      - >-
+        REAL CORPUS: complete provenance, coverage quantified per STG, admissibility verdict from
+        critic(domaine) — a foundation built on fixtures does not come before this gate
+      - 'Executable foundation: DEPLOYED preview URL + frozen commit'
+      - Navigation, IA and glossary
+      - >-
+        SUX campaign on the foundation: prior protocol, hashed foundation, raw results, patterns,
+        triage, findings routed to WP-05, WP-09 and WP-11
+      - Data semantics, statuses, financials
+      - Design System foundations
+      - 'Target technical architecture: boundaries, persistence, deployment, security, non-functional'
+      - Every element of the technical foundation classified CORE INVARIANT or EXTENSION
+      - ADRs for structural decisions, each with its rejected alternative
+      - Release architecture, three tests demonstrated
+      - Sequencing, dependencies, assumptions
+      - critic(product) and critic(domaine) verdicts
+      - K1, K2, K3 results
+      - Delegated decisions to ratify and arbitrations decided — autopilot queue, ranked by blast radius
+    decisions: APPROVE AND FREEZE · APPROVE WITH CONDITIONS · ITERATE · REJECT
+    refusal_routing: >-
+      Routed by cause: skeleton → 5 · inadmissible corpus, reachable fixture or insufficient
+      coverage → 6 · navigation, IA, terminology, semantics → 8 · foundation not traversable, not
+      deployed or not fed by the corpus → 9 · technical foundation or structural decision → 10 ·
+      structure not understood by the synthetic sessions → 11, then 5, 8 or 9 depending on the
+      routed work product · breakdown or sequencing → 12.
+    expiry: >-
+      5 business days. Foundation frozen by an immutable tag; any change to a CORE INVARIANT reopens
+      G0.
+  - id: G1
+    name: Release Gate
+    authority: Product Owner AND Tech authority — non-delegable in R3
+    question: Does this release deserve to be built, and is it ready to enter delivery?
+    evidence_pack:
+      - Scope, exclusions, metrics
+      - 'Strategic Design: preview + frozen commit'
+      - Attestation of conformance to the foundation
+      - Integrated Design System delta
+      - Release solution design and interface contracts
+      - Dependencies, technical risks and risk tier per capability
+      - Validation results, protocol, version, evidence level
+      - Traced backlog, priorities, dependencies, tiers
+      - Slice map
+      - Product, design, domain verdicts
+      - Open NEEDS CLARIFICATION items
+      - Unvalidated assumptions
+    decisions: ACCEPT · ACCEPT WITH CONDITIONS · ITERATE · REJECT
+    refusal_routing: >-
+      Desirability → 17 · scope or journey → 13 · design or DS → 14 · backlog, priorities, slices →
+      17. If the reason calls the foundation into question, escalate to G0 (EX3), never a design
+      iteration. Two rounds at most.
+    expiry: 5 business days. Expires if the foundation changes, or after 90 days without a start.
+  - id: K1
+    name: Slice Contract Checkpoint
+    authority: AUTOMATED — conditional escalation
+    question: >-
+      Is the slice contract compliant, complete and subordinate to the higher baselines — can the
+      build begin?
+    evidence_pack:
+      - Slice outcome stated as a user outcome
+      - Each exit criterion with its evidence and its procedure
+      - Tests defined before the code for each material AC
+      - Subordination Design ⊂ Release ⊂ Spine (K4)
+      - Baseline Delta Declaration present
+      - Prototype exercising every story
+      - Complete AC → Evidence map (K3)
+      - Every AC declared testable
+      - Tier declared and justified
+      - Migration and rollback if applicable
+      - Zero BLOCKERs on design and conformance
+      - Paths declared in the registry (K2)
+      - Contrast and accessibility checked with tooling
+    decisions: FREEZE AUTOMATICALLY · ESCALATE
+    refusal_routing: >-
+      Human escalation if: the delta touches the foundation's navigation, IA, terminology or
+      semantics · OR tier R2 or R3 · OR open NEEDS CLARIFICATION · OR open BLOCKER · OR second
+      rework of the same contract. Authority then: PO and Tech authority jointly.
+    expiry: >-
+      Nominal exit: Design Baseline frozen by tag, slice contract frozen, build authorized, Run
+      Ledger opened (K8) — no human called upon. Replaces the former Sprint Ready Gate: authorizing
+      the start of a slice whose contract is compliant required no human judgment.
+  - id: G3
+    name: Slice Acceptance Gate
+    authority: Product Owner — NON-DELEGABLE
+    question: Does the slice produce its outcome, observed in QA, with evidence for each exit criterion?
+    evidence_pack:
+      - Slice outcome and evidence for each exit criterion
+      - Classification verdict per story and per AC
+      - Baseline-spec-code-tests matrix
+      - Journeys executed in QA on the live prototype
+      - Consolidated decision request, if any
+      - Engineering, conformance, security verdicts
+      - Classified deviations and decisions
+      - Named residual debt and risks
+      - Security findings by severity and tier
+    decisions: ACCEPT · ACCEPT WITH DATED RESERVATIONS · REJECT THE SLICE
+    refusal_routing: >-
+      Never sends back to the build mechanically. Implementation PRODUCT FAILURE → 20 · contract
+      PRODUCT FAILURE → K1 then 19 · TEST FAILURE → 20, classified by critic(quality) · design
+      conformance → K1 then 19 · security → 21, never absorbed into the build. A rejection does not
+      make the slice grow: what the outcome is missing is an amendment; what goes beyond it goes to
+      a later slice.
+    expiry: 3 business days. Does NOT constitute production authorization.
+  - id: G4
+    name: Production Gate
+    authority: Release authority — NON-DELEGABLE. TWO distinct authorities in tier R3
+    question: Can this version go to production, and can we roll back?
+    evidence_pack:
+      - release-readiness.md
+      - rollback-plan.md AND evidence of execution
+      - Security evidence proportional to the tier
+      - Observability plan and thresholds
+      - Data migration and restore point
+      - Window and abort criteria
+      - Re-review after remediation of each finding
+      - 'In R3: two authorities recorded separately'
+      - The candidate build — commit and digest accepted in QA — that the decision designates
+    decisions: AUTHORIZE · AUTHORIZE WITH PROGRESSIVE ROLLOUT · REJECT
+    refusal_routing: >-
+      Readiness, untested rollback, observability → 23 · blocking security → 21 then re-review ·
+      late product defect → G3. An untested rollback is an automatic rejection, with no verbal
+      exception.
+    expiry: >-
+      2 business days. Valid for one build hash, and for 7 days. The tower records the decision
+      for THIS build (factory_clear_gate); the production release workflow reads it back before any
+      deployment (apf release-check), and the required reviewer of the « prod » environment, which
+      the Launchpad provisions, approves the job. The environment approval does not replace the
+      gate: without a G4 decision for this build, the workflow refuses.
+agents:
+  - id: factory-lead
+    mandate: >-
+      Orchestrate the activities, keep the Run Ledger, assemble the evidence packs without
+      pre-judging them, arbitrate procedural exceptions.
+    write_boundary: Run Ledger, evidence packs, assembled gate decisions, workspace.
+    separation_of_duties: Never arbitrates the substance of a producer/critic disagreement — it records both positions.
+    class_rationale: >-
+      Orchestration under ambiguity and keeping the Run state over a long context. A team-selection
+      error propagates to the entire Run.
+    activities: 0, 1, 3, 12, 20, 21, 22, 23, all gates
+  - id: product-lead
+    mandate: Thesis, market tests, outcomes, domain, scope, metrics, backlog, prioritization.
+    write_boundary: C1.2-strategie/strategy/, C1.2-strategie/domain/, releases/{id}/scope, backlog/.
+    separation_of_duties: Accountable for the skeleton, navigation, terminology and semantics at foundation level.
+    class_rationale: Thesis, scope and backlog condition everything downstream.
+    activities: 1, 2, 3, 7, 9, 13, 14, 18, 19, 20
+  - id: product-designer
+    mandate: Foundation, skeleton, Design System, Strategic Design, slice prototypes, deltas.
+    write_boundary: >-
+      C1.3-parcours/spine/ and C1.4-socle/prototype/spine/ (C1 only), C1.4-socle/design-system/,
+      releases/{id}/design, slices/{id}/design.
+    separation_of_duties: 'After G0: READ-ONLY on the foundation. Any need for change is routed to G0, never applied.'
+    class_rationale: The foundation is the least reversible artifact in the method.
+    activities: 4, 5, 8-10, 14, 15, 18, 20
+  - id: data-steward
+    mandate: >-
+      Acquire, source and maintain the product's REAL CORPUS — the data the product shows to a user.
+      Each record carries its source, its read date and its truth category. Does not: fabricate a
+      fixture set to unblock a downstream work product.
+    write_boundary: >-
+      C1.3-parcours/corpus/ and C1.4-socle/prototype/spine/src/data/. No writes to
+      C1.4-socle/design-system/, C1.4-socle/prototype/spine/src/build or to any strategy artifact.
+    separation_of_duties: >-
+      Never approves its own corpus: critic(domaine) renders the admissibility verdict, on the
+      sources and on the coverage. A record without a source is a declared UNKNOWN, never a
+      plausible value.
+    class_rationale: >-
+      The corpus is the PRODUCT in a data product. A wrong corpus propagates to every screen, every
+      test and every release decision, and no downstream review catches it.
+    activities: 6, 9, 16
+  - id: principal-engineer
+    mandate: >-
+      Technical foundation, release solution design, technical specification, implementation,
+      feasibility, dependencies.
+    write_boundary: >-
+      architecture/ and releases/{release-id}/architecture/ in cadences C1 and C2; application code
+      within the declared mutation boundary; technical spec and ADRs.
+    separation_of_duties: >-
+      Never approves its own implementation or its own architecture: critic(engineering) renders the
+      verdict. After G0: READ-ONLY on the CORE INVARIANT elements of the technical foundation.
+    class_rationale: >-
+      High, not medium: an effort set once and for all cannot tell architecture from routine
+      build, and the costly error lies on the architecture side — activity 11 decides what
+      everything else builds.
+    activities: 1, 11, 16, 19, 20, 21
+  - id: quality-engineer
+    mandate: >-
+      Test strategy, generation, execution, healing, reconciliation. Three modes: PLAN, GENERATE,
+      HEAL. It PRODUCES the evidence; it does not judge it.
+    write_boundary: >-
+      EVIDENCE BOUNDARY declared when the Run is opened: test code, fixtures, evaluators, raw
+      results. NO mutation of the product under evaluation.
+    separation_of_duties: >-
+      NO right to classify the result of a test it produced — classification is a critic(quality)
+      verdict. A healing is never closed by its author.
+    class_rationale: ECONOMY class allowed for pure generation; never for diagnosis or healing.
+    activities: 12, 18, 21, 23
+  - id: security-engineer
+    mandate: Threat model, security review, remediation on an explicitly authorized, separate track.
+    write_boundary: Threat model, findings, and the requested security code on a separate track.
+    separation_of_duties: >-
+      Never evaluates its own remediation: the re-review falls to critic(pentest) or to an
+      independent pass.
+    class_rationale: FRONTIER in tier R3, subject to HUMAN OWNER decision.
+    activities: 20, 22, 24
+  - id: critic(·)
+    mandate: >-
+      Single parameterized role: product · design · engineering · quality · métier · pentest.
+      Renders a verdict classified according to the single taxonomy.
+    write_boundary: Its own verdict, in the Run's reviews folder. NOTHING ELSE, under any condition.
+    separation_of_duties: >-
+      Two instances NEVER share a reasoning context. None receives the producer's reasoning — only
+      the artifact and its surface.
+    class_rationale: >-
+      R1 is the constraint, not a fixed assignment: a critic is never routed independently of what
+      it judges.
+    activities: all evaluated activities
+  - id: conformance-auditor
+    mandate: >-
+      Execute and interpret the eight deterministic controls; verify the subordination of baselines
+      and design/code conformance.
+    write_boundary: Its conformance report, its visual diffs, the results of the K controls.
+    separation_of_duties: >-
+      READ-ONLY on the prototype and on all baselines. A foundation deviation is a BLOCKER, never a
+      delta that can be authorized at release level.
+    class_rationale: Most of its work is deterministic and executed by the K controls.
+    activities: 17, 20, 22, 23, K1
+  - id: release-engineer
+    mandate: Readiness, rollback, progressive rollout, post-deployment verification.
+    write_boundary: deployments/{version}/.
+    separation_of_duties: Prepares the production authorization; never grants it.
+    class_rationale: >-
+      High, not medium: the rollback plan and post-deployment verification are what G4 requires;
+      an untested rollback is an automatic rejection.
+    activities: 23, 24, 25
+principles:
+  - id: P1
+    name: Spine before slices
+    rule: >-
+      What is expensive to change is designed once, globally, before any slicing, and frozen at G0.
+      A release fills the foundation; it does not reinvent it. Only a CORE INVARIANT reopens G0.
+    controlled_by: K1, K4
+  - id: P2
+    name: Builder ≠ Judge
+    rule: >-
+      Production and evaluation are assigned to distinct roles. Every activity names an Accountable
+      who is not its producer. Every evaluator role is read-only at the level of its tooling.
+    controlled_by: K5, K6
+  - id: P3
+    name: A single control plane
+    rule: >-
+      No tool, skill or plugin introduces a competing state machine. An agent never silently crosses
+      a material transition: a tool authorization is not a gate authorization.
+    controlled_by: K8
+  - id: P4
+    name: The registry is authoritative
+    rule: >-
+      Decisions, ADRs, baselines, risks and validations are versioned in Git. Paths are declared in
+      artifact-schema.yaml. What is not in Git is not binding; what is not in the registry does not
+      exist.
+    controlled_by: K2, K3
+  - id: P5
+    name: Proportional evidence, acknowledged unknowns
+    rule: >-
+      Evidence depth increases with the risk tier and is never reduced without a recorded human
+      decision. A missing required input produces BLOCKED, never an inference. An approximation is
+      never presented as a measurement.
+    controlled_by: K7
+  - id: P6
+    name: No rule without a control
+    rule: >-
+      A rule that has no deterministic control within 90 days is withdrawn, not kept on hold. An
+      agent never modifies the method it executes: it opens an MCR.
+    controlled_by: 90-day sunset
+  - id: P7
+    name: The product pulls the factory
+    controlled_by: cost of governance, measured at every sync
+    rule: >-
+      Governance exists for the product, never the other way round. Its cost is MEASURED — days
+      before the first code, governance share of the repository — and shown with the project; an
+      exceeded budget is an alert brought to the Product Owner, who decides to lighten or to
+      continue, never a silence.
+controls:
+  - id: K1
+    name: Skeleton coverage
+    blocks: G0
+    verifies: >-
+      Every journey step carries exactly one INTRODUCES link · no DEPENDS-ON toward a step
+      introduced later · no ENRICHES toward a step not yet introduced.
+    rationale: >-
+      The most cost-effective control in the method: it guarantees that the release breakdown is
+      exhaustive and free of overlap.
+    scope: project
+    status: algorithm written, requires a project instance
+  - id: K2
+    name: Registry integrity
+    blocks: every gate
+    verifies: >-
+      Every path cited by an activity exists in artifact-schema.yaml · every registry path is
+      produced by exactly one activity · every activity cited by a role or a skill exists, and each
+      role cites the activities it carries.
+    rationale: >-
+      Without it, a skill can write to paths it defines itself and produce artifacts invisible to
+      governance.
+    scope: method
+    status: active on the registry
+  - id: K3
+    name: Traceability chain integrity
+    blocks: G1, K1, G3
+    verifies: >-
+      No orphan entity · every Story traces to an Epic and a target journey · every material AC
+      points to at least one executed Evidence.
+    rationale: This is what makes “every AC is proven” verifiable rather than declared.
+    scope: project
+    status: algorithm written, requires a project instance
+  - id: K4
+    name: Foundation integrity
+    blocks: merge, K1
+    verifies: >-
+      No commit outside cadence C1 modifies a CORE INVARIANT — design foundation, technical
+      foundation, data model core · subordination Design ⊂ Release ⊂ Spine verified on the design
+      artifacts AND on the recomposed live prototype · no unresolved entity or field in the binding
+      table · no non-subordinate screen in the composed prototype.
+    rationale: >-
+      The counterpart of the release breakdown. Without it, the foundation degrades release after
+      release and the benefit of the breakdown disappears.
+    scope: project
+    status: algorithm written, requires a project instance
+  - id: K5
+    name: Builder ≠ Judge
+    blocks: every gate
+    verifies: >-
+      The Accountable of an activity is never its Responsible · no critic appears as Responsible or
+      Accountable for a work product · no forbidden roles are combined in the same reasoning
+      context.
+    rationale: P2 stops being a prompt instruction and becomes a property of the repository.
+    scope: method
+    status: active on the registry
+  - id: K6
+    name: Tooling restriction
+    blocks: plugin build
+    verifies: >-
+      Every evaluator agent is declared read-only at the level of its tooling · the quality-engineer
+      evidence boundary is declared and respected · the 5 agent definition blocks and its working
+      rules are present, and each critic instance carries its domain checks · an evaluator executes
+      only the method's control commands.
+    rationale: >-
+      A prohibition written in a prompt is an instruction; a tooling restriction is a control. The
+      only mechanism that prevents rather than detects.
+    scope: method
+    status: active on the registry
+  - id: K7
+    name: Evidence pack completeness
+    blocks: gate submission
+    verifies: >-
+      Every item listed by the gate charter is present before submission · every validation result
+      carries its evidence level · no open BLOCKER · the templates (core/templates.yaml) carry
+      exactly the registry's sections · every work product declared complete carries its files, its
+      front-matter and a non-empty H2 per section, with the exact title — the control tower refuses
+      it at declaration, K7 replays the check on the repository.
+    rationale: >-
+      An incomplete pack is not submitted, it is sent back — automatically, without calling on the
+      gate authority.
+    scope: mixed
+    status: active on the registry
+  - id: K8
+    name: Run Ledger and declarations
+    blocks: every gate
+    verifies: >-
+      Run Ledger opened before any activity · cadence declared · EXPRESS path declared before start
+      · convergence round counter maintained · no expired approval · no gate decided without a
+      ledger.
+    rationale: Run state becomes durable and binding, instead of living in a session's memory.
+    scope: project
+    status: algorithm written, requires a project instance
+
+# ── The rest of the reference, as FactoryZen shows it ─────────────────────
+# Same shape as the registry (lists aligned by id when their items carry one, by rank
+# otherwise); only the paths named in lib/i18n.mjs (TEXTES) are read.
+
+method:
+  status: TARGET — complete specification, deterministic controls not yet implemented
+
+skills:
+  - id: atelier-produit
+    mandate: >-
+      Run the opening product workshop ONE QUESTION AT A TIME: what we want to do with the product,
+      for whom — the customers AND the operators who run the service —, what value, how it is
+      delivered and paid for, block by block of the canvas, up to a confirmed recap. Does not: ask a technical question — stack, repository, conventions, tree are
+      computed —, answer in the human's place, or write the canvas before the final confirmation.
+  - id: bootstrap-product
+    mandate: >-
+      Initialize the tree, the canonical registry, the identifier conventions and the Run Ledger,
+      idempotently and WITHOUT ANY QUESTION to the human: everything is computed from the registry
+      and the repository. Executed by the control tower at opening, before the product workshop.
+      Never produces content.
+  - id: journey-skeleton
+    mandate: >-
+      Produce the exhaustive, ordered skeleton of the target journey, named in the user's
+      vocabulary, before any slicing. An incomplete skeleton cannot be caught up: it is paid for in
+      G0 reopenings. One journey per family of actor: the customer's and that of each operator in
+      the canvas — its steps are screens of the product, not a back-office discovered during
+      construction.
+  - id: spine-build
+    mandate: >-
+      Freeze navigation, IA, terminology and semantics, then produce the navigable foundation in
+      very high structural fidelity with its Design System foundations.
+  - id: release-architecture
+    mandate: >-
+      Cut the product into releases that are desirable, deliverable and measurable on their own;
+      order them; qualify dependencies and risks; settle the scope and metrics of each.
+  - id: living-design
+    mandate: >-
+      Produce executable design at every level — foundation, release Strategic Design, slice
+      prototype — with its Design System delta as an extension of the foundation and never a fork,
+      and its Design QA. Recompose the living prototype after each delta: foundation ⊕ release
+      deltas ⊕ slice deltas, never a direct write into the composed artifact.
+  - id: slice-delivery
+    mandate: >-
+      Run one vertical slice end to end, one at a time: contract written before the code — user
+      outcome, scope budget, exit criteria with their evidence, tests defined in advance —,
+      implementation within the mutation boundary, test execution, obsolescence healing, E2E
+      evidence and deployment to QA. Does not: let a slice grow — a deviation is a dated amendment,
+      what exceeds goes to a later slice.
+  - id: synthetic-users
+    mandate: >-
+      Run a SUX campaign — experience test by BLIND synthetic users — on a frozen, deployed
+      candidate: the foundation before G0 (activity 12), the release prototype in validation
+      (activity 18). The BatiZen run protocol without weakening: orchestrator, blind user agent,
+      observer, researcher and triage kept separate; persona, mission and entry point the only
+      things given to the agent, written in a manifest hashed BEFORE the session; deterministic
+      filter on the closed list of internal vocabulary; real interaction, one capture per action;
+      immutable observations bound to the candidate's sha256. Does not: an expert review that knows
+      the intent — that is critic(product), labelled SYNTHETIC · AXR; a score or a threshold; a
+      count in "users"; a fix on the candidate under test.
+  - id: domain-critic
+    mandate: >-
+      Instantiate a domain critic from the template: qualify the industry, collect and DATE the
+      sources, apply the epistemic scale, test the critic on a known case that can be verified
+      independently. Writes to the registry's paths, never to a tree it would define itself.
+  - id: user-evidence
+    mandate: >-
+      Produce enforceable user evidence without depending on humans to recruit: DOCUMENTARY research
+      by default — verbatims of real users read in public sources, each with address, date
+      consulted and literal quotation, two independent sources per trait kept — and in the field
+      when participants exist. Protocol written BEFORE collection, version frozen by commit,
+      unfiltered results, declared biases, mandatory labelling of the level. Researches the
+      operators declared in the canvas like customers — one persona each. Does not: invent a
+      quotation, a figure or a trait; present documentary as empirical; requalify a synthetic
+      review as evidence.
+  - id: solution-architecture
+    mandate: >-
+      Settle the target architecture and the technical realisation of a release, classify each
+      element as CORE INVARIANT or EXTENSION by blast radius, and require a rejected alternative for
+      every structuring decision. Does not: decide an architecture without confronting the whole
+      skeleton, or modify a CORE INVARIANT from C2 or C3.
+  - id: real-corpus
+    mandate: >-
+      Build the product's REAL CORPUS before the foundation: minimal sufficient scope to walk the
+      skeleton end to end, acquisition from the approved sources of WP-03, one provenance line per
+      record — address, date read, literal quotation —, truth category per field, and coverage
+      measured against the skeleton. Does not: produce a set of fixtures. A fixture is a test tool;
+      it never passes a gate and is never displayed in a work product presented to the business.
+  - id: market-tests
+    mandate: >-
+      Put the critical hypotheses to the test of the real market BEFORE the foundation, with the
+      cheapest tests that settle them, and record what they teach as learning cards — INSEAD New
+      Business Venturing, Lean Startup. Does not: publish, write on the product owner's behalf or
+      spend without their decision; present a statement or a simulation as proof of purchase.
+  - id: living-data-model
+    mandate: >-
+      Keep the data model in three layers: semantics written by hand and frozen at G0, derived model
+      extracted from the executed schema, mapping table that ties each entity and each field to a
+      glossary term and a truth category. Does not: write a data model by hand — a model kept by
+      discipline diverges by the second sprint, which is exactly the fault it corrects.
+  - id: interrogatoire
+    mandate: >-
+      Run the interrogation of the product intent ONE QUESTION AT A TIME, until the frontier of the
+      decision tree is empty. The grilling primitive provides the tree and the frontier; this skill
+      sets how it is conducted, and takes precedence over its turn format. Does not: ask several
+      questions in one message, answer in the human's place, or write the thesis before the final
+      confirmation.
+  - id: grill-me
+    mandate: >-
+      On-demand interrogation of a product intent. Routes to the grilling primitive: decision tree,
+      frontier, turns, one recommendation per question. Invoked by the human —
+      disable-model-invocation — so its description costs no context until it is called.
+  - id: grilling
+    mandate: >-
+      Interrogation primitive, invocable by the model. Interrogates until the frontier is empty.
+      The method adds a third node state — UNVALIDATED with a falsification criterion and a test
+      point — carried by the exit criterion of activity 2, never by a fork of the skill.
+  - id: impeccable
+    mandate: >-
+      Craft floor for interface design: surface mode, request playbook, craft floor read
+      immediately before any edit, verification in bounded passes. Adopted as GUIDANCE ONLY — the
+      launcher and its deterministic engine are not shipped, and the skill provides for this case.
+      Does not: write PRODUCT.md, DESIGN.md or a project hook — those paths are outside the
+      registry, and the product context is held by design-brief.md, WP-08, WP-11 and WP-19. Does
+      not: return a PASS — its verdict is an appraisal, never a control.
+
+scales:
+  - name: Risk tier
+    levels:
+      - id: R0
+        definition: Reversible, no external effect, no sensitive surface.
+        consequence: Autonomous. Logged in the Run Ledger.
+      - id: R1
+        definition: Reversible, covered by a test, within the slice scope, non-sensitive data.
+        consequence: Autonomous within the limits of the slice. Standard review.
+      - id: R2
+        definition: >-
+          Material: changes an intent, a contract or a baseline. Or touches auth, authorisation,
+          data access, dependencies, migrations.
+        consequence: Human approval before execution. Full review, threat model, proportionate pentest.
+      - id: R3
+        definition: >-
+          Irreversible or binding. Or secrets, personal data, payment, production. Includes every
+          CORE INVARIANT of the foundation.
+        consequence: >-
+          Explicit authority, reinforced evidence, mandatory pentest, tested rollback, TWO distinct
+          human authorities.
+    note: >-
+      Merger of the former D0-D3 (reversibility) and S0-S3 (security surface) scales. They
+      co-varied in practice, and v4 devoted a whole section to explaining that they were
+      independent.
+  - name: Severity
+    levels:
+      - id: BLOCKER
+        definition: Prevents the gate from being passed.
+        consequence: Gate cannot be passed. Fix, then a new critic pass.
+      - id: MAJOR
+        definition: Creates an explicit debt accepted by name by the gate authority.
+        consequence: ACCEPT WITH CONDITIONS, with a dated deadline and a named owner.
+      - id: MINOR
+        definition: Improvement with no material risk.
+        consequence: Carried to the backlog. Never opens a convergence round on its own.
+      - id: OBSERVATION
+        definition: Finding or weak signal with no request for a fix.
+        consequence: Recorded. Feeds the gate closure.
+    note: >-
+      The tier qualifies a SURFACE and drives the depth of evidence. Severity qualifies a FINDING
+      and drives passage. "An R2 finding" is a forbidden phrasing.
+  - name: User evidence level
+    levels:
+      - id: EMPIRICAL
+        definition: >-
+          Test with real, representative users, version frozen by commit, protocol written before
+          the test, biases declared.
+        consequence: >-
+          An observation. The only level that establishes a fact about a user's behaviour.
+      - id: DOCUMENTARY
+        definition: >-
+          Words and behaviours of real users gathered from public sources — reviews, forums,
+          communities, studies, statistics —, each with address, date consulted and literal
+          quotation, at least two independent sources for every trait kept.
+        consequence: >-
+          A clue about real, unsolicited, self-selected people. Grounds a proto-persona, an
+          irritant, an as-is journey; does not settle a behavioural question that only a test
+          establishes — that one remains an HYP-nn hypothesis, tested in release discovery (13) or
+          in validation (17).
+      - id: SYNTHETIC
+        definition: >-
+          Evidence produced by agents, in TWO declared sub-classes, never confused. SYNTHETIC · AXR
+          — expert review: an agent that KNOWS the product's intent walks through it in the posture
+          of a documented persona. SYNTHETIC · SUX — blind test: user agents that DO NOT KNOW the
+          intent drive the deployed artifact with only their persona and their mission, behind a
+          firewall.
+        consequence: >-
+          A structured hypothesis. AXR reveals conformance and design defects; SUX reveals
+          comprehension and navigation risks. Neither establishes a fact about a real user. Always
+          counted in "synthetic sessions", never in "users".
+      - id: UNVALIDATED
+        definition: Conviction drawn from experience or reasoning, with no test or review.
+        consequence: Nothing more than a direction to test. Marked as such wherever it appears.
+    note: >-
+      Mandatory label, not a steering scale. A synthetic review presented without a label is a
+      MAJOR finding; presented as empirical, a BLOCKER; an expert review (AXR) presented as a user
+      test (SUX), a BLOCKER. Documentary research presented as empirical is a BLOCKER: reading what
+      a user wrote is not having observed them.
+  - name: Foundation categories
+    levels:
+      - id: CORE INVARIANT
+        definition: >-
+          What, if modified, breaks artifacts already delivered: semantics, statuses, skeleton
+          structure, persisted identifiers, a term used in a delivered release.
+        consequence: Tier R3. G0 reopening with impact analysis on every release. EX3.
+      - id: EXTENSION
+        definition: >-
+          What invalidates nothing delivered: a new screen under an existing step, a new component,
+          a new term with no homonym, a label changed before delivery.
+        consequence: R1 or R2. No additional gate. Handled at G1 or K1 depending on the level.
+    note: >-
+      Classification is by blast radius, never by the apparent nature of the object. It is the
+      number of invalidated artifacts that decides.
+
+exceptions:
+  protocol:
+    - step: DECLARE
+      rule: >-
+        record in the Run Ledger with the observable trigger. An exception is never resolved by the
+        agent that triggered it.
+    - step: BOUND
+      rule: a dated deadline. An exception without a deadline is a permanent exception in disguise.
+    - step: NAME AN OWNER
+      rule: an identified person or role, distinct from the one who declared. Never "the team".
+    - step: ROUTE
+      rule: >-
+        to the lowest level that has the authority to decide: N1 factory-lead · N2 Product Owner ·
+        N3 Tech authority · N4 HUMAN OWNER.
+    - step: CLOSE OR DEFER
+      rule: silence is never a resolution. The cost is recorded in both cases.
+  named:
+    - id: EX1
+      situation: >-
+        Producer/critic non-convergence after two rounds, or a gate refused twice on the same scope.
+      behaviour: >-
+        The loop stops — not the run: under autopilot, the critic no longer decides; the owner
+        triages each critique (autopilote.satisfaction.tri); a disagreement that remains after
+        that triage comes back to the owner as an arbitration. The factory-lead records
+        both positions and submits them as they stand,
+        without arbitrating on the substance. A third identical submission is forbidden: reduce the
+        scope, change approach, or escalate. Each objection receives its disposition in the
+        disposition register — accepted, reduced, rejected or unverified —, checked against the
+        source by someone other than its author: only a verified disposition changes the state.
+      authority: factory-lead on the procedure; HUMAN OWNER on the substance.
+    - id: EX2
+      situation: >-
+        Required input MISSING or UNDER-SPECIFIED, or independent reasoning context unavailable for
+        a critic.
+      behaviour: >-
+        MISSING: BLOCKED, stop, never a reconstruction by inference. UNDER-SPECIFIED: a single
+        burst of at most four questions; without an answer, explicitly named hypotheses labelled
+        UNVALIDATED, each becoming a test point. INDEPENDENCE: declare INDEPENDENCE NOT AVAILABLE,
+        never present the verdict as independent.
+      authority: >-
+        factory-lead: produce the input, answer, or replan. Switching to SOLO belongs to the
+        Product Owner, at the opening of the Run, and never to an agent in the middle of an
+        activity.
+    - id: EX3
+      situation: >-
+        The foundation must change — a release in design requires it, or several releases ask for
+        the same modification.
+      behaviour: >-
+        Modifying the foundation from C2 or C3 is absolutely forbidden. Issue a finding, suspend
+        design on the point concerned, open a G0 reopening with impact analysis. Several releases
+        asking for the same modification = a foundation defect, and an MCR if the defect comes from
+        the elaboration method.
+      authority: HUMAN OWNER — tier R3.
+    - id: EX4
+      situation: >-
+        Red test caused by a product defect, or a gap between baseline, specification and code.
+      behaviour: >-
+        CLASSIFICATION is a verdict: it belongs to critic(quality), never to the mode that wrote
+        the test. A PRODUCT FAILURE absolutely forbids repairing the test to get a green. Any
+        healing requires an independent re-verification. A gap is classified: manquant (missing) ·
+        partiel (partial) · contredit (contradicted) · non demandé (not requested) · superseded.
+      authority: critic(quality) for the classification; gate authority for the decision.
+
+traceability:
+  - entity: Outcome
+    produced_at: "2"
+    traces_to: "—"
+    controlled_at: "G0"
+  - entity: Hypothesis
+    produced_at: "2"
+    traces_to: OUT
+    controlled_at: "G0"
+  - entity: Persona
+    produced_at: "4"
+    traces_to: OUT
+    controlled_at: "G0"
+  - entity: Journey step
+    produced_at: "5"
+    traces_to: PER, OUT
+    controlled_at: "G0"
+  - entity: Corpus source
+    produced_at: "6"
+    traces_to: WP-03 — a corpus source is an approved source of the domain, or it is a gap
+    controlled_at: "G0"
+  - entity: Corpus record
+    produced_at: "6"
+    traces_to: >-
+      SRC, STG — a record without a source is UNVALIDATED; a record that no step displays is out of
+      scope
+    controlled_at: "G0"
+  - entity: Glossary term
+    produced_at: "8"
+    traces_to: STG
+    controlled_at: "G0"
+  - entity: Release
+    produced_at: "10"
+    traces_to: STG — introduces / enriches / depends-on
+    controlled_at: "G0"
+  - entity: Target journey
+    produced_at: "13"
+    traces_to: STG, REL
+    controlled_at: "G1"
+  - entity: Epic
+    produced_at: "16"
+    traces_to: JRN, REL
+    controlled_at: "G1"
+  - entity: Story
+    produced_at: "16"
+    traces_to: EPC
+    controlled_at: "G1, K1"
+  - entity: Acceptance Criterion
+    produced_at: 16 then 19
+    traces_to: STO
+    controlled_at: "K1"
+  - entity: Design Baseline element
+    produced_at: "18"
+    traces_to: STO, JRN
+    controlled_at: "K1"
+  - entity: Decision
+    produced_at: any step
+    traces_to: the entity concerned
+    controlled_at: "the gate concerned"
+  - entity: Executed evidence
+    produced_at: "21"
+    traces_to: AC
+    controlled_at: "G3"
+  - entity: Finding
+    produced_at: any review
+    traces_to: the entity concerned
+    controlled_at: "the gate concerned"
+  - entity: Deployment
+    produced_at: "21"
+    traces_to: delivered STO
+    controlled_at: "G4"
+
+routing:
+  classes:
+    - id: ÉCONOMIQUE
+      usage: >-
+        Mechanical translation. Reduced window, effort often not adjustable: disqualified for any
+        agent that must load a baseline.
+      relative_cost: ≈ 0.5×
+    - id: INTERMÉDIAIRE
+      usage: Routine build, test generation, synthesis.
+      relative_cost: 1× (reference)
+    - id: AVANCÉE
+      usage: Orchestration, design, specification, critique.
+      relative_cost: ≈ 2.5×
+    - id: POINTE
+      usage: >-
+        Long-horizon adversarial reasoning. A single proposed use: adversarial security review at
+        tier R3.
+      relative_cost: ≈ 5×
+  rules:
+    - id: R1
+      rule: The judge is never on a lower class than the producer of the artifact it judges.
+      rationale: >-
+        A critic weaker than the builder structurally cannot see what the builder missed. Direct
+        extension of P2.
+    - id: R2
+      rule: Lower the effort before lowering the class.
+      rationale: >-
+        On recent models, a lower effort often matches the previous generation at high effort.
+        Moving down the range without having tested the lower effort is optimising blind.
+    - id: R3
+      rule: At most two classes per cadence, among the agents that share a context prefix.
+      rationale: >-
+        The prompt cache is scoped per model. Multiplying models can cost more than the downgrade
+        saves.
+    - id: R4
+      rule: >-
+        Triggering a critic is CONDITIONAL — by irreversibility and by risk tier, never systematic.
+        ALWAYS judged: a work product with a FOUNDATION baseline (frozen at G0), any work product at
+        tier R2 or R3, any work product whose gate has already been refused once, and any work
+        product whose completion criterion carries an eliminating point — WP-06 and WP-11 are among
+        them. On the others, the critic is triggered by the factory-lead and its NON-CONVOCATION is
+        written to the Run Ledger with its reason. A critic neither triggered nor recorded is a
+        skipped control, not a saving.
+      rationale: >-
+        Six critic dimensions at class R1 and high effort, convened systematically, consume the
+        reasoning budget that production lacks. On a real C1 cadence, eight review reports were
+        returned on work products whose content was invented: adversarial capacity spent where
+        there was nothing to contradict. The depth of evidence follows risk (P5); so does the depth
+        of CRITIQUE, and it did not.
+    - id: R5
+      rule: >-
+        The judge runs on a MODEL different from those of the producers it judges, as soon as the
+        adapter serves two models of the required class. Otherwise its verdict is CORRELATED: it is
+        rendered and recorded, but it does not count as an independent judgment in tier R2 or R3,
+        where the gate authority knows it and weighs it.
+      rationale: >-
+        P2 separates ROLES; a distinct role on the same model still shares the builder's blind
+        spots — same readings, same omissions, same misplaced confidence. The BatiZen run settled
+        it through its adjudication: one model proposes, ANOTHER verifies, and the errors the
+        second catches are those the first could not see. Two models from the same maker remain
+        correlated; less so than a model with itself. R1 comes first: the difference is never
+        bought with a lower class.
+    - id: R6
+      rule: >-
+        A modulation is APPLIED at invocation, not just read: the tower computes for each role the
+        model and effort of the context — cadence of the open activity, tier, reopening, EXPRESS
+        path — and the guard refuses a method role invoked on another model or another effort. A
+        class increase that would leave the judge with no distinct model (R5), or that would
+        exceed the highest class, carries over to EFFORT, by one level; a decrease never goes
+        below INTERMÉDIAIRE.
+      rationale: >-
+        A modulation written in the registry and never executed was satisfied only by
+        coincidence: an agent file carries a single model, and a security review at tier R3 ran
+        on the model of a routine slice. Carrying over to effort what the class can no longer give
+        follows R2 — effort is the first lever — and keeps the judge's model independence where
+        the method always judges: the foundation.
+  modulation:
+    - id: M1
+      trigger: Cadence C1 — work on the foundation
+      effect: +1 class on all agents involved, except the critics (MCR-004)
+    - id: M2
+      trigger: Tier R2 or R3
+      effect: +1 class on security-engineer, critic(pentest), principal-engineer
+    - id: M3
+      trigger: Reopening of a gate already refused
+      effect: +1 class on the producer AND on its critic
+    - id: M4
+      trigger: EXPRESS path
+      effect: −1 class allowed, except quality-engineer, and without ever violating R1
+
+adapter_obligations:
+  - obligation: >-
+      No implicit decision leaves activity 2: each branch is settled with a reason, or named HYP-nn
+      labelled UNVALIDATED with a falsification criterion and a test point.
+    written_at: Exit criterion of activity 2
+    tooling: >-
+      grilling — external interrogation primitive, adopted and pinned — driven by the
+      interrogatoire skill: one question at a time, through the harness's structured-questions
+      mechanism.
+  - obligation: >-
+      A design brief is filled in before activities 8 and 14; missing questions go out in a single
+      burst of at most four.
+    written_at: WP-16
+    tooling: The harness's structured-questions mechanism.
+  - obligation: Aesthetic direction, token system, executable prototype.
+    written_at: Activities 8, 10, 15, 20
+    tooling: >-
+      The harness's artboard canvas and design skills, under the craft floor of the impeccable
+      capability.
+  - obligation: >-
+      The design stack is settled by ADR BEFORE the first visual decision, and the product's tokens
+      and components are a DELTA on the chosen base. A component rewritten from scratch is so
+      because the base does not cover it, and the reason is written.
+    written_at: WP-08 — section "Design stack and component base"; activity 8 — entry criterion
+    tooling: >-
+      The adapter's assisted interface design. The core names the capability; the adapter names
+      the tool that satisfies it.
+  - obligation: >-
+      Every design work product carries a DEPLOYED preview URL, openable without installation. A
+      local file to open from a repository is not a preview: it is not reviewed, and a work product
+      that is not reviewed proves nothing.
+    written_at: Activities 10, 15 and 20 — exit criteria; WP-11, WP-19, WP-26
+    tooling: The adapter's preview deployment. The plugin deploys nothing itself.
+  - obligation: >-
+      No interface edit starts before the craft floor has been read, and verification happens in
+      bounded passes — one grouped desktop and mobile inspection, one batch fix, one confirmation,
+      then stop. The surface mode — Persuade, Operate, Read, Experience — is declared before the
+      first visual decision.
+    written_at: Activities 8, 10, 15, 17 and 20 — verification criteria
+    tooling: impeccable — external design craft floor, adopted as guidance only and pinned.
+  - obligation: >-
+      When a product opens, a workspace readable by a non-developer exists, modelled on the
+      method's cadences and steps, and it is COMPUTED from the registry — never drawn by hand.
+    written_at: Activity 1 — exit criterion
+    tooling: The core renders the plan with "apf notion plan"; the adapter executes it through its connector.
+  - obligation: >-
+      Every work product produced carries, besides its declared path, the address of its page in
+      the workspace — and that page carries back the path and the commit.
+    written_at: Verification before handover of each skill
+    tooling: '"apf notion link" records the pointer and checks it; the adapter writes the page.'
+  - obligation: >-
+      Activities 3, 4 and 6 establish external facts — approved sources of the domain, observed
+      needs, the product's REAL CORPUS — that the human does not hold. An agent must be able to go
+      and fetch them and report them SOURCED, rather than return them as UNVALIDATED for lack of
+      access — or, worse, fabricate a fixture to unblock downstream work.
+    written_at: Activities 3, 4 and 6 — verification criteria
+    tooling: The adapter's web search and reading tool, granted to researcher profiles only.
+  - obligation: >-
+      An agent's activity is OBSERVABLE while it happens: tools called, files touched, guard
+      verdicts, sub-agents convened, model actually served and tokens consumed. A run that cannot
+      be watched cannot be steered: it is told after the fact, by the very one who executed it.
+    written_at: observability
+    tooling: >-
+      The harness's lifecycle hooks for emission, a projection platform for display. The plugin
+      only emits lines and talks to no one else.
+  - obligation: >-
+      An agent's declared capability class can be CONFRONTED with the model that served it. As long
+      as the served model was recorded nowhere, R1 and R3 were intentions.
+    written_at: R1, R3 — and observability.events → session_end
+    tooling: The harness transcript, read at the end of the turn. No interception.
+  - obligation: >-
+      An interrogation conduct declared by a skill is ENFORCEABLE, not only read: during the
+      activity that carries it, a call to the structured-questions mechanism that asks several
+      questions is refused before the human sees them, and a turn whose text asks several is sent
+      back once to keep only one. The control fails open and never sends the same turn back twice;
+      every deviation is traced.
+    written_at: interrogatoire skill — "one question at a time" conduct, activity 2
+    tooling: >-
+      The adapter's hooks: before the structured-questions mechanism, and at the end of the turn on
+      the transcript. The rule stays in the registry; the hook reads it.
+  - obligation: An evaluator role cannot write into what it evaluates.
+    written_at: K6
+    tooling: The adapter's hooks, as prevention. The floor remains CI.
+  - obligation: A critic's capability class is never lower than the producer's.
+    written_at: R1
+    tooling: The adapter's class → model mapping table, and a check before invocation.
+
+adoption_gate:
+  - criterion: Writes no file and executes no code. Conversational or analytical.
+    gate: NO gate. Immediate installation. One line in the registry, after the fact.
+  - criterion: Writes files.
+    gate: >-
+      THREE QUESTIONS, two minutes: where does it write · does it carry its own state · what does
+      it depend on transitively. Then pinning and entry in the registry.
+  - criterion: Executes code, accesses the network, or touches the foundation or production.
+    gate: "Full ritual: reading, sandbox, pinning, recorded human approval."
+
+control_tower:
+  logic: >-
+    lib/tower.mjs — no rule lives in the MCP handler; the CLI, the hooks and CI call the same
+    operations
+  state: runs/tower.json — run state; runs/ledger.ndjson — append-only ledger
+  powers:
+    - Refuse to open an activity whose cadence is not reachable — an earlier gate remains open.
+    - Refuse to open an activity for a role that is not responsible for it — P5, separation of duties.
+    - Refuse the declaration of a work product foreign to the open activity, or of a path outside the write boundary.
+    - Refuse to pass a gate whose pack is incomplete or one of whose controls is failing.
+    - "Refuse to let an agent pass a human gate: the authority must be named."
+    - "Refuse to freeze a foundation after G0: a CORE INVARIANT can then only be modified by a declared exception."
+  limits:
+    - >-
+      DOES NOT SEE the harness's native writes. An agent that writes a file without going through
+      it is not stopped. No MCP server can prevent what it does not expose.
+    - IS NOT the enforceable evidence. The evidence remains CI, which replays the same controls on the repository.
+    - >-
+      DOES NOT REPLACE hooks: only a PreToolUse hook stops a write before it happens, and it is
+      specific to the harness.
+  enforcement_model: >-
+    It does not prevent, it makes bypassing PROVABLE and COSTLY. Provable: any work product present
+    on disk with no matching entry in the ledger is a hole K8 sees. Costly: an agent that does not
+    call it has neither its fragment, nor its boundary, nor its exit criterion — it loses the
+    information, not just the compliance.
+  operations:
+    - purpose: >-
+        Where the run stands: current activity, gates passed, foundations frozen, reachable
+        cadences.
+    - purpose: >-
+        Opens an activity and returns its compiled fragment, its write boundary, its exit
+        criterion, the skeleton of each of its work products, the open reserves routed to it and
+        the routing of its roles — model and effort of each holder and each critic in the context:
+        cadence, tier, reopening of a refused gate, EXPRESS path (R6). The only source of the fragment: refuses if an earlier
+        gate is open or if the role does not match.
+    - purpose: >-
+        The model and effort of a method role in the context of the open activity, or in the one
+        given, with each modulation applied and its reason — in class, in effort when R5 or the
+        highest class requires it, or without effect (R6). A finding, never a decision: the guard
+        is what refuses an invocation that departs from it.
+    - purpose: >-
+        Declares a produced work product. Refuses a work product foreign to the activity, a path
+        outside the boundary, a tacit completion, and a "complet" whose form is not complete:
+        declared files present, required front-matter, a non-empty H2 per registry section.
+        "partiel" records the gaps without refusing.
+    - purpose: >-
+        Reports the state of a gate: pack, missing work products, failing controls. A finding,
+        never a decision.
+    - purpose: >-
+        Passes a gate. Requires a complete pack, zero failing controls, and a named human
+        authority. G4 also requires the authorized build (commit or digest accepted in QA), a
+        registry decision and, in tier R3, a second, distinct authority; it is valid for 7 days
+        for that build.
+    - purpose: >-
+        Can this build go to production? Read back by the production release workflow before any
+        deployment (apf release-check): G4 passed for THIS build, an authorizing decision, within
+        its validity. A finding, never a decision: an approval of the « prod » environment does not
+        replace the gate.
+    - purpose: >-
+        Records a human DIRECTION given outside a gate — platform, repository, channel,
+        environment, scope withdrawal. Word for word, dated, with its scope-budget test — what
+        changes, what stays unchanged — and its impact: AUCUN · PÉRIMÈTRE DE RELEASE · CANAL DE
+        VALIDATION · PRODUIT, which calls for a formal decision · MÉTHODE, which records an
+        observation on the method by default. An unrecorded direction does not exist for the
+        method: the memory of a run never lives in the conversation.
+    - purpose: >-
+        Records a FINDING on the method — what was missing, costly or misleading in this run —,
+        dated and evidenced (file, commit, direction, verdict), at the first level of the evolution
+        ladder. No effect on the method: it rises to the Launchpad with those of the other
+        projects, and only an MCR turns it into a proposed method. A human direction with impact
+        MÉTHODE records one by default.
+    - purpose: Freezes a foundation as CORE INVARIANT. Refused after G0.
+    - purpose: Runs the eight deterministic controls and the vendoring integrity check.
+    - purpose: Resolves a skill to its shipped path and its integrity verdict — external ones included.
+    - purpose: >-
+        Derives the data model from the executed schema and links it to the glossary. Returns the
+        list of unresolved fields: a field without a glossary term is a semantic drift that K4
+        refuses.
+    - purpose: >-
+        Recomposes the living prototype — foundation ⊕ release deltas ⊕ slice deltas, in order.
+        Returns the non-subordinate screens and the steps that have become unreachable.
+    - purpose: >-
+        Returns the PLAN of the readable workspace. The product name is READ from the identity
+        collected at activity 1, it is not passed as an argument: a product named from a command
+        line is named outside any activity.
+    - purpose: Links a produced work product to its page in the workspace. Bidirectional pointer.
+    - purpose: >-
+        Dates the projection of a work product at the current commit, AFTER writing the page.
+        Linking says a page exists; dating says at WHICH state of the repository it was written.
+        Without that date, the page's freshness cannot be verified.
+    - purpose: >-
+        Admissibility of a claim drawn from research: address, date consulted, literal quotation.
+        Without all three, a third party can neither replay nor contradict — it is not a source, it
+        is a memory. The claim is then downgraded to UNVALIDATED and carries an HYP-nn; it is never
+        deleted.
+    - purpose: >-
+        The body of the project row: current step, progress of each step, gates passed and open.
+        COMPUTED from the control tower's ledger. Since the row's status only moves at gates, the
+        project would stay inert for a whole cadence; this block makes it readable without writing
+        a third column into a database the organisation owns.
+    - purpose: >-
+        What was produced in Git and did not follow in the workspace — never projected, projection
+        undated, or stale. Computed OFFLINE by Git comparison: the control tower makes no call to
+        the third-party service. A drift stops an ACTIVITY; it NEVER stops a gate.
+    - purpose: >-
+        Reports which work products are linked. REPORTS, does not refuse: the workspace never
+        blocks a gate.
+    - purpose: >-
+        Where this work product goes, and above all: UPDATE or CREATE. The row has existed since
+        the bootstrap; creating a second one would give two pages for one work product, hence two
+        truths.
+    - purpose: >-
+        Starts the autopilot of cadence C1, on behalf of the person who will ratify at G0
+        (MCR-002). The tower computes each action; the Stop hook refuses the end of turn while
+        one remains and the run is progressing.
+    - purpose: >-
+        Stops the autopilot. Nothing is undone: state, verdicts and decision queue remain.
+    - purpose: >-
+        The autopilot's next action — INTERROGER, OUVRIR, PRODUIRE, JUGER, REPRENDRE, CORRIGER, or
+        a stop STOP_DECISION, STOP_G0 —, with the model and effort of each role to invoke. A
+        finding, never a decision.
+    - purpose: >-
+        Records a critic's critiques, read from the deposited file: each CRIT-n — severity,
+        recommendation — enters the queue as a CRITIQUE decision that the owner keeps or sets
+        aside, and the summary line must give their exact count. No critique: the work product
+        converges. The critic decides nothing (MCR-004).
+    - purpose: >-
+        Queues a decision that belongs to the human. Blocking — intent, irreversible, real corpus —
+        it stops the autopilot; otherwise it waits for G0 without stopping it.
+    - purpose: >-
+        The human decides an item of the queue, by name. Decided differently from the default
+        applied, it reopens the activity that had applied it. The Launchpad deposits the same
+        answer as a file, ingested at the next action.
+    - purpose: >-
+        Removes from the queue the reopening caused by a decision taken differently, once the
+        activity has been reopened and its work products redeclared, and returns the next action.
+    - purpose: >-
+        The autopilot's state: active or not, decision queue, producer ↔ critic loops, what remains
+        to ratify and to decide.
+    - purpose: >-
+        Creates the rows of an instance that now exists. A release does not create the rows of its
+        slices.
+
+plugin_layout:
+  context_budget:
+    rationale: >-
+      A SKILL.md is loaded as soon as the skill is selected. Beyond the ceiling, it bills its
+      detail to every activity that touches it, including those that do not read half of it. The
+      detail moves down into references/, loaded on demand.
+    estimator: >-
+      bytes ÷ 3.6 — a deliberately pessimistic approximation; K6 refuses an overrun rather than
+      rounding it.
+  directories:
+    - discovery: auto — Claude Code
+      source: registry → agents, one instance per critic
+    - discovery: auto — Claude Code
+      source: registry → skills of core origin
+    - discovery: on demand, never loaded by default
+      source: >-
+        registry → tooled activities, work products, and how to hand back — Office format and
+        projection into the workspace, shared by all skills and irrelevant in a pulled workspace.
+        It is what keeps SKILL.md under the ceiling.
+    - discovery: auto — Claude Code
+      source: registry → control tower operations
+    - discovery: plugin.json → hooks
+      source: >-
+        registry → project-scope controls. The hook only calls apf guard: no rule lives in a hook.
+    - discovery: none — instantiated by the project, never by the plugin
+      source: >-
+        templates the project instantiates. domain-critic is NOT in agents/: an uninstantiated
+        domain critic would quote the model's memory instead of dated sources.
+    - discovery: plugin.json → skills
+      source: verbatim copies of pinned commits, rehashed at every check
+    - discovery: plugin.json → mcpServers
+      source: control tower — exposes lib/tower.mjs without carrying any rule
+    - discovery: none — web application, deployed separately
+      source: >-
+        PULLED projection of the readable workspace — see notion_workspace.pull_projection. Imports
+        lib/ and core/ by relative path: no rule is rewritten there, progress comes from
+        stepProgress and controls from runAll.
+    - discovery: none
+      source: >-
+        method.yaml — the single source of which everything else is a projection. presets.yaml —
+        DEFAULT contents, also subordinate: they fill in what is already known and leave a QUESTION
+        for decisions, which the form check refuses to treat as filled in. templates.yaml —
+        writing templates for the work products, SUBORDINATE to the registry: a guide and an
+        example per section, never one more section, rule or criterion; the conformance suite
+        refuses any section title that diverges from the registry. "apf template <WP-nn>" renders
+        the skeleton.
+
+notion_workspace:
+  contract: >-
+    PROJECTION, never source. What a gate freezes lives in Git and is projected here; what lives
+    between gates — backlog, risks — is written here and frozen into Git at the gate. A type of
+    object has exactly one home, never both: two homes is the divergence P4 forbids.
+  shape: >-
+    The product is a project ROW in a projects database the organisation already owns, not a
+    standalone page. A governed product that does not appear where the organisation looks at its
+    projects is governed beside it. Steps and work products are databases ATTACHED to that row:
+    this is what makes progress visible at a glance and work products browsable by view rather
+    than by navigation.
+  never_blocks: >-
+    An unavailable workspace NEVER blocks a GATE. Hanging a control on it would put a third-party
+    service on the critical path of governance. The eight controls stay on Git; "apf notion status"
+    reports, it does not refuse.
+  may_block_an_activity: >-
+    The clause above concerns gates, NOT activities. Activity 1 has the workspace as its output:
+    with no connector, it returns BLOCKED — missing input, like any required input (P5, EX2).
+    Stopping an activity is not preventing a human decision. Confusing the two would turn an
+    obligation into a decoration.
+  execution: >-
+    The core COMPUTES the plan — deterministic, offline, replayable, hence verifiable. The adapter
+    EXECUTES it: it alone holds the access. No token and no network call in the plugin or in
+    continuous integration.
+  connector:
+    on_absence: >-
+      BLOCKED — missing input. Never improvise a location, never produce a partial tree, never fall
+      back on a file export.
+  root_location:
+    what: >-
+      The organisation's PROJECTS DATABASE, in which to create the product's row. The plan computes
+      the structure, never its anchor point: a project row is always created in a database that
+      pre-exists and does not belong to us.
+    on_absence: BLOCKED — missing input. Never guessed.
+  page_body:
+    mode: full mirror
+    rule: >-
+      The page body of a row reproduces the content of the Git file in full, front-matter removed.
+      The committee reads the whole work product without opening a repository — that is the reason
+      the space exists.
+    comments: >-
+      A comment is an INPUT to the next activity, never the work product. This is what allows the
+      page to be overwritten without losing anything.
+  execution_order:
+    phases:
+      - id: 1
+        name: project row
+        note: created in the host database provided; without it, BLOCKED
+      - id: 2
+        name: databases
+        note: created in the project row's page, before any row
+      - id: 3
+        name: step rows
+        note: before the work products, because a work product references its step
+      - id: 4
+        name: work product rows
+        note: only those whose base and files are not parameterised
+      - id: 5
+        name: views
+        note: last — a view filters rows that must exist
+  navigation:
+    principle: >-
+      No tree. The STEP is a constant of the method, the RELEASE and the SLICE are variables of the
+      project; a variable in a tree makes a space unreadable within six months. Steps are therefore
+      ROWS and not pages, and work products are browsed by VIEW — filtered, grouped, sorted —
+      rather than by descending into folders.
+    growth: none — the number of databases does not change, whatever the number of releases, slices and versions
+  databases:
+    - id: etapes
+      writes: Git to workspace
+    - id: livrables
+      writes: Git to workspace
+    - id: squelette
+      writes: Git to workspace
+    - id: gates
+      writes: Git to workspace
+    - id: journal
+      writes: Git to workspace, append-only
+    - id: backlog
+      writes: workspace to Git, frozen at the gate
+      frozen_at: >-
+        G1 — committed export, controlled by K3. Without this freeze, the traceability chain would
+        no longer be verifiable offline and CI would cease to be the evidence.
+    - id: risques
+      writes: workspace to Git, frozen at the gate
+      frozen_at: G0 then G1
+  templates:
+    rule: >-
+      The page template of a work product has AS SECTION TITLES its content outline in the
+      registry, the rule of each section as a caption, and the registry excerpt as an example when
+      it exists. A template drawn by hand would be the first non-generated projection of the
+      system: it would diverge by the third work product.
+  instantiation:
+    rationale: >-
+      Same rule as the Git bootstrap: a parameterised path is not materialised empty. Ghost rows
+      would pre-empt decisions G0 has not taken.
+    idempotent: Replayed, it completes and overwrites nothing.
+  link:
+    shape: >-
+      bidirectional pointer — the work product's front-matter carries "notion", the workspace row
+      carries the Git path and the commit
+    rationale: >-
+      A work product readable from one side only is linked to nothing: from the workspace you
+      cannot find the evidence, from Git you cannot find the reader.
+
+external_capabilities:
+  adopted:
+    - id: grilling
+      role: >-
+        Interrogation primitive. Decision tree, frontier, turns, one recommendation per question.
+        Invocable by the model.
+      audit:
+        writes: no file write — it conducts an interview, produces no artifact
+        state: no persistent state outside the session
+        dependencies: none
+        verdict: ADOPTED WITHOUT RESERVATION
+      method_gap: >-
+        Its tree knows only two node states, settled or open. The method requires a third —
+        UNVALIDATED, with a falsification criterion and a test point. This rule is carried by the
+        exit criterion of activity 2, never by a fork of the skill.
+    - id: grill-me
+      role: >-
+        Shim invoked by the human, routes to grilling. Its description is not loaded into context
+        until it is called: the human entry point costs nothing.
+      audit:
+        writes: none
+        state: none
+        dependencies: grilling
+        verdict: ADOPTED WITHOUT RESERVATION
+    - id: impeccable
+      role: >-
+        Craft floor for interface design. Four surface modes — Persuade, Operate, Read, Experience —
+        twenty-three playbooks including critique, audit, polish, layout, typeset, adapt and
+        harden, and a craft floor to read immediately before any interface edit. It is the
+        capability that was missing: the method controlled the SUBORDINATION of a design work
+        product — exportable tokens, seven states, AA contrast, no dead screen — and never its
+        QUALITY. A foundation compliant with the eight controls could be ugly, and was.
+      audit:
+        writes: >-
+          PRODUCT.md, DESIGN.md and its sidecar, surface briefs, project configuration and hook —
+          at paths IT DEFINES ITSELF, absent from the registry. That is the exact reason
+          domain-modeling was rejected. The reservation is lifted differently: the commands that
+          write those files — init, document, doctor, hooks, live, pin — are outside the adoption
+          scope, and the product context as well as the visual truth remain held by the declared
+          work products (design-brief.md, WP-08, WP-11, WP-19), which the agent reads in their
+          place. A file written outside the registry makes K2 fail: the guardrail remains the
+          control, never the instruction.
+        state: >-
+          No persistent state outside the session within the adopted scope. The only state carrier
+          — the launcher, its cache, its configuration and its sidecar — is not shipped.
+        dependencies: >-
+          A deterministic engine binary downloaded from GitHub Releases on first call: not shipped,
+          unreachable here. Four finishing sub-agents: not shipped, their degraded equivalents are
+          in reference/degraded/. No npm dependency, no skill dependency.
+        verdict: >-
+          ADOPTED WITH RESERVATION — the guidance is adopted, the execution is not. The
+          deterministic detector is missing: what the method gains is a floor of JUDGEMENT, not a
+          control. It therefore replaces none of the eight controls, enters no evidence pack, and a
+          verdict given under this skill remains a human or agent appraisal, never a PASS.
+      method_gap: >-
+        Three gaps, carried by the activities' criteria and never by a fork of the skill. (1) Its
+        verification floor is "bounded passes, never in a loop"; the method adds multi-device
+        captures and the classification of findings in ITS single taxonomy — the heuristic scoring
+        of critique.md is not a findings taxonomy. (2) It allows a redesign to replace the visual
+        world and DESIGN.md; the method refuses this after G0 as soon as a CORE INVARIANT is
+        touched — navigation, IA or vocabulary go through EX3, never through a redesign. (3) It
+        does not know evidence labels: "representative" content it judges acceptable remains here
+        invented data presented as real if it does not carry its truth category.
+  rejected:
+    - id: domain-modeling
+      reason: >-
+        REGISTRY AND FOUNDATION CONFLICT. Writes to paths it defines itself — a context file at the
+        root, a decisions folder — absent from the registry: K2 fails. Rewrites the glossary, which
+        is a CORE INVARIANT frozen at G0: risk of K4 failing after the gate. Its function is taken
+        over by the sovereign domain-critic skill.
+      revisit: "no"
+    - id: grill-with-docs
+      reason: >-
+        Transitive dependency not declared in its description: calls grilling AND domain-modeling.
+        Three adopted skills would have installed four.
+      revisit: after a decision on domain-modeling
+    - id: triage
+      reason: >-
+        Competing state machine — moves tickets through a progression of triage roles. Violates P3.
+      revisit: "no"
+    - id: to-tickets
+      reason: Its own state progression, outside cadences and gates. Violates P3.
+      revisit: "no"
+    - id: to-spec
+      reason: Overlaps activities 19 and 20 with its format and its publication to a tracker. Violates P3.
+      revisit: "no"
+    - id: wayfinder
+      reason: Planning as a map of decision tickets on a tracker. Violates P3.
+      revisit: "no"
+    - id: implement
+      reason: "Drives spec, TDD and review end to end: a second Sprint Delivery Factory. Violates P3."
+      revisit: "no"
+  harness_native:
+    - id: harness-design-skills
+      note: >-
+        Artboard canvas and design skills provided by the harness. Native, hence outside the
+        adoption gate — but named, so that the obligation does not cite a paraphrase. They carry NO
+        quality floor: that is what let a compliant but ugly foundation through. The floor is
+        carried by the impeccable capability, and these natives are now only the execution medium.
+    - id: harness-assisted-design
+      note: >-
+        Assisted interface design provided by the adapter — generation of a direction and of
+        executable surfaces from a brief, importable into the repository, and deployment of a
+        preview. Native, hence outside the adoption gate, but NAMED: it is its absence from the
+        registry that let the method de facto mandate doing everything by hand. The core names no
+        product and no API: it names the CAPABILITY, and the adapter declares the tool that
+        satisfies it. It replaces neither the design brief, nor the competition of three
+        directions, nor impeccable's craft floor, nor the accessibility check: it changes what must
+        be WRITTEN to satisfy them, never what must be PROVEN.
+    - id: harness-preview-deploy
+      note: >-
+        Deployment of a preview at a URL openable without installation. Native, outside the
+        adoption gate. Required by the exit criteria of activities 10, 15 and 20: a design work
+        product the business has to clone to see is not reviewed, and a work product that is not
+        reviewed proves nothing. The plugin deploys nothing itself — it is the agent that calls,
+        and the distinction holds: no deterministic control depends on a third party.
+    - id: harness-hooks
+      note: >-
+        Loop interception before a write. Accelerator: moves K6 from detection to prevention. The
+        floor remains CI.
+    - id: harness-telemetry
+      note: >-
+        The harness's lifecycle hooks — session start, prompt submission, tool call before and
+        after, sub-agent end, turn end — and the transcript it already writes. Native, hence
+        outside the adoption gate, but NAMED: their absence from the registry left the agents'
+        execution entirely out of sight, and a run was then judged on the word of whoever had
+        executed it. The plugin instruments no model and intercepts no network: it reads what the
+        harness already gives its hooks, and it fails OPEN — observability.fail_open. The
+        transcript is the ONLY source that says which model actually served, without which R1 and
+        R3 remain unverifiable.
+    - id: harness-model-mapping
+      note: Capability class → model table, specific to the adapter. The core names no model.
+    - id: harness-questions
+      note: >-
+        The harness's structured-questions mechanism. Serves the single burst of the design brief,
+        and the interrogation of activity 2, one question per call. Native, hence outside the
+        adoption gate.
+    - id: harness-web-research
+      note: >-
+        Reading of external sources by the adapter — search and page consultation. The plugin still
+        makes NO network call: it is the AGENT that does, and the distinction holds, because a
+        deterministic control must never depend on a third party. Granted to ACTIVITIES (3, 4, 6,
+        10, 13) and never to roles: the same role searches legitimately at activity 3 and
+        abusively at activity 21, where searching serves to justify what was just written. Every
+        claim drawn from it carries address, date and literal quotation, otherwise it is
+        downgraded to UNVALIDATED.
+    - id: harness-browser
+      note: >-
+        Driving a real browser — Playwright and Chromium, or equivalent — by the agent: one action,
+        one capture. Native, outside the adoption gate, and a CANDIDATE MECHANISM, never canonical:
+        the SUX protocol requires real interaction with the deployed foundation, not a tool. The
+        plugin drives nothing itself; it checks the bytes the session leaves behind (SUX4).
+    - id: harness-notion-connector
+      note: >-
+        The adapter's workspace connector. The PLAN is computed by the core — deterministic,
+        offline, verifiable; its EXECUTION belongs to the adapter, which alone holds the access.
+        The core names no API.

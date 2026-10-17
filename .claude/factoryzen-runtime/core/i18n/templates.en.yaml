@@ -1,0 +1,2917 @@
+# The work product templates in English — overlay of core/templates.yaml.
+#
+# TEXT ONLY, read by lib/i18n.mjs (gabaritsEn). Same principle as core/i18n/en.yaml: no id, no
+# section, no rule, no file, no "champ" flag is changed here; section titles come from the
+# translated registry. Arranged by work product id, then by section rank (same order as
+# core/templates.yaml). A field this file does not translate keeps its French text.
+#
+# The examples of the presentation formats are DATA: each one is replaced whole, keeps its
+# machine values (statut, origine, op, niveau…) in French, and is recomputed by lib/exhibits.mjs
+# — a translated example that no longer checks out is refused like a French one would be.
+#
+# The fictional product is the same: ChantierClair, a tool for works managers running 3 to 8
+# job sites. Identifiers still answer one another (OUT-01 → MET-01, STG-04 → JRN-07 → EPC-03 →
+# STO-014 → AC-014.2). Glossary kept constant: livrable → work product, activité → activity,
+# étape → step, socle → foundation, réserve → reservation, preuve → evidence, journal → ledger,
+# tour de contrôle → control tower, porteur → owner, gabarit → template, corpus réel → real
+# corpus, départ standard → Standard starter, campagne SUX → SUX campaign, sessions synthétiques
+# → synthetic sessions; conducteur de travaux → works manager, chef de chantier → site foreman,
+# gérant → managing director, PME du second œuvre → finishing-trades SME.
+
+contract: >-
+  A template says HOW to fill in a section the registry has declared. It never creates a
+  section, never deletes one, never rewords its title. A section's title is a machine-readable
+  key: that is what will allow K7 to confront a produced file with its content outline.
+
+front_matter:
+  rule: >-
+    id = the registry's WP-nn · produced_by = activity number · controlled_at = gate ·
+    completion ∈ {complet, partiel}, identical to the declaration made to the control tower;
+    partiel requires reserves. instance names the release, the slice or the version for a work
+    product with a parameterised path. commit and workspace_* are set by the tooling
+    ("apf notion link / sync"), never typed by the agent.
+
+artifact_form:
+  contract: >-
+    A work product is machine-readable before it is human-readable. Each section declared in the
+    registry lives in ONE file of the work product (the template's "file" key); a Markdown file
+    carries it as an H2 with an identical title; a collection (path ending in /) carries it as
+    files; a YAML, HTML or source file carries it by its existence. The control tower confronts
+    the work product with this form at declaration; K7 replays it on the repository.
+  markdown_section: >-
+    an H2 or H3 heading "<title>", identical to the registry character for character, followed by
+    non-empty content; a sheet field can also be a bold label — "**Nombre suivi** | …" in a table
+    or at the start of a line
+  fiche: >-
+    a section whose title starts with a patterned identifier — OUT-nn, HYP-nn, STO-nn, AC-nn.n,
+    REL-nom — is satisfied by any title carrying a real identifier: "OUT-01 · …" counts as
+    "OUT-nn — énoncé"
+  collection: the folder exists and contains at least one file
+  file: the file exists; a .yaml must be parsable
+  on_missing: >-
+    "complet" declaration REFUSED, the missing section is named; "partiel" is accepted and the gap
+    is recorded
+  on_empty: >-
+    an H2 with no content, or whose content is the skeleton's placeholder dash, counts as a
+    missing section
+  on_extra: >-
+    an H2 outside the outline is an OBSERVATION that is recorded, never a refusal — enriching the
+    outline is an MCR, not an initiative
+  front_matter: >-
+    each atomic Markdown file of the work product carries the required front-matter; id = the WP,
+    completion = the one declared
+  collections_are_free: >-
+    the files of a collection (STO-nn.md, PER-nn.md, ADR-nn.md) are free in form: they are
+    entities, not sections
+
+conventions:
+  identifiants: >-
+    OUT-nn · HYP-nn · PER-nn · STG-nn · TRM-nn · REL-nom · JRN-nn · EPC-nn · STO-nn · AC-nn.n ·
+    DSN-nn · ADR-nn · EVD-nn · FND-nn · DEP-vX.Y · IRR-nn (irritant) · INS-nn (insight) · MET-nn
+    (metric) · NC-nn (needs clarification)
+  source_web: >-
+    any claim drawn from research carries url · consulted_at · verbatim, otherwise it is
+    UNVALIDATED
+
+formats:
+  markdown: a Markdown file, one H2 per section, YAML front-matter
+  yaml: a YAML file validated by schema; the rendered skeleton is a checklist, not the file
+  executable: code or build; the rendered skeleton is a checklist of what each section must prove
+  mixed: several files; "layout" says which section lives in which file
+
+redaction:
+  contrat: >-
+    The reader reads the title, the sentence and the essentials in twenty seconds, and knows what
+    the work product establishes. Each registry section keeps its exact title as a key and
+    attaches its answer after an em dash: "## Problem — four to six hours a week lost on the
+    phone". Method identifiers (work product, activity) appear only under "Method references", at
+    the end. What is not established is said under "What remains to be verified", never in the
+    flow of the text.
+  ouverture:
+    phrase: In one sentence.
+    phrase_guide: >-
+      The work product's answer, in one sentence an executive can repeat. A figure if possible,
+      never the subject.
+    essentiel: The essentials
+    essentiel_guide: "Three bullets readable in twenty seconds: what to remember, not a table of contents."
+  cloture:
+    verifier: What remains to be verified
+    verifier_guide: >-
+      What is not established, why it matters, and what it takes to find out. Mandatory when the
+      work product is partial.
+    reperes: Method references
+    reperes_guide: >-
+      The only place where method identifiers live: work product, activity, gate, traceability
+      links.
+
+office:
+  contrat: >-
+    Each template is delivered as an Office file, the one the reader already opens: PowerPoint
+    when the work product is presented to an authority so that it decides or commits — thesis,
+    journey, release scope and architecture, release design, user feedback, slice result, passage
+    decisions; Word when it is consulted and used as a reference — specifications, registers,
+    evidence, rules, architecture decisions. The Markdown remains the source the machine checks;
+    the Office file is its rendering, never a second truth.
+  sortie_livrables: >-
+    the project's dist/livrables/ — each declared work product is written there by the control
+    tower in its template's format, computed from the Markdown, never maintained by hand.
+  consigne_visible: Instruction
+  exemple_visible: Example — ChantierClair
+  a_supprimer: >-
+    The Instruction and Example blocks are deleted before distribution; the brackets mark what
+    remains to be written.
+
+exhibits:
+  contract: >-
+    A presentation format reads the data declared under "exhibits" in the front-matter of the file
+    that carries it, checks it, computes what can be computed and produces a slide. It replaces
+    neither the work product's sections nor its prose: it is their quantified projection. A work
+    product declared complete must carry each of its formats; a partial work product that does
+    not carry one has the gap recorded.
+  tolerance_motif: >-
+    A presented figure is rounded to be read. Beyond a 15 % gap with the computation, it is no
+    longer rounding: it is another figure, and the text must be corrected.
+  commun:
+    titre: >-
+      The ANSWER, in one sentence — never the name of the format or the subject. "For 30,000 MAD
+      of margin, each club needs more than four courts" is a title; "Inverted income statement"
+      is not.
+  formats:
+    persona:
+      nom: Persona
+      reference: "A. Cooper, The Inmates Are Running the Asylum, 1999; service-design practice — personas drawn from research, not from imagination"
+      question: "Who is this person, what are they trying to do, what gets in the way — and on which real words does each trait rest?"
+      regles:
+        - "One slide per persona: one PER-nn file, one front-matter, one slide."
+        - "Two families, each declared: client (who pays, who uses) or operateur (who runs the service — coach, picker, support), with the name of the canvas operator they embody. Every operator in the canvas has a persona: an operator nobody watched at work means screens that will be forgotten."
+        - "The quote is a LITERAL verbatim, with its S-nn or E-nn source. A sentence written for the persona is not a quote."
+        - "Each trait — goal, frustration, behaviour, context — cites at least two independent sources, or declares itself a hypothesis with its HYP-nn reference."
+        - "No demographic data, no age, no figure without a source. The first name is fictional and says so."
+        - "Behaviour sliders place the person between two poles, each with its sources: they show what sets them apart from the other personas."
+        - "Four items at most per block, sixteen words at most: a persona is a decision tool, not a biography."
+      exemple:
+        format: persona
+        titre: "Karim runs six job sites from his car: he does not lack data, he lacks knowing where things stand"
+        id: PER-01
+        famille: client
+        nom: "Karim — fictional name"
+        archetype: "The multi-site works manager"
+        niveau: DOCUMENTARY
+        citation: { texte: "If the foreman hasn't told me, I don't know.", source: S-03 }
+        objectifs:
+          - { texte: "Know every morning where each job site stands", sources: [S-03, S-07] }
+          - { texte: "See a deviation before it costs money", sources: [S-07, S-11] }
+        frustrations:
+          - { texte: "A morning on the phone to piece progress back together", sources: [S-03, S-07] }
+          - { texte: "Apps demand forms nobody fills in", sources: [S-01, S-02] }
+        comportements:
+          - { texte: "Calls every site foreman before nine", sources: [S-03, S-07] }
+          - { texte: "Would look at a screen outside the calls", statut: hypothèse, ref: HYP-05 }
+        contexte:
+          - { texte: "Three to eight job sites, works from his car or on site", sources: [S-03, S-07] }
+          - { texte: "Says “where we stand”, “the gap”, never “reporting”", sources: [S-03, S-11] }
+        curseurs:
+          - { gauche: "Paper and phone", droite: "Digital tools", position: 0.3, sources: [S-01, S-03] }
+          - { gauche: "Reacts to gaps", droite: "Anticipates", position: 0.25, sources: [S-07, S-11] }
+    empathy-map:
+      nom: Empathy map
+      reference: "D. Gray, XPLANE, 2010 — revised “Updated Empathy Map Canvas”, 2017"
+      question: "What does this person say, do, think and feel in their situation — and what does it cost them, or would it gain them?"
+      regles:
+        - "One slide per persona, attached to its PER-nn."
+        - "“Says” contains only literal quotes, each with its source."
+        - "“Does” contains only what the sources report they do — never what they would do."
+        - "“Thinks” and “Feels” are inferences: each cites at least two sources it is drawn from, or declares itself a HYP-nn hypothesis."
+        - "Pains and gains close the map: what the situation costs them, what a change would gain them — sourced the same way."
+        - "A quadrant nothing supports stays empty and says so: a quadrant filled with imagination is worse than an empty one."
+      exemple:
+        format: empathy-map
+        titre: "Karim does not complain about data entry: he complains about not knowing, and pays for that doubt in hours on the phone"
+        persona: PER-01
+        dit:
+          - { texte: "“On Mondays I spend my morning on the phone.”", sources: [S-03] }
+          - { texte: "“Yet another app to fill in.”", sources: [S-01] }
+        fait:
+          - { texte: "Calls every foreman in the morning, from his car", sources: [S-03, S-07] }
+          - { texte: "Drops apps after a few weeks", sources: [S-01, S-02] }
+        pense:
+          - { texte: "A figure nobody can explain is worthless", sources: [S-07, S-11] }
+        ressent:
+          - { texte: "Flying blind between two calls", sources: [S-03, S-11] }
+          - { texte: "Distrust of an estimated progress figure", statut: hypothèse, ref: HYP-05 }
+        douleurs:
+          - { texte: "Discovers deviations several days later", sources: [S-07, S-11] }
+        gains:
+          - { texte: "A morning given back to the job site", sources: [S-03, S-07] }
+    journey-map:
+      nom: Journey map
+      reference: "Service-design practice — journey and emotion curve; M. Stickdorn et al., This Is Service Design Doing, 2018"
+      question: "Which steps does this person go through today, where are their highs and lows — and which moment must the product change?"
+      regles:
+        - "One slide per persona: today's journey, not the one the product promises."
+        - "Three to eight steps, named in the person's own words. Each step says what they do, which touchpoints they use, what they think, and its sources."
+        - "Each step's emotion is an integer from −2 to +2, drawn from the sources: the machine draws the curve, names the high point and the low point, and measures the amplitude."
+        - "The lowest point is the moment of truth: it carries at least one pain point and one opportunity, each sourced or declared HYP-nn."
+        - "A step no source describes is marked unknown — never imagined to complete the curve."
+      exemple:
+        format: journey-map
+        titre: "Karim's day hits bottom mid-afternoon, when he finds on site a deviation several days old"
+        persona: PER-01
+        etapes:
+          - { nom: "Before leaving", fait: "Lists the job sites to call", contact: "Notebook, phone", pense: "“Who won't answer this morning?”", emotion: 0, sources: [S-03, S-07] }
+          - { nom: "The morning check-in", fait: "Calls each foreman from the car", contact: "Phone", pense: "“If the foreman hasn't told me, I don't know.”", emotion: -1, sources: [S-03, S-07], irritants: ["Several foremen unreachable before mid-morning"] }
+          - { nom: "On the first job site", fait: "Checks progress and handles urgent issues", contact: "Visit, talks on site", pense: "“Here at least I know.”", emotion: 1, sources: [S-07, S-11] }
+          - { nom: "The deviation found", fait: "Sees on site a delay nobody reported", contact: "Visit", pense: "“Since when?”", emotion: -2, sources: [S-07, S-11], irritants: ["The deviation is days old, found by chance"], opportunites: [{ texte: "Flag the deviation the day it appears", ref: HYP-04 }] }
+          - { nom: "The evening report", fait: "Reconstructs the day for the managing director", contact: "Email, spreadsheet", pense: "“Another hour to say what I saw.”", emotion: -1, sources: [S-03, S-11] }
+    communique:
+      nom: Press release written before the product
+      reference: Amazon, Working Backwards — C. Bryar and B. Carr, 2021
+      question: What promise, for which customer, and why does it hold?
+      regles:
+        - "The body fits in 200 words: a promise that does not fit on one page is not yet a promise."
+        - The quotation declares its status, "visée" (target) or "obtenue" (obtained). A target quotation is displayed as such.
+        - '"oblige" names what the press release forces us to decide — optional, but it is what makes it a decision tool.'
+      exemple:
+        format: communique
+        titre: "The morning check-in disappears: the promise fits in one sentence, for the works manager as for the managing director"
+        date: Lyon, 15 October 2026
+        ecrit_le: 2 March 2026
+        titre_communique: Works managers no longer call their job sites at 7 a.m.
+        sous_titre: ChantierClair shows the dated progress of every job site each morning, without one more entry for the works manager.
+        paragraphes:
+          - "A works manager runs three to eight job sites. Every morning, they call them one by one to find out where they stand: four to six hours a week."
+          - With ChantierClair, the site foreman makes one gesture a day. At 7 a.m., the works manager reads the progress of their sites, dated and qualified.
+        citation: { texte: "I got my mornings back.", auteur: "Works manager at a pilot SME", statut: visée }
+        appel: Three pilot SMEs, from April 2026.
+        oblige:
+          - { titre: "The customer is the works manager.", texte: "The managing director buys, but it is the works manager's morning that changes." }
+    bmc:
+      nom: Business Model Canvas
+      reference: A. Osterwalder and Y. Pigneur, Business Model Generation, 2010
+      question: How the product creates, delivers and captures value — and which blocks still rest only on a hypothesis?
+      regles:
+        - The nine blocks are filled in. An empty block is a question the framing did not ask.
+        - "Each item declares its status: établi (established, sourced), décision (decided by the owner), hypothèse (to be tested, with its H-n reference) or inconnu (unknown)."
+        - "Five items at most per block, twelve words at most per item: a canvas is a synthesis, not an inventory."
+        - The machine flags any block that rests only on hypotheses or unknowns — that is where the model can fall.
+        - "Two families of actors: the segments say the customers; \"operateurs\" says who runs the service — name, key activity carried, what they see and do in the product. \"sans_operateur\" is justified. A canvas that says neither is refused."
+      exemple:
+        format: bmc
+        titre: "A subscription sold to the managing director for the works manager's time: revenue still rests on a usage hypothesis"
+        segments:
+          - { texte: "Finishing-trades SMEs, 20 to 100 employees", statut: établi }
+          - { texte: "Works managers running 3 to 8 job sites", statut: établi }
+        proposition:
+          - { texte: "The morning check-in disappears", statut: décision }
+          - { texte: "Dated, qualified progress, no entry for the works manager", statut: hypothèse, ref: HYP-01 }
+        canaux:
+          - { texte: "Three pilot SMEs, through the sponsor's network", statut: décision }
+        relations:
+          - { texte: "One gesture a day from the site foreman", statut: hypothèse, ref: HYP-01 }
+        revenus:
+          - { texte: "Subscription per works manager, paid by the managing director", statut: hypothèse, ref: HYP-02 }
+        ressources:
+          - { texte: "Daily reports from the pilot job sites", statut: décision }
+        activites:
+          - { texte: "Train site foremen on site", statut: décision }
+        partenaires:
+          - { texte: "Pilot SMEs, co-designers", statut: décision }
+        couts:
+          - { texte: "On-site training, three SMEs", statut: décision }
+          - { texte: "Cost of acquiring one SME", statut: inconnu }
+        operateurs:
+          - { nom: "Field coach", activite: "Train site foremen on site", voit_fait: "Job sites with no report; chase up, activate an SME", statut: décision }
+          - { nom: "Support", activite: "Answer managing directors", voit_fait: "An SME's account and its report history", statut: hypothèse, ref: HYP-12 }
+    dimensionnement:
+      nom: Bottom-up sizing
+      reference: Bottom-up estimation — practice of strategy consulting firms
+      question: What size, rebuilt from what can be observed?
+      regles:
+        - The chain starts from an observable quantity and chains × or ÷ operations; an "=" step names a result.
+        - "Each factor declares its origin: sourcé (sourced), hypothèse (hypothesis) or règle (rule). A sourced figure without a source is a hypothesis."
+        - A hypothesis can carry a range; the machine propagates the ranges to the result.
+        - An "expected" result is compared with the computation; beyond the tolerance, the slide is refused.
+      exemple:
+        format: dimensionnement
+        titre: "18,000 works managers and about €22M a year: a niche market, won one SME at a time"
+        chaine:
+          - { valeur: 6000, libelle: "finishing-trades SMEs with 20 to 100 employees", origine: sourcé, source: "fictional example — to be replaced by the real source" }
+          - { op: "×", valeur: 3, fourchette: [2, 4], libelle: "works managers per SME", origine: hypothèse }
+          - { op: "=", libelle: "works managers", attendu: 18000 }
+          - { op: "×", valeur: 1200, fourchette: [900, 1500], libelle: "€ per works manager per year", origine: hypothèse }
+          - { op: "=", libelle: "€ per year: the addressable market", attendu: 21600000 }
+    reservoirs:
+      nom: Value pools
+      reference: O. Gadiesh and J. Gilbert, "Profit Pools", HBR 1998 — adapted to revenue
+      question: Where is the value, and which part does nobody take?
+      regles:
+        - Each pool carries an annual revenue, as a value or a range, and says who occupies it — or that it is unserved.
+        - "Each pool fills in all the declared attributes: a comparison with holes is not one."
+        - "As long as no margin is known, the slide says so: it is a revenue pool, not yet a profit pool."
+        - '"rapport" optional: two unit values whose quotient the machine computes.'
+      exemple:
+        format: reservoirs
+        titre: "Site management suites occupy the large pool; the daily progress report is served by nobody"
+        unite: € per year
+        attributs: ["Who buys", "Frequency of use", "Who targets it"]
+        reservoirs:
+          - nom: Site management suites
+            ca: [40000000, 60000000]
+            occupe_par: three vendors
+            valeurs: { "Who buys": "The managing director", "Frequency of use": "Weekly, at the office", "Who targets it": "Three established vendors" }
+          - nom: Daily progress report
+            ca: [8000000, 12000000]
+            valeurs: { "Who buys": "The managing director, for the works manager", "Frequency of use": "Every morning, on site", "Who targets it": "Nobody — WhatsApp, with no structure" }
+    compte-inverse:
+      nom: Inverted income statement
+      reference: R. McGrath and I. MacMillan, "Discovery-Driven Planning", HBR 1995
+      question: What has to be true to reach the target?
+      regles:
+        - "Start from the target and divide or multiply down to an operational quantity: what must be demanded of the field."
+        - The reference is what is observed for that quantity. The machine confronts the requirement with the reference.
+        - When the requirement exceeds the reference, the machine computes what each lever would have to be worth to close the gap, and what the target yields at the reference.
+        - A bounded lever (a share does not exceed 100 %) that would have to leave its bound is declared impossible, not proposed.
+      exemple:
+        format: compte-inverse
+        titre: "For €250,000 of recurring revenue, six SMEs must sign each month — three times the pace of the pilots"
+        cible: { valeur: 250000, libelle: "€ of annual recurring revenue at eighteen months", origine: cible }
+        chaine:
+          - { op: "÷", valeur: 1200, libelle: "€ per works manager per year", origine: hypothèse, levier: "Charge", donne: "subscribed works managers" }
+          - { op: "÷", valeur: 3, libelle: "works managers per SME", origine: hypothèse, levier: "Target SMEs with", donne: "customer SMEs" }
+          - { op: "÷", valeur: 12, libelle: "months of commercialisation", origine: règle, donne: "SMEs signed per month" }
+        exige: SMEs signed per month
+        reference: { valeur: 2, libelle: "SMEs signed per month during the pilots", source: "three pilots signed in six weeks, March-April 2026" }
+    test-cards:
+      nom: Test cards
+      reference: Strategyzer — D. Bland and A. Osterwalder, Testing Business Ideas, 2019
+      question: What has to be true, and how will we know it is not?
+      regles:
+        - "Each card carries: what we believe, how we verify it, when we are wrong, before which date, its rank."
+        - '"We are wrong if" contains a numeric threshold. A threshold without a number refutes nothing.'
+        - The rank orders the tests by what can stop everything, then by cost — not by number.
+      exemple:
+        format: test-cards
+        titre: "Two hypotheses decide the project, and the first is settled in a four-week pilot"
+        cartes:
+          - { id: HYP-01, rang: 1, enjeu: "The whole proposition", croyons: "The site foreman enters a report once a day.", verifions: "Four-week pilot in three SMEs.", tort_si: "Fewer than 60 % of working days carry a report.", avant: "15 May 2026" }
+          - { id: HYP-04, rang: 2, enjeu: "The size of the market", croyons: "France has 18,000 works managers in finishing-trades SMEs.", verifions: "Cross-check with the headcounts published by trade branch.", tort_si: "Fewer than 10,000 works managers.", avant: "30 April 2026" }
+    metriques:
+      nom: Input and output metrics
+      reference: Amazon — controllable input metrics, shareholder letters
+      question: Which figures, and which gestures move them?
+      regles:
+        - An outcome is intermediate or final; it states its current value, its target and its date.
+        - An input is a controllable gesture; it states which outcomes it feeds.
+        - Each final outcome is reached by at least one input. An outcome that nothing feeds cannot be steered.
+        - "An input without a target is recorded: it is a wish, not yet a metric."
+      exemple:
+        format: metriques
+        titre: "One gesture a day on the job site makes the morning check-in disappear — and is measured from the second week"
+        resultats:
+          - { id: OUT-02, nom: "Job sites reported in under 48 h", aujourdhui: "not measured", cible: "60 %", quand: "at 90 days", niveau: intermediaire, alimente: [OUT-01], avant_vente: true }
+          - { id: OUT-01, nom: "Phone reporting per works manager", aujourdhui: "4 to 6 h a week", cible: "under one hour", quand: "at 90 days", niveau: final }
+        entrees:
+          - { nom: "Site foremen trained on site", cible: "3 a week", alimente: [OUT-02] }
+          - { nom: "Reminders for missing reports", alimente: [OUT-02] }
+
+    pitch:
+      nom: Investor pitch
+      reference: "Y Combinator — How to build your seed round pitch deck (YC Startup Library); K. Hale, How to Design a Better Pitch Deck, YC, 2015; INSEAD, New Business Venturing Lab Workbook, 2023"
+      question: "Why this product, why now, why this team — what have we proven, and how much does it take to prove the rest?"
+      regles:
+        - "Eleven slides: the opening, then the Y Combinator seed-deck order — problem, solution, traction, unique insight, business model, market, competition, team, the ask — with, after traction, what our tests taught us (INSEAD NBV)."
+        - "The opening carries the YC one-liner, a two-to-four-word mantra, and the two-sentence positioning (INSEAD NBV): “For [target] who [need], [product] is a [category] that [benefit]. Unlike [main alternative], [difference].” The machine composes the two sentences."
+        - "Legible, simple, obvious (K. Hale): one idea per slide, and the title IS the idea. Three points at most, twelve words at most, a single big number."
+        - "Nothing is invented for the pitch: every figure and every point cites the work product, source or decision that grounds it (WP-nn, S-nn, E-nn, DEC-nn, MET-nn), or declares itself hypothesis HYP-nn."
+        - "The problem is told through ONE person: their story, tied to a PER-nn persona from the research. The solution states its end result for the customer — money, time, ease or a new opportunity."
+        - "Traction follows the reliability ladder (INSEAD NBV): a statement (“I'd buy that”) < interest observed without pitching < an action (sign-up) < a payment (deposit, pre-order). A statement is never traction, nor is SYNTHETIC evidence. The machine names the highest rung reached. Traction is drawn from the WP-07 market tests, never from an estimate."
+        - "Learnings are cards: we believed — we observed — therefore we decide, each tied to its HYP-nn hypothesis and to the reliability of the observation — taken from the WP-07 learning cards."
+        - "The business model shows its unit economics — customer lifetime value and acquisition cost, declared and sourced — and its strengths among the seven of the NBV assessment: switching costs, recurring revenue, earning before spending, cost structure, others do the work, scalability, protection."
+        - "The market is sized bottom-up: its figure comes from the WP-02 sizing."
+        - "Competition is typed: direct, indirect, future, and the status quo — what the target does today without the product, always present. The insight states the unfair advantage: what competitors cannot copy."
+        - "The team reads by key activity covered, and names its gaps: a gap is funded by the ask."
+        - "The ask is a decision of the product owner: the amount, what it funds, the milestone, and the critical HYP-nn hypotheses this money will settle."
+      exemple:
+        format: pitch
+        titre: "ChantierClair gives works managers back the morning they spend on the phone — and raises €600k to prove it on 50 SMEs"
+        entreprise: "ChantierClair"
+        accroche: "Every job site's progress, every morning, without a single call"
+        mantra: "Know without calling"
+        positionnement:
+          pour: "works managers at finishing-trade SMEs"
+          qui: "rebuild progress over the phone every morning"
+          produit: "ChantierClair"
+          categorie: "one-gesture job-site tracking"
+          benefice: "shows every deviation the same day"
+          contrairement_a: "full job-site software"
+          difference: "it asks the site foreman for a single gesture a day"
+        planches:
+          - cle: probleme
+            titre: "A works manager spends a third of the week piecing together where job sites stand"
+            chiffre: { valeur: "4 to 6 h", libelle: "of calls per week per works manager", source: WP-04 }
+            histoire: { persona: PER-01, texte: "Monday, 8 am: Karim calls six foremen from his car; at 3 pm he finds a three-day delay on site.", source: S-03 }
+            points:
+              - { texte: "Deviations are discovered several days later", statut: établi, source: WP-04 }
+          - cle: solution
+            titre: "One daily gesture from the site foreman replaces the morning check-in"
+            resultat: { type: temps, texte: "One morning a week given back to the job site", statut: hypothèse, ref: HYP-01 }
+            points:
+              - { texte: "The foreman records progress in thirty seconds on site", statut: hypothèse, ref: HYP-01 }
+              - { texte: "The works manager sees every deviation the same day", statut: décision, source: WP-02 }
+          - cle: traction
+            titre: "11 % of visitors signed up at the displayed price, three SMEs ready to pay a deposit"
+            chiffre: { valeur: "11 %", libelle: "sign-up rate on the pricing page", source: MET-03, fiabilite: action }
+            points:
+              - { texte: "Three pilot SMEs paid a €500 deposit", statut: établi, source: DEC-04, fiabilite: paiement }
+              - { texte: "No recurring revenue yet: the pilot starts in January", statut: établi, source: WP-15 }
+          - cle: apprentissages
+            titre: "The blocker was not the price but data entry: we cut the report to one gesture"
+            cartes:
+              - { pensions: "Owners would refuse €1,200 a year", observe: "No price objection in interviews", decidons: "Keep the price, test the deposit", ref: HYP-02, fiabilite: interet, source: WP-04 }
+              - { pensions: "Foremen would fill in a form", observe: "Two apps abandoned within three weeks", decidons: "One gesture, no form", ref: HYP-01, fiabilite: action, source: S-01 }
+          - cle: intuition
+            titre: "Nobody refuses data entry: everybody refuses not knowing"
+            avantage: { texte: "Twelve years running job sites: we speak the site's language", statut: établi, source: SOC-01 }
+            points:
+              - { texte: "Tools fail on data entry, not on value", statut: établi, source: WP-04 }
+          - cle: modele
+            titre: "A subscription per works manager, paid by the owner, profitable from the tenth customer"
+            chiffre: { valeur: "€1,200", libelle: "per works manager per year", statut: hypothèse, ref: HYP-02 }
+            economie:
+              ltv: { valeur: 3600, statut: hypothèse, ref: HYP-08 }
+              cac: { valeur: 900, statut: hypothèse, ref: HYP-09 }
+            forces: [revenus_recurrents, couts_de_changement]
+          - cle: marche
+            titre: "18,000 works managers in France, about €22M a year, won SME by SME"
+            chiffre: { valeur: "≈ €22M", libelle: "a year, sized bottom-up", source: WP-02 }
+          - cle: concurrence
+            titre: "The real competitor is the phone, not job-site software"
+            points:
+              - { texte: "Phone, spreadsheet and site visits", type: statu_quo, statut: établi, source: WP-04 }
+              - { texte: "Job-site software: complete, abandoned within weeks", type: direct, statut: établi, source: S-01 }
+              - { texte: "Team group chats", type: indirect, statut: établi, source: S-02 }
+          - cle: equipe
+            titre: "A former works manager and an engineer who has already shipped field software"
+            points:
+              - { texte: "Twelve years running finishing-trade job sites", activite: "Selling to SMEs", statut: établi, source: SOC-01 }
+              - { texte: "Two field apps shipped, 40,000 users", activite: "Product and field", statut: établi, source: SOC-01 }
+            manques: ["An SME sales lead, hired with the round"]
+          - cle: demande
+            titre: "€600k to prove retention on 50 SMEs in 18 months"
+            chiffre: { valeur: "€600k", libelle: "pre-seed, 18 months of runway", statut: décision, source: DEC-09 }
+            points:
+              - { texte: "60 % product and field, 25 % sales, 15 % operations", statut: décision, source: DEC-09 }
+              - { texte: "Milestone: 50 paying SMEs, 90-day retention", statut: décision, source: WP-15 }
+            tranche: [HYP-01, HYP-08]
+    investisseurs:
+      nom: Targeted investor list
+      reference: "INSEAD, New Business Venturing Lab Workbook, 2023 — chapter 4, Identify suitable investors"
+      question: "Who should this pitch go to, and why is each one the right investor for this product?"
+      regles:
+        - "PEOPLE, not firms (INSEAD NBV): a partner at a fund or a business angel, named by first and last name, with their firm alongside."
+        - "Four criteria per person, each judged yes, partial or no, with the evidence that shows it and its dated source — public profile, funding database, announcement: does their background match the sector and business model; are they active in the product's geography; does their portfolio resemble the product without a direct competitor; have they helped their companies grow, up to an exit?"
+        - "A direct competitor in the portfolio disqualifies: the person has no place on the list."
+        - "The usual ticket is compared with the amount asked, and access is declared: warm (an introduction, through whom) or cold."
+        - "The machine ranks by fit and flags a list without three well-placed people, or without any warm introduction."
+        - "Nothing is invented: a person, fund, ticket or exit without a source does not enter the list."
+      exemple:
+        format: investisseurs
+        titre: "Three investors know the finishing trades and SMEs: two can be reached through an introduction"
+        cible: { tour: "pre-seed", montant: 600000, geographie: "France", secteur: "construction software" }
+        investisseurs:
+          - nom: "Alice Example"
+            structure: "Example Seed Fund — fictional example"
+            profil: S-21
+            secteur: { adequation: oui, preuve: "Ran a software publisher for tradespeople", source: S-21 }
+            geographie: { adequation: oui, preuve: "Invests in France since 2019", source: S-22 }
+            portefeuille: { adequation: oui, preuve: "Two construction SaaS for SMEs, no job-site tracking", source: S-22, concurrents: [] }
+            performance: { adequation: partiel, preuve: "One company acquired, the others growing", source: S-23 }
+            ticket: { min: 100000, max: 400000, source: S-22 }
+            acces: { type: chaud, via: "former partner of the pilot sponsor" }
+          - nom: "Bruno Example"
+            structure: "business angel — fictional example"
+            profil: S-24
+            secteur: { adequation: oui, preuve: "Twenty years in building-materials distribution", source: S-24 }
+            geographie: { adequation: oui, preuve: "Active in France and Belgium", source: S-24 }
+            portefeuille: { adequation: partiel, preuve: "Invests mostly in logistics", source: S-25, concurrents: [] }
+            performance: { adequation: oui, preuve: "Two known exits", source: S-25 }
+            ticket: { min: 25000, max: 100000, source: S-25 }
+            acces: { type: chaud, via: "the owner of a pilot SME" }
+          - nom: "Chloe Example"
+            structure: "Example Ventures — fictional example"
+            profil: S-26
+            secteur: { adequation: partiel, preuve: "Invests in vertical SaaS", source: S-26 }
+            geographie: { adequation: oui, preuve: "Office in Paris", source: S-26 }
+            portefeuille: { adequation: oui, preuve: "Vertical SaaS for field trades", source: S-27, concurrents: [] }
+            performance: { adequation: oui, preuve: "Three companies raised their Series A", source: S-27 }
+            ticket: { min: 300000, max: 1000000, source: S-27 }
+            acces: { type: froid }
+    apprentissages:
+      nom: Learning cards
+      reference: "INSEAD, New Business Venturing Lab Workbook, 2023 — market tests, evidence reliability ladder; Strategyzer — D. Bland and A. Osterwalder, Testing Business Ideas, 2019 — Learning Card"
+      question: "What did real people DO in front of the product — and which critical hypothesis does it settle, at which rung of evidence?"
+      regles:
+        - "The critical hypotheses come from the WP-02 test cards: the ones that can stop everything. Each states what is at stake."
+        - "One card per test: we believed · we did · we observed · therefore we decide — with its HYP-nn hypothesis and its E-nn source, the raw export or response under results/."
+        - "The success criterion is written BEFORE the test, dated: a criterion written after the observation always confirms it."
+        - "Each observation sits on the reliability ladder: a statement (\"I would buy\") < interest observed without pitching < an action (sign-up, click to buy) < a payment (deposit, pre-order). A statement never confirms a hypothesis; SYNTHETIC evidence is not an observation."
+        - "The machine computes, for each critical hypothesis, the highest rung that settled it, and flags when none reaches action: the foundation would be built on words."
+        - "A disproven hypothesis is not a failure: the card says what we decide, and the WP-02 thesis is reworked."
+      exemple:
+        format: apprentissages
+        titre: "The price holds — 11 % sign-ups and three deposits — but the form kills usage: the report becomes one gesture"
+        hypotheses:
+          - { id: HYP-02, enjeu: "The price: €1,200 per works manager per year", critique: true }
+          - { id: HYP-01, enjeu: "The site foreman reports every day", critique: true }
+          - { id: HYP-07, enjeu: "Managing directors read a weekly summary", critique: false }
+        cartes:
+          - id: LC-01
+            ref: HYP-02
+            pensions: "Managing directors will accept €1,200 per works manager per year"
+            fait: "Pricing page published, 400 managing directors targeted on a professional network, four weeks"
+            critere: { texte: "At least 5 % of visitors sign up at the displayed price", ecrit_le: 2026-04-01 }
+            teste_le: 2026-04-08
+            observe: "44 sign-ups out of 400 visitors: 11 %"
+            fiabilite: action
+            verdict: confirmée
+            decidons: "Keep the price; test a deposit with those who signed up"
+            source: E-14
+            decision: DEC-04
+          - id: LC-02
+            ref: HYP-02
+            pensions: "One sign-up in ten will pay a deposit"
+            fait: "€500 deposit offered to the 44 sign-ups"
+            critere: { texte: "At least three deposits within two weeks", ecrit_le: 2026-04-29 }
+            teste_le: 2026-05-02
+            observe: "Three SMEs paid the deposit"
+            fiabilite: paiement
+            verdict: confirmée
+            decidons: "Open the paid pilot with the three SMEs"
+            source: E-15
+            decision: DEC-05
+          - id: LC-03
+            ref: HYP-01
+            pensions: "Foremen will fill in a daily form"
+            fait: "Clickable mock-up given to six site foremen for three weeks"
+            critere: { texte: "At least 60 % of working days carry a report", ecrit_le: 2026-04-10 }
+            teste_le: 2026-04-14
+            observe: "22 % of days carry a report; four foremen stopped in week two"
+            fiabilite: action
+            verdict: infirmée
+            decidons: "One gesture, no form — the WP-02 thesis is reworked"
+            source: E-16
+    economie-unitaire:
+      nom: Unit economics
+      reference: "INSEAD, New Business Venturing Lab Workbook, 2023 — unit economics, LTV / CAC; D. Skok, \"SaaS Metrics 2.0\", For Entrepreneurs, 2013"
+      question: "Does a customer bring in more than it costs to win them — and how long until the money spent acquiring them comes back?"
+      regles:
+        - "For ONE customer, over a declared period (month or year): the revenue, the cost to serve them, the churn per period, the cost to acquire them."
+        - "Each figure states its origin — sourced with its source, hypothesis with its HYP-nn reference, or rule. A sourced acquisition cost cites an E-nn evidence item from the market tests; until it is measured, it stays a hypothesis, and the slide says so."
+        - "The machine computes the contribution margin, the lifetime (the inverse of churn), the lifetime value, the LTV / CAC ratio and the payback period. An announced figure that departs from the computation by more than the tolerance is refused."
+        - "The benchmarks — LTV / CAC of at least 3, payback within twelve months — are flagged; they do not block. A negative margin blocks: every customer deepens the loss."
+        - "With cash and monthly burn declared, the machine computes the runway in months."
+      exemple:
+        format: economie-unitaire
+        titre: "A subscribed works manager brings in more than three times their acquisition in margin, and pays it back in eleven months"
+        unite: "subscribed works manager"
+        periode: mois
+        revenu: { valeur: 100, libelle: "€ per month, paid by the managing director", origine: hypothèse, ref: HYP-02 }
+        cout_service: { valeur: 18, libelle: "€ per month: hosting, support, payment", origine: hypothèse, ref: HYP-10 }
+        attrition: { valeur: 0.028, libelle: "of subscribers leave each month", origine: hypothèse, ref: HYP-08 }
+        cac: { valeur: 900, libelle: "€ per works manager won — pricing page and targeted campaign", origine: sourcé, source: E-14 }
+        tresorerie: { valeur: 600000, libelle: "€ raised", origine: règle }
+        consommation: { valeur: 32000, libelle: "€ per month", origine: hypothèse, ref: HYP-11 }
+        annonce: { ltv: 2900, ratio: 3.2, recuperation: 11 }
+templates:
+  WP-01:
+    layout: >-
+      business-model-canvas.md carries the intent, the nine blocks of the Business Model Canvas, the
+      advantage, the key metrics and the workshop ledger
+    specimen: |-
+      Revenue — ~€15/month per active job site, paid by the managing director
+        ·  UNVALIDATED → HYP-02: 3 managing directors out of 5 accept it at the pilot
+    ouverture:
+      business-model-canvas.md:
+        titre: The product canvas
+        phrase: >-
+          Every morning, ChantierClair gives SME works managers the dated progress of their job
+          sites, without a call; the managing director pays per active job site, and the bet holds
+          if site foremen make one report a day.
+        essentiel:
+          - "The first segment is named: the works manager running three to eight job sites; their managing director pays."
+          - "The value is stated in what they stop: the morning calls, the personal spreadsheet, the evening email."
+          - Two blocks remain bets — the price and the daily report — and each says what will settle it.
+        verifier: >-
+          The price of €15 per active job site comes from the sponsor's intuition, not from a
+          customer: it is tested with five managing directors before the pilot. Until it is
+          settled, no budget is decided on this revenue.
+    sections:
+      - guide: >-
+          One sentence on what we want to do with the product, one on why now, one on what will say
+          it has succeeded. No feature: an intent.
+        example: |-
+          **What we want to do with it.** That the works manager knows where their job sites stand before 7 a.m., without calling anyone.
+
+          **Why now.** Every site foreman now has a phone with a camera; two years ago, half of them did not.
+
+          **Successful if** the three pilot SMEs no longer hold a morning phone check-in after three months.
+        reponse: no works manager spends their morning on the phone any more
+      - guide: >-
+          Who uses it, who pays if it is not the same person, and the first target segment — only
+          one, named. The others wait.
+        example: |-
+          | | Who | Why them |
+          |---|---|---|
+          | User | Works manager, finishing-trades SME, 3 to 8 job sites | They are the one losing their mornings |
+          | Payer | The SME's managing director | Already pays for the management software |
+          | Later | Project owners | They will want to see progress — not before the works manager uses it |
+        reponse: the works manager running three to eight job sites; the managing director pays
+      - guide: >-
+          Two families of actors, never one: the customers — who pays, who uses — and the OPERATORS,
+          who run the service day to day: coach, picker, delivery driver, support, administrator,
+          partner who operates. For each: the key activity they carry, and what they must see and do
+          in the product. An operator forgotten here means their screens will be missing from the
+          foundation. They are also declared in the front-matter, in the canvas (operateurs: name,
+          activity, what they see and do); "no operator" is a reasoned decision (sans_operateur),
+          never a silence.
+        example: |-
+          | Operator | Key activity they carry | What they must see and do in the product |
+          |---|---|---|
+          | Field coach | Training site foremen on site | The job sites with no report today; chase up, activate an SME |
+          | Support | Answering managing directors | An SME's account, its works managers, the history of its reports |
+        reponse: the field coach runs the service; they have their own screens
+      - guide: >-
+          The segment's three problems, from most to least costly, and what they do today instead. A
+          cost without a number is an opinion: if there is no number, write it as a hypothesis.
+        example: |-
+          1. Rebuilding progress over the phone — four to six hours a week.
+          2. Seeing a schedule slip five days after it appeared.
+          3. Losing everything when a works manager leaves: the tracking is in their head.
+
+          **Today:** calls between 6:45 and 8:30 a.m., a personal spreadsheet, WhatsApp photos with no report date.
+        reponse: progress is rebuilt over the phone, every morning
+      - guide: >-
+          What changes for them the next day, and what they STOP doing. Without stopping something,
+          it is not value, it is a feature.
+        example: |-
+          **The next day,** at 7 a.m., Karim sees his six job sites, each with a dated progress status and how it was established.
+
+          **He stops** the morning calls, the personal spreadsheet and the evening email to the managing director.
+        reponse: at 7 a.m., the dated progress of every job site — and no more calls
+      - guide: >-
+          How the segment discovers the product, tries it, adopts it. One channel per stage is
+          enough; "word of mouth" only counts if it has already been observed.
+        example: |-
+          | Discovers | Tries | Adopts |
+          |---|---|---|
+          | The managing director, through their management software vendor | One pilot job site, one month, free | All active job sites, decided by the managing director |
+        reponse: through the managing director, who imposes it on their works managers
+      - guide: >-
+          Self-service, assisted or community — and what brings them back every day. If nothing
+          brings them back, say so: it is the first risk.
+        example: |-
+          The first month, half a day on site with each site foreman. Then, self-service.
+
+          **What brings them back:** the 7 a.m. notification — it replaces the first call.
+        reponse: assisted support the first month, then self-service
+      - guide: >-
+          Who pays, how much, how often. An untested price is written as a hypothesis with what will
+          settle it. "Not yet the question" is admissible if it says why.
+        example: |-
+          | Who pays | How much | How often | Status |
+          |---|---|---|---|
+          | The managing director | ~€15 per active job site | Monthly | UNVALIDATED → HYP-02: 3 managing directors out of 5 accept this price at the pilot |
+        reponse: a subscription per active job site, about €15 a month — to be tested
+      - guide: >-
+          What the value cannot be produced without: data, access, know-how. Not the list of
+          everything needed — what would be missed most.
+        example: |-
+          - Read access to the job site numbers in the management software.
+          - One report per day and per job site — made by the site foreman.
+        reponse: read access to each SME's management software
+      - guide: What the team must do excellently. One or two activities; the rest is delegated or waits.
+        example: Getting the site foreman to report every day in under a minute. Everything else depends on it.
+        reponse: getting the daily report, and nothing else
+      - guide: >-
+          Who brings what we will not do ourselves, and what they gain from it. Without what they
+          gain, it is not a partner, it is a hope.
+        example: |-
+          | Partner | Brings | Gains |
+          |---|---|---|
+          | Management software vendor | Access to the job sites and the first contact with managing directors | A tracking feature it does not have |
+        reponse: the management software vendor
+      - guide: >-
+          For each key activity of the canvas: the skills it requires — technical, people, domain —,
+          who in the team covers them, and what is missing. Then the team's startup experience. A gap
+          is named: it is filled by a hire, a co-founder or a partner, and funded by the pitch's ask.
+          A team with no declared gap was not looked at.
+        example: |-
+          Startup experience: one company sold by the technical co-founder; a first venture for the founder.
+
+          | Key activity | Who covers it | Gap |
+          |---|---|---|
+          | Getting the daily report | The founder — twelve years as a works manager | — |
+          | Product and field app | The technical co-founder — two apps shipped | — |
+          | Selling to SMEs | No one | **An SME sales lead**, hired with the round |
+        reponse: the field is covered; selling to SMEs is the gap
+      - guide: The cost items that decide, and what costs money before the first revenue. Orders of magnitude are enough.
+        example: |-
+          - First-month support: half a day per site foreman — the item that decides.
+          - European hosting and notifications: low.
+          - Before the first revenue: the three-month pilot, about 20 person-days.
+        reponse: field support costs more than the software
+      - guide: >-
+          One reason, not five. "None for now" is an admissible answer — and more useful than an
+          invented advantage.
+        example: >-
+          Once site foremen report every day, the dated history becomes the job site's memory:
+          switching means losing it.
+        reponse: the daily reporting habit, once it has taken hold
+      - guide: >-
+          The two or three numbers that will say it works, measurable without building anything.
+          Activity 2 quantifies them as outcomes.
+        example: |-
+          | Metric | Why | Measured how |
+          |---|---|---|
+          | Job sites reported within the last 48 h | Without a report, nothing else holds | Count at the pilot |
+          | Hours on the phone in the morning | It is the promised value | Works manager's log, two weeks before and after |
+        reponse: the share of job sites reported within the last 48 hours
+      - guide: >-
+          One line per question: the question, the answer kept, who gave it, the outcome — settled
+          or HYP-nn UNVALIDATED. Activity 2 rereads it and asks nothing again that is settled.
+        example: |-
+          | # | Question | Answer kept | Who | Outcome |
+          |---|---|---|---|---|
+          | 1 | What do we want to do with it? | No more mornings on the phone | Sponsor | settled |
+          | 2 | Who pays? | The managing director, per active job site | Sponsor | settled |
+          | 3 | At what price? | ~€15 a month | Sponsor | HYP-02 UNVALIDATED |
+        reponse: every question asked, its answer and its outcome
+  WP-02:
+    layout: product-thesis.md
+    specimen: |-
+      Problem — A works manager running 3 to 8 job sites
+      rebuilds progress over the phone every morning.
+        source: 11 interviews, March 2026  ·  FACT
+        observed cost: 4 to 6 h/week  ·  FACT
+        generalisable to the segment?  ·  UNVALIDATED → HYP-03
+    ouverture:
+      product-thesis.md:
+        titre: The product thesis
+        phrase: >-
+          Works managers lose four to six hours a week rebuilding the progress of their job sites
+          over the phone; ChantierClair gives it to them every morning at 7 a.m., without one more
+          entry on their part.
+        essentiel:
+          - "The cost is measured: four to six hours a week, over eleven interviews and four observed mornings."
+          - The only alternative actually used is WhatsApp, with no structure; site management suites are not used for daily tracking.
+          - The project stops if, at 90 days, fewer than 60 % of pilot job sites carry a report less than 48 hours old.
+        verifier: >-
+          The size of the market — about 18,000 works managers in France — comes from an undated
+          source. It does not change the thesis, but it decides the ambition: to be verified before
+          any budget beyond the pilots.
+      outcomes.md:
+        titre: What the product must change
+        phrase: >-
+          Two measurable changes for the works manager: the morning check-in disappears, and a
+          schedule slip is seen in two days instead of five.
+        essentiel:
+          - The first outcome is measured in hours on the phone, not in use of the tool.
+          - The second is measured by the delay between a slip appearing and its discovery.
+          - Both can be read by the end of the pilot, before any question of price.
+        verifier: >-
+          The delay in discovering a slip (five days) rests on only two observed cases. It must be
+          measured on the three pilot SMEs during the first two weeks, before setting the target.
+      assumptions.md:
+        titre: What could prove us wrong
+        phrase: >-
+          Two hypotheses decide the project; the first — the site foreman makes one report a day —
+          is settled in a four-week pilot.
+        essentiel:
+          - "If the site foreman does not report every day, nothing else holds: it is the first hypothesis to test."
+          - Each hypothesis carries the threshold that would refute it, written before the answer.
+          - "None requires development to be tested: a form and a pilot are enough."
+        verifier: >-
+          The refutation thresholds are set by the sponsor, not computed. They must be owned by the
+          Product Owner before the pilot's first answer, otherwise they will be argued about
+          afterwards.
+    sections:
+      - guide: >-
+          Four answers, each sourced: who has the problem, how we know, what they do today, what it
+          costs them. A cost without a number is an opinion.
+        example: |-
+          A works manager runs three to eight job sites. Every morning, between 6:45 and 8:30 a.m., he calls his site foremen one by one to find out where each one stands. Two or three do not answer before 8:30.
+
+          | | |
+          |---|---|
+          | What it costs | Four to six hours a week — eleven interviews, March 2026 |
+          | What it causes | A schedule slip is seen five days after it appeared — two observed cases |
+          | How we know | Eleven interviews and four mornings followed by car; bias: all recruited through the sponsor's network |
+        reponse: four to six hours a week lost on the phone
+      - guide: >-
+          A person who can be described, a number with its source, a channel to reach them. "Building
+          SMEs" is not a target.
+        example: |-
+          Karim, 41, works manager in a finishing-trades SME, runs six job sites and has no fixed office: he works from his car or on site.
+
+          He does not buy: his managing director pays. Three partner SMEs open the pilot. In France, there would be about 18,000 of them — figure to be verified.
+        reponse: the works manager running three to eight job sites, reached through their managing director
+      - guide: >-
+          Two sentences: what changes the day after going live, and what the person STOPS doing.
+          Without stopping something, there is no value, there is a feature.
+        example: |-
+          **The next day,** at 7 a.m., Karim sees his six job sites, each with a dated progress status and how it was established: observed on site, declared over the phone or estimated.
+
+          **He stops** the morning calls, the personal spreadsheet and the evening email to the managing director.
+        reponse: at 7 a.m., the dated progress of every job site — and no more calls
+      - guide: >-
+          What happens if nothing is done, and when the cost becomes visible; who else solves the
+          problem, with the observed usage; why this one wins — one reason, not five.
+        example: |-
+          | | What happens | Why it is not enough |
+          |---|---|---|
+          | Do nothing | The cost stays absorbed by the works manager | It becomes visible at the first departure: all the tracking leaves with them |
+          | Site management suites | Three SMEs out of eleven have one | None uses it for daily progress |
+          | WhatsApp | Eleven out of eleven use it | Photos with no report date or status: no one knows what is true |
+
+          **Why ChantierClair wins:** a single gesture a day for the site foreman, no entry for the works manager.
+        reponse: WhatsApp is enough — until a works manager leaves
+      - guide: >-
+          The typed alternatives — direct, indirect, future, and the status quo, what the target does
+          today without the product, always present. Three to five dimensions that matter TO THE
+          TARGET, not to the team. Each cell states its source and the quality of its evidence:
+          observed, declared, assumed. The grid says where the product wins and where it loses; a
+          grid where it wins everywhere was not filled in honestly.
+        example: |-
+          Future: the publisher's module, unknown — assumed. **We win** on effort and freshness; **we lose** on completeness, by choice.
+
+          | | Status quo: phone | Direct: site management suites | Indirect: spreadsheet |
+          |---|---|---|---|
+          | Foreman's effort | None — observed | Form abandoned — observed | In the evening — declared |
+          | Freshness | Morning, partial — observed | Variable — declared | D+1 — declared |
+          | Completeness | Low — observed | **High** — observed | Medium — declared |
+        reponse: the real competitor is the phone; we lose on completeness
+      - guide: >-
+          At least two models, written BEFORE choosing the main one: who pays, for what, how. Then
+          why the main one wins, and what would tip it towards another. A model chosen without an
+          alternative was not chosen.
+        example: |-
+          | Model | Who pays | What would make it the choice |
+          |---|---|---|
+          | **Chosen — €100 per works manager per month** | The managing director | Recurring, aligned with value |
+          | €15 per active job site per month | The managing director | If a works manager has few job sites |
+          | Licence to the management software publisher | The publisher | If direct acquisition costs too much |
+        reponse: the subscription per works manager, ahead of price per job site and the publisher licence
+      - guide: >-
+          The seven strengths of the model, each weak, medium or strong, with its rationale:
+          switching costs, recurring revenue, earning before spending, cost structure, others do the
+          work, scalability, protection. Then the strength of the value proposition — the pain, its
+          frequency, its urgency, the willingness to pay —, each sourced. This table says where the
+          model is fragile, not that it is good.
+        example: |-
+          Value proposition: strong, daily pain — eleven interviews; observed willingness to pay — three deposits.
+
+          | Strength | Rating | Rationale |
+          |---|---|---|
+          | Recurring revenue | Strong | Monthly subscription |
+          | Switching costs | Medium | The history stays in the tool |
+          | Protection | **Weak** | The lead is usage, not technology |
+        reponse: strong on recurring revenue and switching; weak on protection
+      - guide: >-
+          For one customer: the revenue, the cost to serve them, the contribution margin, the churn —
+          hence the lifetime and the lifetime value, computed —, the acquisition cost, drawn from the
+          market tests as soon as they have measured it, then the LTV / CAC ratio and the payback
+          period, computed. Each figure states its origin: sourced, HYP-nn hypothesis or rule. The
+          benchmarks — LTV / CAC of at least 3, payback within twelve months — are flagged, not
+          hidden.
+        example: |-
+          | For one subscribed works manager | Value | Origin |
+          |---|---|---|
+          | Revenue − cost to serve | 100 − 18 = €82 per month | HYP-02 · HYP-10 |
+          | Lifetime · lifetime value | ≈ 36 months · ≈ €2,900 | HYP-08 · computed |
+          | Acquisition cost | €900 | Sourced — market tests |
+          | LTV / CAC · payback | 3.3 · 11 months | Computed |
+        reponse: more than three times acquisition in margin, paid back in eleven months
+      - guide: >-
+          An observable result, a threshold, a reading date and the person who pronounces. Written
+          before building, so it is not rewritten afterwards.
+        example: |-
+          > **If, at 90 days, fewer than 60 % of pilot job sites carry an observed report less than 48 hours old, the morning check-in has not disappeared, and the project stops.**
+
+          Read on 15 October 2026, pronounced by the Product Owner, with no postponement.
+        reponse: fewer than 60 % of job sites reported at 90 days, and we stop
+      - guide: >-
+          Each question asked to surface an implicit decision, the answer kept and who gave it, and
+          its outcome: settled, or turned into a hypothesis to test. No question without an outcome.
+        example: |-
+          | Question | Answer kept | Outcome |
+          |---|---|---|
+          | Will the site foreman enter data on site? | "I think so, once a day" — the sponsor | To be tested — HYP-01 |
+          | Manage the schedule, or observe it? | Observe it first | Settled — three SMEs out of eleven already have a scheduling tool |
+          | What result would make us give up? | Fewer than 60 % of job sites reported at 90 days | Settled — the sponsor, 6 March |
+        reponse: five questions asked of the sponsor, two remain to be tested
+      - guide: >-
+          An observable change for the user, stated as a result and never as a feature: "the
+          morning check-in disappears", not "a dashboard". One sheet per outcome; its fields follow
+          in a table.
+        example: Today, the works manager calls his site foremen every morning. Tomorrow, he reads.
+        reponse: The morning progress check-in disappears
+        fiche: OUT-01
+      - guide: A quantity, a unit, a population. Without a unit, it is not a number.
+        example: Hours per week spent rebuilding progress over the phone, per works manager
+      - guide: >-
+          Measured, with its source and its date. Unknown: write it down, and make it the first
+          measurement of the research plan.
+        example: Four to six hours — eleven interviews, March 2026
+      - guide: A threshold and a date. The target must be missable.
+        example: Under one hour, 90 days after the pilots start
+      - guide: >-
+          Who measures, how, where the figure is read. A metric that cannot be instrumented is not
+          one.
+        example: Call log of the work phone, read by the works manager one week in four
+      - guide: >-
+          What is assumed, stated as a fact to verify. One sheet per hypothesis; its fields follow in
+          a table. Rank hypotheses by what can stop everything, not by number.
+        example: "The whole product rests on this gesture: without a daily report, the works manager has nothing to read at 7 a.m."
+        reponse: The site foreman makes one report a day
+        fiche: HYP-01
+      - guide: The outcome that falls if the hypothesis is false.
+        example: OUT-01 — without a daily report, the morning check-in does not disappear
+      - guide: The quantified result that would prove the hypothesis false. A threshold without a number refutes nothing.
+        example: Fewer than 60 % of working days carry a report, over three SMEs for four weeks
+      - guide: "What we know today about this hypothesis: verified, observed once, or only declared."
+        example: Not verified — declared by the sponsor, never observed
+      - guide: Where and when it will be settled, and the person who owns the test.
+        example: Four-week pilot, April 2026 — owned by the Product Owner
+  WP-03:
+    layout: >-
+      domain-profile.md carries the profile · sources.md carries the approved sources · rules.md
+      carries the business rules, the unwritten practices, the sanctions and the authority
+    ouverture:
+      domain-profile.md:
+        titre: The market and its rules
+        phrase: >-
+          The finishing trades are a market of thin-margin SMEs, invoiced on observed progress: that
+          is what makes false progress costly, and dated progress valuable.
+        essentiel:
+          - SMEs of ten to sixty employees, job sites lasting two to nine months, mostly private contracts.
+          - A progress claim is invoiced on observed progress, never on an estimate.
+          - No authorisation is required for a tracking tool; the only strong constraint concerns personal data.
+        verifier: >-
+          The share of public contracts in the target is not known: it would change the invoicing
+          rules. To be asked of the three pilot SMEs.
+      sources.md:
+        titre: The sources we rely on
+        phrase: >-
+          Three sources are authoritative for this product — a technical standard, the collective
+          agreement and the standard contract — and each has a reading date.
+        essentiel:
+          - A source without a consultation date is out of date by default.
+          - Each source says what it is authoritative for, and what it is not authoritative for.
+          - No rule in this file rests on someone's memory.
+        verifier: >-
+          The standard contract was provided by a single SME: it must be checked that it is
+          representative of the other two.
+      rules.md:
+        titre: The rules of the trade
+        phrase: >-
+          Two written rules and one unwritten practice govern the progress of a job site; the
+          product must respect all three, or face refusal of payment.
+        essentiel:
+          - "A progress claim is invoiced on observed progress: estimated progress cannot be invoiced."
+          - Deadlines are counted in the job site's working days, not in calendar days.
+          - On the ground, a foreman only declares "done" after the works manager has come by.
+        verifier: >-
+          No source has been found for the retention rate: it will not be displayed until a source
+          sets it.
+      critic-definition.md:
+        titre: The domain critic
+        phrase: >-
+          The domain critic judges each work product against the domain's sourced rules, never
+          against its own memory — and it has been tested on a case whose answer was known.
+        essentiel:
+          - "Every claim it returns carries its level of evidence: sourced, observed, deduced or unknown."
+          - It found the error deliberately slipped into a test scope.
+          - A critic that has not been tested is not used.
+        verifier: >-
+          It has been tested on one case only. A second case, on the working-days rule, is planned
+          before the first release.
+      critic-sources.md:
+        titre: The domain critic's sources
+        phrase: >-
+          The domain critic relies only on the domain's three approved sources, each dated; anything
+          it asserts beyond them is marked unknown.
+        essentiel:
+          - Three sources, the same as those of the domain profile.
+          - A claim without a source is returned as "unknown", never presented as a fact.
+          - The list is reread at each new release.
+        verifier: >-
+          The standard contract comes from a single SME: the critic cannot yet generalise the
+          invoicing rule to the other two.
+    sections:
+      - guide: >-
+          The sector in three paragraphs an executive recognises: who the players are and their
+          size, how money flows, who sets the rules. Every figure carries its source and its date.
+        example: |-
+          The building finishing trades are mostly made up of SMEs with ten to sixty employees. A job site lasts two to nine months; most are private contracts.
+
+          Money flows through progress claims: every month, the company invoices the share completed. That is why false progress is costly — it is invoiced, disputed, then corrected.
+
+          The rules come from the Construction Code and the trade's technical standards (legifrance.gouv.fr, consulted on 10 March 2026).
+        reponse: a market of thin-margin SMEs, invoicing on progress
+      - guide: >-
+          One line per source: its authority, its address, its consultation date and what it is
+          authoritative for. An undated source is out of date by default.
+        example: |-
+          | Source | Authority | Authoritative for | Consulted on |
+          |---|---|---|---|
+          | Tiling installation standard | Regulatory | Installation milestones | 10 March 2026 |
+          | Building industry collective agreement | Professional | Working days, on-call duty | 10 March 2026 |
+          | Standard contract of a pilot SME | Contractual | Invoicing by progress claim | 12 March 2026 |
+        reponse: three sources are authoritative, each dated
+      - guide: >-
+          One rule per line, stated simply, with its source and the date of its last change. A rule
+          without a source is unknown, never a fact.
+        example: |-
+          | The rule | Source | Last change |
+          |---|---|---|
+          | A progress claim is invoiced on observed progress, never estimated | Standard contract | January 2024 |
+          | Deadlines are counted in the job site's working days | Collective agreement | June 2023 |
+          | The retention rate… | **Unknown** — no source found | — |
+        reponse: two written rules the product must respect
+      - guide: >-
+          The practices nobody writes down but everyone applies: who knows them, and how they were
+          collected.
+        example: >-
+          A site foreman only declares a task finished after his works manager has come by.
+          Collected in two interviews, on 8 March 2026. Consequence for the product: "done" is not a
+          status the foreman can set alone.
+        reponse: a foreman only says "done" after the works manager has come by
+      - guide: >-
+          What happens when a rule is broken, and who enforces it. That is what tells the client why
+          the rule matters.
+        example: |-
+          | If you break… | What happens | Who enforces it |
+          |---|---|---|
+          | Invoicing on observed progress | The project owner refuses to pay the progress claim | The contract |
+          | Counting in working days | Wrongly calculated late penalties | The commercial court, in case of dispute |
+        reponse: false progress is paid for in refused payments
+      - guide: >-
+          For each of the critic's claims, its level of evidence: established by a dated source,
+          observed practice, generalisation, deduction or unknown. It cites its sources, never its
+          memory.
+        example: |-
+          | Claim | Level of evidence |
+          |---|---|
+          | "A progress claim is invoiced on observed progress" | Established — standard contract |
+          | "Foremen declare done after the works manager's visit" | Observed practice — two interviews |
+          | "The client will refuse estimated progress" | Deduction — not to be presented as a fact |
+        reponse: every claim says how we know it
+      - guide: >-
+          A document whose compliance is known in advance, the expected answer, the answer returned,
+          the date. That is what authorises using it.
+        example: |-
+          | | |
+          |---|---|
+          | The case | A release scope deliberately containing a metric based on estimated progress |
+          | Expected | Refusal, on the rule of invoicing on observed progress |
+          | Returned | Refusal, on the right rule — 14 March 2026, reviewed by the Product Owner |
+        reponse: it found the error we had slipped in
+  WP-04:
+    layout: >-
+      research-plan.md · interviews/ (one file per source S-nn — forum thread, review page, study —
+      or per interview E-nn in field mode) · insights.md · personas/PER-nn.md ·
+      empathy-maps/PER-nn.md · journeys/as-is/PER-nn.md
+    ouverture:
+      research-plan.md:
+        titre: What we need to learn, and where to read it
+        phrase: >-
+          Works managers already write down what costs them — in the reviews of job site apps, on
+          the trade's forums, in the federation's surveys. We read them before proposing anything
+          to them.
+        essentiel:
+          - "Documentary research, conducted by the agent: no recruitment, no prior interview."
+          - "Four families of sources, so as not to adopt the bias of just one: app reviews, forums, public studies, statistics."
+          - What reading does not settle becomes a hypothesis, tested at the pilot.
+        verifier: >-
+          Those who write online are the most dissatisfied and the best equipped: the works manager
+          who uses no app does not appear there. This gap is written down, and it is the first
+          hypothesis to test.
+      insights.md:
+        titre: What the research has taught us
+        phrase: >-
+          The cost is not data entry, it is reconstruction: the works manager enters nothing, he
+          phones — and that is the time the product must remove.
+        essentiel:
+          - The works manager does not complain about entering data, he complains about not knowing.
+          - Abandoned apps are abandoned for their forms, not for their price.
+          - A figure whose origin is unknown is not believed.
+        verifier: >-
+          Everything is DOCUMENTARY: words read, not behaviours observed. That the site foreman makes
+          one report a day remains a hypothesis (HYP-04), tested at the pilot.
+    sections:
+      - guide: >-
+          Written and dated BEFORE collection: the questions to settle, the target segments, the
+          planned sources and queries, the expected biases of each platform, and the mode —
+          documentary by default, field if participants exist (consent then). A plan written after
+          the fact justifies what was found.
+        example: |-
+          Written on 24 February 2026.
+
+          | | |
+          |---|---|
+          | What we want to settle | How much time does the morning check-in cost? Why are job site tracking apps abandoned? |
+          | Who | Works managers running three to eight job sites, and their site foremen |
+          | Mode | Documentary, conducted by the agent; field at the pilot |
+          | Sources and queries | Reviews of the five best-rated job site apps; two trade forums ("morning check-in", "job site tracking"); the federation's annual survey; public statistics for the sector |
+          | Expected bias | Online reviews over-represent the dissatisfied and the best equipped; forums, companies with more than twenty employees |
+        reponse: four families of sources, two questions to settle, documentary first
+      - guide: >-
+          One file per source (S-nn) — or per interview (E-nn) in the field. Each verbatim: address,
+          date consulted, LITERAL quotation in quotation marks, the author's profile as they declare
+          it. Without the first three, the verbatim is UNVALIDATED and grounds nothing. Never a
+          paraphrase presented as a quotation, never an invented quotation. Platforms, real sample
+          and biases are declared at the top.
+        example: |-
+          S-03 — trade forum, thread "How long does your morning check-in take?"
+          Address: https://forum.exemple-btp.fr/t/point-du-matin/4812 — consulted on 2 March 2026.
+          Authors: self-declared works managers, companies of 10 to 80 employees.
+
+          > "If the foreman hasn't told me, I don't know." — works manager, 6 job sites
+          > "On Mondays, I spend my morning on the phone." — works manager, structural works
+      - guide: >-
+          One lesson per line, stated in a sentence an executive remembers, with the verbatims that
+          ground it and their evidence level. A lesson grounded on a single source is marked weak;
+          what reading does not settle becomes an HYP-nn.
+        example: |-
+          | What we learned | Grounded on | Level · strength |
+          |---|---|---|
+          | The cost is not data entry, it is reconstruction: the works manager phones | S-03, S-07, S-11 (forum, reviews, survey) | DOCUMENTARY · strong |
+          | Apps are abandoned for their forms | S-01, S-02 (reviews of two apps) | DOCUMENTARY · medium |
+          | The foreman will make one report a day | — | HYP-04 · to be tested at the pilot |
+        reponse: the cost is reconstruction, not data entry
+      - guide: >-
+          One proto-persona per file, and one slide per persona: their material context, what they
+          must do, what they do today, what holds them back, their words. Each trait cites at least
+          two verbatims from independent sources. No invented demographic data: an age or a figure
+          without a source is not written. What has been read nowhere is stated as unknown. Labelled
+          DOCUMENTARY as long as no field work has confirmed it. The slide is declared in the file's
+          front-matter, format "persona": quote, goals, frustrations, behaviours, context and
+          behaviour sliders.
+        example: |-
+          PER-01 — the multi-site works manager · DOCUMENTARY
+
+          He runs several job sites and works from his car or on site (S-03, S-07). He says "where we stand", "the slip", "flying blind" — never "reporting" (S-03, S-11).
+
+          Unknown: whether he would look at a screen outside the calls; no source says so.
+      - guide: >-
+          Four quadrants — what they say, do, think, feel — then their pains and gains, each item
+          with the verbatims that ground it. "Says" contains only literal quotes; "Does" only what
+          the sources report they do; "Thinks" and "Feels" are inferences, and each cites the
+          verbatims it is drawn from. What is written nowhere goes in no quadrant: it is stated as
+          unknown, or becomes a HYP-nn. One slide per persona, format "empathy-map" in the
+          front-matter.
+        example: |-
+          | Says | Does |
+          |---|---|
+          | "I spend my morning on the phone" (S-03) | Calls each foreman back in the morning (S-03, S-07) |
+          | **Thinks** | **Feels** |
+          | "Yet another app to fill in" (S-01, S-02) | Unknown when facing an estimated figure — HYP-05 |
+      - guide: >-
+          A typical day per portrait, step by step, rebuilt from the sources: what they do, which
+          touchpoints they use, what they think, and their emotion from −2 to +2 — the curve shows
+          where the highs and lows are. Each pain point is sourced and tied to the outcome it
+          prevents; the lowest point is the moment of truth the product must change. A step no
+          source describes is marked unknown, not imagined. One slide per persona, format
+          "journey-map" in the front-matter.
+        example: |-
+          | Moment | What he does | What gets stuck | Source |
+          |---|---|---|---|
+          | Early morning | Calls the foremen, from the car | Several foremen do not answer before mid-morning | S-03, S-07 |
+          | Afternoon | Discovers a slip on site | The slip is several days old; he saw it by chance | S-07, S-11 |
+
+  WP-05:
+    layout: >-
+      journey-skeleton.md (narrative and sections) · stages/STG-nn.md (one entity per step,
+      front-matter type: stage)
+    specimen: |-
+      STG-04  "I know where my job site stands"
+        vocabulary tested with PER-01, PER-02
+        milestones  consult · compare with the schedule · flag a slip
+        trace       PER-01, PER-03 → OUT-01
+        release     INTRODUCES via REL-pilotage
+    ouverture:
+      journey-skeleton.md:
+        titre: The customer journey
+        phrase: >-
+          Seven steps, put in the words of works managers and site foremen; the product covers five,
+          the other two are excluded by decision.
+        essentiel:
+          - "The core is in the middle of the journey: the foreman observes, the works manager knows where things stand, a slip is flagged."
+          - Each step serves an expected outcome; a step that serves none has no place.
+          - Invoicing and the call for tenders are excluded, and the decision is written down.
+        verifier: >-
+          The steps' vocabulary has been tested with only two works managers and one foreman. One
+          more foreman, in another finishing trade, will tell whether it holds.
+    sections:
+      - guide: >-
+          One sheet per step, in the order lived, put in the first person with the user's words —
+          not those of the trade or of the vendor. Its fields follow in a table.
+        example: "It is the morning step: the works manager opens ChantierClair instead of his phone."
+        reponse: '"I know where my job site stands"'
+        fiche: STG-04
+      - guide: Three to five verbs, in order. They will be the future screens; do not draw them here.
+        example: Consult · compare with the schedule · see how the progress was established
+      - guide: >-
+          Who lives this step — a customer or an operator, declared in the step's front-matter
+          (famille: client or operateur; operateur: their name) — and which outcome it serves. A step
+          without an outcome questions its own existence.
+        example: Karim and the managing director — serves OUT-01, the morning check-in disappears
+      - guide: >-
+          The journey of EACH operator declared in the canvas, as STG-nn steps of family operateur:
+          what they prepare, operate, follow up and correct. Its steps are screens of the product, just
+          like the customer's: a back-office discovered during construction is an incomplete
+          foundation. The machine refuses an operator in the canvas with no step (K1).
+        example: |-
+          | Step of the field coach | Milestones — future screens |
+          |---|---|
+          | "I see who has not reported this morning" | Filter job sites with no report · open the job site |
+          | "I chase up a site foreman" | Send the reminder · log the call |
+          | "I activate a new SME" | Create the SME · invite its works managers and foremen |
+        reponse: "the field coach has their journey: see, chase up, activate"
+      - guide: >-
+          The real steps the product will not cover, with the decision that excludes them. That is
+          what proves the journey is complete, not truncated.
+        example: |-
+          | Real step | Why it is not ours |
+          |---|---|
+          | "I invoice the progress claim" | Already covered by the management software — decision ADR-02 |
+          | "I answer the call for tenders" | Upstream of the job site, outside the target |
+        reponse: invoicing and the call for tenders, excluded by decision
+  WP-06:
+    layout: >-
+      corpus-scope.md (scope) · provenance.yaml (sources and provenance per record) · truth-map.yaml
+      (truth category per field) · coverage.md (coverage and gaps) · records/ (one file per REC-nn)
+    ouverture:
+      corpus-scope.md:
+        titre: The real data
+        phrase: >-
+          The foundation is built on the real job sites of the three pilot SMEs — forty-two job
+          sites and their March reports — and on no invented data.
+        essentiel:
+          - Forty-two job sites are enough to walk every step of the product end to end.
+          - Job sites closed before 2025 are out of scope; they will come in with the history.
+          - Test data exists, but never reaches a screen shown to the client.
+        verifier: >-
+          One pilot SME has sent only half of its job sites. Until it completes them, the step "I
+          report to the managing director" is only 60 % covered.
+      coverage.md:
+        titre: What the data covers
+        phrase: The real data covers six steps out of seven at more than 90 %; the seventh is waiting for a pilot SME.
+        essentiel:
+          - Coverage is measured step by step, in number of records, never as an appraisal.
+          - The step "I report to the managing director" is only 60 % covered.
+          - "The planned end date is missing at two SMEs: it is displayed as missing, not as empty."
+        verifier: SME B must send its remaining twenty job sites; a reminder was sent on 18 March.
+    sections:
+      - guide: >-
+          The minimum that makes the journey walkable end to end, derived from the steps and not
+          from an ambition of exhaustiveness; what is deliberately excluded, and when it will come
+          in. A corpus that aims at exhaustiveness never ships.
+        example: |-
+          | | |
+          |---|---|
+          | Covers | Steps 1 to 7: forty-two active job sites of the three pilot SMEs, and their March 2026 reports |
+          | Excludes | Job sites closed before 2025 — they will come in with the "history" release |
+        reponse: forty-two real job sites, and the minimum to walk through everything
+      - guide: >-
+          Each source tied to the domain's approved sources, with its reading date; what was set
+          aside, and why. Two documents that copy the same source are ONE source.
+        example: |-
+          SRC-01: { source: "management software export, SME A", approved_in: sources.md, consulted_at: 2026-03-11, role: job sites and numbers }
+          SRC-02: { source: "WhatsApp photo reports, SME A", approved_in: sources.md, consulted_at: 2026-03-11, role: observed progress }
+          set_aside: { source: "a works manager's personal spreadsheet", reason: "copies SRC-01 — not a second source" }
+      - guide: >-
+          For each record: the source, the reading date and the exact quotation. All three, or the
+          record is not verified and stays so.
+        example: >-
+          REC-014: { source: SRC-01, consulted_at: 2026-03-11, verbatim: "Chantier 204518 — Rénovation
+          cage d'escalier — début 06/01/2026", corroborated_by: SRC-02 }
+      - guide: >-
+          For each field: sourced, derived or absent. No fourth value, and above all not a plausible
+          value. A derived field names its rule and its inputs.
+        example: |-
+          numero_chantier: "SOURCED — SRC-01"
+          avancement:      "DERIVED — latest observed report, computed from SOURCED reports"
+          date_fin_prevue: "ABSENT — not entered by two SMEs out of three, displayed as missing"
+      - guide: >-
+          Quantified per step: how many records each step must display, how many it has. "The
+          corpus is sufficient" is not a measurement.
+        example: |-
+          | Step | Covered | Rate |
+          |---|---|---|
+          | "I know where my job site stands" | 42 / 42 | 100 % |
+          | "I flag a slip" | 38 / 42 | 90 % |
+          | "I report to the managing director" | 25 / 42 | 60 % — SME B incomplete |
+        reponse: six steps out of seven covered at more than 90 %
+      - guide: >-
+          Each gap named, with the source that would be needed to close it. A missing field is
+          information about the world: it is published as is, and the screen says so.
+        example: |-
+          | Gap | Why | What would close it |
+          |---|---|---|
+          | Planned end date, two SMEs out of three | Never entered in their software | Nothing in the short term: displayed "not provided" |
+          | Twenty job sites of SME B | Incomplete export | The second export, requested again on 18 March |
+        reponse: a missing field is shown as missing, it is not filled in
+      - guide: >-
+          If invented data exists for tests, say where it lives and prove that no screen shown to the
+          client reaches it. The "fictional" label has never stopped data from circulating;
+          confinement has.
+        example: >-
+          Test data lives in the tests folder and is read only by the test suites. The build checks
+          that none is present in the data served to the foundation: zero to date.
+        reponse: test data exists, and reaches no client screen
+
+  WP-07:
+    layout: >-
+      test-plan.md (test plan and product owner decisions) · learning-cards.md (learning cards and
+      what they change; carries the "apprentissages" format) · results/ (raw exports and
+      responses, one file per test)
+    ouverture:
+      test-plan.md:
+        titre: What we are testing, and at what cost
+        phrase: >-
+          Three tests, €600 and five weeks settle the two hypotheses that can stop everything: the
+          price and the daily report.
+        essentiel:
+          - Each test has its success criterion written before it is launched, and dated.
+          - "The cheapest test that settles goes first: a pricing page before a pilot."
+          - Nothing is published or spent without the product owner's decision.
+        verifier: >-
+          The daily-report test covers six foremen at a single SME. A second finishing trade will
+          tell whether the result holds.
+      learning-cards.md:
+        titre: What the market taught us
+        phrase: >-
+          The price holds all the way to payment; the daily form does not: the report becomes one
+          gesture, and the thesis is reworked.
+        essentiel:
+          - "Three SMEs paid a deposit: the price hypothesis is settled by a payment."
+          - "22 % of days carry a report, against 60 % required: the form hypothesis is disproven by action."
+          - "The managing directors' weekly summary is not tested yet: it remains to be validated."
+        verifier: >-
+          Three deposits do not make retention. The paid pilot will tell whether the SMEs stay after
+          the first month.
+    sections:
+      - guide: >-
+          The three to five most critical hypotheses, taken from the WP-02 test cards: the ones that
+          can stop everything. For each, the cheapest test that settles it — pricing page, waiting
+          list, fake buy button, clickable mock-up, deposit, concierge service —, its cost, its
+          duration, and its success criterion written before launch. A test without a criterion
+          written beforehand proves nothing: you always read the result you were hoping for.
+        example: |-
+          | Hypothesis | Test | Cost | Duration | Criterion written before (on) |
+          |---|---|---|---|---|
+          | HYP-02 — the price holds | Pricing page, 400 managing directors targeted | €350 | 4 weeks | ≥ 5 % sign-ups (1 April) |
+          | HYP-02 — sign-ups pay | €500 deposit offered to sign-ups | €0 | 2 weeks | ≥ 3 deposits (29 April) |
+          | HYP-01 — the foreman reports | Clickable mock-up, six foremen | €250 | 3 weeks | ≥ 60 % of days reported (10 April) |
+        reponse: three tests, €600 and five weeks for the two critical hypotheses
+      - guide: >-
+          What the product owner decided so the tests could be launched: the page published and
+          where, the message sent on their behalf and to whom, the budget committed — each with its
+          dated DEC-nn decision. The agent prepares, the product owner launches: no test speaks to
+          the market on the product owner's behalf without them.
+        example: |-
+          | Decision | What it authorises | By | On |
+          |---|---|---|---|
+          | DEC-04 | Publish the pricing page, €350 of targeted campaign | The product owner | 31 March 2026 |
+          | DEC-05 | Offer the €500 deposit to sign-ups | The product owner | 28 April 2026 |
+        reponse: every page, every message, every euro decided by the product owner
+      - guide: >-
+          One card per test: we believed · we did · we observed · reliability rung · therefore we
+          decide. The rung reads on the evidence ladder: a statement ("I would buy") < interest
+          observed without pitching < an action (sign-up, click to buy) < a payment (deposit,
+          pre-order). A statement confirms nothing; an answer simulated by an agent is not an
+          observation. Each card cites its HYP-nn hypothesis and its E-nn source.
+        example: |-
+          LC-01 · HYP-02 · action
+            We believed — managing directors will accept €1,200 per works manager per year.
+            We did — a pricing page, 400 managing directors targeted, four weeks.
+            We observed — 44 sign-ups out of 400 visitors: 11 %, against 5 % required. (E-14)
+            Therefore we decide — keep the price, and test the deposit.
+        reponse: the price settled by a payment, the form disproven by action
+      - guide: >-
+          Exports, responses and payments as they came out of the tool — one file per test, dated,
+          under results/, referenced E-nn in the evidence register. Never only the summary figure: a
+          figure without its export cannot be re-checked.
+        example: |-
+          results/
+            2026-04-08-pricing-page.csv        E-14 · 400 visits, 44 sign-ups
+            2026-05-02-deposits.csv            E-15 · 3 payments of €500
+            2026-04-14-mockup-reports.csv      E-16 · 90 working days, 20 reports
+        reponse: every figure has its export under results/
+      - guide: >-
+          Each disproven hypothesis is routed to the thesis, which is reworked; each unsettled
+          hypothesis stays unvalidated, with its next test and its date. The foundation is built
+          only on what the tests left standing.
+        example: |-
+          | Hypothesis | Verdict | Highest rung | Consequence |
+          |---|---|---|---|
+          | HYP-02 — the price | Confirmed | Payment | Kept; the paid pilot starts |
+          | HYP-01 — the daily form | Disproven | Action | The thesis is reworked: one gesture a day |
+          | HYP-07 — the managers' summary | Unsettled | — | Tested during the pilot, before 30 June |
+        reponse: the thesis is reworked on the report, the price is kept
+
+  WP-08:
+    layout: >-
+      design-brief.md · explorations/ (one built direction per folder) · surface-briefs/ (one brief
+      per surface) · tokens.css · tokens.json · fonts/ · icons/ · components/ (one folder per
+      component) · component-catalog.html
+    ouverture:
+      design-brief.md:
+        titre: The design brief
+        phrase: >-
+          ChantierClair is read at a glance, in sunlight, on an Android phone, in thirty seconds:
+          that is the bar, and it was set with the Product Owner before the first mock-up.
+        essentiel:
+          - The priority audience is the works manager; when their needs contradict the managing director's, the works manager wins.
+          - The quality reference is a mobile banking app, not management software.
+          - "We started from the Standard starter, adapted: the lime accent, unreadable in sunlight, was darkened."
+        verifier: >-
+          Readability in sunlight has been checked on one phone model only. To be tested on the
+          devices of the three pilot SMEs.
+    sections:
+      - guide: >-
+          Filled in with the person who answers for the product, in four questions at most, before
+          the first visual decision: the priority audience when two audiences contradict each other,
+          the quality bar, the reference to match, what is forbidden. None of the four can be
+          guessed.
+        example: |-
+          | | |
+          |---|---|
+          | Priority audience | The works manager, before the managing director |
+          | Quality bar | Readable in sunlight, understood in thirty seconds, with no training |
+          | Reference to match | A mobile banking app |
+          | Forbidden | A screen that looks like management software |
+        reponse: readable in sunlight, in thirty seconds, on a phone
+      - guide: >-
+          The starter served by the control tower, applied to a real screen of the product before
+          any other exploration, then a single question to the person who answers for the product:
+          keep it, adapt it, set it aside. Record the decision, what changes if it is adapted, who
+          decided and when. A starter is never a brand: no name, logo, illustration or proprietary
+          typeface from the reference.
+        example: |-
+          | | |
+          |---|---|
+          | Starter | "Standard starter" — served by the control tower |
+          | Shown on | The morning feed, with the forty-two real job sites |
+          | Decision | **Adapted** — Product Owner, 18 March 2026 |
+          | Kept | Dominant forest green, pill shapes, very bold headings, flat surfaces without shadow |
+          | Changed | The lime accent becomes a darker green: in sunlight, lime cannot be read on a light background |
+          | Removed | The reference's illustrations; typography stays in Inter, 900 for headings |
+        reponse: "the Standard starter, adapted: we keep the structure, we change the accent"
+      - guide: >-
+          Settled before the first visual decision: the design tool, the accessible component base,
+          the preview target. Then the line that matters: what the base provides, and what will have
+          to be drawn in-house.
+        example: |-
+          Mobile web app, open-source accessible component library, preview deployed on every change.
+
+          **What the base provides:** lists, forms, navigation, error states. **What we draw:** the job site report, the only screen specific to the trade.
+        reponse: a bought accessible component base, a single custom screen
+      - guide: >-
+          Starter kept: it is the chosen direction, and the ADR says so in one line. Adapted or set
+          aside: one folder per direction, at least three — the starter included —, each pushed all
+          the way on the same real data. Directions set aside are kept: an empty folder proves no
+          choice took place.
+        example: |-
+          Starter adapted: three directions built on the same forty-two job sites — "Standard starter" as is, "Standard starter" with a dark accent, "job site map".
+
+          Chosen: the dark accent — it is the only one readable in sunlight. The other two are kept with the reason for their rejection.
+      - guide: >-
+          One file per important screen: the idea it carries and what it refuses, its visual
+          language, what the user must understand, what is forbidden.
+        example: >-
+          **The morning feed.** One line per job site, from the most behind to the most advanced.
+          Refuses the gauge dashboard. The user understands in thirty seconds which one to call.
+          Forbidden: a figure without its report date.
+      - guide: >-
+          Derived from the chosen starter, in W3C Design Tokens format ($value, $type,
+          $description): each color with its role, fonts, typography, spacing, radii, shadows,
+          surfaces; then grids and breakpoints. Kept or adapted: start from the starter's
+          tokens.json, remove what is not a value (ranges, extraction scales) and replace the
+          proprietary typeface. One source (tokens.json) and generated exports — tokens.css, and the
+          Tailwind theme if the stack uses it —, never two files maintained by hand.
+        example: |-
+          tokens.json  "color": {
+                         "green-900": { "$value": "#163300", "$type": "color", "$description": "Strong text, dark surfaces — taken from the starter" },
+                         "accent":     { "$value": "#2F6B12", "$type": "color", "$description": "Primary action — replaces the lime, unreadable in sunlight" } },
+                       "font": { "display": { "$value": "Inter", "$type": "fontFamily", "$description": "Headings in 900 — taken from the starter" } },
+                       "radius": { "button": { "$value": "9999px", "$type": "dimension" } }
+          tokens.css   --color-green-900: #163300;  (generated from tokens.json)
+
+          Taken from the starter: the ten named sizes, from micro (12px) to display (105px). Removed: --section-gap "64-80px" (not a CSS value).
+      - guide: >-
+          Each component shows its seven states: default, hover, focus, error, empty, loading,
+          disabled. A variant is justified by a journey, not by taste.
+        example: >-
+          Job site row — seven states, two variants: "up to date" and "report older than 48 hours",
+          justified by the outcome "a slip seen in two days".
+      - guide: >-
+          WCAG AA contrast checked by a tool on each background/text pair, result attached. The
+          tool's name and the date are part of the evidence.
+        example: axe-core 4.9 · 2026-03-22 · 0 violations · minimum measured contrast 4.6:1 (ESTIMATED badge on card background)
+      - guide: >-
+          A static HTML file that opens without a server or build, listing each component in its 7
+          states. If Storybook, export it as static.
+        example: >-
+          C1.4-socle/design-system/component-catalog.html · opens with a double-click · 14
+          components · 98 states rendered
+  WP-09:
+    layout: navigation.md · information-architecture.md · glossaire-utilisateur.md (TRM-nn and TRM → STG trace)
+    ouverture:
+      navigation.md:
+        titre: The navigation
+        phrase: >-
+          Three entries are enough — the morning feed, a job site, the slips — and every step of the
+          journey can be reached in two gestures.
+        essentiel:
+          - "The default entry is the morning feed: it is what the works manager opens at 7 a.m."
+          - No step of the journey is more than two gestures away.
+          - "The managing director has no entry of their own in the first cycle: they receive a summary."
+        verifier: >-
+          The navigation has only been tested as a mock-up. The pilot will tell whether the works
+          manager looks for a fourth entry.
+      information-architecture.md:
+        titre: How the information is organised
+        phrase: >-
+          Everything starts from the job site: a report belongs to a job site, a slip to a report;
+          there is only one place for each thing.
+        essentiel:
+          - The job site is the central object; it comes from the management software.
+          - A report exists only attached to a job site, with its date and its author.
+          - A slip can be reached from the job site and from the list of slips — it is the only double path, and it is intended.
+        verifier: >-
+          The place of the schedule is not settled: it is read from the management software, but two
+          SMEs keep it in a spreadsheet.
+      glossaire-utilisateur.md:
+        titre: The product's words
+        phrase: >-
+          Every word in the interface is the one works managers and site foremen say; the words of
+          the trade and of the vendor were set aside one by one.
+        essentiel:
+          - '"Where we stand" replaces "progress": it is what works managers say.'
+          - '"Observed", "declared", "estimated" say how a figure was established.'
+          - A word that appears in no step of the journey is removed.
+        verifier: '"Slip" is understood by works managers, not yet tested with site foremen.'
+    sections:
+      - guide: >-
+          The top-level entries, in their order, each tied to the journey steps it serves. Every step
+          must be reachable.
+        example: |-
+          | Entry | What you do there | Steps served |
+          |---|---|---|
+          | The morning feed | See all your job sites, from the most behind to the most advanced | "I know where my job site stands" |
+          | A job site | Read the latest report and its history | "I observe", "I know where my job site stands" |
+          | The slips | See what has been flagged and by whom | "I flag a slip" |
+        reponse: three entries, and every step two gestures away
+      - guide: >-
+          The product's objects, their hierarchy, their links, and where each one lives. An object
+          reachable by two paths is declared as such.
+        example: |-
+          | Object | Belongs to | Where it lives |
+          |---|---|---|
+          | Job site | — (comes from the management software) | The morning feed, the job site page |
+          | Report | A job site | The job site page |
+          | Slip | A report | The job site page **and** the list of slips — intended double path |
+        reponse: everything starts from the job site, each thing has a single place
+      - guide: >-
+          One sheet per term: its definition in one sentence, who validated it, the discarded words
+          it replaces. Each term is unique and unambiguous.
+        example: >-
+          The state of a job site at the latest report, with its date. Validated with two works
+          managers; replaces "progress" and "reporting".
+        reponse: '"Where we stand"'
+        fiche: TRM-01
+      - guide: The journey steps where the term appears. A term with no step is superfluous.
+        example: '"I know where my job site stands" · "I report to the managing director"'
+
+  WP-10:
+    layout: >-
+      semantics.md (categories, propagation, classification) · semantics.yaml (glossary and
+      categories, machine layer) · status-model.md · financial-semantics.md ·
+      schema.introspected.yaml (executed schema, extracted by the project) · model.generated.md
+      (generated) · binding.yaml (mapping table) · migrations.md
+    specimen: |-
+      Truth categories  (disjoint)
+        OBSERVED    reported on site, dated, with an author
+        COMMITTED   contracted, not yet observed
+        ESTIMATED   computed from COMMITTED or ESTIMATED
+
+      Propagation  ESTIMATED + OBSERVED = ESTIMATED.  Never OBSERVED.
+    ouverture:
+      semantics.md:
+        titre: What the figures mean
+        phrase: >-
+          Every displayed progress status says how it was established — observed on site, declared
+          over the phone or estimated by computation — and a computation never makes a figure surer
+          than its inputs.
+        essentiel:
+          - "Three categories that do not overlap: observed, declared, estimated."
+          - Progress computed from a declared figure stays declared, never observed.
+          - "The report date is part of the core: changing it would invalidate everything delivered."
+        verifier: >-
+          The "declared" category assumes we know who spoke on the phone. The pilot will tell whether
+          the foreman agrees to note it.
+      status-model.md:
+        titre: The life of a job site
+        phrase: A job site goes through four states, and only the works manager can declare it finished.
+        essentiel:
+          - "Four states: open, in progress, late, finished."
+          - '"Late" is computed, it is not declared.'
+          - '"Finished" is a final state; only the works manager sets it, after a visit.'
+        verifier: >-
+          The rule "finished after the works manager's visit" comes from two interviews: it is to be
+          confirmed during the pilot.
+      financial-semantics.md:
+        titre: What touches money
+        phrase: >-
+          ChantierClair invoices nothing and displays no amount: it provides the progress invoicing
+          will use, and that is precisely why it must be observed.
+        essentiel:
+          - No amount is displayed in the first cycle.
+          - Observed progress is the one that can be used to invoice a progress claim.
+          - Estimated progress carries the mention "do not invoice".
+        verifier: The mention "do not invoice" has been validated by the domain critic on a single case.
+      migrations.md:
+        titre: How the model evolves
+        phrase: >-
+          No migration has taken place yet; each will be tied to the request that motivates it and
+          will say whether it can be undone.
+        essentiel:
+          - A migration without a request at its origin is an undeclared foundation change.
+          - Each migration says whether it is reversible.
+          - The ledger starts empty, and that is normal before the first release.
+        verifier: Nothing to verify as long as no migration has taken place.
+    sections:
+      - guide: >-
+          Two to four categories that do not overlap, each defined by how the data was obtained,
+          never by its value. Show that they do not overlap.
+        example: |-
+          | Category | How the figure was obtained |
+          |---|---|
+          | Observed | Seen on site by a human, with a photo |
+          | Declared | Said by someone, without anyone having seen it |
+          | Estimated | Computed from other figures |
+
+          No figure can be both seen and not seen: the three do not overlap.
+        reponse: observed, declared, estimated — and nothing else
+      - guide: >-
+          The states, the allowed transitions and who triggers them. A state that cannot be reached
+          is dead; a state with no exit is final and must say so.
+        example: |-
+          | From | To | Who triggers |
+          |---|---|---|
+          | Open | In progress | The first report |
+          | In progress | Late | The computation, if the report exceeds the schedule |
+          | In progress or late | Finished | The works manager, after a visit — final state |
+        reponse: four states, and only the works manager finishes a job site
+      - guide: >-
+          The rules that touch money, each reviewed by the domain critic. If the product does not
+          handle money, write it down.
+        example: |-
+          | Rule | Reviewed by the domain critic |
+          |---|---|
+          | The product displays no amount in the first cycle | Yes, 14 March 2026 |
+          | Estimated progress carries "do not invoice" | Yes, 14 March 2026 |
+        reponse: no amount, and an estimate is not invoiced
+      - guide: >-
+          A sentence that cannot be worked around, and its table: a computation never improves the
+          category of its inputs.
+        example: |-
+          **A computation takes the weakest category of its inputs.**
+
+          | Inputs | Result |
+          |---|---|
+          | Observed + observed | Observed |
+          | Observed + declared | Declared |
+          | Any computation | Estimated at best |
+        reponse: a computation never makes a figure surer
+      - guide: >-
+          Entities, fields, relations EXTRACTED from the executed schema by "apf model". This file
+          is generated: editing it by hand is a detected drift.
+        example: model.generated.md · derived from db/schema.sql @ 3c1e0aa · 2026-05-02 · 6 entities, 41 fields
+      - guide: >-
+          Each entity and each field → a TRM-nn and a truth category. An unresolved element is
+          listed at the top, never omitted: it is a semantic drift.
+        example: |-
+          releve.avancement_pct: { term: "report", truth: OBSERVED }
+          jalon.date_prevue: { term: "milestone", truth: COMMITTED }
+          unresolved: 0
+      - guide: >-
+          Each data item of the core classified untouchable or extensible, according to what its
+          modification would invalidate. The classification is frozen when the gate is passed.
+        example: |-
+          | Data item | Classification | Why |
+          |---|---|---|
+          | Report date | Untouchable | Every delivered progress status depends on it |
+          | Truth category | Untouchable | It is what the client believes |
+          | Foreman's comment | Extensible | Nothing depends on it |
+        reponse: the report date and its category are untouchable
+      - guide: >-
+          One line per migration: what it changes, the request that motivates it, whether it can be
+          undone. A migration without a request is an undeclared foundation change.
+        example: |-
+          | Migration | Motivated by | Reversible |
+          |---|---|---|
+          | — | No migration before the first release | — |
+        reponse: empty before the first release
+  WP-11:
+    layout: src/ (source) · dist/index.html (static build) · spine.yaml (STG → screen, frozen commit)
+    ouverture:
+      C1.4-socle/prototype/current/unsubordinated.md:
+        titre: The unauthorised screens
+        phrase: >-
+          After composition, no screen falls outside the journey or the declared changes: the list is
+          empty, and that is the target.
+        essentiel:
+          - A screen that serves no step is an unauthorised design, not a novelty.
+          - The list is recomputed at every composition of the prototype.
+          - It is empty to date.
+        verifier: Nothing to verify as long as the list stays empty.
+    sections:
+      - guide: >-
+          The foundation's code, on the design stack settled in WP-08 and on the component base it
+          names. A run README in one command. Write here what the foundation reuses and what had to
+          be written: a proprietary rendering chain for fifteen screens is a signal, not an
+          implementation detail.
+        example: >-
+          C1.4-socle/prototype/spine/src/ · Next.js + shadcn/ui · npm run build · 6 components reused,
+          3 written
+      - guide: >-
+          The DEPLOYED URL, with its commit, openable without installing anything. A local file to
+          open from a clone of the repository is not a preview: nobody looks at it, and a design work
+          product nobody looks at proves nothing.
+        example: preview https://spine-c90f2a7.preview.example @ c90f2a7 · deployed on 2026-03-18
+      - guide: >-
+          An STG → entry screen table, proving that each step is reachable from the navigation. An
+          STG without a screen is a blocking defect.
+        example: 'coverage: { reachable_steps: "7/7", broken_steps: 0 }'
+      - guide: >-
+          The foundation's data path to WP-06, named and verifiable. ZERO fixtures reachable from
+          this work product: the point is eliminating. A foundation on invented data has already
+          passed G0 once — it was compliant with the eight controls and said nothing true, and the
+          whole cadence had to be redone.
+        example: src/data → data/corpus/records/ (read only) · 214 REC · 0 fixtures on the served path
+      - guide: >-
+          A field the corpus does not source is rendered as absent, and the interface says why. Never
+          a silent dash, never a plausible value. Absence is information about the world; filling it
+          is an invention the user will believe.
+        example: 'portrait: null → "no sourced portrait" · amount: ABSENT → "not published by the source"'
+      - guide: >-
+          Nothing to write: the composition is computed foundation ⊕ release deltas ⊕ slice deltas.
+          Only check that "apf compose" has run after the last delta.
+        example: apf compose · 2026-05-20 · foundation c90f2a7 ⊕ REL-pilotage f08b6d2 ⊕ S-01 2b7e… ⊕ S-02 9d4c…
+      - guide: Foundation commit, release baseline, ordered list of slice deltas, timestamp. Generated.
+        example: |-
+          spine: c90f2a7
+          release: rel-pilotage-v1
+          slices: [S-01, S-02]
+          composed_at: "2026-05-20T17:02Z"
+      - guide: >-
+          Each STG stays reachable after composition. A step that has become unreachable is a
+          subordination defect, listed here.
+        example: 'coverage: { reachable_steps: "7/7", broken_steps: 0 }'
+      - guide: >-
+          Any screen present after composition that serves neither a journey step nor a declared
+          change. An unauthorised design, not a novelty. The target is an empty list.
+        example: No screen outside the journey at the composition of 20 March 2026.
+        reponse: no screen outside the journey
+      - guide: Only one, the one the business opens. Any other prototype URL is out of date by definition.
+        example: |-
+          preview_url: "https://preview.example/current"
+          composed_on: "2026-05-20"
+
+  WP-12:
+    layout: >-
+      target-architecture.md (overview, classification, coverage) · integration-boundaries.md ·
+      data-persistence.md · deployment-topology.md · security-architecture.md · non-functional.md
+    ouverture:
+      integration-boundaries.md:
+        titre: What the product owns, and what it borrows
+        phrase: >-
+          ChantierClair owns the reports and is solely responsible for them; it borrows the job sites
+          from the management software, read only, every night.
+        essentiel:
+          - "A single exchange with the existing systems: reading the job sites, every night."
+          - ChantierClair never writes into the management software.
+          - The photos stay with us, never in the management software.
+        verifier: >-
+          The management software has no documented interface: reading goes through the existing
+          export, whose format can change without notice.
+      data-persistence.md:
+        titre: Where the data lives
+        phrase: >-
+          The reports live in a relational database hosted in Europe, and the category of each figure
+          is a column there, never a deduction.
+        essentiel:
+          - A relational database, because reports are compared over time.
+          - The truth category is stored, not recomputed.
+          - The photos go into a European object store.
+        verifier: "The volume of photos per job site is not known: it sets the storage cost."
+      deployment-topology.md:
+        titre: Where the product runs
+        phrase: >-
+          Three environments at a European host — development, acceptance, production — and a single
+          artifact, built once and promoted from one to the next.
+        essentiel:
+          - All hosting is in the European Union, in line with the existing contract.
+          - Acceptance receives, byte for byte, the version validated in development; production, only after two distinct human decisions.
+          - No server is administered by hand; no pre-production as long as no evidence calls for it.
+        verifier: The choice of European host remains to be confirmed by the managing director on price.
+      security-architecture.md:
+        titre: Who can see what
+        phrase: >-
+          A site foreman sees only their job sites, a works manager those they run, the managing
+          director all those of their company — and no company sees another's data.
+        essentiel:
+          - The separation between companies is the most sensitive rule.
+          - "Job site photos can show people: they are treated as personal data."
+          - Sign-in is by a link sent to the phone, with no password.
+        verifier: >-
+          The handling of photos showing people must be validated by the data protection officer of
+          a pilot SME.
+      non-functional.md:
+        titre: The quantified requirements
+        phrase: >-
+          The morning feed displays in under two seconds on a job site 4G network, and the service is
+          available from 6 a.m. to 8 p.m., on working days.
+        essentiel:
+          - Two seconds on 4G, measured on an entry-level phone.
+          - Availability counts during job site hours, not at night.
+          - Photos are kept for five years, the duration of the partial ten-year guarantee.
+        verifier: The photo retention period must be confirmed by the domain critic.
+      target-architecture.md:
+        titre: The target architecture
+        phrase: >-
+          The architecture carries the whole journey, including the steps of distant releases; only
+          the report date and the truth category are untouchable.
+        essentiel:
+          - "Two elements are untouchable: modifying them would invalidate everything delivered."
+          - Everything else can evolve without reopening the foundation.
+          - The summary to the managing director, planned for a distant release, is already supported.
+        verifier: The multi-company summary is supported only on paper; it has not been prototyped.
+    sections:
+      - guide: >-
+          What the product owns, what it borrows, and the contract between the two: format,
+          frequency, owner, what happens in case of failure. An integration without a contract is a
+          risk.
+        example: |-
+          | Exchange | Direction | Frequency | If it breaks |
+          |---|---|---|---|
+          | List of job sites | Management software → ChantierClair | Every night | The morning feed shows the previous day's list, dated |
+          | Reports and photos | Stay in ChantierClair | — | — |
+        reponse: we read the job sites, we never write into the existing systems
+      - guide: >-
+          Where and how the data is stored, aligned with the truth categories: the category is
+          stored, never deduced. Justify the choice against an alternative.
+        example: >-
+          Relational database, because a report is compared with the previous one. Set aside: a
+          document database, which made comparison over time costly. Photos go into an object store,
+          hosted in Europe.
+        reponse: a relational database, the category stored as a column
+      - guide: >-
+          The environments, where they run, what is deployed there and how: development, acceptance,
+          production, and a pre-production only if evidence calls for it. A single artifact,
+          promoted by its fingerprint: environments differ only by configuration and secrets.
+          Accepting in acceptance and putting into production are two distinct decisions. Cite the
+          constraints inherited from the existing systems.
+        example: |-
+          | Environment | Where | What arrives there | Who decides |
+          |---|---|---|---|
+          | Development | European host | Every change, green tests | Automatic |
+          | Acceptance | European host | The same artifact, promoted by its fingerprint | Automatic on green controls |
+          | Production | European host | The same artifact, accepted in acceptance | The managing director, then the release authority |
+        reponse: an artifact built once, promoted from development to acceptance then to production
+      - guide: >-
+          Who accesses what, how one signs in, where the secrets are, and what is most sensitive —
+          put in words a managing director understands.
+        example: |-
+          | Who | Sees |
+          |---|---|
+          | Site foreman | Their job sites |
+          | Works manager | The job sites they run |
+          | Managing director | All the job sites of their company |
+
+          The separation between companies is the most sensitive point: it carries the highest risk level.
+        reponse: everyone sees only their own job sites, and no company sees another's
+      - guide: >-
+          Each quantified requirement, with how to measure it: display time, availability, volume,
+          retention period. Without a number, it is not a requirement.
+        example: |-
+          | Requirement | Threshold | Measurement |
+          |---|---|---|
+          | Display of the morning feed | Under 2 seconds on 4G | Automated test, entry-level phone |
+          | Availability | 99.5 % from 6 a.m. to 8 p.m., working days | External probe |
+          | Photo retention | Five years | Storage policy |
+        reponse: two seconds on 4G, available during job site hours
+      - guide: >-
+          Each element classified untouchable or extensible, according to what its modification
+          would invalidate — never according to its apparent nature.
+        example: |-
+          | Element | Classification | Why |
+          |---|---|---|
+          | Storage of the truth category | Untouchable | Every delivered progress status depends on it |
+          | Nightly reading of the job sites | Extensible | Replaceable by an interface without breaking anything |
+          | Morning feed cache | Extensible | Rebuilds itself |
+        reponse: two untouchable elements, everything else extensible
+      - guide: >-
+          Show that the architecture carries every step of the journey, including those of distant
+          releases.
+        example: |-
+          | Step | Release | Supported by |
+          |---|---|---|
+          | "I observe what has been done" | Field | Reports and photos |
+          | "I report to the managing director" | Distant | Separation by company already in place |
+        reponse: every step is supported, even the most distant
+  WP-13:
+    layout: >-
+      adr/ADR-nn.md (one decision per file, first five sections) · build-vs-buy.md (Build or buy
+      section)
+    ouverture:
+      build-vs-buy.md:
+        titre: Build or buy
+        phrase: >-
+          We build only the job site report, the one element that sets ChantierClair apart; sign-in,
+          hosting, components and SMS sending are bought.
+        essentiel:
+          - Build what differentiates, buy everything else.
+          - "No bought building block locks the product in: each has a named alternative."
+          - "The design stack is taken over as is: no gap with the build stack."
+        verifier: The cost of SMS sign-in beyond 500 users has not been quantified.
+    sections:
+      - guide: >-
+          One file per decision: the decision in one sentence in the indicative, its context in three
+          lines at most above it.
+        example: >-
+          **We read the management software, we do not replace it.** It carries the job site numbers
+          and the invoicing; replacing it would turn the project into a migration.
+      - guide: At least one option set aside, with the reason. A decision without an alternative has decided nothing.
+        example: >-
+          Replacing the management software: set aside, eighteen months of migration for a value the
+          client did not ask for.
+      - guide: "The trade-off, stated frankly: what can no longer be done without reopening the decision."
+        example: >-
+          ChantierClair will not be able to create a job site or correct a number: everything goes
+          through the management software.
+      - guide: >-
+          For each capability: build or buy, with the cost, the licence and the lock-in risk. Sources
+          verified and dated.
+        example: |-
+          | Capability | Decision | Cost | Lock-in risk |
+          |---|---|---|---|
+          | Job site report | Build | — | — |
+          | Sign-in by SMS link | Buy | ~€0.05 per sign-in | Low — two equivalent providers |
+          | Interface components | Reuse, open source | €0 | None |
+          | Hosting | Buy, in Europe | ~€120 per month | Low |
+        reponse: we build the report, we buy everything else
+      - guide: >-
+          Take over the stack settled for design and confront it with the architecture: if the build
+          stack diverges, it is a gap to handle, not a detail.
+        example: >-
+          The design stack — mobile web app, open-source components — is taken over without change.
+          No gap.
+        reponse: no gap between the design stack and the build stack
+      - guide: Untouchable if challenging it invalidates what has been delivered, extensible otherwise.
+        example: "Untouchable: the whole data model rests on the accounting's job site numbers."
+      - guide: What, if observed, would reopen the decision. Observable, never "if needed".
+        example: >-
+          Reopened if the company abandons the management software, or if the nightly export fails
+          more than twice a month.
+
+  WP-14:
+    layout: >-
+      protocole.md (protocol, candidate, personas and missions, firewall) · plan-de-campagne.yaml ·
+      pare-feu.yaml (closed list, hashed manifest) · resultats/ (logs, captures, index.yaml) ·
+      annotations/ (O1 then O2 per session) · synthese.md (results, patterns and triage, limits) ·
+      patterns.yaml
+    ouverture:
+      protocole.md:
+        titre: The foundation, tested blind
+        phrase: >-
+          Five synthetic sessions tried, knowing nothing of the product, to report a job site day and
+          to cancel their subscription; three terms were not understood.
+        essentiel:
+          - The agents knew only their persona, their mission and the address of the deployed foundation.
+          - We test the structure — path, words, money and rights —, not the content.
+          - "These are synthetic, correlated sessions: they say nothing about a real person."
+        verifier: >-
+          No real site foreman has seen the foundation yet: the campaign flags risks, it validates
+          nothing.
+      synthese.md:
+        titre: What the synthetic sessions showed
+        phrase: >-
+          "Report" and "milestone" stopped three sessions out of five; cancelling the subscription
+          was found everywhere, in two gestures.
+        essentiel:
+          - Three terms go back to the glossary before the freeze.
+          - The subscription cancellation path holds.
+          - "One session got stuck on a field absent from the corpus: an expected stop, not a defect."
+        verifier: "The five sessions run on the same model: their agreement is a signal, not a majority."
+    sections:
+      - guide: >-
+          Written BEFORE the first session and dated. Protocol version, the five separate roles and
+          what each receives and never receives. The user agent receives only its persona, its
+          mission and the entry point of the deployed foundation.
+        example: |-
+          SUX protocol v0.1, taken from the BatiZen run, written on 2026-10-09 at 08:00, before the first session.
+
+          | Role | Receives | Never receives |
+          |---|---|---|
+          | Orchestrator (quality-engineer) | everything needed to launch | — |
+          | User agent | persona, mission, foundation URL | glossary, skeleton, contract, expected path, known findings |
+          | Observer | the log of one session | the product's intent, the other sessions |
+          | Researcher | anonymised logs and O1 annotations | the product's intent, the known findings |
+          | Triage (factory-lead) | everything, after the researcher | — |
+        reponse: the agents knew nothing about the product
+      - guide: >-
+          The exact foundation: commit, sha256 of the build, deployed URL. Every session opens and
+          closes on it; a fixed foundation is a new candidate.
+        example: >-
+          Commit `72cd3b6`, build `index.html` sha256 `9f2c…e41a`, URL
+          `https://chantierclair-socle.example.app/`. The five sessions opened and closed on this
+          candidate.
+        reponse: the foundation deployed on 9 October, unchanged during the five sessions
+      - guide: >-
+          A life-facts sheet per persona, drawn from a PER-nn and its verbatims, rendered as prose.
+          One mission per session, put in the user's words, with its natural stop. No word from the
+          interface.
+        example: |-
+          **P1, drawn from PER-01 (V-03, V-11).** You have been a site foreman for twelve years, you keep your notes in a notebook and you hate re-entering things in the evening. You have a phone, no computer on the job site.
+
+          **M1.** "Someone told you about an app so you no longer re-enter anything in the evening. See whether it saves you time, and stop when you know whether you will keep it."
+        reponse: three site foremen, five missions put in their words
+      - guide: >-
+          The closed list of internal vocabulary — TRM-nn terms, screens, steps — and the hashed
+          manifest of each session's exact inputs, written before it. The detail lives in
+          pare-feu.yaml; here, what it contains and what it forbids.
+        example: >-
+          Closed list: the 22 glossary terms, the 9 screens of the foundation, the 7 steps of the
+          journey. Each session's persona and mission pass the filter; their fingerprints are in the
+          manifest, written 5 minutes before each session.
+        reponse: no word from the app in what the agents received
+      - guide: >-
+          One line per session: persona, mission, number of actions, end (goal reached according to
+          the agent, abandonment, blockage, expected stop), where its log and captures live. The
+          bytes are in resultats/, at the fingerprint of index.yaml.
+        example: |-
+          | Session | Persona · mission | Actions | End |
+          |---|---|---|---|
+          | S-01 | P1 · M1 | 23 | goal reached according to the agent |
+          | S-02 | P2 · M1 | 31 | abandoned — "I don't know what a milestone is" |
+          | S-03 | P3 · M2 | 12 | expected stop — lot price absent from the corpus |
+        reponse: five sessions run to the end, one capture per gesture
+      - guide: >-
+          Each pattern: a statement, the sessions that show it, those that contradict it, a
+          quotation. Triage routes each finding to WP-05, WP-09 or WP-11, or classifies it as
+          expected stop, out of scope, no follow-up.
+        example: |-
+          **PAT-01 — "Milestone" is not understood** (S-02, S-04, S-05; contradicted by S-01). S-02, turn 14: "a milestone, is that a road marker?". → **glossary**: the term is reworded before the freeze.
+
+          **PAT-02 — Cancelling the subscription is found in two gestures** (5 out of 5). → no follow-up.
+        reponse: three words go back to the glossary before the freeze
+      - guide: >-
+          Say what the campaign does not prove: "N synthetic sessions", never people; correlated
+          sessions; no score or threshold; nothing about a real user.
+        example: >-
+          Five synthetic sessions, all on the same model and the same templates: they are correlated,
+          their agreement is a signal and not a majority. No score, no threshold. Nothing is
+          established about a real site foreman: measurement in production remains to be done.
+        reponse: a signal about the structure, nothing about a real person
+  WP-15:
+    layout: >-
+      release-architecture.md (sheets, three tests, typed links) · fiches/REL-nom.md (one entity per
+      release, front-matter type: release) · sequencing.md · dependencies.md · risk-map.md
+    specimen: |-
+      REL-pilotage  See progress without calling anyone
+        desirable alone    yes — removes the morning check-in on its own
+        deliverable alone  yes — no dependency on REL-2
+        measurable alone   yes — OUT-01
+        INTRODUCES  STG-04, STG-05
+        ENRICHES    —
+        expected tier      R2  (access to job site data)
+    ouverture:
+      release-architecture.md:
+        titre: The release plan
+        phrase: >-
+          Three releases, each useful on its own: the foreman reports, then the works manager reads,
+          then the managing director receives their summary.
+        essentiel:
+          - "The first release serves only the site foreman: without a report, nothing else makes sense."
+          - Each step of the journey is introduced by exactly one release.
+          - The third depends on the first two and is not launched before them.
+        verifier: >-
+          The first release brings nothing to the works manager: it is justified only if the daily
+          report holds (HYP-01).
+      sequencing.md:
+        titre: In what order, and why
+        phrase: >-
+          We start with the report because it carries the hypothesis that can stop everything; the
+          summary to the managing director comes last because it is worth nothing without the other
+          two.
+        essentiel:
+          - The order follows risk, not convenience.
+          - The first release settles the hypothesis that decides the project.
+          - Each release says why it is in its place.
+        verifier: "If the daily report fails at the pilot, the second release loses its purpose: the order must be reviewed."
+      dependencies.md:
+        titre: What depends on what
+        phrase: "Each release depends only on those that precede it: there is no cycle."
+        essentiel:
+          - Steering depends on Field; Director depends on both.
+          - No release depends on a future release.
+          - "One external dependency: the management software's nightly export."
+        verifier: "The nightly export has no service commitment: if its format changes, Steering stops."
+      risk-map.md:
+        titre: The risk of each release
+        phrase: >-
+          The Director release carries the highest risk, because it brings several companies together
+          in the same summary.
+        essentiel:
+          - "Field and Steering are at moderate risk: a single company, no money."
+          - "Director is at high risk: a leak between companies would be serious."
+          - The risk level decides the level of evidence required before going into production.
+        verifier: The risk level is expected; it will be confirmed when each release is designed.
+    sections:
+      - guide: >-
+          One sheet per release, with a meaningful name: its promise in one sentence, the steps it
+          covers, whom it serves, the targeted outcome. Its fields follow in a table.
+        example: >-
+          The site foreman makes one report a day — photo, percentage, status — from their phone.
+          Serves the site foreman; targets OUT-01.
+        reponse: the site foreman reports, in one gesture
+        fiche: REL-terrain
+      - guide: >-
+          Desirable alone, deliverable alone, measurable alone: yes or no, with the evidence. A "no"
+          does not forbid the release, it creates a dependency.
+        example: >-
+          Desirable alone: yes — the foreman stops being called · deliverable alone: yes · measurable
+          alone: yes — rate of reported days
+      - guide: >-
+          The steps the release introduces (a single release per step), those it enriches, and the
+          releases it depends on.
+        example: Introduces "I observe what has been done" · depends on no release
+      - guide: >-
+          The order of the releases, with for each its value, the risk it carries and the reason for
+          its place. Never for convenience.
+        example: |-
+          | Order | Release | What it brings | Why in this place |
+          |---|---|---|---|
+          | 1 | Field | The daily report | It settles HYP-01, which can stop everything |
+          | 2 | Steering | The morning feed | It only makes sense with reports |
+          | 3 | Director | The summary | It aggregates the first two |
+        reponse: risk first, comfort afterwards
+      - guide: Who depends on what, for what reason, since when. Show that there is no cycle.
+        example: |-
+          | Release | Depends on | For |
+          |---|---|---|
+          | Steering | Field | The reports to display |
+          | Director | Field and Steering | The progress to aggregate |
+          | Steering | Nightly export of the management software | The list of job sites |
+        reponse: each release depends only on the previous ones
+      - guide: >-
+          The expected risk level of each release, and what justifies it. Expected: it will be
+          confirmed when the release is designed.
+        example: |-
+          | Release | Risk | Why |
+          |---|---|---|
+          | Field | Moderate | A single company, no money |
+          | Steering | Moderate | Same |
+          | Director | High | Several companies in the same summary |
+        reponse: "only one high-risk release: the managing director's"
+
+  WP-16:
+    layout: g0-product-architecture.md (the six sections) · investor-deck.md (the investor pitch, "pitch" format) · spine-manifest.yaml (tags and commits of the frozen elements)
+    ouverture:
+      investor-deck.md:
+        titre: The investor pitch
+        phrase: >-
+          The product gives the works manager back one morning a week; the round funds the proof of
+          retention on fifty SMEs.
+        essentiel:
+          - Eleven slides — the Y Combinator seed deck and the INSEAD New Business Venturing tools.
+          - Every figure points to the work product that grounds it; a hypothesis says it is one.
+          - The amount asked is a decision of the product owner, tied to the hypotheses it settles.
+        verifier: "A pitch is not evidence: it presents what the work products establish, and adds nothing."
+      investor-shortlist.md:
+        titre: The targeted investors
+        phrase: >-
+          Three people know the product's sector and geography; two can be reached through an
+          introduction.
+        essentiel:
+          - "People, not funds: each judged on four criteria, each sourced."
+          - A direct competitor in the portfolio disqualifies.
+          - The ticket is compared with the amount asked; access is declared.
+        verifier: "A list is not a commitment: no investor is contacted on the product owner's behalf without their agreement."
+      g0-product-architecture.md:
+        titre: The passage decision
+        phrase: >-
+          The framing is ready to be decided; the recommendation is to pass the gate, subject to the
+          four-week pilot that settles the daily report.
+        essentiel:
+          - All the framing work products are produced; two are partial, with their reservations written down.
+          - Nothing irreversible is committed before the pilot.
+          - The decision belongs to the Product Owner, and to them alone.
+        verifier: "The decision has not been pronounced: this document prepares the passage, it does not make it."
+    sections:
+      - guide: >-
+          Three entries: what cost, what surprised, what a control should have detected earlier. Each
+          says where it is handled.
+        example: |-
+          | | What happened | Where it is handled |
+          |---|---|---|
+          | Cost | Three weeks to get the job sites export | Added to the framing prerequisites |
+          | Surprised | Nobody complains about data entry; everyone complains about not knowing | Product thesis rewritten |
+          | Should have been seen | The market size rests on an undated source | Control added on sources |
+        reponse: what cost, what surprised, what we should have seen earlier
+
+      - reponse: who to pitch to, and why each one
+        guide: >-
+          Front-matter, "investisseurs" format: the round's target (amount, geography, sector), then at
+          least three people, each judged on sector, geography, portfolio and track record, with
+          evidence and source. The body states, for each, the angle of the first message.
+        example: |-
+          Alice — ran a software publisher for tradespeople, invests in France, two construction SaaS in portfolio; introduction through the sponsor's former partner.
+          Bruno — twenty years in building-materials distribution, two exits; introduction through a pilot owner.
+          Chloe — vertical SaaS, Paris office; cold access, to prepare.
+      - reponse: why this product, why now, why this team, how much and for which milestone
+        guide: >-
+          Front-matter, "pitch" format: the company, the one-liner, the mantra, the two-sentence
+          positioning, then ten slides — the YC order and the learnings. Each title is the idea; every
+          figure cites what grounds it or says HYP-nn. The body carries the speaker's script.
+        example: |-
+          Problem — "A works manager spends a third of the week piecing together where the job sites stand." 4 to 6 h of calls a week, according to the user research.
+          Traction — 11 % of visitors signed up at the displayed price, measured by the market test. No revenue: the pilot starts in January.
+          The ask — €600k, 18 months: 50 paying SMEs and 90-day retention, amount decided by the product owner.
+  WP-17:
+    layout: scope.md (scope, steps covered, three tests) · exclusions.md · success-metrics.md
+    sections:
+      - guide: >-
+          The smallest scope that stands on its own, in one paragraph, then the list of JRNs covered.
+          Interrogated until exhausted (grilling).
+        example: |-
+          The works manager sees their job sites with a dated progress status and its truth category, the gap to the schedule, and flags a qualified slip. Provisional entry by the works manager.
+          JRN-07 Consult progress · JRN-08 Flag a slip
+      - guide: "As precise as the inclusions: what, why, where it goes (release, backlog, never)."
+        example: |-
+          mobile entry by the site foreman — HYP-01 tested in 16, delivered in REL-terrain
+          managing director access, PDF export — REL-compte-rendu
+      - guide: Exactly the STGs assigned by WP-15 (INTRODUCES and ENRICHES), no more, no less.
+        example: STG-04, STG-05 · no other step touched
+      - guide: "For this release: desirable alone, deliverable alone, measurable alone, with the evidence for each."
+        example: >-
+          desirable alone   9/11 works managers cite the morning check-in first · deliverable alone
+          no DEPENDS-ON · measurable alone   MET-01, MET-02
+      - guide: >-
+          MET-nn, one per targeted outcome: measurement, data source, threshold, deadline.
+          Instrumentable with what the release delivers or with what already exists.
+        example: |-
+          MET-01 ← OUT-01  hours/week of calls, 9 pilots · existing self-reported log · < 1 h at 90 d
+          MET-02 ← OUT-02  median delay flagged_on → observed_on · slips table (delivered) · < 1 d at 90 d
+  WP-18:
+    layout: >-
+      design-brief.md — one brief per journey or major screen; the NON-NEGOTIABLE sections are filled
+      in or the brief is BLOCKED
+    sections:
+      - guide: >-
+          The trade's vernacular, not the category: "Karim's list of job sites at 7 a.m.", not "a
+          dashboard".
+        example: The list of job sites Karim opens at 7 a.m. in his car before his first visit
+      - guide: >-
+          PER-nn, device, light, hands, network, attention span. A job site screen in sunlight ≠ an
+          office dashboard.
+        example: >-
+          PER-01 · mid-range Android · full sunlight · one hand · intermittent 3G · 10 seconds of
+          attention
+      - guide: "One sentence: what the user must be able to decide or do on leaving the screen."
+        example: Choose which job site to go to first, without calling
+      - guide: >-
+          NON-NEGOTIABLE — navigation, glossary, components and truth categories concerned, cited by
+          identifier. The answer is in the repository, not in the imagination.
+        example: '"My job sites" entry · TRM-03 slip, TRM-07 report · truth-badge (7 states) · job-site-card'
+      - guide: What has already been set aside (in WP-19 or upstream) so as not to explore it again.
+        example: >-
+          geographic map of the job sites — rejected: 6 job sites, no decision depends on distance
+          (S-04, S-09)
+      - guide: NON-NEGOTIABLE — EMPIRICAL, DOCUMENTARY, SYNTHETIC or UNVALIDATED, with the source.
+        example: >-
+          DOCUMENTARY · 9 verbatims on the release's journeys (S-14..S-18), two platforms · no field
+          work
+      - guide: NON-NEGOTIABLE — R0 to R3, taken from WP-21.
+        example: R2 — reading job site data, access per SME
+      - guide: >-
+          After the single burst of at most four questions, what remains unanswered becomes an
+          UNVALIDATED hypothesis with its test point.
+        example: '"sorting by decreasing slip is the right default sort" · UNVALIDATED · test at activity 18, task T-3'
+      - guide: >-
+          Research strictly limited to the release's JRNs, documentary by default and committed
+          BEFORE the scope: sourced verbatims (address, date, quotation), two independent sources per
+          lesson. What falls outside the scope is routed to the backlog, named, not exploited here.
+        example: |-
+          INS-R1-01  readable at a glance, one-handed, in sunlight — consulted from the car (S-14, S-16) · DOCUMENTARY → design-brief
+          routed     "see the photos" (S-15, S-17) → backlog REL-terrain
+      - guide: >-
+          Per journey: STG, REL, PER, trigger, end, then the numbered steps with screen S-nn and
+          targeted story. The journey fills the skeleton, it does not redraw it.
+        example: |-
+          JRN-07  Consult a job site's progress · STG-04 · REL-pilotage · PER-01
+            1 open the list (S-11) → STO-016 · 2 spot the truth category → STO-014 · 3 open a job site (S-12) → STO-014, STO-015
+      - guide: "Order of the STGs and vocabulary (TRM) unchanged: say so, with the identifiers."
+        example: STG-04 then STG-05, skeleton order · terms TRM-03, TRM-07, TRM-11 · no new term
+      - guide: >-
+          If a journey requires touching navigation, glossary or semantics: finding, routed to G0
+          (EX3), never applied here. Otherwise write "none".
+        example: none
+
+  WP-19:
+    layout: design/concept/ (alternatives, direction, storyboard) · design/src/ · design/dist/ · design-system-delta/
+    sections:
+      - guide: >-
+          ≥ 3 materially distinct alternatives (not three colors), each on one board with three
+          lines: stance, what it optimises, what it sacrifices.
+        example: A dense list sorted by slip · B card per job site with a gauge · C chronological feed of reports
+      - guide: The direction, explicitly compared with the rejected ones with a reason, recorded in a direction ADR (ADR-nn).
+        example: >-
+          A chosen · B rejected: the gauge smooths out the slip (INS-R1-02) · C rejected: does not
+          answer the job "choose where to go" · ADR-09
+      - guide: S-nn screens in JRN order, each tied to its JRN and its STG.
+        example: S-11 list (JRN-07 / STG-04) → S-12 job site page (JRN-07) → S-14 flag a slip (JRN-08 / STG-05)
+      - guide: >-
+          Source, static build, preview URL and frozen commit. The prototype can be walked end to end
+          with no dead screen.
+        example: >-
+          design/src @ f08b6d2 · design/dist/index.html · preview https://…/rel-pilotage/f08b6d2 · 0
+          dead screens on JRN-07, JRN-08
+      - guide: >-
+          Each addition justified by a journey or a story, the 7 states covered, integrated into the
+          global system (never a fork). No foundation component silently modified.
+        example: >-
+          + job-site-card/compact (STO-016) · + token --list-density (STO-016) · foundation components
+          modified: 0
+      - guide: >-
+          Realistic data marked FIXTURE, provenance indicated. Never invented data presented as real.
+        example: >-
+          fixtures/rel-pilotage.json · FIXTURE · 8 job sites, 30 days of history, derived from
+          observations E-03..E-11
+
+  WP-20:
+    layout: solution-design.md (components, flows, attestation, gaps) · interface-contracts.md · migration-impact.md
+    sections:
+      - guide: "List per component of the technical foundation: touched / created, for which capability, within which boundary."
+        example: |-
+          api/releves   created · reading and provisional entry (EPC-02, EPC-03)
+          api/ecarts    created · flagging (EPC-04)
+          auth/tenant   touched · works manager role (existing), no CORE INVARIANT modified
+      - guide: >-
+          Each contract versioned and testable: endpoint or event, schema, owner, named contract
+          test.
+        example: GET /chantiers?tri=ecart  v1 · schema ChantierListe · contract test contracts/chantiers.v1.spec
+      - guide: >-
+          Where each data item comes from, where it goes, with its truth category at each step. A
+          flow that improves the category violates propagation.
+        example: >-
+          report (OBSERVED, foreman) → api/releves → chantier.avancement (OBSERVED) · works manager
+          entry → ESTIMATED, never promoted
+      - guide: >-
+          Each migration, the entity touched, its class (CORE / EXTENSION), reversibility. A CORE
+          INVARIANT entity touched → EX3, not a migration.
+        example: >-
+          0041 creates ecart (EXTENSION) · reversible · 0042 adds ecart.clos_le (EXTENSION) ·
+          reversible · CORE touched: none
+      - guide: Attestation sentence signed by principal-engineer, or list of deltas carried to G0.
+        example: >-
+          Fits within architecture/ @ d13e884 without modifying a CORE INVARIANT · principal-engineer
+          · 2026-04-10
+      - guide: Routed to G0 (EX3), never applied. "None" otherwise.
+        example: none
+
+  WP-21:
+    layout: >-
+      dependencies.md (dependencies, absence of cycle) · technical-risks.md · risk-tiers.md (tiers,
+      infeasible capabilities)
+    sections:
+      - guide: >-
+          Per capability: technical, data and learning dependencies, each named and dated. It is the
+          input of activity 19.
+        example: |-
+          reading progress   technical: api/releves · data: accounting job sites reference (CSV) · dated 2026-04-10
+          flagging a slip    technical: reading progress · dated 2026-04-10
+      - guide: "Demonstrated: topological order of the capabilities, or graph. Not asserted."
+        example: provisional entry → reading progress → flagging a slip · valid topological order, 0 cycles
+      - guide: >-
+          Each risk with its mitigation or its named acceptance (by whom). A risk without an owner is
+          not managed.
+        example: >-
+          RT-01  accounting CSV late in the morning → stale progress displayed · mitigation: visible
+          timestamp + AC-014.3 · owner principal-engineer
+      - guide: >-
+          R0 to R3, justified by the surface (data, auth, migration, irreversibility). Drives the
+          evidence and the authorities downstream.
+        example: >-
+          reading progress R2 (job site data, SME auth) · flagging R2 (business write) · provisional
+          entry R1
+      - guide: Named, with the reason, and routed (next release, backlog, G0).
+        example: site foreman notification — requires foreman access, introduced by REL-terrain → STO-019 postponed
+
+  WP-22:
+    layout: report.md — one report per pass, dated, on an identified build
+    sections:
+      - guide: >-
+          Screen by screen: components used vs catalog, out-of-system tokens detected, undeclared
+          variants.
+        example: S-11  compliant · S-12  1 color outside tokens (#8A6D1F hard-coded) → FND-11 MINOR · S-14  compliant
+      - guide: >-
+          Captures at the declared breakpoints (360, 768, 1280), empty / error / loading / long data
+          states.
+        example: >-
+          360 px: job site name truncated to 24 characters on S-11 → FND-12 MAJOR (AC-016.2 says 28) ·
+          empty state S-11: OK
+      - guide: Tooled check (tool, version, date), raw result attached, not a declaration.
+        example: >-
+          axe-core 4.9 · 2026-04-15 · 1 violation: contrast 3.9:1 ESTIMATED badge on compact card →
+          FND-13 MAJOR
+      - guide: >-
+          PASS or FAIL with evidence: navigation, glossary, truth categories unchanged; foundation
+          components not modified.
+        example: "PASS · navigation unchanged · 0 terms outside the glossary · standard job-site-card: empty diff"
+      - guide: >-
+          In FND-nn format: severity · rule or AC · where · demonstrated by · issued by
+          critic(design) · closed by the same critic.
+        example: |-
+          FND-12  MAJOR · AC-016.2 · S-11 at 360 px · capture qa/360-s11.png · critic(design) pass 1 · open
+          BLOCKER 0 · MAJOR 2 · MINOR 1
+  WP-23:
+    layout: >-
+      test-plan.md — protocol written BEFORE, then results added AFTER, in the same file, dated
+      sections · sux/ — the blind synthetic users campaign, the same seven pieces as before G0
+      (protocole.md, plan-de-campagne.yaml, pare-feu.yaml, resultats/, annotations/, synthese.md,
+      patterns.yaml)
+    specimen: |-
+      Protocol   written on 04/06, before the test — 3 tasks
+      Version    commit 7f2a91c, frozen
+      Panel      PER-01 and PER-03 simulated · SYNTHETIC
+                  embodied by critic(product), which did not
+                  design the prototype
+      Level      SYNTHETIC · DOCUMENTARY
+      HYP-02     weakened — PER-01 stumbles on "ESTIMATED";
+                  S-07 confirms it. Label corrected (C-2).
+      HYP-04     postponed — measurement in production: reports
+                  per foreman per day, threshold 0.8 at 4 weeks,
+                  below the threshold → weekly report.
+    sections:
+      - guide: >-
+          Written and dated BEFORE the test: T-nn tasks, identical instructions, success criteria per
+          task. Identical for each simulated persona as for each real participant.
+        example: >-
+          written on 2026-04-04 · T-1 "Find the job site to go to first" · success: choice without
+          going back · T-2 "Flag a delay on job site C"
+      - guide: Frozen commit and URL, cited. Any fix during the test invalidates the comparison.
+        example: f08b6d2 · https://…/rel-pilotage/f08b6d2 · frozen on 2026-04-08
+      - guide: >-
+          Without real participants: the simulated PER-nn personas, each labelled SYNTHETIC, and the
+          agent that embodies them — never the one that designed the prototype. With participants:
+          recruitment, number, profiles, declared biases.
+        example: >-
+          PER-01 (multi-site works manager) and PER-03 (managing director) simulated · SYNTHETIC ·
+          embodied by critic(product), which did not design the prototype · no real participant for
+          this pass
+      - guide: >-
+          Per persona — or participant — and per task: success, blocking point, reported reasoning.
+          NOT filtered, including what contradicts the thesis. Each blockage is confronted with the
+          documented verbatims that confirm or refute it.
+        example: |-
+          PER-01 · T-1 · succeeded · the first job site in the list is the right one
+          PER-01 · T-2 · blocked · "ESTIMATED" does not say who estimated — confirmed by S-07 ("a figure with no origin, I don't believe it") — contradicts HYP-02
+      - guide: >-
+          EMPIRICAL · DOCUMENTARY · SYNTHETIC · AXR · SYNTHETIC · SUX · UNVALIDATED, mandatory, per
+          result. A synthetic review or documentary research presented as empirical is a BLOCKER; so
+          is an expert review presented as a user test.
+        example: >-
+          SYNTHETIC · AXR (expert review per persona) · SYNTHETIC · SUX (5 blind synthetic sessions)
+          · DOCUMENTARY (confrontation with the S-nn verbatims)
+      - guide: >-
+          Each HYP: settled by real participants, weakened or strengthened by the review — never
+          validated by it —, or postponed with its measurement in production: metric, event
+          instrumented by the release, threshold, decision if the threshold is not reached.
+        example: |-
+          HYP-02  weakened — PER-01 stumbles on ESTIMATED, S-07 confirms it → label "estimated by Karim" (C-2)
+          HYP-04  postponed — measurement in production: reports per foreman per day (event releve_cree), threshold 0.8 at 4 weeks; below the threshold, weekly report
+      - guide: >-
+          Each fix traces to a labelled finding (persona or participant, task, level). No fix "by
+          intuition".
+        example: >-
+          C-2  show the author of an ESTIMATED · PER-01 · T-2 · SYNTHETIC + S-07 DOCUMENTARY · carried
+          into WP-19 @ 2c7d0e1
+      - guide: >-
+          critic(product), which KNOWS the intent and did not design the prototype: coverage plan
+          written beforehand — journeys, states, negative paths, persistence —, then one result per
+          unit, findings expected / observed, reproduced k out of n. It fixes nothing and never
+          presents itself as a user test.
+        example: |-
+          Plan written on 2026-04-07: 3 journeys, 14 states, 9 negative paths. 26 units walked, 0 not reached.
+          AXR-04  "estimated" displayed without an author on S-12 · expected: author named (WP-10, propagation) · observed 3 out of 3 → C-2
+      - guide: >-
+          The blind synthetic users, on the frozen version: the detail lives under sux/ (the same
+          seven pieces as before G0); here, the candidate, the number of synthetic sessions, the
+          patterns kept and their triage. K7 replays the campaign.
+        example: >-
+          Candidate f08b6d2 · 5 synthetic sessions, correlated (same model) · PAT-01 "estimated" read
+          as "guaranteed" (S-02, S-03, S-05; contradicted by S-01) → C-2 · regression on candidate
+          2c7d0e1: 0 sessions out of 5
+
+  WP-24:
+    layout: >-
+      epics/EPC-nn.md · stories/STO-nn.md (story + AC) · traceability.md · priorities.md ·
+      dependencies.md · risk-map.md
+    specimen: |-
+      STO-014  Consult a job site's progress
+        epic     EPC-03  ·  journey JRN-07  ·  screen S-12
+        tier     R2
+        AC-014.1  The displayed progress carries its truth category
+        AC-014.2  An ESTIMATED is never presented as OBSERVED
+        AC-014.3  Data older than 24 h flagged as such
+    sections:
+      - guide: "One epic per journey or capability: name as a user verb, JRN, REL, stories contained, priority."
+        example: >-
+          EPC-03  Consult a job site's progress · JRN-07 · REL-pilotage · STO-011..016 · priority 1
+          (OUT-01)
+      - guide: >-
+          Format "As PER-nn, when …, I …, so that …". Trace: epic, JRN, Strategic Design screen S-nn,
+          dependencies, tier. A story without a screen cannot be implemented.
+        example: |-
+          STO-014  Consult a job site's progress · EPC-03 · JRN-07 · S-12 · depends on STO-010 · R2
+            As a works manager (PER-01), when I open a job site, I see its progress with its date and its truth category, so that I know whether I need to call.
+      - guide: >-
+          Each one verifiable and unambiguous: an observable, a threshold, a condition. Name the
+          planned evidence (type of test). "The screen is clear" is not an AC.
+        example: |-
+          AC-014.1  The displayed progress carries its truth category as a text label, not only by color · e2e
+          AC-014.2  An ESTIMATED is never presented as OBSERVED (WP-10 propagation) · unit + e2e
+          AC-014.3  A report older than 24 h is flagged "reported N days ago" · e2e
+      - guide: By value (OUT served) and by risk (HYP lifted), total order on the epics, partial on the stories.
+        example: 1 EPC-03 (OUT-01) · 2 EPC-04 (OUT-02) · 0 EPC-02 (technical prerequisite)
+      - guide: >-
+          Story → story, taken from WP-21, validated by principal-engineer. None towards a later
+          release.
+        example: STO-014 → STO-010 · STO-015 → STO-014 · STO-017 → STO-014 · validated principal-engineer 2026-04-22
+      - guide: Taken from WP-21, never decided here. A disagreement is routed to activity 16.
+        example: reading progress R2 · flagging R2 · provisional entry R1 (WP-21 @ e5a7c31)
+      - guide: >-
+          Each slice S-nn named by its user outcome — the future "Slice outcome" —, with its
+          dependencies, the evidence that will accept it, the demonstration in QA and the tier.
+          Vertical: data, API, screens and tests together; no platform slice. Order: dependencies,
+          then value, risk lifted, learning; only one in progress at a time. First release: a small
+          S-00 foundation slice. Milestones are named slices, not dates.
+        example: |-
+          S-00  foundation — the mobile → API → database path end to end, isolation per SME proven · R2
+          S-01  "A works manager sees their job sites with a dated progress status and its truth category" · STG-04 · R2 · depends on S-00 · demo: the list in QA on a phone
+          S-02  "A works manager spots a slip and flags it without calling" · STG-05 · R2 · depends on S-01 · "pilot" milestone
+      - guide: >-
+          Each story of the backlog: its slice, or "postponed" with the decision (ADR-nn, authority,
+          date). No story forgotten, no new release created here.
+        example: STO-008..014 → S-01 · STO-015..018 → S-02 · STO-019 postponed (ADR-12, PO, 2026-04-22)
+      - guide: >-
+          Versions and commits: foundation (tag), Release Baseline (tag), Design System + delta,
+          technical foundation. It is what a slice cannot modify.
+        example: >-
+          spine-v1 c90f2a7 · rel-pilotage-v1 f08b6d2 · design/system @ c90f2a7 + delta @ f08b6d2 ·
+          tech-spine-v1 d13e884
+      - guide: >-
+          NC-nn: question, what it blocks (AC), owner, deadline, the FIRST slice that needs it, and
+          its class — to decide before the contract (only if the contract cannot say how to build
+          without it), to decide before acceptance (the prototype's value is the default proposal,
+          carried as a named parameter), outside v1, technical. An NC to decide before the contract,
+          still open, prevents the K1 of its slice.
+        example: |-
+          NC-02  Can a closed slip be reopened? · blocks AC-017.3 · Product Owner · S-02 · to decide before the contract · open
+          NC-03  Delay threshold of a slip · blocks AC-015.2 · Product Owner · S-02 · to decide before acceptance — default: 5 days, parameter ecart.seuil_jours
+
+  WP-25:
+    layout: g1-{release-id}.md (the ten sections) · release-baseline.yaml (frozen tags and commits)
+    sections:
+      - guide: What cost, what surprised, what an agent should have detected — each tied and routed.
+        example: >-
+          cost   2 rounds on WP-19 · surprised   ESTIMATED misunderstood without an author (P6, P8) ·
+          to detect   critic(design) should have flagged the badge without an author → MCR-03
+  WP-26:
+    layout: >-
+      slice-contract.md (outcome, budget, exit criteria and evidence, tier, open points, amendments,
+      entry conditions, KEEP / DISCARD) · design/ (Baseline Delta Declaration, prototype, DS delta) ·
+      spec/ (tests defined before the code, rules, data, API, migrations)
+    specimen: |-
+      S-02  A works manager spots a slip and flags it without calling
+        EXIT-1   the slip appears at the top of the list        automatic · e2e/ecart-tri.spec
+        EXIT-2   the flag reaches the foreman in < 1 min         mixed · e2e + QA review
+        EXIT-3   no ESTIMATED presented as OBSERVED              automatic · unit/propagation.test
+        budget   secondary sort, photos → S-04; the slice does not grow
+        tier     R2 → K1 escalation
+    sections:
+      - guide: >-
+          One user outcome in one sentence, demonstrable in QA. G3 acceptance will be pronounced
+          against this sentence, not against the list of stories.
+        example: A works manager spots a slip and flags it without calling.
+      - guide: >-
+          The stories kept (ACs written in WP-24) and what is excluded. Budget rule: what no exit
+          criterion requires is postponed to a later slice. The slice does not grow.
+        example: |-
+          kept: STO-015 (spot), STO-016 (sort), STO-017 (flag) · 11 ACs
+          excluded: secondary sort by age, photos → S-04 — no exit criterion requires them
+      - guide: >-
+          EXIT-n, each with its evidence: mode (automatic · manual · mixed), channel (unit ·
+          integration · emulator · simulator · web · physical device · QA environment), who produces
+          it, procedure, success condition, failure condition, artifact kept. No criterion without
+          evidence, no evidence without a procedure. Evidence is only valid for its channel: the
+          simulator proves the launch, not the device. A leg that will not run in this slice is
+          DEFERRED to a named gate, or out of scope — never PASS.
+        example: |-
+          EXIT-1  the slip appears at the top of the list · automatic · web, QA · e2e/ecart-tri.spec · success: 1st rank on 5 data sets · artifact: e2e report
+          EXIT-2  the foreman receives the flag in < 1 min · mixed · QA environment · e2e + review in QA by release-engineer · failure: > 1 min on 1 attempt out of 5
+          EXIT-3  no ESTIMATED presented as OBSERVED · automatic · unit · unit/propagation.test
+          EXIT-4  notification received on a phone · manual · physical device · DEFERRED to the mobile readiness gate
+      - guide: >-
+          Each material AC → ≥ 1 named test (type, file), written BEFORE the implementation. Changing
+          a test means amending the contract — not adjusting it to the code.
+        example: >-
+          AC-015.1 → e2e/ecart-tri.spec · AC-017.2 → e2e/signalement.spec, unit/notification.test ·
+          11/11 ACs covered
+      - guide: >-
+          Produced BEFORE any modification: MUST PRESERVE (what does not move) vs AUTHORISED DELTAS,
+          each justified by a story. Foundation gap: none, otherwise EX3.
+        example: |-
+          MUST PRESERVE   global navigation · glossary · truth categories · job-site-card, states 1 to 7
+          AUTHORISED DELTAS   slip badge (STO-015) · flag button (STO-017)
+          FOUNDATION GAP   none
+      - guide: >-
+          For each story, the clickable path that demonstrates it on the living prototype, at the
+          three widths, empty, error and loading states included.
+        example: >-
+          STO-015: /chantiers → SLIP badge at the top · STO-017: /chantiers/C-03 → Flag → confirmation
+          · 360 / 768 / 1280
+      - guide: >-
+          Justified story by story, 7 states per addition, no silent modification of an existing
+          component (empty diff on the foundation).
+        example: "+ slip-badge 7/7 states (STO-015) · diff on existing design/system: empty"
+      - guide: >-
+          Business rules citing their source (baseline, ADR-nn, domain critic RG-nn); tables,
+          endpoints, numbered migrations with the rollback command of each. A rule without a source
+          is an invention.
+        example: >-
+          rule: a slip = an ESTIMATED report late by more than 5 days (ADR-14) · POST /ecarts ·
+          migration 0043 create ecart · rollback: drop table
+      - guide: The highest tier among the stories kept, with the story that carries it. R2 or R3 → human escalation at K1.
+        example: R2 (STO-017 notifies a third party) → K1 escalation PO + Tech authority
+      - guide: >-
+          NEEDS CLARIFICATION resolved (answer, who, when) or routed (owner, deadline). An open NC does
+          not pass K1. At most ONE decision request to the Product Owner, consolidated, asked before
+          acceptance, with a default value — "confirm everything" must be a complete answer.
+        example: >-
+          NC-02 resolved 2026-05-02 (PO): a closed slip is not reopened · decision request: 5-day
+          threshold — proposed default 5
+      - guide: >-
+          A gap discovered during construction is a dated amendment — AMD-n: what changes, why, who
+          accepted it —, never growth. What exceeds the outcome goes to a later slice.
+        example: >-
+          AMD-1  2026-05-06 · EXIT-2 measured in QA and not locally · accepted by the Tech authority
+          · no scope added
+      - guide: >-
+          ENTRY-n: what must be true before the GO, its status (MET · PENDING · DEFERRED) and what
+          lifts it. Put EXTERNAL prerequisites here — the right to create the repository, host
+          credentials, store membership and signing, imposed toolchain, a stable QA account for the
+          Product Owner, whose password they set themselves outside Git and outside the chat — and
+          every "material" learning from the previous closure. An external prerequisite is not a
+          product decision, but it is checked before the GO.
+        example: |-
+          ENTRY-1  S-01 accepted, closure read · MET 2026-05-01
+          ENTRY-2  QA account of the pilot works manager, password set by them · PENDING — lifted by the Product Owner before the GO
+          ENTRY-3  learning S-01-L2: the notification requires a verified sending domain · MET — DNS verified 2026-05-02
+      - guide: >-
+          For Slice 0 and any technical proof: each artifact classified KEEP (it enters the product)
+          or DISCARD (it serves the proof and will be removed), BEFORE being written; the dependency
+          check that forbids KEEP → DISCARD; what the closure will remove, forward-only migration
+          included. For any other slice: "not applicable", and why.
+        example: "not applicable — S-02 writes no technical proof; everything it produces is KEEP"
+
+  WP-27:
+    layout: >-
+      status.md (version identity) · scope-changes.md (classified gaps) · quality/test-strategy.md
+      (results, VERDICT, oracles) · quality/test-healing-decisions.md ·
+      acceptance/traceability-matrix.md · acceptance/preview-report.md (journeys in QA, state ×
+      behaviour matrix)
+    sections:
+      - guide: >-
+          Each gap classified: missing · partial · contradicted · not requested · intentionally
+          superseded, with the decision, the amendment or the routing. Silent absorption is the fault
+          to prevent.
+        example: |-
+          E-01  AC-017.3 (offline notification) · partial · routed AMD-2, S-03
+          E-02  secondary sort by age · not requested · removed from the diff
+      - guide: >-
+          Per EXIT and per AC: test, GREEN / RED, date, commit. Observable fact, without
+          interpretation. Produced by quality-engineer.
+        example: |-
+          EXIT-1  e2e/ecart-tri.spec · GREEN · 2026-05-09 · 3c1e0aa
+          EXIT-3  unit/propagation.test · RED · 2026-05-09 · 3c1e0aa
+      - guide: >-
+          PASS · PRODUCT FAILURE · TEST FAILURE · CANNOT VERIFY, per red test, returned by
+          critic(quality) only, with the demonstrated cause.
+        example: >-
+          EXIT-3  PRODUCT FAILURE — the computation raises OBSERVED from an ESTIMATED
+          (src/progress.ts:41) · critic(quality) · routed to activity 21 · healing forbidden (EX4)
+      - guide: >-
+          Only for TEST FAILURE: cause (selector, fixture, timing), fix, author, then re-verification
+          by an independent pass. A product defect is never healed; three healings on the same AC = an
+          undiagnosed product defect.
+        example: >-
+          AC-016.1  TEST FAILURE — non-deterministic fixture · regenerated · re-verified
+          critic(quality) 2026-05-10 · GREEN
+      - guide: >-
+          One line per story: EXIT, AC, files, tests, ADR, amendments. Each gap classified. Nothing
+          absorbed.
+        example: >-
+          STO-017 · EXIT-2 · AC-017.1..3 · src/api/ecarts, src/web/signaler · e2e/signalement.spec ·
+          ADR-14 · AMD-1
+      - guide: >-
+          JRN journeys played by hand in QA, on the recomposed living prototype — a single URL and
+          its commit —, with result and date. Not only in automated tests.
+        example: >-
+          JRN-08 played on https://qa.example/current @ 2026-05-12 · succeeded · release-engineer ·
+          composed foundation c90f2a7 ⊕ rel-pilotage-v1 ⊕ S-02 3c1e0aa
+      - guide: Named, with deadline and owner. A debt without an owner is not accepted, it is ignored.
+        example: D-01  offline notification deferred (AC-017.3 partial) · owner principal-engineer · deadline S-03
+      - guide: >-
+          Played in QA, on the deployed version, at the reference mobile width, BEFORE any
+          presentation to the Product Owner. One line per inventory element touched — question,
+          screen, state; in columns: reached · forward · Back · restored after reload · edited ·
+          persistent · rest unchanged · downstream. Each cell PASS, or N/A with its reason — never
+          empty.
+        example: |-
+          | Element | Reached | Forward | Back | Restored | Edited | Persistent | Rest unchanged | Downstream |
+          |---|---|---|---|---|---|---|---|---|
+          | Job sites list, SLIP badge | PASS | PASS | PASS | PASS | N/A — read only | N/A — read only | PASS | PASS |
+          | Flag a slip | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS — received by the foreman |
+      - guide: >-
+          Each Product Owner observation from a previous slice turned into an ORACLE — a general
+          question asked of every reachable state. For each: the question, the states swept, the
+          hits. Hits grouped by root cause, and the fix made to the mechanism, never to the instance.
+          An oracle stays in regression.
+        example: |-
+          OR-01  "where does this number come from?" · 14 states swept · 0 hits
+          OR-02  "the same everywhere for the same state?" · 14 states · 2 hits → root cause: progress recomputed on the screen side (src/web/progress.ts) · fixed in the shared computation · 0 hits on replay
+      - guide: >-
+          What runs behind the QA URL: commit, artifact fingerprint, migration version, configuration
+          fingerprint, pinned versions. The artifact validated in DEV is the one promoted to QA —
+          same fingerprint, read on /version. Hosted CI golden path: GREEN with its link, or NOT RUN
+          and why — never PASS.
+        example: |-
+          commit 3c1e0aa · image sha256:9d4c…e1 · migration 0043 · config sha256:51ab…07 · lockfile pinned
+          /version in QA = DEV · hosted CI: golden path GREEN, run 1184
+  WP-28:
+    layout: >-
+      reviews/engineering-review.md · reviews/design-conformance.md · security/security-review.md ·
+      security/threat-model.md · security/pentest-summary.md — each track its own pass, its FNDs in
+      the single format
+    sections:
+      - guide: >-
+          Grounded on the real diff (commit range, files). AC → Evidence map verified as EFFECTIVE:
+          each piece of evidence executed, not only present.
+        example: diff 7f2a91c..3c1e0aa (14 files) · 23/23 ACs with executed evidence · FND-07 MAJOR (see Findings)
+      - guide: Screen-by-screen comparison of prototype vs implementation, visual diffs attached, gaps classified.
+        example: S-11 diff 0.4 % (shadow) OBSERVATION · S-12 compliant · S-14 outside the scope of S-01
+      - guide: >-
+          Threat model updated, secrets, auth, data access, dependencies (versions, CVEs). No secret
+          in clear text: say so with the tool used.
+        example: >-
+          threat-model.md v2 · gitleaks 0 secrets · auth per tenant verified (contract test) · 0
+          critical CVEs across 41 dependencies
+      - guide: >-
+          If tier R2 or R3: scope, method, DEMONSTRATED findings (request, response), no destructive
+          action. Otherwise "not required, tier R1".
+        example: >-
+          R2 · scope api/chantiers, api/releves · IDOR tested on 40 identifiers: 0 leaks · FND-09 MINOR
+          (verbose server header)
+      - guide: >-
+          FND-nn: severity · domain (PRODUCT, a defect of the judged artifact, or CONTROL, a defect of
+          a template, a K control, a validator) · surface tier · entity (STO/AC/DSN/ADR) · what it
+          blocks (this gate, acceptance, going to production, or debt) and its deadline ·
+          demonstrated by · issued by · pass · closure by the issuing critic only. Two counts: product
+          eligibility is read on PRODUCT alone.
+        example: |-
+          FND-07  MAJOR · PRODUCT · R2 · AC-014.2 · blocks the acceptance of S-02 · diff src/progress.ts:41 · critic(engineering) pass 1 · closure: pass 2 required
+          FND-08  MINOR · CONTROL · review template without a channel column · blocks the next review, not G3 · conformance-auditor
+          PRODUCT  BLOCKER 0 · MAJOR 1 · MINOR 1 · OBSERVATION 1    CONTROL  MINOR 1
+      - guide: >-
+          One line per finding and per challenge objection: ACCEPTED (the change and its commit) ·
+          REDUCED (the part kept, the part routed as an open point) · REJECTED (reason and evidence) ·
+          UNVERIFIED (pointer, no effect). Each disposition checked against the source by someone
+          other than its author; only what is verified changes the state. Publish the counts.
+        example: |-
+          FND-07  ACCEPTED · computation moved to the server side · 4be21f0 · verified by critic(quality)
+          OBJ-03  REDUCED · sort by age kept, filter by foreman routed NC-05
+          OBJ-04  REJECTED · the 5-day threshold is a Product Owner option, not a fix
+          counts  3 objections: 1 accepted · 1 reduced · 1 rejected
+
+  WP-29:
+    layout: g3-{slice-id}.md
+    sections:
+      - guide: >-
+          What cost, surprised, should have been detected — tied and routed. Each "material" learning
+          becomes an entry condition of the next slice.
+        example: |-
+          cost   1 PRODUCT FAILURE on propagation · to detect   a propagation test should have been in the slice contract → MCR-05 (rule: mandatory propagation test)
+          S-02-L1 material   the sending domain must be verified before any notification → ENTRY-2 of S-03
+      - guide: >-
+          One page at most, for the Product Owner: at the top, the consolidated decision request,
+          each item with its default value — "confirm everything" is a complete answer; then the
+          journeys to play, the channel, the URL, the version read on /version, their stable QA
+          account, and the expected result of each. Only the moments the machine cannot judge.
+        example: |-
+          decision   slip threshold: 5 days (default) — confirm or correct
+          channel    mobile web · https://qa.example/current · version 3c1e0aa · account conducteur.pilote
+          1  open the list: job site C-03 carries the SLIP badge at the top
+          2  flag the slip: the foreman receives it in under a minute
+      - guide: >-
+          After acceptance, both directions, quantified. Direction A: each ACTIVE element of the
+          lineage has a destination in the current product. Direction B: each element of the original
+          experience has a disposition. An absence in a later work product is not a supersession:
+          only recorded supersessions remove an element. Zero unexplained disappearances.
+        example: |-
+          direction A   41 ACTIVE elements · 41 with a destination
+          direction B   23 original elements · 22 kept · 1 superseded by ADR-15 · 0 unexplained disappearances
+      - guide: >-
+          One line: the next activity, the input it lacks, who lifts it. An agent with no history must
+          be able to restart from there.
+        example: activity 20 — contract of S-03 · lacks ENTRY-2 (sending domain) · lifted by principal-engineer
+
+  WP-30:
+    layout: >-
+      release-readiness.md (quality, security, re-review, observability, window, authorities) ·
+      rollback-plan.md (plan AND evidence of execution)
+    sections:
+      - guide: "One line per domain: evidence (path, commit) and status. No checkbox without a path."
+        example: >-
+          quality   G3 S-01, S-02 accepted · security   security-review S-02 @ 9d4c… · migrations
+          0040..0042 tested on staging · doc   runbook v1.2
+      - guide: >-
+          Plan (strategy, command, target duration) THEN evidence: environment, commit deployed →
+          restored, measured duration, data restored, executed by, verified by a distinct role, date,
+          raw log. An empty field = not tested = automatic refusal.
+        example: |-
+          plan       progressive rollout 10 → 50 → 100 %, rollback < 5 min
+          evidence   staging · 7f2a91c → 3c1e0aa · 4 min 12 s · migration 0042 reversed, restore point 2026-06-14T09:00Z verified · executed by release-engineer · verified by critic(engineering) · log deployments/v1.2.0/rollback-run.log
+      - guide: "R2/R3: pentest and threat model up to date, cited. R0/R1: standard review cited."
+        example: R2 · pentest-summary S-02 @ 9d4c… · threat-model v2
+      - guide: >-
+          For each finding fixed since the last pass: FND, fix, re-review by the issuing critic,
+          verdict.
+        example: FND-09  fixed 2026-06-10 · re-review security-engineer pass 2 · closed
+      - guide: Signals monitored, quantified thresholds, where they are visible, who is alerted.
+        example: >-
+          5xx > 0.5 % / 5 min · p95 > 800 ms · reports / h < 50 % of the median · observability
+          dashboard v1.2 · alert release-engineer
+      - guide: Time window and quantified abort criteria, decided beforehand, not during.
+        example: >-
+          Tuesday 09:00–11:00, outside the monthly closing · abort if a threshold above is crossed or
+          if JRN-07 fails in production
+      - guide: 'Two names, two dates, recorded separately. At R2 or below: "not applicable" with the tier.'
+        example: not applicable — tier R2
+
+  WP-31:
+    layout: >-
+      deployment-record.md (strategy, DEP, keep / rollback decision) · post-deploy-verification.md
+      (verification, signals) · also learning/{release-id}/outcomes.md (product decision)
+    sections:
+      - guide: >-
+          Actual stages with timestamps, and the verification of the rollback point BEFORE the
+          switch (reference to WP-30).
+        example: rollback point verified 08:52 · 10 % 09:04 · 50 % 09:40 · 100 % 10:25 · 2026-06-16
+      - guide: Deployment identifier, build hash, stories included (K3 trace to G3).
+        example: DEP-v1.2.0 · build 9d4c… · STO-008..018 (S-01, S-02) · G3 S-01 2026-05-12, G3 S-02 2026-06-09
+      - guide: >-
+          Over the defined window: health, metrics, errors, security, critical journeys played in
+          production. Dated results.
+        example: >-
+          48 h window · 5xx 0.1 % · p95 620 ms · JRN-07 and JRN-08 played in production 2026-06-16
+          11:00 · 0 security alerts
+      - guide: KEEP or ROLLBACK, reason, authority, date, time.
+        example: KEEP · thresholds met over 48 h · release authority N. Rami · 2026-06-18 10:30
+      - guide: >-
+          For each MET-nn: observed value, source, gap to the target. Conclusions are separated from
+          the data, explicitly.
+        example: |-
+          MET-01  observed 2.3 h / week at 28 d (log, 9 pilots) · target < 1 h at 90 d · data: drop from 4.8 to 2.3 · conclusion: trend on track, not reached
+          MET-02  observed 0.8 d median · target < 1 d · reached
+      - guide: >-
+          CONTINUE · CORRECT · RE-SLICE · PIVOT · STOP, with reason, authority (HUMAN OWNER), date, and
+          the resulting updates to the backlog and to WP-15.
+        example: >-
+          CONTINUE · review MET-01 at 90 d · HUMAN OWNER S. Alaoui · 2026-07-14 · WP-15: REL-terrain
+          confirmed in 2nd position

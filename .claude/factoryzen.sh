@@ -29,6 +29,7 @@ export CLAUDE_PROJECT_DIR="$PROJECT"
 find_root() {
   for c in \
     "$PROJECT/.factoryzen" \
+    "$PROJECT/.claude/factoryzen-runtime" \
     "$PROJECT/../autonomous-product-factory" \
     "$PROJECT/../Autonomous-Product-Factory" \
     "$HOME/autonomous-product-factory" \
@@ -46,7 +47,7 @@ case "$1" in
     # passerait pour normale.
     if [ ! -f "$PROJECT/.factoryzen/bin/apf" ]; then
       git -C "$PROJECT" submodule update --init --depth 1 .factoryzen 2>/dev/null \
-        || echo "FactoryZen : sous-module non clonable (depot prive, authentification absente) — repli sur un depot frere." >&2
+        || echo "FactoryZen : sous-module non clonable (depot prive, authentification absente) — repli sur la copie embarquee ou un depot frere." >&2
     fi
     if root=$(find_root); then
       echo "FactoryZen : $root"
@@ -80,6 +81,17 @@ case "$1" in
     exit 0
     ;;
 
+  apf)
+    # La CLI par le même résolveur que la garde : un chemin fixe vers le sous-module ne
+    # trouverait rien là où seule la copie embarquée est présente.
+    shift
+    if root=$(find_root); then
+      exec "$root/bin/apf" "$@"
+    fi
+    echo "FactoryZen introuvable : apf ne peut pas s'exécuter." >&2
+    exit 1
+    ;;
+
   guard)
     if root=$(find_root); then
       exec "$root/bin/apf" guard
@@ -92,7 +104,7 @@ JSON
     ;;
 
   *)
-    echo "usage: factoryzen.sh ensure|guard|tower|trace <evenement>" >&2
+    echo "usage: factoryzen.sh ensure|guard|tower|trace <evenement>|apf <args>" >&2
     exit 64
     ;;
 esac

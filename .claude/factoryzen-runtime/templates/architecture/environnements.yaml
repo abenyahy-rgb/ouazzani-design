@@ -1,0 +1,119 @@
+# Départ d'architecture standard — ENVIRONNEMENTS ET PROMOTION (ADR-07)
+#
+# Un point de départ, à garder, adapter ou remplacer à l'activité 11. Gardé, il devient la
+# section « Topologie de déploiement » de WP-12 ; tout écart est une ADR.
+#
+# LA RÈGLE : construit une fois → vérifié → la même version promue. Un commit, une image à
+# empreinte immuable, promue de DEV à QA puis à PROD. Les environnements ne diffèrent que par
+# configuration et secrets, jamais par le code ni par une branche.
+
+version: "1.0"
+kind: DEPART_ENVIRONNEMENTS
+adr: ADR-07
+
+environnements:
+  - id: LOCAL
+    role: "poste ou espace de travail : construire et déboguer"
+    infrastructure: "pile locale de la plateforme (base + identité + stockage) en conteneurs, serveur de développement de l'API, build de développement du client"
+    donnees: "synthétiques, jetables"
+    entree: "le développeur"
+
+  - id: DEV
+    role: "la CI : chaque commit est construit une fois, l'artefact construit est déployé et validé par machine"
+    infrastructure: "runners de CI ; l'image sous test, par empreinte, exécutée contre une pile éphémère neuve à chaque exécution, migrations rejouées depuis zéro ; aucun projet DEV hébergé"
+    donnees: "synthétiques, recréées à chaque exécution"
+    entree: "automatique, à chaque commit"
+
+  - id: QA
+    role: "l'environnement stable de validation et d'acceptation humaine : seules y arrivent des versions validées en DEV ; les tranches y sont acceptées"
+    infrastructure: "un projet hébergé de la plateforme, sur une offre payante (jamais mis en pause), et un service d'API toujours actif qui exécute l'empreinte promue ; une variante QA du client, en distribution interne"
+    donnees: "synthétiques contrôlées et comptes synthétiques nommés ; réinitialisées seulement par migrations + jeu synthétique"
+    entree: "automatique, sur portes DEV vertes — aucune approbation humaine"
+    provisionnee: "dès la tranche 0 : l'acceptation humaine a lieu en QA"
+
+  - id: PROD
+    role: "utilisateurs et données réels"
+    infrastructure: "un projet hébergé de la plateforme (sauvegardes quotidiennes, restauration à un instant donné quand le besoin est mesuré) et la même empreinte que la QA acceptée"
+    donnees: "réelles ; jamais copiées vers DEV ni QA"
+    entree: "une décision humaine de mise en production — le relecteur requis de l'environnement « prod »"
+    provisionnee: "quand la mise en production est nécessaire, avec les portes de sécurité et les questions juridiques dues pour les flux de données réels"
+
+  - id: PREPROD
+    statut: DIFFEREE
+    role: "répétition identique à la production"
+    rouvrir_quand:
+      - "la topologie de PROD diffère de la QA d'une façon que la QA ne reproduit pas (instances, réseau, répliques, niveau de reprise)"
+      - "une migration sans interruption doit être répétée sur un volume réaliste"
+      - "une intégration externe exige une certification sur un environnement de type production"
+      - "une exigence réglementaire ou de sécurité demande une répétition identique à la production"
+      - "le risque de release monte : trains concurrents, releases ratées, retours arrière"
+      - "le trafic ou le volume de PROD produit un comportement que la QA ne reproduit pas"
+
+isolation:
+  deploiement_api: { DEV: "conteneur éphémère en CI", QA: "service et URL propres", PROD: "service et URL propres" }
+  base:            { DEV: "pile locale éphémère", QA: "projet propre", PROD: "projet propre" }
+  identite:        { DEV: "émetteur et clés éphémères", QA: "émetteur et clés propres", PROD: "émetteur et clés propres — un jeton d'un environnement est refusé par toutes les autres API" }
+  stockage:        { DEV: "éphémère", QA: "compartiments privés propres", PROD: "compartiments privés propres" }
+  secrets:         { DEV: "générés à chaque exécution", QA: "environnement de CI « qa » + magasin de l'hébergeur", PROD: "environnement de CI « prod » + magasin de l'hébergeur ; aucune valeur partagée" }
+  configuration:   { DEV: "config/dev.json", QA: "config/qa.json", PROD: "config/prod.json — non secrète, versionnée, son empreinte enregistrée à chaque déploiement" }
+  journaux:        { DEV: "journaux des jobs CI", QA: "flux propre", PROD: "flux propre ; même expurgation partout" }
+  comptes_de_test: { DEV: "créés à chaque exécution", QA: "comptes synthétiques nommés, dont un compte d'acceptation stable dont l'humain fixe le mot de passe", PROD: "aucun" }
+
+regles:
+  - "aucun job DEV ni QA ne détient d'accès à la PROD"
+  - "aucun test de QA ne vise la PROD"
+  - "aucun environnement ne lit les données d'un autre"
+  - "données synthétiques en DEV et en QA, sauf cas d'usage futur explicitement gouverné"
+  - "développement sur le tronc : une branche principale, aucune branche d'environnement ; un correctif de release passe par le tronc"
+  - "la promotion automatique ne fait jamais tourner le mot de passe du compte d'acceptation humaine"
+
+promotion:
+  unite_promouvable: "le SHA d'un commit du tronc"
+  version_de_release: "version sémantique + SHA court ; une étiquette vX.Y.Z posée sur le commit mis en PROD"
+  artefact_api: "image de conteneur construite une fois par commit du tronc, désignée par son empreinte immuable dans le registre"
+  artefacts_client: "builds par profil, chacun enregistrant son commit source — un client mobile se promeut par commit, sa configuration étant compilée"
+  configuration: "jeu non secret versionné par environnement + secrets du magasin de cet environnement ; empreinte de configuration enregistrée"
+  version_de_migration: "dernière migration appliquée, par environnement"
+  enregistrement_de_deploiement: "un par environnement et par promotion : commit, empreinte, builds client, version de migration, empreinte de configuration, résultat des portes, date, exécution de CI"
+  endpoint_version: "GET /version sur chaque API : environnement, commit, empreinte, version de migration ; l'enregistrement PROD cite le même commit et la même empreinte que l'enregistrement QA accepté"
+
+  portes:
+    DEV_vers_QA:
+      decide: "automatique — aucune approbation humaine"
+      exige:
+        - "CI verte sur le commit : lint, types, tests unitaires, de contrat, d'intégration et d'isolation"
+        - "migrations rejouées depuis zéro et tests d'invariants verts"
+        - "scans verts : dépendances, secrets sur tout l'historique, analyse statique, contenu du bundle client"
+        - "déploiement DEV de l'empreinte sain (/ready) et validation par machine verte"
+        - "artefacts identifiés : commit, empreinte, build client QA"
+    QA_vers_PROD:
+      decide: "une décision humaine de mise en production — le relecteur requis de l'environnement « prod » ; pas de comité, pas d'outil de gestion des changements"
+      exige:
+        - "déploiement QA du candidat sain : /ready, /version = candidat"
+        - "validation de la Factory verte sur la QA"
+        - "acceptation humaine consignée pour chaque tranche de la release"
+        - "avant la première PROD : revue de sécurité, test d'intrusion indépendant, exercice de restauration"
+        - "questions juridiques dues pour les flux de données réels, tranchées"
+        - "candidat identifié : commit, empreinte, version de migration, build client de production du même commit"
+
+migrations:
+  chemin: "LOCAL (réinitialisation) → DEV (rejeu depuis zéro, tests de schéma et d'invariants) → QA (appliquées avant la bascule d'image) → PROD (appliquées avant la bascule d'image, après un point de sauvegarde)"
+  regles:
+    - "versionnées avec le code, en avant uniquement, relues ; appliquées seulement par la CI"
+    - "aucune modification manuelle dans un environnement hébergé"
+    - "compatibles avec l'image précédente : élargir → migrer → resserrer ; l'image ne bascule qu'après le succès de ses migrations"
+  echec_en_QA: "la promotion s'arrête, la QA garde sa version ; la cause se corrige par une NOUVELLE migration qui refait LOCAL → DEV → QA ; une migration appliquée n'est jamais modifiée et la QA jamais rapiécée à la main"
+
+client_mobile:
+  si: "le produit a un client mobile"
+  profils:
+    - { profil: development, environnement: "LOCAL / DEV", variante: "dev — identifiant et nom propres", distribution: "build de développement" }
+    - { profil: preview, environnement: QA, variante: "qa — identifiant et nom propres", distribution: "distribution interne à l'humain qui accepte et à la Factory" }
+    - { profil: production, environnement: PROD, variante: "prod — identifiant du magasin", distribution: "magasin d'applications ; mises à jour à chaud désactivées" }
+  regles:
+    - "le profil de build choisit l'environnement ; le client lit l'URL de l'API et la clé publique d'identité au build — pas d'URL modifiable, pas de sélecteur d'environnement en QA ni en PROD"
+    - "seules l'URL de l'API et la clé publique d'identité sont embarquées, jamais un secret"
+    - "un build de production échoue si un hôte configuré n'est pas sur la liste blanche PROD ; la CI scanne le bundle de production à la recherche d'hôtes DEV ou QA"
+    - "les builds QA et PROD sortent du même commit accepté en QA"
+
+cout_par_defaut: "un seul environnement hébergé hors production (la QA) : un projet payant de la plateforme et un petit service d'API toujours actif ; DEV ne coûte que des minutes de CI ; le coût de PROD commence à son provisionnement"

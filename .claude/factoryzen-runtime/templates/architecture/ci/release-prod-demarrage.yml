@@ -1,0 +1,48 @@
+# Départ d'architecture standard — MISE EN PRODUCTION, EN EXEMPLE (ADR-07)
+#
+# QA → PROD : une décision humaine, prise à la gate G4 et prouvée deux fois.
+#   1. La tour : G4 franchie pour CE build (commit ou empreinte), décision d'autoriser, dans ses
+#      7 jours — « apf release-check » le relit dans runs/tower.json, avant tout déploiement.
+#   2. GitHub : le relecteur requis de l'environnement « prod » approuve le job. Le Launchpad
+#      provisionne cet environnement et son relecteur à la synchronisation du dépôt ; quand le
+#      plan GitHub ne permet pas la protection, la tour reste la barrière, et la page du projet
+#      le dit.
+# Pas de comité, pas d'outil de gestion des changements. Le candidat est le commit et l'empreinte
+# ACCEPTÉS en QA — jamais une reconstruction. Tant que la PROD n'est pas provisionnée, ce workflow
+# refuse.
+name: release-prod
+on:
+  workflow_dispatch:
+    inputs:
+      commit: { description: "commit candidat, accepté en QA", required: true }
+      digest: { description: "empreinte de l'image acceptée en QA", required: true }
+permissions: { contents: read, deployments: write }
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: prod          # le relecteur requis de cet environnement EST la décision de mise en production
+    steps:
+      # La décision G4 est consignée APRÈS l'acceptation du candidat : elle se lit sur le tronc,
+      # jamais au commit candidat, qui ne la contient pas.
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.repository.default_branch }}", fetch-depth: 0, submodules: true }   # .factoryzen : le plugin épinglé
+      - name: G4 a autorisé CE build, et l'autorisation court encore
+        run: node .factoryzen/bin/apf release-check "${{ inputs.commit }}" "${{ inputs.digest }}"
+      - name: le candidat, et lui seul
+        run: git checkout --recurse-submodules "${{ inputs.commit }}"
+      - name: la PROD existe, et le candidat est la dernière acceptation QA
+        run: |
+          node -e "const p=require('./config/prod.json'); if(!p.apiBaseUrl){console.error('PROD non provisionnée : release refusée');process.exit(1)}"
+          node scripts/verify-candidate.mjs "${{ inputs.commit }}" "${{ inputs.digest }}"   # même commit et même empreinte que l'enregistrement QA accepté
+      - name: contenu de release — aucun artefact DISCARD
+        run: node scripts/check-boundaries.mjs --release   # FF-18
+      - name: portes de release consignées (revue de sécurité, test d'intrusion, restauration, questions juridiques dues)
+        run: node scripts/check-release-gates.mjs          # FF-21
+      - name: migrations → PROD, après un point de sauvegarde, avant la bascule d'image
+        env: { PLATFORM_ACCESS_TOKEN: "${{ secrets.PLATFORM_ACCESS_TOKEN }}" }
+        run: node scripts/migrate-remote.mjs prod
+      - name: déployer la MÊME empreinte en PROD
+        env: { HOST_API_TOKEN: "${{ secrets.HOST_API_TOKEN }}" }
+        run: ./scripts/deploy.sh prod "ghcr.io/${{ github.repository_owner }}/mon-produit-api@${{ inputs.digest }}"
+      - name: vérification PROD (/ready, /version = candidat) puis étiquette vX.Y.Z sur le commit
+        run: node scripts/verify-env.mjs prod "${{ inputs.commit }}" "${{ inputs.digest }}"   # FF-14

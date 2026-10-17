@@ -1,0 +1,329 @@
+{
+  "depuis": "0180862",
+  "note": "Chemins sous product/. Un fichier se déplace seulement s'il existe à l'ancien chemin et pas au nouveau.",
+  "paires": [
+    {
+      "livrable": "SOC-01",
+      "ancien": "governance/artifact-schema.yaml",
+      "nouveau": "C1.1-initialisation/governance/artifact-schema.yaml"
+    },
+    {
+      "livrable": "SOC-01",
+      "ancien": "governance/project.yaml",
+      "nouveau": "C1.1-initialisation/governance/project.yaml"
+    },
+    {
+      "livrable": "SOC-01",
+      "ancien": "governance/workspace-map.yaml",
+      "nouveau": "C1.1-initialisation/governance/workspace-map.yaml"
+    },
+    {
+      "livrable": "SOC-02",
+      "ancien": "context/existing-system.md",
+      "nouveau": "C1.1-initialisation/context/existing-system.md"
+    },
+    {
+      "livrable": "SOC-02",
+      "ancien": "context/constraints.md",
+      "nouveau": "C1.1-initialisation/context/constraints.md"
+    },
+    {
+      "livrable": "WP-02",
+      "ancien": "strategy/product-thesis.md",
+      "nouveau": "C1.2-strategie/strategy/product-thesis.md"
+    },
+    {
+      "livrable": "WP-02",
+      "ancien": "strategy/outcomes.md",
+      "nouveau": "C1.2-strategie/strategy/outcomes.md"
+    },
+    {
+      "livrable": "WP-02",
+      "ancien": "strategy/assumptions.md",
+      "nouveau": "C1.2-strategie/strategy/assumptions.md"
+    },
+    {
+      "livrable": "WP-03",
+      "ancien": "domain/domain-profile.md",
+      "nouveau": "C1.2-strategie/domain/domain-profile.md"
+    },
+    {
+      "livrable": "WP-03",
+      "ancien": "domain/sources.md",
+      "nouveau": "C1.2-strategie/domain/sources.md"
+    },
+    {
+      "livrable": "WP-03",
+      "ancien": "domain/rules.md",
+      "nouveau": "C1.2-strategie/domain/rules.md"
+    },
+    {
+      "livrable": "WP-03",
+      "ancien": "domain/critic-definition.md",
+      "nouveau": "C1.2-strategie/domain/critic-definition.md"
+    },
+    {
+      "livrable": "WP-03",
+      "ancien": "domain/critic-sources.md",
+      "nouveau": "C1.2-strategie/domain/critic-sources.md"
+    },
+    {
+      "livrable": "WP-04",
+      "ancien": "research/research-plan.md",
+      "nouveau": "C1.3-parcours/research/research-plan.md"
+    },
+    {
+      "livrable": "WP-04",
+      "ancien": "research/interviews/",
+      "nouveau": "C1.3-parcours/research/interviews/"
+    },
+    {
+      "livrable": "WP-04",
+      "ancien": "research/insights.md",
+      "nouveau": "C1.3-parcours/research/insights.md"
+    },
+    {
+      "livrable": "WP-04",
+      "ancien": "research/personas/",
+      "nouveau": "C1.3-parcours/research/personas/"
+    },
+    {
+      "livrable": "WP-04",
+      "ancien": "research/empathy-maps/",
+      "nouveau": "C1.3-parcours/research/empathy-maps/"
+    },
+    {
+      "livrable": "WP-04",
+      "ancien": "research/journeys/as-is/",
+      "nouveau": "C1.3-parcours/research/journeys/as-is/"
+    },
+    {
+      "livrable": "WP-05",
+      "ancien": "design/spine/journey-skeleton.md",
+      "nouveau": "C1.3-parcours/spine/journey-skeleton.md"
+    },
+    {
+      "livrable": "WP-05",
+      "ancien": "design/spine/stages/",
+      "nouveau": "C1.3-parcours/spine/stages/"
+    },
+    {
+      "livrable": "WP-06",
+      "ancien": "data/corpus/corpus-scope.md",
+      "nouveau": "C1.3-parcours/corpus/corpus-scope.md"
+    },
+    {
+      "livrable": "WP-06",
+      "ancien": "data/corpus/provenance.yaml",
+      "nouveau": "C1.3-parcours/corpus/provenance.yaml"
+    },
+    {
+      "livrable": "WP-06",
+      "ancien": "data/corpus/truth-map.yaml",
+      "nouveau": "C1.3-parcours/corpus/truth-map.yaml"
+    },
+    {
+      "livrable": "WP-06",
+      "ancien": "data/corpus/coverage.md",
+      "nouveau": "C1.3-parcours/corpus/coverage.md"
+    },
+    {
+      "livrable": "WP-06",
+      "ancien": "data/corpus/records/",
+      "nouveau": "C1.3-parcours/corpus/records/"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/design-brief.md",
+      "nouveau": "C1.4-socle/design-system/design-brief.md"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/explorations/",
+      "nouveau": "C1.4-socle/design-system/explorations/"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/surface-briefs/",
+      "nouveau": "C1.4-socle/design-system/surface-briefs/"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/tokens.css",
+      "nouveau": "C1.4-socle/design-system/tokens.css"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/tokens.json",
+      "nouveau": "C1.4-socle/design-system/tokens.json"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/fonts/",
+      "nouveau": "C1.4-socle/design-system/fonts/"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/icons/",
+      "nouveau": "C1.4-socle/design-system/icons/"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/components/",
+      "nouveau": "C1.4-socle/design-system/components/"
+    },
+    {
+      "livrable": "WP-07",
+      "ancien": "design/system/component-catalog.html",
+      "nouveau": "C1.4-socle/design-system/component-catalog.html"
+    },
+    {
+      "livrable": "WP-08",
+      "ancien": "design/spine/navigation.md",
+      "nouveau": "C1.4-socle/navigation/navigation.md"
+    },
+    {
+      "livrable": "WP-08",
+      "ancien": "design/spine/information-architecture.md",
+      "nouveau": "C1.4-socle/navigation/information-architecture.md"
+    },
+    {
+      "livrable": "WP-08",
+      "ancien": "design/spine/glossaire-utilisateur.md",
+      "nouveau": "C1.4-socle/navigation/glossaire-utilisateur.md"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/semantics.md",
+      "nouveau": "C1.4-socle/data/semantics.md"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/status-model.md",
+      "nouveau": "C1.4-socle/data/status-model.md"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/financial-semantics.md",
+      "nouveau": "C1.4-socle/data/financial-semantics.md"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/model.generated.md",
+      "nouveau": "C1.4-socle/data/model.generated.md"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/binding.yaml",
+      "nouveau": "C1.4-socle/data/binding.yaml"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/migrations.md",
+      "nouveau": "C1.4-socle/data/migrations.md"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/semantics.yaml",
+      "nouveau": "C1.4-socle/data/semantics.yaml"
+    },
+    {
+      "livrable": "WP-09",
+      "ancien": "data/schema.introspected.yaml",
+      "nouveau": "C1.4-socle/data/schema.introspected.yaml"
+    },
+    {
+      "livrable": "WP-11",
+      "ancien": "architecture/target-architecture.md",
+      "nouveau": "C1.4-socle/architecture/target-architecture.md"
+    },
+    {
+      "livrable": "WP-11",
+      "ancien": "architecture/integration-boundaries.md",
+      "nouveau": "C1.4-socle/architecture/integration-boundaries.md"
+    },
+    {
+      "livrable": "WP-11",
+      "ancien": "architecture/data-persistence.md",
+      "nouveau": "C1.4-socle/architecture/data-persistence.md"
+    },
+    {
+      "livrable": "WP-11",
+      "ancien": "architecture/deployment-topology.md",
+      "nouveau": "C1.4-socle/architecture/deployment-topology.md"
+    },
+    {
+      "livrable": "WP-11",
+      "ancien": "architecture/security-architecture.md",
+      "nouveau": "C1.4-socle/architecture/security-architecture.md"
+    },
+    {
+      "livrable": "WP-11",
+      "ancien": "architecture/non-functional.md",
+      "nouveau": "C1.4-socle/architecture/non-functional.md"
+    },
+    {
+      "livrable": "WP-12",
+      "ancien": "decisions/adr/",
+      "nouveau": "C1.4-socle/decisions/adr/"
+    },
+    {
+      "livrable": "WP-12",
+      "ancien": "decisions/build-vs-buy.md",
+      "nouveau": "C1.4-socle/decisions/build-vs-buy.md"
+    },
+    {
+      "livrable": "WP-13",
+      "ancien": "releases/release-architecture.md",
+      "nouveau": "C1.5-lancement/releases/release-architecture.md"
+    },
+    {
+      "livrable": "WP-13",
+      "ancien": "releases/sequencing.md",
+      "nouveau": "C1.5-lancement/releases/sequencing.md"
+    },
+    {
+      "livrable": "WP-13",
+      "ancien": "releases/dependencies.md",
+      "nouveau": "C1.5-lancement/releases/dependencies.md"
+    },
+    {
+      "livrable": "WP-13",
+      "ancien": "releases/risk-map.md",
+      "nouveau": "C1.5-lancement/releases/risk-map.md"
+    },
+    {
+      "livrable": "WP-13",
+      "ancien": "releases/fiches/",
+      "nouveau": "C1.5-lancement/releases/fiches/"
+    },
+    {
+      "livrable": "WP-14",
+      "ancien": "gates/g0-product-architecture.md",
+      "nouveau": "C1.5-lancement/gates/g0-product-architecture.md"
+    },
+    {
+      "livrable": "WP-14",
+      "ancien": "gates/spine-manifest.yaml",
+      "nouveau": "C1.5-lancement/gates/spine-manifest.yaml"
+    }
+  ],
+  "parametres": [
+    {
+      "ancien": "releases/{release-id}/sprints/{sprint-id}/",
+      "nouveau": "releases/{release-id}/slices/{slice-id}/",
+      "depuis": "numérotation 4 — la boucle sprint devient une boucle de slices"
+    },
+    {
+      "ancien": "releases/{release-id}/planning/sprint-map.md",
+      "nouveau": "releases/{release-id}/planning/slice-map.md",
+      "depuis": "numérotation 4"
+    },
+    {
+      "ancien": "gates/g3-{sprint-id}.md",
+      "nouveau": "gates/g3-{slice-id}.md",
+      "depuis": "numérotation 4"
+    }
+  ],
+  "note_parametres": "Chemins paramétrés : un dossier (finissant par /) se déplace avec tout ce qu'il contient ; les paramètres se reportent dans l'ordre. Les fichiers de sprint sans équivalent dans la slice (sprint-goal.md, sprint-plan.md, candidate-scope.md, risks.md, design/flows/, spec/functional-spec.md) suivent leur dossier sans être effacés : leur contenu se reprend dans slice-contract.md, et K2 les signale tant qu'il ne l'est pas."
+}

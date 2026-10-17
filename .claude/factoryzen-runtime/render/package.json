@@ -1,0 +1,10 @@
+{
+  "name": "apf-render",
+  "private": true,
+  "type": "module",
+  "description": "Rendu PowerPoint du pack. Séparé du plugin : le plugin reste sans dépendance, le rendu en a deux.",
+  "dependencies": {
+    "docx": "^9.8.1",
+    "pptxgenjs": "^4.0.1"
+  }
+}

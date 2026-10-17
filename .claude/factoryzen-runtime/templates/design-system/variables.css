@@ -1,0 +1,140 @@
+:root {
+  /* Colors */
+  --color-violet-900: #2a0f57;
+  --color-lilac-300: #c4a8ff;
+  --color-violet-800: #4c2a85;
+  --color-lilac-50: #efe7ff;
+  --color-blue-800: #0b4c72;
+  --color-red-600: #cb272f;
+  --color-neutral-700: #47444d;
+  --color-neutral-950: #100e14;
+  --color-neutral-500: #75717d;
+  --color-neutral-600: #6c6873;
+  --color-neutral-100: #ebe8f0;
+  --color-white: #ffffff;
+  --color-violet-600: #6d3fd1;
+  --color-green-700: #054d28;
+  --color-green-50: #e2f6d5;
+  --color-neutral-50: #f6f4f9;
+  --color-neutral-200: #ddd9e5;
+  --color-neutral-300: #c4bfcd;
+
+  /* Typography — Font Families */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-wise-sans: 'Wise Sans', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-wise-sans);
+  --font-monospace: 'monospace', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-micro: 12px;
+  --leading-micro: 1.63;
+  --tracking-micro: -0.036px;
+  --text-caption: 14px;
+  --leading-caption: 1.55;
+  --tracking-caption: -0.07px;
+  --text-body-sm: 16px;
+  --leading-body-sm: 1.5;
+  --tracking-body-sm: -0.096px;
+  --text-body: 18px;
+  --leading-body: 1.5;
+  --tracking-body: -0.126px;
+  --text-body-lg: 25px;
+  --leading-body-lg: 1.3;
+  --tracking-body-lg: -0.225px;
+  --text-subheading: 36px;
+  --leading-subheading: 1.25;
+  --tracking-subheading: -0.396px;
+  --text-heading-sm: 45px;
+  --leading-heading-sm: 1.1;
+  --tracking-heading-sm: -0.495px;
+  --text-heading: 61px;
+  --leading-heading: 1.1;
+  --tracking-heading: -0.915px;
+  --text-heading-lg: 89px;
+  --leading-heading-lg: 0.85;
+  --tracking-heading-lg: -2.67px;
+  --text-display: 105px;
+  --leading-display: 0.85;
+  --tracking-display: -3.15px;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Spacing */
+  --spacing-unit: 4px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-100: 100px;
+  --spacing-124: 124px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --section-gap: 64-80px;
+  --card-padding: 24px;
+  --element-gap: 8-12px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-lg: 10px;
+  --radius-2xl: 16px;
+  --radius-2xl-2: 18.7693px;
+  --radius-3xl: 28.1539px;
+  --radius-3xl-2: 32px;
+  --radius-3xl-3: 37.5385px;
+  --radius-full: 1000px;
+  --radius-full-2: 9999px;
+
+  /* Named Radii */
+  --radius-tags: 9999px;
+  --radius-cards: 10px;
+  --radius-inputs: 10px;
+  --radius-buttons: 9999px;
+  --radius-imagemasks: 1000px;
+  --radius-largecards: 28px;
+  --radius-navsegments: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: rgba(14, 15, 12, 0.12) 0px 0px 0px 1px;
+  --shadow-subtle-2: rgb(134, 134, 133) 0px 0px 0px 1px inset;
+  --shadow-xl: rgba(0, 0, 0, 0.15) 0px 10px 32px 0px, rgba(0, 0, 0, 0.04) 0px 40px 40px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.08) 0px 6px 20px 0px;
+
+  /* Surfaces */
+  --surface-base: #ffffff;
+  --surface-subtle: #ebe8f0;
+  --surface-tinted: #efe7ff;
+  --surface-accent: #c4a8ff;
+  --surface-inverse: #2a0f57;
+
+  /* Rôles — ce que la factory lit pour habiller les livrables Office (tokens.json › color.role) */
+  --role-titre: var(--color-violet-900);
+  --role-nuit: var(--color-violet-900);
+  --role-accent: var(--color-violet-600);
+  --role-accent-sombre: var(--color-lilac-300);
+  --role-encadre: var(--color-lilac-50);
+  --role-fond: var(--color-neutral-50);
+  --role-fond-second: var(--color-neutral-100);
+  --role-papier: var(--color-white);
+  --role-texte: var(--color-neutral-700);
+  --role-texte-sombre: #d9ccf5;
+  --role-texte-discret: var(--color-neutral-600);
+  --role-texte-discret-sombre: #9a8dc4;
+  --role-filet: var(--color-neutral-200);
+  --role-trait: var(--color-neutral-300);
+}

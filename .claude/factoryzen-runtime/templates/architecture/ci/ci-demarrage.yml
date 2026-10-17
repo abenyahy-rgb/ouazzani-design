@@ -1,0 +1,143 @@
+# Départ d'architecture standard — CHEMIN D'OR CI, EN EXEMPLE (ADR-07)
+#
+# Un exemple à adapter, pas un fichier à copier sans le lire. Il montre la forme :
+#   checks  → lint, types, contrat, frontières, migrations, configuration, dépendances, secrets, bundle client
+#   dev     → construit l'image UNE fois, la déploie sur une pile éphémère, la valide par machine,
+#             la pousse par empreinte (tronc seulement)
+#   qa      → promeut la MÊME empreinte en QA, automatiquement, migrations avant la bascule
+# La mise en production est un autre workflow (release-prod-demarrage.yml), sur décision humaine.
+#
+# Les scripts scripts/check-*.mjs sont les fonctions de fitness du départ (fitness-functions.yaml) :
+# ils s'écrivent dans la tranche 0. Les versions d'actions et d'outils s'épinglent sur la
+# documentation du jour, jamais recopiées d'ici. Un job qui n'a pas ses accès est rendu NON EXÉCUTÉ,
+# jamais réussi.
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+env:
+  APP: mon-produit-api            # nom de l'image — à remplacer
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }  # historique complet : scan de secrets et comparaison des migrations
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run lint -- --max-warnings 0
+      - run: npm run typecheck
+      - run: npm run contract:check                     # FF-04 : le contrat OpenAPI ne dérive pas
+      - run: node scripts/check-boundaries.mjs          # FF-02, FF-03, FF-18
+      - run: node scripts/check-ai-imports.mjs          # FF-13 (retirer si le produit n'a pas d'IA)
+      - run: node scripts/check-migrations.mjs          # FF-07 : en avant seulement
+        env: { MIGRATION_BASE_REF: "${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'HEAD~1' }}" }
+      - run: node scripts/check-config.mjs              # FF-16
+      - run: node scripts/check-deps.mjs                # FF-19
+      - run: npm test
+      - name: scan de secrets (tout l'historique)
+        run: docker run --rm -v "$GITHUB_WORKSPACE:/repo" zricethezav/gitleaks:v8.28.0 detect --source /repo --redact --no-banner
+      - name: bundle client (garde de production, contenu)
+        run: node scripts/check-mobile-bundle.mjs       # FF-15
+
+  dev:
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions: { contents: read, packages: write }
+    outputs:
+      image: ${{ steps.push.outputs.image }}
+      digest: ${{ steps.push.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: pile DEV éphémère (clé de signature asymétrique propre, migrations rejouées depuis zéro)
+        run: ./scripts/dev-stack.sh up                  # base + identité + stockage locaux, puis reset depuis les migrations
+      - name: construire l'image UNE fois
+        id: build
+        run: |
+          docker build -f apps/api/Dockerfile -t $APP:${{ github.sha }} .
+          echo "image_id=$(docker image inspect $APP:${{ github.sha }} --format '{{.Id}}')" >> "$GITHUB_OUTPUT"
+      - name: déployer cette image en DEV
+        run: |
+          set -a; eval "$(node scripts/dev-env.mjs)"; set +a
+          docker run -d --name api-dev --network host --env-file <(node scripts/dev-env.mjs --container) \
+            -e APP_ENV=dev -e VERSION_COMMIT=${{ github.sha }} -e VERSION_IMAGE_DIGEST=${{ steps.build.outputs.image_id }} \
+            $APP:${{ github.sha }}
+          for i in $(seq 1 30); do curl -fs localhost:8080/ready && break; sleep 2; done
+          curl -fs localhost:8080/version | tee dev-version.json
+      - name: validation par machine contre l'image déployée (intégration, isolation IDOR, idempotence)
+        run: API_BASE_URL=http://127.0.0.1:8080 npm run test:integration   # FF-05, FF-06, FF-08, FF-10, FF-11, FF-12
+      - name: journaux de l'image déployée expurgés
+        run: docker logs api-dev > dev-api.log 2>&1 && node scripts/check-log-scrub.mjs dev-api.log   # FF-17
+      - name: pousser l'image validée par empreinte (tronc seulement)
+        id: push
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          IMG=ghcr.io/${{ github.repository_owner }}/$APP
+          docker tag $APP:${{ github.sha }} $IMG:${{ github.sha }} && docker push $IMG:${{ github.sha }}
+          DIGEST=$(docker image inspect $IMG:${{ github.sha }} --format '{{index .RepoDigests 0}}' | cut -d@ -f2)
+          echo "image=$IMG" >> "$GITHUB_OUTPUT"; echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: dev-evidence, path: "dev-version.json\ndev-api.log" }
+
+  # La promotion QA a besoin des accès de l'environnement « qa ». Sans eux, elle est rendue NON EXÉCUTÉE
+  # (un avertissement), jamais réussie.
+  qa-acces:
+    needs: dev
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: qa
+    outputs:
+      pret: ${{ steps.c.outputs.pret }}
+    steps:
+      - id: c
+        env: { PLATEFORME: "${{ secrets.PLATFORM_ACCESS_TOKEN }}", HOTE: "${{ secrets.HOST_API_TOKEN }}" }
+        run: |
+          if [ -n "$PLATEFORME" ] && [ -n "$HOTE" ]; then echo "pret=true" >> "$GITHUB_OUTPUT"
+          else echo "::warning::promotion QA NON EXÉCUTÉE : accès de l'environnement qa absents"; echo "pret=false" >> "$GITHUB_OUTPUT"; fi
+
+  qa:
+    needs: [dev, qa-acces]
+    if: github.ref == 'refs/heads/main' && needs.qa-acces.outputs.pret == 'true'
+    runs-on: ubuntu-latest
+    environment: qa
+    permissions: { contents: read, packages: read, deployments: write }
+    concurrency: { group: promote-qa, cancel-in-progress: false }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: migrations → QA, AVANT la bascule d'image (un échec arrête la promotion ; la QA garde sa version)
+        env: { PLATFORM_ACCESS_TOKEN: "${{ secrets.PLATFORM_ACCESS_TOKEN }}" }
+        run: node scripts/migrate-remote.mjs qa
+      - name: déployer la MÊME empreinte en QA
+        env: { HOST_API_TOKEN: "${{ secrets.HOST_API_TOKEN }}" }
+        run: ./scripts/deploy.sh qa "${{ needs.dev.outputs.image }}@${{ needs.dev.outputs.digest }}"
+      - name: validation QA (santé, traçabilité, isolation des environnements)
+        run: |
+          API=$(node -p "require('./config/qa.json').apiBaseUrl")
+          for i in $(seq 1 30); do curl -fs "$API/ready" && break; sleep 5; done
+          curl -fs "$API/version" | tee qa-version.json
+          node scripts/verify-env.mjs qa "${{ github.sha }}" "${{ needs.dev.outputs.digest }}" qa-version.json   # FF-14
+      - name: enregistrement de déploiement (environnement qa)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const v = require('./qa-version.json');
+            const d = await github.rest.repos.createDeployment({ owner: context.repo.owner, repo: context.repo.repo, ref: context.sha,
+              environment: 'qa', auto_merge: false, required_contexts: [],
+              payload: { commit: v.commit, image_digest: v.image_digest, migration_version: v.migration_version, config_hash: v.config_hash, run: context.runId } });
+            await github.rest.repos.createDeploymentStatus({ owner: context.repo.owner, repo: context.repo.repo, deployment_id: d.data.id, state: 'success' });

@@ -1,0 +1,173 @@
+# Départ d'architecture standard — FONCTIONS DE FITNESS
+#
+# Ce qui tient le départ une fois gardé : chaque entrée dit ce qui doit rester vrai, comment le
+# vérifier, quand la vérification devient possible, et l'ADR qu'elle protège. Une ADR adaptée
+# adapte ses fonctions ; une ADR écartée retire les siennes, et le dit.
+#
+# CLASSEMENT
+#   VERIFIABLE_MAINTENANT       vérifiable sur les artefacts d'architecture eux-mêmes
+#   VERIFIABLE_AVEC_LE_CODE     déclaratif tant que le code n'existe pas ; la vérification est écrite dès maintenant
+#   EN_CI                       s'exécute à chaque commit dès que la CI existe
+#   PORTE_DE_RELEASE            une porte de mise en production, pas une vérification de commit
+#
+# Une fonction peut porter plusieurs classements : la vérification écrite aujourd'hui est celle
+# que la CI exécutera demain. Déclaratif aujourd'hui ne veut pas dire vague aujourd'hui.
+
+version: "1.0"
+kind: DEPART_FITNESS_FUNCTIONS
+
+fonctions:
+
+- id: FF-01
+  nom: "Un seul déployable d'API"
+  assertion: "L'architecture déclare un seul déployable serveur ; aucun module ne se déploie seul."
+  verification: "Un seul Dockerfile d'API ; aucun descripteur de déploiement par module."
+  classement: [VERIFIABLE_MAINTENANT, VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-01]
+
+- id: FF-02
+  nom: "Les dépendances entre modules sont déclarées et sans cycle"
+  assertion: "Chaque module n'importe que ses dépendances déclarées et le noyau partagé ; le graphe est acyclique."
+  verification: "Analyse statique des imports contre la table des dépendances autorisées (scripts/check-boundaries.mjs) ; détection de cycle."
+  classement: [VERIFIABLE_MAINTENANT, VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-01]
+
+- id: FF-03
+  nom: "Un module possède chaque concept, et personne ne lit ses tables"
+  assertion: "Aucun concept n'est possédé par deux modules ; aucun module ne lit ni n'écrit les tables d'un autre."
+  verification: "Intersection des listes de possession ; analyse des références de tables par module."
+  classement: [VERIFIABLE_MAINTENANT, VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-01, ADR-03]
+
+- id: FF-04
+  nom: "Le contrat d'API ne dérive pas"
+  assertion: "Le serveur et le client généré correspondent au document OpenAPI commité."
+  verification: "Régénérer, puis comparer : toute différence échoue (npm run contract:check)."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-02]
+
+- id: FF-05
+  nom: "Isolation par locataire, sur chaque point d'accès"
+  assertion: "Aucune requête ne rend ni ne modifie une ligne d'un autre locataire."
+  verification: "Suite IDOR générée depuis le contrat OpenAPI : un second compte tente chaque point d'accès ; clés composites vérifiées par test d'invariant."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI, PORTE_DE_RELEASE]
+  adr: [ADR-02, ADR-03, ADR-04]
+
+- id: FF-06
+  nom: "Les commandes rejouables sont idempotentes"
+  assertion: "Un rejeu d'une commande portant la même clé d'idempotence rend le résultat déjà enregistré, sans second effet."
+  verification: "Test d'intégration : double envoi, un seul fait enregistré."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-02]
+
+- id: FF-07
+  nom: "Les migrations vont seulement en avant"
+  assertion: "Aucune migration appliquée n'est modifiée, renommée ni supprimée ; aucune migration descendante n'existe ; les versions croissent."
+  verification: "Comparaison avec la branche de base (scripts/check-migrations.mjs, lancé depuis la racine du produit) ; rejeu depuis zéro sur pile neuve."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-03]
+
+- id: FF-08
+  nom: "Les faits en ajout seul sont immuables"
+  assertion: "Aucun chemin de mise à jour ni de suppression n'existe pour une famille de faits déclarée en ajout seul."
+  verification: "Droits du rôle d'API (INSERT, SELECT) vérifiés en base ; test d'invariant qui tente UPDATE et DELETE."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-03]
+
+- id: FF-09
+  nom: "Pas d'event sourcing, pas de framework CQRS"
+  assertion: "L'état n'est pas reconstruit depuis un journal d'événements."
+  verification: "Scan des dépendances ; aucun agrégat ne se reconstruit depuis un flux."
+  classement: [VERIFIABLE_MAINTENANT, VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-03]
+
+- id: FF-10
+  nom: "La base n'est jamais exposée au client"
+  assertion: "L'API de données de la plateforme est désactivée ; les droits par défaut des rôles publics sont révoqués ; refus par défaut sur chaque table."
+  verification: "Assertion EN BASE, dans chaque environnement — pas par une interface de configuration de la plateforme."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-02, ADR-06]
+
+- id: FF-11
+  nom: "Une seule autorité de jetons, à signature asymétrique"
+  assertion: "L'API n'accepte que des jetons signés par clé asymétrique, vérifiés par JWKS, de l'émetteur de son environnement."
+  verification: "Test : un jeton symétrique, un jeton d'un autre environnement et un jeton de session révoquée sont refusés."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-04]
+
+- id: FF-12
+  nom: "Le stockage est privé"
+  assertion: "Aucun objet n'est lisible publiquement ; aucun chemin non authentifié vers un octet stocké."
+  verification: "Contrôle de politique (aucun compartiment public) ; accès direct avec un jeton utilisateur refusé ; lien signé expiré refusé."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI, PORTE_DE_RELEASE]
+  adr: [ADR-05]
+
+- id: FF-13
+  nom: "Le SDK d'IA ne sort pas de l'adaptateur"
+  assertion: "Aucun fichier hors de l'adaptateur n'importe le SDK d'un fournisseur de modèle."
+  verification: "Analyse statique des imports (scripts/check-ai-imports.mjs)."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-09]
+
+- id: FF-14
+  nom: "La même empreinte de DEV à PROD"
+  assertion: "Ce qui tourne en QA, puis en PROD, est l'image validée en DEV, par son empreinte."
+  verification: "/version de l'environnement = commit + empreinte + migration du candidat ; l'enregistrement PROD cite ceux de la QA acceptée."
+  classement: [EN_CI, PORTE_DE_RELEASE]
+  adr: [ADR-07]
+
+- id: FF-15
+  nom: "Un build de production ne vise que la production"
+  assertion: "Aucun hôte DEV ou QA dans un build de production ; aucun secret dans un bundle client."
+  verification: "Le build de production échoue sur un hôte hors liste blanche PROD ; scan du bundle (scripts/check-mobile-bundle.mjs, scripts/check-web-bundle.mjs)."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-07]
+
+- id: FF-16
+  nom: "La configuration est valide et ne porte aucun secret"
+  assertion: "Chaque config/<env>.json se valide contre son schéma et ne contient que des valeurs publiques."
+  verification: "scripts/check-config.mjs ; scan de secrets sur tout l'historique."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-07]
+
+- id: FF-17
+  nom: "Les journaux ne portent aucun contenu"
+  assertion: "Aucun contenu utilisateur, montant, jeton ni secret dans les journaux de l'image déployée."
+  verification: "Les journaux de l'image déployée en DEV passent l'expurgation (scripts/check-log-scrub.mjs)."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-02]
+
+- id: FF-18
+  nom: "Aucun artefact DISCARD dans du KEEP"
+  assertion: "Aucun code KEEP n'importe un artefact DISCARD ; aucun artefact DISCARD dans un build de release ; tous supprimés à la clôture de la tranche 0."
+  verification: "Analyse des imports ; refus d'une release qui contient le module de preuve ; présence vérifiée à la clôture."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI, PORTE_DE_RELEASE]
+  adr: [ADR-01]
+
+- id: FF-19
+  nom: "Les dépendances sont épinglées et scannées"
+  assertion: "Fichiers de verrouillage commités ; aucune vulnérabilité connue au-dessus du seuil ; image scannée."
+  verification: "npm ci ; scan des dépendances et du conteneur (scripts/check-deps.mjs)."
+  classement: [VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-06]
+
+- id: FF-20
+  nom: "Aucune décision ouverte n'est tranchée par l'implémentation"
+  assertion: "Aucun artefact ne choisit une technologie dont l'ADR n'est pas acceptée."
+  verification: "Chaque ADR ouverte a une décision vide ; aucune dépendance ni configuration ne l'implémente avant son acceptation."
+  classement: [VERIFIABLE_MAINTENANT, VERIFIABLE_AVEC_LE_CODE, EN_CI]
+  adr: [ADR-01, ADR-02, ADR-03, ADR-04, ADR-05, ADR-06, ADR-07, ADR-08, ADR-09]
+
+- id: FF-21
+  nom: "Test d'intrusion avant la première production"
+  assertion: "Aucune première mise en production sans revue de sécurité, test d'intrusion indépendant et remédiation de ses constats."
+  verification: "Porte de release consignée."
+  classement: [PORTE_DE_RELEASE]
+  adr: [ADR-07]
+
+- id: FF-22
+  nom: "Le chemin d'or a tourné sur les runners hébergés"
+  assertion: "Une tranche n'est dite validée en DEV qu'après une exécution verte, une fois, de tout son chemin CI sur les runners hébergés — conteneur, appareil, promotion."
+  verification: "Lien vers l'exécution verte dans le relevé de la tranche."
+  classement: [EN_CI, PORTE_DE_RELEASE]
+  adr: [ADR-07]
