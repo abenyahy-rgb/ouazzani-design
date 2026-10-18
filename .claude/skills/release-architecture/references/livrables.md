@@ -39,7 +39,7 @@ L'assemblage est DÉRIVÉ, il ne se recopie plus. Les éléments de charte vienn
 
 - **Fermeture d'apprentissage** — ce qui a coûté · ce qui a surpris · ce qu'un agent aurait dû détecter
 - **Investisseurs ciblés** — trois personnes au moins, pas des structures · secteur, géographie, portefeuille sans concurrent, performance · chacun sourcé · ticket et accès déclarés
-- **Pitch investisseurs** — onze planches — seed deck YC et outils NBV d'INSEAD · le titre est l'idée · chaque chiffre sourcé · traction sur l'échelle de fiabilité · la demande décidée par le porteur et rattachée aux hypothèses qu'elle tranche
+- **Pitch investisseurs** — onze planches — seed deck YC et outils NBV d'INSEAD · le titre est l'idée · chaque chiffre sourcé · traction sur l'échelle de fiabilité · la demande décidée par le porteur et rattachée aux hypothèses qu'elle tranche. En mode décideur, c'est le dossier décideur (MCR-007) : la demande d'abord, ce qui ne tient pas dit par l'équipe elle-même, les options écartées et leur verdict, chaque risque avec son test et son seuil écrits avant
 
 **Complétude.** Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable. Pitch investisseurs et investisseurs ciblés : formats « pitch » et « investisseurs » vérifiés.
 

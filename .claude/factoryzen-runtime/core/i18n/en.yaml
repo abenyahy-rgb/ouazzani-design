@@ -733,7 +733,7 @@ work_products:
       - title: Problem
         rule: whose · how we know · what they do today · what it costs them
       - title: Target
-        rule: a describable person, not a segment. How many. How we reach them
+        rule: a describable person, not a segment. How many. How we reach them. The segment that pays the most, named, with what it pays today for the substitute
       - title: Value proposition
         rule: what changes the next day · what the person stops doing
       - title: Alternative and status quo
@@ -741,7 +741,7 @@ work_products:
       - title: Competitor grid
         rule: "direct · indirect · future · the status quo, always present; three to five dimensions that matter to the target; each cell with its source and the quality of its evidence; where the product wins, where it loses"
       - title: Alternative business models
-        rule: two models written before choosing the main one — who pays, for what, how; why the main one is chosen, and what would tip it towards another
+        rule: "two models written before choosing the main one — who pays, for what, how; why the main one is chosen, and what would tip it towards another. The launch market is chosen the same way: candidate country, city and segment run through the same weighted filters — willingness to pay and price of the substitute, segment size, language and capacity of the key people, regulation, acquisition cost, competition —; the one chosen, the next wave, what is set aside and why (MCR-007)"
       - title: Business model assessment
         rule: "the seven strengths of the model — switching costs, recurring revenue, earning before spending, cost structure, others do the work, scalability, protection — each weak · medium · strong with its rationale; the strength of the value proposition: pain, frequency, urgency, willingness to pay, each sourced"
       - title: Unit economics
@@ -1192,7 +1192,7 @@ work_products:
       - title: Targeted investors
         rule: at least three people, not firms · sector, geography, portfolio without competitor, track record · each sourced · ticket and access declared
       - title: Investor pitch
-        rule: eleven slides — YC seed deck and INSEAD NBV tools · the title is the idea · every figure sourced · traction on the reliability ladder · the ask decided by the product owner and tied to the hypotheses it settles
+        rule: "eleven slides — YC seed deck and INSEAD NBV tools · the title is the idea · every figure sourced · traction on the reliability ladder · the ask decided by the product owner and tied to the hypotheses it settles. In decision-maker mode, it is the decision-maker's file (MCR-007): the ask first, what does not hold said by the team itself, the options set aside and their verdict, each risk with its test and its threshold written beforehand"
   - id: WP-17
     name: Desirable scope and release metrics
     purpose: >-

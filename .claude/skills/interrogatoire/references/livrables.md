@@ -11,11 +11,11 @@ Cycle de vie : vivant sous contrôle · contrôlé en G0 · R/A : product-lead /
 L'argument stratégique du produit, en un seul endroit : ce qu'on croit, ce qui doit bouger et chiffré, et ce qui reste à vérifier. Les trois se répondaient sans jamais être lus ensemble — un outcome sans thèse est un chiffre orphelin, une hypothèse sans outcome ne se teste contre rien.
 
 - **Problème** — de qui · comment on le sait · ce qu'ils font aujourd'hui · ce que ça leur coûte
-- **Cible** — une personne descriptible, pas un segment. Combien. Comment on l'atteint
+- **Cible** — une personne descriptible, pas un segment. Combien. Comment on l'atteint. Le segment qui paie le plus, nommé, avec ce qu'il paie aujourd'hui pour le substitut
 - **Proposition de valeur** — ce qui change le lendemain · ce que la personne arrête de faire
 - **Alternative et statu quo** — ce qui se passe si on ne fait rien · qui d'autre résout ça · pourquoi celle-ci gagne
 - **Grille concurrentielle** — directe · indirecte · future · le statu quo, toujours présent ; trois à cinq dimensions qui comptent pour la cible ; chaque case avec sa source et la qualité de sa preuve ; là où le produit gagne, là où il perd
-- **Modèles économiques alternatifs** — deux modèles écrits avant de retenir le principal — qui paie, pour quoi, comment ; pourquoi le principal est retenu, et ce qui ferait basculer vers un autre
+- **Modèles économiques alternatifs** — deux modèles écrits avant de retenir le principal — qui paie, pour quoi, comment ; pourquoi le principal est retenu, et ce qui ferait basculer vers un autre. Le marché de lancement se choisit de même : pays, ville et segment candidats passés aux mêmes filtres pondérés — volonté de payer et prix du substitut, taille du segment, langue et capacité des personnes clés, réglementation, coût d'acquisition, concurrence — ; le retenu, la vague suivante, ce qui est écarté et pourquoi (MCR-007)
 - **Évaluation du modèle économique** — les sept forces du modèle — coûts de changement, revenus récurrents, encaisser avant de dépenser, structure de coûts, d'autres font le travail, scalabilité, protection — chacune faible · moyenne · forte avec son motif ; la force de la proposition de valeur : douleur, fréquence, urgence, volonté de payer, chacune sourcée
 - **Économie unitaire** — revenu et coût par client, marge de contribution, attrition, valeur vie client calculée, coût d'acquisition tiré des tests de marché, LTV / CAC et délai de récupération calculés ; chaque chiffre avec son origine — porte le format « economie-unitaire »
 - **Critère d'abandon** — quel résultat ferait renoncer, qui le prononce, à quelle date on regarde

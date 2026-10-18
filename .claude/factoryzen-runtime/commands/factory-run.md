@@ -8,6 +8,8 @@ allowed-tools: Bash(apf:*), Agent, Task, Read, Write, Edit, Glob, Grep
 
 Si l'autopilote n'est pas actif : `apf tower factory_autopilot_start '{"par":"$1"}'`. Sans nom, demander à l'humain le sien — une seule question —, c'est lui qui ratifiera en G0.
 
+**Mode décideur (MCR-007).** Quand le porteur a donné un mandat — idée et contraintes — et non pas un atelier : `apf tower factory_autopilot_start '{"par":"$1","mode":"decideur"}'`. L'équipe produit alors depuis le mandat sans poser de question ; le porteur n'est sollicité qu'aux points de passage, en une salve.
+
 ## La boucle — sans rendre la main
 
 Répéter jusqu'à un arrêt : `apf tower factory_next`, puis exécuter l'action rendue.
@@ -24,6 +26,7 @@ Répéter jusqu'à un arrêt : `apf tower factory_next`, puis exécuter l'action
 
 - **STOP_TRI** : à la fin d'une étape de C1, les critiques en attente. Les trier avec le porteur par grill-me (le skill route vers `grilling`) : une critique par question, la recommandation du critic en premier ; sa réponse, Retenir ou Écarter, par `factory_answer_decision`. C'est lui qui juge de la pertinence — jamais le critic, jamais l'orchestrateur.
 - **STOP_DECISION** : une décision que seul l'humain peut prendre. L'exposer, une question à la fois, et attendre. La réponse : `factory_answer_decision`.
+- **En mode décideur**, STOP_TRI et STOP_DECISION portent `point_de_passage`, `a_confirmer` et `critiques` : tout présenter en UNE salve — décisions engageantes, choix appliqués par défaut à confirmer, critiques —, chacune avec la recommandation en premier et son motif en une ligne. « Ta reco » vaut la recommandation pour toutes ; consigner chaque réponse par `factory_answer_decision`.
 - **STOP_G0** : le pack est prêt. Présenter les décisions à trancher, puis les décisions déléguées à ratifier, par rayon d'impact. L'autopilote ne franchit JAMAIS G0 : c'est l'humain, nommément.
 
 Une décision qui n'est que de l'information devient une HYP-nn et la boucle continue. Une décision qui revient à l'humain entre en file (`factory_queue_decision`) — bloquante si elle porte sur son intention, sur un irréversible ou sur le corpus réel ; sinon elle attend G0 sans arrêter la boucle.

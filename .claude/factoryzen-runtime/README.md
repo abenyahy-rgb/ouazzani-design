@@ -129,6 +129,13 @@ node bin/apf show wp WP-26        # un livrable, son plan de contenu, son critè
 Depuis un dépôt produit, `apf check` détecte l'arborescence `product/` et exécute
 également les contrôles de portée projet.
 
+**Deux conduites du run (MCR-007).** En **atelier**, le porteur co-construit le produit, une
+question à la fois. En **décideur**, il donne un mandat à la création (idée, ressources, canaux,
+personnes clés, géographie, lignes rouges). L'équipe d'agents produit alors sans lui poser de
+question, et ne le sollicite qu'à trois points de passage (mandat, options et tests, G0), en une
+salve où chaque décision porte sa recommandation en premier. Le launchpad propose le mode
+décideur par défaut.
+
 ## Les huit contrôles
 
 | | | Portée | État |

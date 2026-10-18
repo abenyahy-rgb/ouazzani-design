@@ -28,6 +28,9 @@ const safe = (fn, f = null) => { try { return fn(); } catch { return f; } };
 export function conduiteActive(root) {
   return safe(() => {
     const st = loadState(root);
+    /* MCR-007 : en mode décideur, il n'y a pas d'interrogatoire — l'équipe produit depuis le
+       mandat et ne questionne le décideur qu'aux points de passage, en une salve */
+    if (st.autopilote?.mode === 'decideur') return null;
     const open = st.opened?.[st.opened.length - 1];
     if (!open) return null;
     const r = registry();

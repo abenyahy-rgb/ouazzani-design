@@ -853,7 +853,10 @@ templates:
       - guide: >-
           At least two models, written BEFORE choosing the main one: who pays, for what, how. Then
           why the main one wins, and what would tip it towards another. A model chosen without an
-          alternative was not chosen.
+          alternative was not chosen. The launch market is chosen the same way: candidate country,
+          city and segment in a weighted grid — willingness to pay and price of the substitute,
+          size, language and capacity of the key people, regulation, acquisition cost, competition
+          —, the one chosen, the next wave and what is set aside, each with its rationale (MCR-007).
         example: |-
           | Model | Who pays | What would make it the choice |
           |---|---|---|

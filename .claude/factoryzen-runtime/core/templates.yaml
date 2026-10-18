@@ -1053,7 +1053,7 @@ templates:
       - title: "Modèles économiques alternatifs"
         file: product-thesis.md
         reponse: "l'abonnement par conducteur, devant le prix par chantier et la licence éditeur"
-        guide: "Deux modèles au moins, écrits AVANT de retenir le principal : qui paie, pour quoi, comment. Puis pourquoi le principal l'emporte, et ce qui ferait basculer vers un autre. Un modèle choisi sans alternative n'a pas été choisi."
+        guide: "Deux modèles au moins, écrits AVANT de retenir le principal : qui paie, pour quoi, comment. Puis pourquoi le principal l'emporte, et ce qui ferait basculer vers un autre. Un modèle choisi sans alternative n'a pas été choisi. Le marché de lancement se choisit de même : pays, ville et segment candidats dans une grille pondérée — volonté de payer et prix du substitut, taille, langue et capacité des personnes clés, réglementation, coût d'acquisition, concurrence —, le retenu, la vague suivante et l'écarté, chacun avec son motif (MCR-007)."
         example: |-
           | Modèle | Qui paie | Ce qui le ferait retenir |
           |---|---|---|

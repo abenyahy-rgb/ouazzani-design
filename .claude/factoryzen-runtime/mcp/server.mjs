@@ -31,7 +31,9 @@ const SCHEMAS = {
   id:           { type: 'string', description: 'Identifiant de skill' },
   completion:   { type: 'string', enum: ['complet', 'partiel'], description: "Complétude déclarée — jamais tacite. « complet » est confronté à la forme du gabarit." },
   reserves:     { type: 'array', items: { type: 'string' }, description: 'Obligatoires si partiel : ce qui manque, en clair' },
-  instance:     { type: 'string', description: 'Release, slice ou version pour un livrable à chemin paramétré — « REL-x », « REL-x/S-01 », « v1.2.0 »' }
+  instance:     { type: 'string', description: 'Release, slice ou version pour un livrable à chemin paramétré — « REL-x », « REL-x/S-01 », « v1.2.0 »' },
+  mode:         { type: 'string', enum: ['atelier', 'decideur'], description: "Conduite du run (MCR-007) : « atelier », l'intention recueillie une question à la fois ; « decideur », l'équipe produit depuis le mandat et ne sollicite le décideur qu'aux points de passage" },
+  engageante:   { type: 'boolean', description: 'La décision engage le porteur — dépense, publication en son nom, irréversible : elle arrête le run même en mode décideur' }
 };
 const REQUIRED = {
   factory_open_activity: ['activity'],

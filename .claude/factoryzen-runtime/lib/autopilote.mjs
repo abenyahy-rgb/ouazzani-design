@@ -22,6 +22,16 @@ import { routage } from './routage.mjs';
 import { ajouterDecision, ingererReponses, enAttente, bloquantes, aRatifier, trancher } from './decisions.mjs';
 
 const conf = () => registry().autopilote || {};
+/* MCR-007 — deux conduites du run. « atelier » : l'intention se recueille avec l'humain, une
+   question à la fois. « decideur » : l'humain donne un mandat ; l'équipe d'agents produit sans
+   lui poser de question et ne le sollicite qu'aux points de passage, en une salve. */
+export const MODES = ['atelier', 'decideur'];
+export const decideur = st => st.autopilote?.mode === 'decideur';
+const md = () => conf().mode_decideur || {};
+/* Le point de passage qui s'ouvre AVANT cette activité : le tri des critiques en attente s'y fait. */
+/* Les choix d'intention appliqués par défaut, que le décideur n'a pas encore confirmés. */
+const aConfirmer = st => (st.decisions || []).filter(d => d.a_confirmer && d.statut === 'DÉLÉGUÉE');
+const passageAvant = a => (md().points_de_passage || []).find(p => p.avant_activite != null && String(p.avant_activite) === String(a.id)) || null;
 const refuse = (reason, extra = {}) => ({ ...extra, ok: false, verdict: 'REFUSÉ', reason });
 const grant = (extra = {}) => ({ ...extra, ok: true, verdict: 'ACCORDÉ' });
 const porteurs = a => String(a.responsible).split(/ (?:et|puis) |·/).map(x => x.trim()).filter(Boolean);
@@ -29,13 +39,14 @@ const INSTANCES = () => (registry().agents.find(x => x.instances)?.instances || 
 
 /* ── démarrer, arrêter ─────────────────────────────────────────────────── */
 
-export function demarrer(project, { par } = {}) {
+export function demarrer(project, { par, mode } = {}) {
   if (!par) return refuse("l'autopilote se démarre au nom d'une personne : « par » — c'est elle qui ratifiera en G0");
+  if (mode != null && !MODES.includes(mode)) return refuse(`mode inconnu : ${mode} — ${MODES.join(' ou ')}`);
   const st = loadState(project);
   if (st.gates.G0?.status === 'CLEARED') return refuse('G0 est franchie : la cadence C1 est close, il n\'y a plus rien à piloter');
-  st.autopilote = { actif: true, portee: conf().portee || 'C1', par, depuis: new Date().toISOString(),
+  st.autopilote = { actif: true, portee: conf().portee || 'C1', par, mode: mode || st.autopilote?.mode || 'atelier', depuis: new Date().toISOString(),
     delegation: `DLG-${new Date().toISOString().slice(0, 10)}`, relances: 0, dernier_progres: null };
-  saveState(project, st, { event: 'AUTOPILOT_STARTED', by: par, delegation: st.autopilote.delegation });
+  saveState(project, st, { event: 'AUTOPILOT_STARTED', by: par, mode: st.autopilote.mode, delegation: st.autopilote.delegation });
   return grant({ autopilote: st.autopilote, action: prochaineAction(project) });
 }
 
@@ -209,22 +220,36 @@ export function prochaineAction(project, { leger = false, ingerer = true } = {})
       consigne: `L'humain a tranché ${p.decision} autrement que le défaut appliqué : rouvrir l'activité ${p.activite}, appliquer « ${p.choix} », redéclarer ses livrables, puis factory_autopilot_resume.` };
   }
   const bloq = bloquantes(st);
+  if (bloq.length && decideur(st)) {
+    /* une décision engageante est un point de passage : on y porte, dans la même salve, les
+       critiques déjà en attente de tri — le décideur n'est dérangé qu'une fois */
+    const critiques = enAttente(st).filter(d => d.type === 'critique');
+    return { type: 'STOP_DECISION', mode: 'decideur', decisions: bloq.map(d => ({ id: d.id, objet: d.objet, question: d.question, options: d.options, recommandation: d.recommandation || d.options?.[0] || null })),
+      critiques: critiques.map(d => ({ id: d.id, objet: d.objet, recommandation: d.recommandation, rayon: d.rayon })).sort((x, y) => y.rayon - x.rayon),
+      a_confirmer: aConfirmer(st).map(d => ({ id: d.id, objet: d.objet, question: d.question, options: d.options, applique: d.choix_applique })),
+      consigne: md().salve || "Mode décideur : présenter en UNE salve les décisions engageantes puis les critiques en attente, chacune avec sa recommandation en premier ; « ta reco » vaut la recommandation pour toutes. Consigner chaque réponse : factory_answer_decision {id, by, choix}." };
+  }
   if (bloq.length) return { type: 'STOP_DECISION', decisions: bloq.map(d => ({ id: d.id, objet: d.objet, question: d.question, options: d.options })),
     consigne: "Une décision que seul l'humain peut prendre : l'exposer, une question à la fois, et attendre. Rien ne la remplace." };
 
   /* Les critiques en attente de tri ne bloquent pas les livrables suivants : elles s'accumulent,
      et le porteur les trie à la fin de chaque étape de C1 où il en reste (MCR-004). */
   const aTrier = [];
-  const stopTri = () => ({ type: 'STOP_TRI', critiques: aTrier.map(({ d }) => ({ id: d.id, objet: d.objet, question: d.question,
+  const stopTri = passage => ({ type: 'STOP_TRI', ...(decideur(st) ? { mode: 'decideur', point_de_passage: passage?.id || 'G0',
+      a_confirmer: aConfirmer(st).map(d => ({ id: d.id, objet: d.objet, question: d.question, options: d.options, applique: d.choix_applique })) } : {}),
+    critiques: aTrier.map(({ d }) => ({ id: d.id, objet: d.objet, question: d.question,
       recommandation: d.recommandation, rayon: d.rayon, depot: d.positions?.[0] || null })).sort((x, y) => y.rayon - x.rayon),
-    consigne: "Trier les critiques avec grill-me (le skill route vers grilling) : une critique par question, sa recommandation en premier et son motif ; le porteur répond Retenir ou Écarter. Consigner chaque réponse : factory_answer_decision {id, by, choix}. Puis reprendre la boucle." });
+    consigne: decideur(st)
+      ? (md().salve || "Mode décideur : présenter les critiques en UNE salve, chacune avec sa recommandation ; « ta reco » vaut la recommandation pour toutes. Consigner chaque réponse : factory_answer_decision {id, by, choix}. Puis reprendre la boucle.")
+      : "Trier les critiques avec grill-me (le skill route vers grilling) : une critique par question, sa recommandation en premier et son motif ; le porteur répond Retenir ou Écarter. Consigner chaque réponse : factory_answer_decision {id, by, choix}. Puis reprendre la boucle." });
 
   for (const a of r.activities.filter(x => x.cadence === portee)) {
-    if (aTrier.some(x => x.etape !== a.step)) return stopTri();
+    /* atelier : le porteur trie à la fin de chaque étape ; décideur : aux seuls points de passage */
+    if (decideur(st) ? ((aTrier.length || aConfirmer(st).length) && passageAvant(a)) : aTrier.some(x => x.etape !== a.step)) return stopTri(passageAvant(a));
     const wps = (a.work_products || []).filter(w => wpApplies(project, w).applies);
     const ouverte = (st.opened || []).some(o => String(o.activity) === String(a.id));
     const faits = wps.filter(w => complet(st, w));
-    if (avecConduite(a) && faits.length < wps.length)
+    if (avecConduite(a) && faits.length < wps.length && !decideur(st))
       return { type: 'INTERROGER', activite: a.id, nom: a.name, ouvrir: !ouverte, work_products: wps.filter(w => !complet(st, w)),
         consigne: "L'intention se recueille avec l'humain, dans cette conversation, une question à la fois. L'autopilote reprend quand ses livrables sont déclarés complets." };
     if (!ouverte) return { type: 'OUVRIR', activite: a.id, nom: a.name,
@@ -233,7 +258,10 @@ export function prochaineAction(project, { leger = false, ingerer = true } = {})
     if (manquants.length) return { type: 'PRODUIRE', activite: a.id, nom: a.name, work_products: manquants,
       roles: porteurs(a).map(p => route(st, p)),
       depart: a.point_de_depart ? (st.decisions || []).find(d => d.type === 'depart' && String(d.activite) === String(a.id))?.id || null : null,
-      consigne: "Invoquer chaque porteur avec son model et son effort ; il produit à partir du fragment de l'activité et déclare chaque livrable (factory_declare). Une décision manquante qui n'est que de l'information devient une HYP-nn ; une décision que seul l'humain peut prendre entre en file : factory_queue_decision, bloquante." };
+      ...(decideur(st) ? { mode: 'decideur' } : {}),
+      consigne: decideur(st)
+        ? `${(md().activites || {})[a.id] ? `${md().activites[a.id]} ` : ''}Mode décideur (MCR-007) : produire à partir du mandat et de la recherche, SANS poser de question au porteur. Un input d'information manquant devient une HYP-nn ; une décision d'intention se met en file avec ses options, la recommandée en premier (factory_queue_decision) : elle est appliquée par défaut et le porteur la tranche au point de passage. Seule une décision ENGAGEANTE — dépenser, publier en son nom, irréversible — arrête l'autopilote (engageante: true). Déclarer chaque livrable (factory_declare).`
+        : "Invoquer chaque porteur avec son model et son effort ; il produit à partir du fragment de l'activité et déclare chaque livrable (factory_declare). Une décision manquante qui n'est que de l'information devient une HYP-nn ; une décision que seul l'humain peut prendre entre en file : factory_queue_decision, bloquante." };
     for (const w of wps) {
       const critic = criticDe(w);
       if (!critic) continue;
@@ -266,7 +294,7 @@ export function prochaineAction(project, { leger = false, ingerer = true } = {})
         consigne: `Reprendre ${w} sur les seules critiques que le porteur a retenues, puis le redéclarer complet. Les critiques écartées ne se traitent pas.` };
     }
   }
-  if (aTrier.length) return stopTri();
+  if (aTrier.length || (decideur(st) && aConfirmer(st).length)) return stopTri(null);
 
   if (leger) return { type: 'GATE', gate: 'G0', consigne: 'Toutes les activités de C1 sont satisfaites : constater G0 (factory_next).' };
   const c = constatGate(project, { gate: 'G0' });
@@ -334,11 +362,20 @@ export function repondre(project, { id, by, choix, note }) {
 }
 
 /** factory_queue_decision : un agent met en file ce que seul l'humain peut trancher. */
-export function mettreEnFile(project, { type, activite, objet, question, options, bloquante, rayon, par }) {
+export function mettreEnFile(project, { type, activite, objet, question, options, bloquante, engageante, rayon, par }) {
   if (!objet) return refuse('« objet » absent : une décision dit ce qu\'elle tranche');
   const st = loadState(project);
-  const d = ajouterDecision(st, { type: type || (bloquante ? 'bloquante' : 'arbitrage'), activite, objet, question, options, bloquante, rayon, par });
-  saveState(project, st, { event: 'DECISION_QUEUED', decision: d.id, type: d.type, bloquante: d.bloquante });
+  const opts = Array.isArray(options) ? options : [];
+  /* MCR-007 : en mode décideur, une décision d'intention qui a des options n'arrête plus le run —
+     la recommandée (la première) est appliquée par défaut, DÉLÉGUÉE, et le décideur la tranche au
+     point de passage ; tranchée autrement, elle rouvre l'activité. Restent bloquantes : ce qui
+     ENGAGE (dépense, publication, irréversible), le corpus réel, et une décision sans option. */
+  const delegable = decideur(st) && bloquante && !engageante && opts.length > 0 && type !== 'corpus';
+  const d = ajouterDecision(st, { type: type || (bloquante ? 'bloquante' : 'arbitrage'), activite, objet, question, options: opts,
+    bloquante: delegable ? false : (bloquante || !!engageante), rayon, par,
+    ...(delegable ? { choix_applique: String(opts[0]).split(/\s+—\s+/)[0], recommandation: String(opts[0]) } : {}) });
+  if (delegable) d.a_confirmer = true;
+  saveState(project, st, { event: 'DECISION_QUEUED', decision: d.id, type: d.type, bloquante: d.bloquante, ...(delegable ? { deleguee: true } : {}) });
   return grant({ decision: d });
 }
 

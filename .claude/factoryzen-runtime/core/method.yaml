@@ -678,7 +678,7 @@ work_products:
       - title: Problème
         rule: de qui · comment on le sait · ce qu'ils font aujourd'hui · ce que ça leur coûte
       - title: Cible
-        rule: une personne descriptible, pas un segment. Combien. Comment on l'atteint
+        rule: une personne descriptible, pas un segment. Combien. Comment on l'atteint. Le segment qui paie le plus, nommé, avec ce qu'il paie aujourd'hui pour le substitut
       - title: Proposition de valeur
         rule: ce qui change le lendemain · ce que la personne arrête de faire
       - title: Alternative et statu quo
@@ -686,7 +686,7 @@ work_products:
       - title: Grille concurrentielle
         rule: "directe · indirecte · future · le statu quo, toujours présent ; trois à cinq dimensions qui comptent pour la cible ; chaque case avec sa source et la qualité de sa preuve ; là où le produit gagne, là où il perd"
       - title: Modèles économiques alternatifs
-        rule: deux modèles écrits avant de retenir le principal — qui paie, pour quoi, comment ; pourquoi le principal est retenu, et ce qui ferait basculer vers un autre
+        rule: "deux modèles écrits avant de retenir le principal — qui paie, pour quoi, comment ; pourquoi le principal est retenu, et ce qui ferait basculer vers un autre. Le marché de lancement se choisit de même : pays, ville et segment candidats passés aux mêmes filtres pondérés — volonté de payer et prix du substitut, taille du segment, langue et capacité des personnes clés, réglementation, coût d'acquisition, concurrence — ; le retenu, la vague suivante, ce qui est écarté et pourquoi (MCR-007)"
       - title: Évaluation du modèle économique
         rule: "les sept forces du modèle — coûts de changement, revenus récurrents, encaisser avant de dépenser, structure de coûts, d'autres font le travail, scalabilité, protection — chacune faible · moyenne · forte avec son motif ; la force de la proposition de valeur : douleur, fréquence, urgence, volonté de payer, chacune sourcée"
       - title: Économie unitaire
@@ -1214,7 +1214,7 @@ work_products:
       - title: Investisseurs ciblés
         rule: trois personnes au moins, pas des structures · secteur, géographie, portefeuille sans concurrent, performance · chacun sourcé · ticket et accès déclarés
       - title: Pitch investisseurs
-        rule: onze planches — seed deck YC et outils NBV d'INSEAD · le titre est l'idée · chaque chiffre sourcé · traction sur l'échelle de fiabilité · la demande décidée par le porteur et rattachée aux hypothèses qu'elle tranche
+        rule: "onze planches — seed deck YC et outils NBV d'INSEAD · le titre est l'idée · chaque chiffre sourcé · traction sur l'échelle de fiabilité · la demande décidée par le porteur et rattachée aux hypothèses qu'elle tranche. En mode décideur, c'est le dossier décideur (MCR-007) : la demande d'abord, ce qui ne tient pas dit par l'équipe elle-même, les options écartées et leur verdict, chaque risque avec son test et son seuil écrits avant"
     completion: "Chaque élément de la charte présent (K7). Zéro BLOCKER ouvert. Socle figé par tag Git immuable. Pitch investisseurs et investisseurs ciblés : formats « pitch » et « investisseurs » vérifiés."
     base: "C1.5-lancement/gates/"
     files:
@@ -2141,6 +2141,7 @@ skills:
     procedure:
       - "Reprendre les cartes de test de WP-02 et classer les hypothèses par criticité — problème, client, solution, prix — puis par facilité à tester. Retenir les trois à cinq qui tueraient le produit si elles étaient fausses."
       - "Pour chacune, choisir le test le MOINS CHER qui la tranche, et le plus haut échelon de fiabilité qu'il peut atteindre : propos < intérêt observé sans pitcher < acte (inscription, clic d'achat) < paiement (acompte, précommande). Viser l'acte au moins."
+      - "Quand le mandat ou le canevas nomme une personne qui rend le service — coach, expert, cofondateur —, le premier test envisagé est ce service rendu à la main par elle, payé d'avance par de vrais clients : le MVP concierge. Le construire d'abord se justifie, il ne se suppose pas (MCR-007)."
       - "Écrire le critère de réussite AVANT le test — « nous avons raison si… », chiffré — et le commiter. Un critère écrit après le résultat n'est pas un critère."
       - "Préparer le test : page d'atterrissage au VRAI prix avec liste d'attente ou bouton d'achat, message, ciblage, budget. Chercher les prix et offres des alternatives et les communautés où la cible se trouve, sourcés."
       - "Faire décider le porteur — une décision bloquante par test : publier, à qui, avec quel budget. Rien ne part avant sa réponse ; un test non décidé reste préparé, pas mené."
@@ -2778,7 +2779,7 @@ autopilote:
     intention (activités 1 et 2), une décision irréductible, un désaccord que deux tours n'ont
     pas résolu — et il ratifie en G0, en une fois, ce qui a été délégué.
   portee: C1
-  demarrage: "Après l'atelier produit et la thèse (activités 1 et 2) : l'intention se recueille avec l'humain, une question à la fois ; tout le reste s'enchaîne. L'activité 0 est automatique et s'enchaîne aussi."
+  demarrage: "Après l'atelier produit et la thèse (activités 1 et 2) : l'intention se recueille avec l'humain, une question à la fois ; tout le reste s'enchaîne. L'activité 0 est automatique et s'enchaîne aussi. En mode décideur (MCR-007), l'intention vient du mandat : rien n'attend l'humain avant le premier point de passage."
   satisfaction:
     regle: "Un livrable est satisfaisant quand son critic n'a rendu aucune critique, ou quand le porteur a trié chacune et que celles qu'il a RETENUES sont traitées dans une version redéclarée après son tri. Le critic ne tranche rien (MCR-004)."
     ligne: "Les critiques déposées se terminent par « SÉVÉRITÉS — BLOCKER: n · MAJOR: n · MINOR: n ». La tour lit chaque CRIT-n dans le fichier déposé et vérifie que le compte correspond : elle ne prend pas la parole de l'orchestrateur."
@@ -2802,6 +2803,33 @@ autopilote:
   relance:
     mecanisme: "Le hook Stop du harness refuse la fin de tour tant que l'autopilote a une action à exécuter et qu'il progresse. Il laisse finir quand l'action est un arrêt, un interrogatoire avec l'humain, ou quand rien n'a progressé depuis la dernière relance — une boucle qui tourne à vide est arrêtée, pas relancée."
     max_relances: 200
+  mode_decideur:
+    contrat: >-
+      MCR-007. Le porteur est un DÉCIDEUR, pas l'équipe. Il donne un mandat ; l'équipe d'agents
+      cherche, compare, conçoit et prototype sans lui poser de question ; elle ne le sollicite
+      qu'aux points de passage, en une salve où chaque décision porte la recommandation de
+      l'équipe en premier. Le mode se choisit au démarrage de l'autopilote (mode : decideur) ;
+      sans choix, le run reste en atelier, une question à la fois.
+    mandat:
+      recueil: "À la création du projet, par le Launchpad ou par le premier message du porteur. Chaque ligne entre au Journal d'atelier de WP-01 comme une réponse du porteur : l'équipe ne la repose jamais."
+      champs:
+        - "l'idée, telle qu'il l'écrit"
+        - "l'ambition et l'horizon"
+        - "ses ressources : temps, énergie, budget"
+        - "les canaux exclus ou imposés"
+        - "les personnes clés : rôle, langues, capacité"
+        - "la géographie et les langues visées"
+        - "les lignes rouges"
+    points_de_passage:
+      - { id: PP1, nom: Mandat, quand: "à la création du projet", tranche: "l'idée et les contraintes du porteur" }
+      - { id: PP2, nom: Options et tests, avant_activite: 8, tranche: "l'option stratégique et le marché de lancement, les budgets des tests de marché, les critiques des étapes C1.1 à C1.3" }
+      - { id: PP3, nom: G0, gate: G0, tranche: "le dossier décideur, les critiques restantes, la ratification des délégations" }
+    activites:
+      "1": "Atelier produit en mode décideur : rédiger le canevas entier depuis le mandat et la recherche documentaire ; chaque bloc que le mandat ne tranche pas devient une HYP-nn ; le récapitulatif se présente au point de passage PP2, pas avant."
+      "2": "Thèse en mode décideur : au moins trois options stratégiques mutuellement exclusives — modèle, canal, marché de lancement —, passées aux mêmes filtres pondérés, chacune avec son verdict ; l'option recommandée est appliquée, les autres restent en file avec elle (factory_queue_decision, la recommandée en premier)."
+    delegation: "Une décision d'intention qui a des options est appliquée par défaut sur la recommandée, DÉLÉGUÉE, et présentée au point de passage suivant ; tranchée autrement, elle rouvre l'activité qui l'avait appliquée. Restent bloquantes : ce qui ENGAGE le porteur — dépense, publication en son nom, irréversible —, le corpus réel, et une décision sans option."
+    salve: "Mode décideur : présenter en UNE salve, dans cet ordre, les décisions engageantes, les choix appliqués par défaut à confirmer, puis les critiques en attente — chacune avec la recommandation de l'équipe en premier et son motif en une ligne. « Ta reco » vaut la recommandation pour toutes. Consigner chaque réponse : factory_answer_decision {id, by, choix}. Puis reprendre la boucle."
+    mesure: "Le coût humain du run se compte (P7) : sollicitations du décideur et décisions tranchées avant G0. Cible : trois points de passage."
   controlled_by: K8
 
 web_research:
@@ -3259,6 +3287,16 @@ method_evolution:
       origine:
         - "Direction du porteur de la méthode, 13 octobre 2026 : la méthode doit gérer deux types de personas, les clients externes et les opérateurs internes ; dans TennisCoach, les écrans du coach avaient été oubliés."
         - "Constat du même jour : le canevas, les personas, le squelette et la navigation ne connaissaient qu'une famille d'acteurs ; l'exemple padel lui-même décrivait le club et le joueur, mais pas celui qui relance, livre et encaisse."
+    - id: MCR-007
+      title: "Le décideur au-dessus de la boucle : mandat, points de passage, dossier décideur"
+      statut: ADOPTÉE
+      document: core/mcr/MCR-007-le-decideur-au-dessus-de-la-boucle.md
+      on: '2026-10-18'
+      origine:
+        - "Retour du porteur de la méthode, 17 octobre 2026, sur le run TennisCoach : « c'est fatigant, parce que ce n'est pas autonome […] je me retrouve à faire le boulot de l'équipe moi-même » ; le persona de FactoryZen est un membre de comité exécutif qui veut une équipe d'agents qui vient lui présenter quelque chose qu'il peut faire avancer."
+        - "Run TennisCoach, état de la tour au 17 octobre 2026 : 126 décisions tranchées par le porteur avant G0, dont les 93 déléguées ratifiées d'un bloc (DEC-114 à DEC-121) ; atelier et interrogatoire conduits une question à la fois ; G0 non franchie (ITÉRER, DEC-110)."
+        - "Essai « magicien d'Oz » du 17 octobre 2026 : un mandat d'une phrase, deux sous-agents en parallèle, aucune question au porteur, un dossier COMEX de douze planches et un prototype de cinq écrans en une heure environ ; le porteur juge le travail « très bien » et corrige le cap par ses contraintes — temps, canaux, cofondateur, géographie, segment —, que l'équipe ne connaissait pas."
+        - "Direction du porteur, 18 octobre 2026 : ajuster FactoryZen à la marge sans jeter la recherche et le design thinking ; prioriser les pays et les segments qui paient le plus ; tester d'abord le service rendu par le coach cofondateur ; le persona utilisateur de FactoryZen est un décideur."
 
 retired_activities:
   contract: >-
@@ -3886,8 +3924,8 @@ control_tower:
       args: [work_product]
       purpose: "Où va ce livrable, et surtout : UPDATE ou CREATE. La ligne existe depuis le bootstrap ; en créer une seconde donnerait deux pages pour un livrable, donc deux vérités."
     - name: factory_autopilot_start
-      args: [par]
-      purpose: "Démarre l'autopilote de la cadence C1, au nom de la personne qui ratifiera en G0 (MCR-002). La tour calcule chaque action ; le hook Stop refuse la fin de tour tant qu'il en reste une et que le run progresse."
+      args: [par, mode]
+      purpose: "Démarre l'autopilote de la cadence C1, au nom de la personne qui ratifiera en G0 (MCR-002), en conduite « atelier » ou « decideur » (MCR-007). La tour calcule chaque action ; le hook Stop refuse la fin de tour tant qu'il en reste une et que le run progresse."
     - name: factory_autopilot_stop
       args: [raison, par]
       purpose: "Arrête l'autopilote. Rien n'est défait : état, verdicts et file de décisions restent."
@@ -3898,8 +3936,8 @@ control_tower:
       args: [work_product, critic, path]
       purpose: "Enregistre les critiques d'un critic, lues dans le fichier déposé : chaque CRIT-n — sévérité, recommandation — entre en file comme décision CRITIQUE que le porteur retient ou écarte, et la synthèse doit en donner le compte exact. Aucune critique : le livrable converge. Le critic ne tranche rien (MCR-004)."
     - name: factory_queue_decision
-      args: [type, activite, objet, question, options, bloquante, rayon, par]
-      purpose: "Met en file une décision qui revient à l'humain. Bloquante — intention, irréversible, corpus réel — elle arrête l'autopilote ; sinon elle attend G0 sans l'arrêter."
+      args: [type, activite, objet, question, options, bloquante, engageante, rayon, par]
+      purpose: "Met en file une décision qui revient à l'humain. Bloquante — intention, irréversible, corpus réel — elle arrête l'autopilote ; sinon elle attend G0 sans l'arrêter. En mode décideur, une décision d'intention avec options est appliquée sur la recommandée ; seule une décision engageante arrête le run."
     - name: factory_answer_decision
       args: [id, by, choix, note]
       purpose: "L'humain tranche une décision de la file, nommément. Tranchée autrement que le défaut appliqué, elle rouvre l'activité qui l'avait appliqué. Le Launchpad dépose la même réponse en fichier, ingéré à l'action suivante."

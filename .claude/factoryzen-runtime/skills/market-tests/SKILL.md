@@ -15,11 +15,12 @@ Mettre les hypothèses critiques à l'épreuve du marché réel AVANT le socle, 
 
 1. Reprendre les cartes de test de WP-02 et classer les hypothèses par criticité — problème, client, solution, prix — puis par facilité à tester. Retenir les trois à cinq qui tueraient le produit si elles étaient fausses.
 2. Pour chacune, choisir le test le MOINS CHER qui la tranche, et le plus haut échelon de fiabilité qu'il peut atteindre : propos < intérêt observé sans pitcher < acte (inscription, clic d'achat) < paiement (acompte, précommande). Viser l'acte au moins.
-3. Écrire le critère de réussite AVANT le test — « nous avons raison si… », chiffré — et le commiter. Un critère écrit après le résultat n'est pas un critère.
-4. Préparer le test : page d'atterrissage au VRAI prix avec liste d'attente ou bouton d'achat, message, ciblage, budget. Chercher les prix et offres des alternatives et les communautés où la cible se trouve, sourcés.
-5. Faire décider le porteur — une décision bloquante par test : publier, à qui, avec quel budget. Rien ne part avant sa réponse ; un test non décidé reste préparé, pas mené.
-6. Mener le test, collecter les résultats BRUTS sous results/ — export, réponses, paiements — et les sourcer en E-nn.
-7. Écrire une carte d'apprentissage par test : nous pensions, nous avons fait, nous avons observé, à quel échelon, donc nous décidons. Une hypothèse infirmée se dit infirmée et route vers WP-02.
+3. Quand le mandat ou le canevas nomme une personne qui rend le service — coach, expert, cofondateur —, le premier test envisagé est ce service rendu à la main par elle, payé d'avance par de vrais clients : le MVP concierge. Le construire d'abord se justifie, il ne se suppose pas (MCR-007).
+4. Écrire le critère de réussite AVANT le test — « nous avons raison si… », chiffré — et le commiter. Un critère écrit après le résultat n'est pas un critère.
+5. Préparer le test : page d'atterrissage au VRAI prix avec liste d'attente ou bouton d'achat, message, ciblage, budget. Chercher les prix et offres des alternatives et les communautés où la cible se trouve, sourcés.
+6. Faire décider le porteur — une décision bloquante par test : publier, à qui, avec quel budget. Rien ne part avant sa réponse ; un test non décidé reste préparé, pas mené.
+7. Mener le test, collecter les résultats BRUTS sous results/ — export, réponses, paiements — et les sourcer en E-nn.
+8. Écrire une carte d'apprentissage par test : nous pensions, nous avons fait, nous avons observé, à quel échelon, donc nous décidons. Une hypothèse infirmée se dit infirmée et route vers WP-02.
 
 ## Activités outillées
 
